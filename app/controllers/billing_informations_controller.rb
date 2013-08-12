@@ -14,7 +14,7 @@ class BillingInformationsController < ApplicationController
 
   # GET /billing_informations/new
   def new
-    @billing_information = BillingInformation.new
+    @billing_information = CreditCard.new
   end
 
   # GET /billing_informations/1/edit
@@ -24,11 +24,10 @@ class BillingInformationsController < ApplicationController
   # POST /billing_informations
   # POST /billing_informations.json
   def create
-    @billing_information = BillingInformation.new(billing_information_params)
-    credit_card = ActiveMerchant::Billing::CreditCard.new(billing_information_params)
+    @billing_information = CreditCard.new(billing_information_params)
 
     respond_to do |format|
-      if credit_card.valid? && @billing_information.save
+      if @billing_information.save
         format.html { redirect_to @billing_information, notice: 'Billing information was successfully created.' }
         format.json { render action: 'show', status: :created, location: @billing_information }
       else
@@ -70,6 +69,6 @@ class BillingInformationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def billing_information_params
-      params.require(:billing_information).permit(:first_name, :last_name, :expiration, :type)
+      params.require(:credit_card).permit(:first_name, :last_name, :expiration, :type, :number, :cvv, :brand)
     end
 end

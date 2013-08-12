@@ -1,5 +1,6 @@
 Ahantu::Application.routes.draw do
   resources :billing_informations
+  resources :credit_cards, :controller => "billing_informations", :type => "CreditCard"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
