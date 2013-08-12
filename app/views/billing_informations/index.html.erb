@@ -1,0 +1,33 @@
+<h1>Listing billing_informations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Expiration</th>
+      <th>Type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @billing_informations.each do |billing_information| %>
+      <tr>
+        <td><%= billing_information.first_name %></td>
+        <td><%= billing_information.last_name %></td>
+        <td><%= billing_information.expiration %></td>
+        <td><%= billing_information.type %></td>
+        <td><%= link_to 'Show', billing_information %></td>
+        <td><%= link_to 'Edit', edit_billing_information_path(billing_information) %></td>
+        <td><%= link_to 'Destroy', billing_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Billing information', new_billing_information_path %>
