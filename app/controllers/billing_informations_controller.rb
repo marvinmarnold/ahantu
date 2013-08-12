@@ -25,9 +25,10 @@ class BillingInformationsController < ApplicationController
   # POST /billing_informations.json
   def create
     @billing_information = BillingInformation.new(billing_information_params)
+    credit_card = ActiveMerchant::Billing::CreditCard.new(billing_information_params)
 
     respond_to do |format|
-      if @billing_information.save
+      if credit_card.valid? && @billing_information.save
         format.html { redirect_to @billing_information, notice: 'Billing information was successfully created.' }
         format.json { render action: 'show', status: :created, location: @billing_information }
       else
