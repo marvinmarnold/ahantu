@@ -1,10 +1,9 @@
 Ahantu::Application.routes.draw do
   
   get "pages/index"
-  resources :carts
 
   resources :carts 
-  get 'carts/:id/checkout' => 'carts#checkout', as: :checkout 
+  get 'carts/:id/checkout' => 'carts#edit', as: :checkout
 
   get "pages/about"
   get "pages/contact"

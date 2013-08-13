@@ -1,16 +1,11 @@
 <%= simple_form_for(@cart) do |f| %>
   <%= f.error_notification %>
-
+  <%= current_cart.total %>
   <div class="inputs">
-    <%= f.association :user %>
-    <%= f.association :shop %>
-    <%= f.input :total_at_checkout %>
-    <%= f.input :payment_at %>
-    <%= f.input :payment_amount %>
-    <%= f.input :billing_inform %>
+    <%= f.association :billing_information %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Checkout" %>
   </div>
 <% end %>

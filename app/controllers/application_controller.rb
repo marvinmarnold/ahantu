@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
    def current_cart
-    Cart.create
+    @current_cart ||= Cart.create
   end
   helper_method :current_cart
 end

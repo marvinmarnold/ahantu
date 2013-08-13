@@ -1,10 +1,8 @@
 class CreditCard < BillingInformation
 
-	attr_accessor :number, :cvv
 	validate :validate_card, on: :create
-  before_create :set_number_last_four
 
-  validates :number_last_four, :first_name, :expiration, :brand,
+  validates :number, :first_name, :expiration, :brand,
     presence: true
 
 private
@@ -29,7 +27,5 @@ private
     )
   end
 
-  def set_number_last_four
-    number_last_four = number[-4,4]
-  end
+
 end

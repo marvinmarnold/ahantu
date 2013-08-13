@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 20130813121016) do
     t.date     "expiration"
     t.string   "type"
     t.string   "brand"
-    t.string   "number_last_four"
+    t.string   "number"
+    t.string   "cvv"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,7 +34,7 @@ ActiveRecord::Schema.define(version: 20130813121016) do
     t.float    "total_at_checkout"
     t.datetime "payment_at"
     t.float    "payment_amount"
-    t.string   "billing_inform"
+    t.integer  "billing_information_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

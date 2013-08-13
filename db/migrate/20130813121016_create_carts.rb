@@ -6,7 +6,7 @@ class CreateCarts < ActiveRecord::Migration
       t.float :total_at_checkout
       t.datetime :payment_at
       t.float :payment_amount
-      t.string :billing_inform
+      t.belongs_to :billing_information, index: true
 
       t.timestamps
     end
