@@ -5,7 +5,7 @@ class Cart < ActiveRecord::Base
 
   before_save :set_checkout_details
 
-  validates :user_id, :shop_id, :billing_information_id, :total_at_checkout, :payment_amount, :payment_at,
+  validates :user_id, #:shop_id, :billing_information_id, :total_at_checkout, :payment_amount, :payment_at,
     presence: true
 
 
@@ -24,7 +24,7 @@ class Cart < ActiveRecord::Base
 
 private
 
-  def set_chekout_details
+  def set_checkout_details
     total_at_checkout = total
     payment_amount = total_at_checkout
     payment_at = Time.now

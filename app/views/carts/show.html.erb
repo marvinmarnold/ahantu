@@ -1,10 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @cart.user %>
-</p>
-
 <p>
   <strong>Shop:</strong>
   <%= @cart.shop %>
@@ -26,9 +19,6 @@
 </p>
 
 <p>
-  <strong>Billing inform:</strong>
+  <strong>Billing information:</strong>
   <%= @cart.billing_information %>
 </p>
-
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>

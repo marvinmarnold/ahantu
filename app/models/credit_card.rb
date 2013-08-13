@@ -2,8 +2,16 @@ class CreditCard < BillingInformation
 
 	validate :validate_card, on: :create
 
-  validates :number, :first_name, :expiration, :brand,
+  validates :number, :first_name, :expiration, :brand, :cvv, :last_name,
     presence: true
+
+  def name
+    "#{brand} - #{first_name} #{last_name} - #{last_four}"
+  end
+
+  def last_four
+    number[-4,4]
+  end
 
 private
 

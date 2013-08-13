@@ -24,11 +24,11 @@ class BillingInformationsController < ApplicationController
   # POST /billing_informations
   # POST /billing_informations.json
   def create
-    @billing_information = CreditCard.new(billing_information_params)
+    @billing_information = current_user.billing_informations.build(billing_information_params)
 
     respond_to do |format|
       if @billing_information.save
-        format.html { redirect_to @billing_information, notice: 'Billing information was successfully created.' }
+        format.html { redirect_to checkout_path(current_cart), notice: 'Billing information was successfully created.' }
         format.json { render action: 'show', status: :created, location: @billing_information }
       else
         format.html { render action: 'new' }
@@ -64,7 +64,7 @@ class BillingInformationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_billing_information
-      @billing_information = BillingInformation.find(params[:id])
+      @billing_information = current_user.billing_informations.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
