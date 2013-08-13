@@ -1,0 +1,22 @@
+<%= simple_form_for(@shop) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.association :user %>
+    <%= f.association :city %>
+    <%= f.input :published %>
+    <%= f.input :logo %>
+    <%= f.input :address1 %>
+    <%= f.input :address2 %>
+    <%= f.input :directions %>
+    <%= f.input :website1 %>
+    <%= f.input :website2 %>
+    <%= f.input :website3 %>
+    <%= f.input :website4 %>
+    <%= f.input :website5 %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

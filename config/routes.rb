@@ -1,5 +1,7 @@
 Ahantu::Application.routes.draw do
   
+  resources :shops
+
   get "pages/index"
 
   resources :carts 

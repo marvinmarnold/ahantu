@@ -4,9 +4,11 @@
   <div class="inputs">
   	<% if current_user.billing_informations.present? %>
     	<%= f.association :billing_information, collection: current_user.credit_cards %>
+      <p>or</p>
     <% else %>
-    	<%= link_to "Add Credit Card", new_credit_card_path %>
+      <p>No credit cards on file. Please add one</p>
     <% end %>
+    <%= link_to "Add Credit Card", new_credit_card_path %>
   </div>
 
   <div class="actions">

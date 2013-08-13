@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130813131522) do
+ActiveRecord::Schema.define(version: 20130813135559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,26 @@ ActiveRecord::Schema.define(version: 20130813131522) do
   add_index "carts", ["billing_information_id"], name: "index_carts_on_billing_information_id", using: :btree
   add_index "carts", ["shop_id"], name: "index_carts_on_shop_id", using: :btree
   add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
+
+  create_table "shops", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "city_id"
+    t.boolean  "published"
+    t.string   "logo"
+    t.string   "address1"
+    t.string   "address2"
+    t.text     "directions"
+    t.string   "website1"
+    t.string   "website2"
+    t.string   "website3"
+    t.string   "website4"
+    t.string   "website5"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shops", ["city_id"], name: "index_shops_on_city_id", using: :btree
+  add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
