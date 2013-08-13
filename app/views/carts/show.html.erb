@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @cart.user %>
+</p>
+
+<p>
+  <strong>Shop:</strong>
+  <%= @cart.shop %>
+</p>
+
+<p>
+  <strong>Total at checkout:</strong>
+  <%= @cart.total_at_checkout %>
+</p>
+
+<p>
+  <strong>Payment at:</strong>
+  <%= @cart.payment_at %>
+</p>
+
+<p>
+  <strong>Payment amount:</strong>
+  <%= @cart.payment_amount %>
+</p>
+
+<p>
+  <strong>Billing inform:</strong>
+  <%= @cart.billing_inform %>
+</p>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

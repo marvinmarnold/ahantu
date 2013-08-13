@@ -35,6 +35,25 @@ end
 gem 'activemerchant'
 gem 'figaro'
 gem 'simple_form'
+gem 'devise'
+gem 'cancan'
+gem 'will_paginate'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'aasm'
+
+group :test, :development do
+  gem "rspec-rails"
+  gem 'pry'
+  gem 'pry-debugger'
+  gem 'rb-inotify'
+  gem 'ruby-prof'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'faker'
+	gem "factory_girl_rails"
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

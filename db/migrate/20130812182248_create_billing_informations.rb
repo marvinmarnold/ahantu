@@ -6,6 +6,7 @@ class CreateBillingInformations < ActiveRecord::Migration
       t.date :expiration
       t.string :type
       t.string :brand
+      t.string :number_last_four
 
       t.timestamps
     end

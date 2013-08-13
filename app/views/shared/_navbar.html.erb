@@ -1,0 +1,5 @@
+<% if current_cart.present? %>
+	<%= link_to "Checkout", checkout_path(current_cart) %>
+<% else %>
+	no cart
+<% end %>

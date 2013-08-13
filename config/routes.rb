@@ -1,6 +1,17 @@
 Ahantu::Application.routes.draw do
+  
+  get "pages/index"
+  resources :carts
+
+  resources :carts 
+  get 'carts/:id/checkout' => 'carts#checkout', as: :checkout 
+
+  get "pages/about"
+  get "pages/contact"
   resources :billing_informations
   resources :credit_cards, :controller => "billing_informations", :type => "CreditCard"
+
+  root 'pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

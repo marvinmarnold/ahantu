@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130812182248) do
+ActiveRecord::Schema.define(version: 20130813121016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,23 @@ ActiveRecord::Schema.define(version: 20130812182248) do
     t.date     "expiration"
     t.string   "type"
     t.string   "brand"
+    t.string   "number_last_four"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "carts", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "shop_id"
+    t.float    "total_at_checkout"
+    t.datetime "payment_at"
+    t.float    "payment_amount"
+    t.string   "billing_inform"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "carts", ["shop_id"], name: "index_carts_on_shop_id", using: :btree
+  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
 end
