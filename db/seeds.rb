@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'factory_girl'
+require 'seeder'
+
+Language.create(name: "English", abbr: "en", default: true)
+Language.create(name: "Français", abbr: "fr")
+Language.create(name: "Kinyarwanda", abbr: "ky")
+Seeder.gen_locations("vendor/rwanda.csv")
+
+FactoryGirl.create_list(:complete_shop, 40)

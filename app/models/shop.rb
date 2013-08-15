@@ -1,4 +1,4 @@
-class Shop < ActiveRecord::Base
+class Shop < Describable
   belongs_to :user
   belongs_to :city
 end

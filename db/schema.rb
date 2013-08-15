@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130813135559) do
+ActiveRecord::Schema.define(version: 20130815104738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,10 +46,70 @@ ActiveRecord::Schema.define(version: 20130813135559) do
   add_index "carts", ["shop_id"], name: "index_carts_on_shop_id", using: :btree
   add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.integer  "province_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
+
+  create_table "descriptions", force: true do |t|
+    t.integer  "language_id"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "describable_id"
+    t.string   "describable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "descriptions", ["describable_id", "describable_type"], name: "index_descriptions_on_describable_id_and_describable_type", using: :btree
+  add_index "descriptions", ["language_id"], name: "index_descriptions_on_language_id", using: :btree
+
+  create_table "items", force: true do |t|
+    t.string   "quantity"
+    t.integer  "shop_id"
+    t.integer  "max_adults"
+    t.boolean  "published"
+    t.float    "default_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["shop_id"], name: "index_items_on_shop_id", using: :btree
+
+  create_table "languages", force: true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.boolean  "default"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "price_adjustments", force: true do |t|
+    t.integer  "item_id"
+    t.string   "price"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_adjustments", ["item_id"], name: "index_price_adjustments_on_item_id", using: :btree
+
+  create_table "provinces", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "shops", force: true do |t|
     t.integer  "user_id"
     t.integer  "city_id"
     t.boolean  "published"
+    t.string   "name"
     t.string   "logo"
     t.string   "address1"
     t.string   "address2"
