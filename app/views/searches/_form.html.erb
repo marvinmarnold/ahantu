@@ -6,6 +6,9 @@
     <%= f.input :checkin_at %>
     <%= f.input :checkout_at %>
     <%= f.input :adults %>
+    <%= render 'tags/select_boxes', 
+      tags: HotelTag.all, 
+      obj: @search %>
   </div>
 
   <div class="actions">

@@ -1,0 +1,7 @@
+<%= hidden_field_tag search_tag_name, nil%>
+<% tags.each do |t| %>
+  <%= content_tag "label", for: search_tag_id(t) do %>
+    <%= check_box_tag search_tag_name, t.id, obj.has_hotel_tag?(t), id: search_tag_id(t) %>
+    <%= t %>
+  <% end %>
+<% end %>

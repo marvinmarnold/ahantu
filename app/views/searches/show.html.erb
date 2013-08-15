@@ -1,4 +1,6 @@
 <%= render 'searches/form' %>
+  
 <% @search.results.each do |r| %>
   <%= render 'searches/result', r: r %>
 <% end %>
+
