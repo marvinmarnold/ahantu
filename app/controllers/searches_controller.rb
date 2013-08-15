@@ -70,6 +70,5 @@ class SearchesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def search_params
       params.require(:search).permit(:keyword, :checkin_at, :checkout_at, :adults, :tag_ids)
-      binding.pry
     end
 end

@@ -27,7 +27,6 @@ class Search < ActiveRecord::Base
   end
 
   def tag_ids=(ids)
-    binding.pry
     taggings.delete_all
 
     #add new tags

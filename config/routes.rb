@@ -1,5 +1,11 @@
 Ahantu::Application.routes.draw do
   
+  devise_for :shopper_profiles, 
+    :controllers => {
+      :registrations => "shopper_profile_registrations",
+      :sessions => "member_profile_sessions",
+      :passwords => "devise_passwords"
+    }
   resources :searches
 
   resources :descriptions
