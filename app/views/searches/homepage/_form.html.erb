@@ -1,0 +1,14 @@
+<%= simple_form_for(@search) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :keyword %>
+    <%= f.input :checkin_at %>
+    <%= f.input :checkout_at %>
+    <%= f.input :adults %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

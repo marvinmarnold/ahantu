@@ -6,4 +6,8 @@ class Language < ActiveRecord::Base
 		end
 		l.first
 	end
+
+	 def self.current
+    Language.find_by_abbr(I18n.locale) || default
+  end
 end
