@@ -25,6 +25,7 @@ FactoryGirl.define do
                 describable: c,
                 language: Language.default
             )
+            RandomHelper.r1(4).times { create(:tagging, taggable: c, tag: HotelTag.all.sample) }
         end
         factory :complete_shop_w_items do
             after(:create) do |c, evaluator|

@@ -70,9 +70,12 @@ module Seeder
         "Restaurant",
         "Self Catering",
         "Eco-friendly",
-        "Handicapped accessible"
+        "Handicapped accessible",
+        "Hot showers",
+        "Bar",
       ].each do |t|
-        HotelTag.create!(name: t)
+        h = HotelTag.create
+        h.descriptions.create(language_id: Language.default.id, name: t)
       end
     end
 
