@@ -4,6 +4,7 @@ class Search < ActiveRecord::Base
   belongs_to :shop
   has_many :taggings, as: :taggable
   has_many :hotel_tags, through: :taggings, class_name: "HotelTag", source: :tag
+  has_many :room_searches
 
   def results(filtered_shops = Shop.published)
     filtered_shops = filtered_by_keyword(filtered_shops)
