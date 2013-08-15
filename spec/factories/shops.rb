@@ -26,6 +26,11 @@ FactoryGirl.define do
                 language: Language.default
             )
         end
+        factory :complete_shop_w_items do
+            after(:create) do |c, evaluator|
+                RandomHelper.r1(5).times { create(:complete_item, shop: c) }
+            end
+        end
     end
 
   end

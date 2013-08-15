@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20130815112752) do
   add_index "guest_profiles", ["language_id"], name: "index_guest_profiles_on_language_id", using: :btree
 
   create_table "items", force: true do |t|
-    t.string   "quantity"
+    t.integer  "quantity"
     t.integer  "shop_id"
     t.integer  "max_adults"
     t.boolean  "published"
