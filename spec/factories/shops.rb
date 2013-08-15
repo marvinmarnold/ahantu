@@ -16,6 +16,8 @@ FactoryGirl.define do
     website5 "MyString"
 
     factory :complete_shop do
+        published true
+        city { City.all.sample }
         after(:create) do |c, evaluator|
             c.descriptions << create(:description,
                 describable: c,

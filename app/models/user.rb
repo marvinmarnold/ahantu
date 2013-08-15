@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   def search
     if (s = searches).blank?
-      s.create
+      s.build
     else
       s.last
     end

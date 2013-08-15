@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
   def index
-    @searches = Search.all
+    @searches = current_user.searches
   end
 
   # GET /searches/1
@@ -24,7 +24,7 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
-    @search = Search.new(search_params)
+    @search = current_user.searches.build(search_params)
 
     respond_to do |format|
       if @search.save
@@ -64,7 +64,7 @@ class SearchesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_search
-      @search = Search.find(params[:id])
+      @search = current_user.searches.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
