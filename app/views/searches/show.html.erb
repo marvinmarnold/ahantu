@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Keyword:</strong>
+  <%= @search.keyword %>
+</p>
+
+<p>
+  <strong>Checkin at:</strong>
+  <%= @search.checkin_at %>
+</p>
+
+<p>
+  <strong>Checkout at:</strong>
+  <%= @search.checkout_at %>
+</p>
+
+<p>
+  <strong>Adults:</strong>
+  <%= @search.adults %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @search.user %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @search.item %>
+</p>
+
+<p>
+  <strong>Shop:</strong>
+  <%= @search.shop %>
+</p>
+
+<%= link_to 'Edit', edit_search_path(@search) %> |
+<%= link_to 'Back', searches_path %>

@@ -1,0 +1,39 @@
+<h1>Listing searches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keyword</th>
+      <th>Checkin at</th>
+      <th>Checkout at</th>
+      <th>Adults</th>
+      <th>User</th>
+      <th>Item</th>
+      <th>Shop</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @searches.each do |search| %>
+      <tr>
+        <td><%= search.keyword %></td>
+        <td><%= search.checkin_at %></td>
+        <td><%= search.checkout_at %></td>
+        <td><%= search.adults %></td>
+        <td><%= search.user %></td>
+        <td><%= search.item %></td>
+        <td><%= search.shop %></td>
+        <td><%= link_to 'Show', search %></td>
+        <td><%= link_to 'Edit', edit_search_path(search) %></td>
+        <td><%= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Search', new_search_path %>

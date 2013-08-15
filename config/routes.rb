@@ -1,5 +1,7 @@
 Ahantu::Application.routes.draw do
   
+  resources :searches
+
   resources :descriptions
 
   resources :items
