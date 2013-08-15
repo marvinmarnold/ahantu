@@ -1,4 +1,5 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
+require 'random_helper'
 
 FactoryGirl.define do
   factory :shop do
@@ -16,6 +17,7 @@ FactoryGirl.define do
     website5 "MyString"
 
     factory :complete_shop do
+        logo { RandomHelper.rand_shop_logo }
         published true
         city { City.all.sample }
         after(:create) do |c, evaluator|

@@ -3,4 +3,8 @@ class City < ActiveRecord::Base
 
   validates :province_id, :name,
   	presence: true
+
+  def to_s
+  	name
+  end
 end

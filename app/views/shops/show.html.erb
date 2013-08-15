@@ -1,23 +1,11 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @shop.user %>
-</p>
-
 <p>
   <strong>City:</strong>
   <%= @shop.city %>
 </p>
 
 <p>
-  <strong>Published:</strong>
-  <%= @shop.published %>
-</p>
-
-<p>
-  <strong>Logo:</strong>
-  <%= @shop.logo %>
+  <%= image_tag @shop.logo_url(:preview) %>
 </p>
 
 <p>
@@ -59,6 +47,3 @@
   <strong>Website5:</strong>
   <%= @shop.website5 %>
 </p>
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
