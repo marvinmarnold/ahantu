@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 private
 
   def current_user_symbol
-    :current_user_id
+    :current_users_id
   end
 
   def current_cart_symbol

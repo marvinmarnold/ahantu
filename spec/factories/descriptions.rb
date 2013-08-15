@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :description do
     language nil
-    name "MyString"
-    description "MyText"
+    name { Faker::Lorem.words.join " "}
+    description { Faker::Lorem.sentences.join " " }
     describable nil
   end
 end

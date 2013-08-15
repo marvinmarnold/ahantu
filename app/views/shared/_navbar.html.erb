@@ -1,3 +1,10 @@
 <% if current_cart.present? %>
 	<%= link_to "Checkout", checkout_path(current_cart) %>
 <% end %>
+
+<% if current_user.guest? %>
+	You are a guest
+<% else %>
+	You are not a guest
+<% end %>
+

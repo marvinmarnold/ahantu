@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815104738) do
+ActiveRecord::Schema.define(version: 20130815110133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(version: 20130815104738) do
   add_index "descriptions", ["describable_id", "describable_type"], name: "index_descriptions_on_describable_id_and_describable_type", using: :btree
   add_index "descriptions", ["language_id"], name: "index_descriptions_on_language_id", using: :btree
 
+  create_table "guest_profiles", force: true do |t|
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "guest_profiles", ["language_id"], name: "index_guest_profiles_on_language_id", using: :btree
+
   create_table "items", force: true do |t|
     t.string   "quantity"
     t.integer  "shop_id"
@@ -109,7 +117,6 @@ ActiveRecord::Schema.define(version: 20130815104738) do
     t.integer  "user_id"
     t.integer  "city_id"
     t.boolean  "published"
-    t.string   "name"
     t.string   "logo"
     t.string   "address1"
     t.string   "address2"
@@ -127,8 +134,12 @@ ActiveRecord::Schema.define(version: 20130815104738) do
   add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
+    t.integer  "profile_id"
+    t.string   "profile_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["profile_id", "profile_type"], name: "index_users_on_profile_id_and_profile_type", using: :btree
 
 end

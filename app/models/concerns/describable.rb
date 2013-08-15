@@ -7,8 +7,6 @@ class Describable < ActiveRecord::Base
   has_many :languages,
     through: :descriptions
 
-  attr_accessible :descriptions_attributes
-
   accepts_nested_attributes_for :descriptions,
     :allow_destroy => true
 

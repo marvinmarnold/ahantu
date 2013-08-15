@@ -15,5 +15,14 @@ FactoryGirl.define do
     website4 "MyString"
     website5 "MyString"
 
+    factory :complete_shop do
+        after(:create) do |c, evaluator|
+            c.descriptions << create(:description,
+                describable: c,
+                language: Language.default
+            )
+        end
+    end
+
   end
 end
