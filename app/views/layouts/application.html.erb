@@ -5,14 +5,22 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= render 'shared/google_analytics' %>
 </head>
 <body>
 
-<div>
-	<%= render 'shared/navbar' %>
-</div>
-<div>
-	<%= yield %>
+
+
+<div class="container-fluid">
+  <div class="row-fluid">
+      <%= render 'shared/navbar' %>
+  </div>
+	
+  <div class="row-fluid">
+      <%= render "shared/errors" %>
+      <%= yield %>
+  </div>
 </div>
 
 </body>

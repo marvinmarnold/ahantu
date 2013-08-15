@@ -1,11 +1,27 @@
-<% if current_cart.present? %>
-	<%= link_to "Checkout", checkout_path(current_cart) %>
-<% end %>
 
-<% if current_user.guest? %>
-    <%= link_to t("devise.sessions.signin"), new_shopper_profile_session_path %>
-    <%= link_to t("devise.registrations.signup"), new_shopper_profile_registration_path %>
-<% else %>
-		<%= current_user %>
-<% end %>
-
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+  
+      <%= link_to "ahantu", root_path, class: "brand" %>
+		<span class="navbar-text float-right">
+		  <%= current_user %>
+		</span>
+		<% if current_user.guest? %>
+			<% if current_cart.present? %>
+				<%= link_to "Checkout", checkout_path(current_cart) %>
+				<li class="divider-vertical"></li>
+			<% end %>
+		  <ul class="nav pull-right">
+		    <li>
+		      <%= link_to "Sign in", new_shopper_profile_session_path %>
+		    </li>
+		    <li class="divider-vertical"></li>
+		    <li>
+		      <%= link_to "Sign up", new_shopper_profile_registration_path %>
+		    </li>
+		  </ul>
+		 <% else %>
+				<%= current_user %>
+		<% end %>
+		</div>
+</div>
