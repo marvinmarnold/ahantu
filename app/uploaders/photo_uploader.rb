@@ -1,15 +1,11 @@
-class LogoUploader < BaseUploader
+class PhotoUploader < BaseUploader
 
   version :thumb do
-    process :resize_to_fit => [200, 200]
-  end
-
-  version :preview do
-    process :resize_to_fit => [400, 400]
+    process :resize_to_fit => [75, 75]
   end
 
   version :banner do
-    process :resize_to_fit => [700, 700]
+    process :resize_to_fit => [400, 400]
   end
 
   # Override the filename of the uploaded files:

@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(version: 20130815145133) do
     t.string   "address1"
     t.string   "address2"
     t.text     "directions"
-    t.string   "website1"
+   t.string   "website1"
     t.string   "website2"
     t.string   "website3"
     t.string   "website4"

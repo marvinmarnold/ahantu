@@ -40,7 +40,7 @@ gem 'cancan'
 gem 'will_paginate'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'aasm'
+# gem 'aasm'
 
 group :test, :development do
   gem "rspec-rails"
@@ -54,14 +54,12 @@ group :test, :development do
   gem 'faker'
 	gem "factory_girl_rails"
 end
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'state_machine'
+gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :deployment do
+  gem 'capistrano', :require => false
+  gem 'rvm-capistrano', :require => false
+end
