@@ -1,0 +1,14 @@
+<%= simple_form_for(@cart) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+		<% @shop.items.each do |i| %>
+		  <%= render 'items/show', i: i, f: f %>
+		<% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "Checkout" %>
+  </div>
+<% end %>
+

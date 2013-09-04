@@ -1,5 +1,9 @@
 Ahantu::Application.routes.draw do
   
+  resources :line_items
+
+  resources :bookings
+
   devise_for :shopper_profiles, 
     :controllers => {
       :registrations => "shopper_profile_registrations",

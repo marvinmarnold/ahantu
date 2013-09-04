@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Booking:</strong>
+  <%= @line_item.booking %>
+</p>
+
+<p>
+  <strong>Unit price at checkout:</strong>
+  <%= @line_item.unit_price_at_checkout %>
+</p>
+
+<p>
+  <strong>Booking at:</strong>
+  <%= @line_item.booking_at %>
+</p>
+
+<%= link_to 'Edit', edit_line_item_path(@line_item) %> |
+<%= link_to 'Back', line_items_path %>

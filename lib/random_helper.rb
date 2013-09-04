@@ -1,7 +1,7 @@
 module RandomHelper
   class << self
     def rand_shop_logo
-      rand_file("vendor/assets/hotels/generic/logos")
+      rand_file("vendor/hotels/generic/logos")
     end
 
     def rand_file(folder)

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cart:</strong>
+  <%= @booking.cart %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @booking.item %>
+</p>
+
+<p>
+  <strong>Responsible first name:</strong>
+  <%= @booking.responsible_first_name %>
+</p>
+
+<p>
+  <strong>Responsible last name:</strong>
+  <%= @booking.responsible_last_name %>
+</p>
+
+<p>
+  <strong>Adults:</strong>
+  <%= @booking.adults %>
+</p>
+
+<p>
+  <strong>Name at checkout:</strong>
+  <%= @booking.name_at_checkout %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @booking.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>

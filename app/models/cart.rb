@@ -2,6 +2,7 @@ class Cart < ActiveRecord::Base
   belongs_to :user
   belongs_to :shop
   belongs_to :billing_information
+  has_many :bookings
 
   before_save :set_checkout_details
 

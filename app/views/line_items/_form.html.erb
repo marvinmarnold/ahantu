@@ -1,0 +1,13 @@
+<%= simple_form_for(@line_item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.association :booking %>
+    <%= f.input :unit_price_at_checkout %>
+    <%= f.input :booking_at %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

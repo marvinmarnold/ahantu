@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130816150808) do
+ActiveRecord::Schema.define(version: 20130904093049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,21 @@ ActiveRecord::Schema.define(version: 20130816150808) do
   end
 
   add_index "billing_informations", ["user_id"], name: "index_billing_informations_on_user_id", using: :btree
+
+  create_table "bookings", force: true do |t|
+    t.integer  "cart_id"
+    t.integer  "item_id"
+    t.string   "responsible_first_name"
+    t.string   "responsible_last_name"
+    t.integer  "adults"
+    t.string   "name_at_checkout"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookings", ["cart_id"], name: "index_bookings_on_cart_id", using: :btree
+  add_index "bookings", ["item_id"], name: "index_bookings_on_item_id", using: :btree
 
   create_table "carts", force: true do |t|
     t.integer  "user_id"
@@ -96,6 +111,16 @@ ActiveRecord::Schema.define(version: 20130816150808) do
     t.datetime "updated_at"
   end
 
+  create_table "line_items", force: true do |t|
+    t.integer  "booking_id"
+    t.float    "unit_price_at_checkout"
+    t.date     "booking_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_items", ["booking_id"], name: "index_line_items_on_booking_id", using: :btree
+
   create_table "photos", force: true do |t|
     t.string   "photo"
     t.integer  "photoable_id"
@@ -136,7 +161,6 @@ ActiveRecord::Schema.define(version: 20130816150808) do
     t.string   "keyword"
     t.date     "checkin_at"
     t.date     "checkout_at"
-    t.integer  "adults"
     t.integer  "user_id"
     t.integer  "item_id"
     t.integer  "shop_id"

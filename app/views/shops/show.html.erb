@@ -48,6 +48,4 @@
   <%= @shop.website5 %>
 </p>
 
-<% @shop.items.each do |i| %>
-  <%= render 'items/show', i: i %>
-<% end %>
+<%= render 'carts/shop_menu' %>
