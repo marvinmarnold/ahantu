@@ -6,11 +6,12 @@
 			  <%= current_user %>
 			</span>
 			<% if current_user.guest? %>
-				<% if current_cart.present? %>
-					<%= link_to "Checkout", checkout_path(current_cart) %>
-					<li class="divider-vertical"></li>
-				<% end %>
-			  <ul class="nav pull-right">
+				<ul class="nav pull-right">
+					<% if current_cart.present? %>
+						<li><%= link_to "Checkout", checkout_path(current_cart) %></li>
+						<li class="divider-vertical"></li>
+					<% end %>
+			  
 			    <li>
 			      <%= link_to "Sign in", new_shopper_profile_session_path %>
 			    </li>

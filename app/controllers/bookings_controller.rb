@@ -29,10 +29,8 @@ class BookingsController < ApplicationController
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @booking }
       else
         format.html { render action: 'new' }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +41,8 @@ class BookingsController < ApplicationController
     respond_to do |format|
       if @booking.update(booking_params)
         format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +53,6 @@ class BookingsController < ApplicationController
     @booking.destroy
     respond_to do |format|
       format.html { redirect_to bookings_url }
-      format.json { head :no_content }
     end
   end
 

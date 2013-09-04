@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
+  layout "sidebar", only: :show
 
   # GET /searches
   # GET /searches.json
@@ -10,6 +11,7 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
+
   end
 
   # GET /searches/new

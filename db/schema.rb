@@ -48,17 +48,15 @@ ActiveRecord::Schema.define(version: 20130904093049) do
 
   create_table "carts", force: true do |t|
     t.integer  "user_id"
-    t.integer  "shop_id"
-    t.float    "total_at_checkout"
     t.datetime "payment_at"
     t.float    "payment_amount"
     t.integer  "billing_information_id"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "carts", ["billing_information_id"], name: "index_carts_on_billing_information_id", using: :btree
-  add_index "carts", ["shop_id"], name: "index_carts_on_shop_id", using: :btree
   add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
   create_table "cities", force: true do |t|
@@ -150,7 +148,7 @@ ActiveRecord::Schema.define(version: 20130904093049) do
 
   create_table "room_searches", force: true do |t|
     t.integer  "search_id"
-    t.integer  "num_people"
+    t.integer  "adults"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,6 @@
 <%= simple_form_for(@cart) do |f| %>
   <%= f.error_notification %>
-  <%= current_cart.total %>
+  <%= @cart.total %>
   <div class="inputs">
   	<% if current_user.billing_informations.present? %>
     	<%= f.association :billing_information, collection: current_user.credit_cards %>

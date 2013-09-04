@@ -8,9 +8,8 @@ class Cart < ActiveRecord::Base
 
   before_save :set_checkout_details
 
-  validates :user_id, #:shop_id, :billing_information_id, :total_at_checkout, :payment_amount, :payment_at,
+  validates :user_id,
     presence: true
-
 
 
   def total
@@ -34,11 +33,34 @@ class Cart < ActiveRecord::Base
     end
   end
 
+  ##############################################################################################################
+  ### state machine
+  ##############################################################################################################
+
+  state_machine :state, :initial => :shopping do
+
+    state :checking_out do
+      validates_presence_of :billing_information_id, :payment_amount, :payment_at,
+        presence: true
+      validate :full_payment
+
+    end
+
+  end
+
+  ##############################################################################################################
+  ###
+  ##############################################################################################################
+
 private
 
   def set_checkout_details
     total_at_checkout = total
     payment_amount = total_at_checkout
     payment_at = Time.now
+  end
+
+  def full_payment
+    self.payment_amount == total ? true : errors[:payment_amount] << "not full payment"
   end
 end
