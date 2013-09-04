@@ -25,8 +25,7 @@ Ahantu::Application.routes.draw do
 
   get "pages/about"
   get "pages/contact"
-  resources :billing_informations
-  resources :credit_cards, :controller => "billing_informations", :type => "CreditCard"
+  resources :credit_cards
 
   root 'pages#index'
 

@@ -1,0 +1,7 @@
+<% unless errors.blank? %>
+  <div class="alert alert-error">
+    <% errors.each do |error| %>
+      <%= error %>
+    <% end %>
+  </div>
+<% end %>

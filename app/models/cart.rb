@@ -43,11 +43,23 @@ class Cart < ActiveRecord::Base
 
   state_machine :state, :initial => :shopping do
 
-    state :checking_out do
-      validates_presence_of :billing_information_id, :payment_amount, :payment_at,
+    state :submitted do
+      validates_presence_of :billing_information_id, :email, :phone,
+        presence: true
+    end
+
+    state :payment_processed do
+      validates_presence_of :payment_amount, :payment_at,
         presence: true
       validate :full_payment
+    end
 
+    event :submit do
+      transition :shopping => :submitted
+    end
+
+    event :pay do
+      transition :submitted => :payment_processed
     end
 
   end

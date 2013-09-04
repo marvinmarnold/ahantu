@@ -1,0 +1,13 @@
+<%= simple_form_for(@credit_card) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :brand %>
+  <%= f.input :number %>
+  <%= f.input :cvv %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :expiration %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

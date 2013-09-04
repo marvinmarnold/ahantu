@@ -4,22 +4,22 @@
     <h3>Room details</h3>
     <%= f.simple_fields_for :bookings do |b| %>
       <%= "#{b.object.item} (#{b.object.adults} ppl)" %>
-      <%= b.input :responsible_first_name %>
-      <%= b.input :responsible_last_name %>
+      <%= b.input :responsible_name %>
     <% end %>
 
     <h3>Contact Information</h3>
-    <%= f.input :email %>
-    <%= f.input :phone %>
+    <%= f.input :email, required: true %>
+    <%= f.input :phone, required: true %>
 
     <h3>Billing Information</h3>
+    <%= render "shared/custom_errors", errors: @cart.errors[:billing_information_id] %>
   	<% if current_user.billing_informations.present? %>
     	<%= f.association :billing_information, collection: current_user.credit_cards %>
       <p>or</p>
     <% else %>
       <p>No credit cards on file. Please add one</p>
     <% end %>
-    <%= link_to "Add Credit Card", new_credit_card_path %>
+    <%= link_to "Add Credit Card", new_credit_card_path, class: "btn" %>
   </div>
 
   <div class="actions">

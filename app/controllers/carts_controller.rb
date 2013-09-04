@@ -43,7 +43,7 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1.json
   def update
     respond_to do |format|
-      if @cart.update(cart_params)
+      if @cart.update(cart_params) && @cart.submit
         format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
       else
         format.html { render action: 'edit' }
@@ -68,6 +68,6 @@ class CartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.require(:cart).permit(:bookings_attributes => [:item_id, :adults])
+      params.require(:cart).permit(:email, :phone, :billing_information_id, :bookings_attributes => [:item_id, :adults, :responsible_name, :id])
     end
 end

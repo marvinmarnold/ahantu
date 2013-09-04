@@ -34,8 +34,7 @@ ActiveRecord::Schema.define(version: 20130904093049) do
   create_table "bookings", force: true do |t|
     t.integer  "cart_id"
     t.integer  "item_id"
-    t.string   "responsible_first_name"
-    t.string   "responsible_last_name"
+    t.string   "responsible_name"
     t.integer  "adults"
     t.string   "name_at_checkout"
     t.integer  "quantity"
@@ -162,13 +161,11 @@ ActiveRecord::Schema.define(version: 20130904093049) do
     t.date     "checkin_at"
     t.date     "checkout_at"
     t.integer  "user_id"
-    t.integer  "item_id"
     t.integer  "shop_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "searches", ["item_id"], name: "index_searches_on_item_id", using: :btree
   add_index "searches", ["shop_id"], name: "index_searches_on_shop_id", using: :btree
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
 
