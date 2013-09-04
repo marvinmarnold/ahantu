@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815145133) do
+ActiveRecord::Schema.define(version: 20130816150808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(version: 20130815145133) do
     t.datetime "updated_at"
   end
 
+  create_table "photos", force: true do |t|
+    t.string   "photo"
+    t.integer  "photoable_id"
+    t.string   "photoable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "photos", ["photoable_id", "photoable_type"], name: "index_photos_on_photoable_id_and_photoable_type", using: :btree
+
   create_table "price_adjustments", force: true do |t|
     t.integer  "item_id"
     t.string   "price"
@@ -166,7 +176,7 @@ ActiveRecord::Schema.define(version: 20130815145133) do
     t.string   "address1"
     t.string   "address2"
     t.text     "directions"
-   t.string   "website1"
+    t.string   "website1"
     t.string   "website2"
     t.string   "website3"
     t.string   "website4"

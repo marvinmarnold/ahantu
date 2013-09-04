@@ -10,17 +10,15 @@
 </head>
 <body>
 
-
-
+<%= render 'shared/navbar' %>
 <div class="container-fluid">
   <div class="row-fluid">
-      <%= render 'shared/navbar' %>
-  </div>
-	
-  <div class="row-fluid">
+    <div class="span10 offset1">
       <%= render "shared/errors" %>
       <%= yield %>
+    </div>
   </div>
+</div>
 </div>
 
 </body>

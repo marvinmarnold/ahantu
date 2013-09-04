@@ -53,11 +53,21 @@ group :test, :development do
   gem 'meta_request'
   gem 'faker'
 	gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+  gem "rb-fsevent"
+  gem "zeus"
 end
 
 # Use unicorn as the app server
 gem 'state_machine'
 gem 'unicorn'
+gem "twitter-bootstrap-rails"
+gem 'will_paginate-bootstrap'
+gem "less-rails"
+gem "therubyracer"
+gem 'redis'
+gem 'dotenv-rails'
 
 group :deployment do
   gem 'capistrano', :require => false
