@@ -148,6 +148,7 @@ GEM
     money (5.1.1)
       i18n (~> 0.6.0)
     multi_json (1.7.9)
+    nested_form (0.3.2)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -291,6 +292,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   meta_request
+  nested_form
   pg
   pry
   pry-debugger

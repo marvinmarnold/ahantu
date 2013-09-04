@@ -35,6 +35,7 @@ end
 gem 'activemerchant'
 gem 'figaro'
 gem 'simple_form'
+gem 'nested_form'
 gem 'devise'
 gem 'cancan'
 gem 'will_paginate'

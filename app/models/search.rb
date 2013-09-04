@@ -6,6 +6,8 @@ class Search < ActiveRecord::Base
   has_many :hotel_tags, through: :taggings, class_name: "HotelTag", source: :tag
   has_many :room_searches
 
+  accepts_nested_attributes_for :room_searches
+
   def results(filtered_shops = Shop.published)
     filtered_shops = filtered_by_keyword(filtered_shops)
     filtered_shops = filtered_by_hotel_tags(filtered_shops)

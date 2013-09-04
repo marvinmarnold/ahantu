@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   before_validation :set_guest_profile
 
   def search
-    ((s = searches).blank?) ? new_search : s.last
+    ((s = searches).blank?) ? new_search : s.first
   end
 
   def new_search
