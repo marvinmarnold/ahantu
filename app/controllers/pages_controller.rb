@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def index
-  	@search = current_search
+  	@search = new_search
   end
 
   def about

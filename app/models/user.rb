@@ -14,11 +14,11 @@ class User < ActiveRecord::Base
   before_validation :set_guest_profile
 
   def search
-    if (s = searches).blank?
-      s.build
-    else
-      s.last
-    end
+    ((s = searches).blank?) ? new_search : s.last
+  end
+
+  def new_search
+    searches.build
   end
 
 private

@@ -28,11 +28,9 @@ class SearchesController < ApplicationController
 
     respond_to do |format|
       if @search.save
-        format.html { redirect_to @search, notice: 'Search was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @search }
+        format.html { redirect_to @search }
       else
         format.html { render action: 'new' }
-        format.json { render json: @search.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +41,8 @@ class SearchesController < ApplicationController
     respond_to do |format|
       if @search.update(search_params)
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @search.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +53,6 @@ class SearchesController < ApplicationController
     @search.destroy
     respond_to do |format|
       format.html { redirect_to searches_url }
-      format.json { head :no_content }
     end
   end
 

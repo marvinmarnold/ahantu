@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_search
 
+  def new_search
+    @new_search ||= current_user.new_search
+  end
+  helper_method :new_search
+
 private
 
   def current_user_symbol
