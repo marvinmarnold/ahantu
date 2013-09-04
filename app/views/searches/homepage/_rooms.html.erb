@@ -1,7 +1,7 @@
 <div class="well span4">
 		<h3>Step 3: What</h3>
 		<%= f.fields_for :room_searches do |b| %>
-		  <%= b.input :num_people %>
+		  <%= b.input :adults %>
 		  <%= b.link_to_remove "Remove this room" %>
 		<% end %>
 		<p><%= f.link_to_add "Add a room", :room_searches %></p>

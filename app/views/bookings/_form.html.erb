@@ -1,18 +1,32 @@
-
+<div class="well">
 <% j = 0 %>
-<% @cart.bookings.each do |b| %>
-	<div class="input radio optional">
-		<span>
-			<%= content_tag "input", id: cart_bookings_attributes_id(j, i.id),
-				class: "radio optional",
-				type: "radio",
-				value: i.id,
-				name: "cart[bookings_attributes][#{j}][item_id]" do %>
-			<% end %>
-			<%= content_tag "label", class: "collection_radio", for: cart_bookings_attributes_id(j, i.id) do %>
-				<%= "Book for Room #{j}" %>
-			<% end %>
-    </span>
-  </div>
-   <% j += 1 %>
-<% end %>
+<div class="row-fluid">
+	<% @cart.bookings.each do |b| %>
+		<%= content_tag "div", class: "span#{diver(@cart.bookings.size)}" do %>
+			<div class="span6">
+				<%= "Reservation #{j+1} (#{b.adults} ppl)" %>
+			</div>
+			<% j += 1 %>
+		<% end %>
+	<% end %>
+</div>
+<% j = 0 %>
+<div class="row-fluid">
+	<% @cart.bookings.each do |b| %>
+		<%= content_tag "div", class: "span#{diver(@cart.bookings.size)} input radio optional" do %>
+			<span>
+				<%= content_tag "input", id: cart_bookings_attributes_id(j, i.id),
+					class: "radio optional",
+					type: "radio",
+					value: i.id,
+					name: "cart[bookings_attributes][#{j}][item_id]" do %>
+				<% end %>
+				<%= content_tag "label", class: "collection_radio", for: cart_bookings_attributes_id(j, i.id) do %>
+					<%= "Book for Reservation #{j+1}" %>
+				<% end %>
+	    </span>
+	  <% end %>
+	   <% j += 1 %>
+	<% end %>
+</div>
+</div>
