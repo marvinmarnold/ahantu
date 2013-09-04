@@ -10,7 +10,7 @@ class ShopsController < ApplicationController
   # GET /shops/1
   # GET /shops/1.json
   def show
-    @cart = Cart.new
+    @cart = Cart.new_from_search(current_search)
   end
 
   # GET /shops/new

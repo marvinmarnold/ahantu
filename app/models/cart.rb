@@ -4,6 +4,8 @@ class Cart < ActiveRecord::Base
   belongs_to :billing_information
   has_many :bookings
 
+  accepts_nested_attributes_for :bookings
+
   before_save :set_checkout_details
 
   validates :user_id, #:shop_id, :billing_information_id, :total_at_checkout, :payment_amount, :payment_at,
@@ -21,7 +23,16 @@ class Cart < ActiveRecord::Base
 
   def taxes 
   	5
-  end 
+  end
+
+  def self.new_from_search(search)
+    Cart.new.tap do |c|
+      search.room_searches.each do |rs|
+        c.bookings.build
+      end
+    end
+
+  end
 
 private
 

@@ -1,3 +1,18 @@
-<% current_search.room_searches.each do |rs| %>
-  <%= rs.num_people %>
+
+<% j = 0 %>
+<% @cart.bookings.each do |b| %>
+	<div class="input radio optional">
+		<span>
+			<%= content_tag "input", id: cart_bookings_attributes_id(j, i.id),
+				class: "radio optional",
+				type: "radio",
+				value: i.id,
+				name: "cart[bookings_attributes][#{j}][item_id]" do %>
+			<% end %>
+			<%= content_tag "label", class: "collection_radio", for: cart_bookings_attributes_id(j, i.id) do %>
+				<%= "Book for Room #{j}" %>
+			<% end %>
+    </span>
+  </div>
+   <% j += 1 %>
 <% end %>
