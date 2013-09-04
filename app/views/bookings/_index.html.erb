@@ -1,0 +1,14 @@
+<h1>Listing bookings</h1>
+<% cart.bookings.each do |booking| %>
+  <%= booking.item %>
+  <% booking.line_items.each do |l| %>
+    <div class='row-fluid'>
+    	<div class="span6">
+    		<%= l.booking_at %>
+    	</div>
+    	<div class="span6">
+    		<%= l.unit_price_at_checkout %>
+    	</div>
+    </div>
+  <% end %>
+<% end %>

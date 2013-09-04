@@ -6,15 +6,14 @@
 <%= render 'shared/navbar' %>
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span3 offset1">
-      <%= yield :side %>
-    </div>
-    <div class="span7">
-      <%= render "shared/errors" %>
+    <div class="span7 offset1">
+    <%= render "shared/errors" %>
       <%= yield %>
     </div>
+    <div class="span3">
+      <%= yield :side %>
+    </div>
   </div>
-</div>
 </div>
 
 </body>

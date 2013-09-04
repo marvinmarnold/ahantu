@@ -1,3 +1,6 @@
 <h1>Checkout</h1>
-
 <%= render 'form' %>
+
+<% content_for :side do %>
+	<%= render 'bookings/index', cart: @cart %>
+<% end %>

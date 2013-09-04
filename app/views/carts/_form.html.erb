@@ -1,7 +1,18 @@
 <%= simple_form_for(@cart) do |f| %>
   <%= f.error_notification %>
-  <%= @cart.total %>
   <div class="inputs">
+    <h3>Room details</h3>
+    <%= f.simple_fields_for :bookings do |b| %>
+      <%= "#{b.object.item} (#{b.object.adults} ppl)" %>
+      <%= b.input :responsible_first_name %>
+      <%= b.input :responsible_last_name %>
+    <% end %>
+
+    <h3>Contact Information</h3>
+    <%= f.input :email %>
+    <%= f.input :phone %>
+
+    <h3>Billing Information</h3>
   	<% if current_user.billing_informations.present? %>
     	<%= f.association :billing_information, collection: current_user.credit_cards %>
       <p>or</p>

@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  layout "rightbar", only: [:edit]
 
   # GET /carts
   # GET /carts.json
@@ -24,14 +25,16 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = current_user.carts.new(cart_params)
+    @cart = current_user.carts.build(cart_params)
 
     respond_to do |format|
       if @cart.save
+        @cart.fill_bookings(current_search)
         session[current_cart_symbol] = @cart.id
         format.html { redirect_to edit_cart_path(@cart)}
       else
         format.html { render action: 'new' }
+
       end
     end
   end
@@ -65,6 +68,6 @@ class CartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.require(:cart).permit(:bookings_attributes => [:item_id])
+      params.require(:cart).permit(:bookings_attributes => [:item_id, :adults])
     end
 end

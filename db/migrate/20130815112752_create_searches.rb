@@ -5,7 +5,6 @@ class CreateSearches < ActiveRecord::Migration
       t.date :checkin_at
       t.date :checkout_at
       t.belongs_to :user, index: true
-      t.belongs_to :item, index: true
       t.belongs_to :shop, index: true
 
       t.timestamps

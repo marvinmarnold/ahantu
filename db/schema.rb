@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20130904093049) do
     t.float    "payment_amount"
     t.integer  "billing_information_id"
     t.string   "state"
+    t.string   "email"
+    t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

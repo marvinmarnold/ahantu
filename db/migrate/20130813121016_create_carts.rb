@@ -6,6 +6,8 @@ class CreateCarts < ActiveRecord::Migration
       t.float :payment_amount
       t.belongs_to :billing_information, index: true
       t.string :state
+      t.string :email
+      t.string :phone
 
       t.timestamps
     end

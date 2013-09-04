@@ -1,12 +1,9 @@
 class Cart < ActiveRecord::Base
   belongs_to :user
-  belongs_to :shop
   belongs_to :billing_information
   has_many :bookings
 
   accepts_nested_attributes_for :bookings
-
-  before_save :set_checkout_details
 
   validates :user_id,
     presence: true
@@ -29,7 +26,14 @@ class Cart < ActiveRecord::Base
       search.room_searches.each do |rs|
         c.bookings.build(adults: rs.adults)
       end
-      
+    end
+  end
+
+  def fill_bookings(search)
+    self.bookings.each do |b|
+      search.dates.each do |d|
+        b.line_items.create!(booking_at: d, unit_price_at_checkout: b.item.price(d))
+      end
     end
   end
 
@@ -53,12 +57,6 @@ class Cart < ActiveRecord::Base
   ##############################################################################################################
 
 private
-
-  def set_checkout_details
-    total_at_checkout = total
-    payment_amount = total_at_checkout
-    payment_at = Time.now
-  end
 
   def full_payment
     self.payment_amount == total ? true : errors[:payment_amount] << "not full payment"

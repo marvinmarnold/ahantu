@@ -1,12 +1,13 @@
 class Search < ActiveRecord::Base
   belongs_to :user
-  belongs_to :item
   belongs_to :shop
   has_many :taggings, as: :taggable
   has_many :hotel_tags, through: :taggings, class_name: "HotelTag", source: :tag
   has_many :room_searches
 
   accepts_nested_attributes_for :room_searches
+
+  validate :future_check_in, :later_check_out
 
   def results(filtered_shops = Shop.published)
     filtered_shops = filtered_by_keyword(filtered_shops)
@@ -47,10 +48,22 @@ class Search < ActiveRecord::Base
     ids.each { |tag_id| taggings.create(tag_id: tag_id)}
   end
 
+  def dates
+    checkin_at..(checkout_at-1.day)
+  end
+
 private
 
   # does the shop have at least the same tags as the search?
   def tags_match?(s)
     (hotel_tags - s.hotel_tags).blank?
+  end
+
+  def future_check_in
+    errors[:checkin_at] << I18n.t('searches.form.errors.future_check_in') unless checkin_at >= Date.today
+  end
+
+  def later_check_out
+    errors[:checkout_at] << I18n.t('searches.form.errors.later_check_out') unless checkout_at > checkin_at
   end
 end
