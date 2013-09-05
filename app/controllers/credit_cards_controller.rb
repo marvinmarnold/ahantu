@@ -25,7 +25,6 @@ class CreditCardsController < ApplicationController
   # POST /credit_cards.json
   def create
     @credit_card = current_user.credit_cards.build(credit_card_params)
-    binding.pry
 
     respond_to do |format|
       if @credit_card.save

@@ -1,5 +1,7 @@
 Ahantu::Application.routes.draw do
   
+  resources :sms
+
   resources :line_items
 
   resources :bookings
@@ -25,6 +27,7 @@ Ahantu::Application.routes.draw do
 
   get "pages/about"
   get "pages/contact"
+  get "sms_entry_point", :to => "sms#start_point"
   resources :credit_cards
 
   root 'pages#index'

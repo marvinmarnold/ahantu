@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130904093049) do
+ActiveRecord::Schema.define(version: 20130904182250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,16 @@ ActiveRecord::Schema.define(version: 20130904093049) do
 
   add_index "line_items", ["booking_id"], name: "index_line_items_on_booking_id", using: :btree
 
+  create_table "phones", force: true do |t|
+    t.integer  "shop_id"
+    t.string   "number"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "phones", ["shop_id"], name: "index_phones_on_shop_id", using: :btree
+
   create_table "photos", force: true do |t|
     t.string   "photo"
     t.integer  "photoable_id"
@@ -208,6 +218,19 @@ ActiveRecord::Schema.define(version: 20130904093049) do
 
   add_index "shops", ["city_id"], name: "index_shops_on_city_id", using: :btree
   add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
+
+  create_table "sms", force: true do |t|
+    t.integer  "cart_id"
+    t.text     "message"
+    t.integer  "phone_id"
+    t.boolean  "incoming"
+    t.datetime "sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sms", ["cart_id"], name: "index_sms_on_cart_id", using: :btree
+  add_index "sms", ["phone_id"], name: "index_sms_on_phone_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

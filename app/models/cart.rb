@@ -37,29 +37,47 @@ class Cart < ActiveRecord::Base
     end
   end
 
+  def order_number
+    id.to_s.rjust(6, '0')
+  end
+
   ##############################################################################################################
   ### state machine
   ##############################################################################################################
 
   state_machine :state, :initial => :shopping do
 
-    state :submitted do
-      validates_presence_of :billing_information_id, :email, :phone,
+    state :authorizing_payment do
+      validates :billing_information_id, :email, :phone, :payment_amount,
         presence: true
     end
 
     state :payment_processed do
-      validates_presence_of :payment_amount, :payment_at,
+      validates :payment_at,
         presence: true
-      validate :full_payment
     end
 
+    before_transition :shopping => :authorizing_payment, :do => :set_payment_amount
+    after_transition :on => :authorize_payment, :do => :submit_payment_authorization
+    event :authorize_payment do
+      transition :shopping => :authorizing_payment
+    end
+
+    after_transition :on => :submit, :do => :send_confirmation
     event :submit do
-      transition :shopping => :submitted
+      transition :authorizing_payment => :submitted
+    end
+
+    event :confirm_order do
+      transition :submitted => :order_confirmed
     end
 
     event :pay do
-      transition :submitted => :payment_processed
+      transition :order_confirmed => :processing_payment
+    end
+
+    event :confirm_payment do
+      transition :processing_payment => :payment_received
     end
 
   end
@@ -70,7 +88,39 @@ class Cart < ActiveRecord::Base
 
 private
 
-  def full_payment
-    self.payment_amount == total ? true : errors[:payment_amount] << "not full payment"
+  def submit_payment_authorization
+    #TODO
+    self.submit
+  end
+
+  def send_confirmation
+    #send_phone_confirmation
+    send_email_confirmation
+  end
+
+  def send_phone_confirmation
+    shop.phones.each do |p|
+      Sm.send(p, confirmation_message, self)
+    end
+  end
+
+  def send_email_confirmation
+    #send email to all responsibles
+  end
+
+  def set_payment_amount
+    self.payment_amount = total
+  end
+
+  def confirmation_message
+    "#{order_number} - #{bookings_summary}"
+  end
+
+  def bookings_summary
+    "".tap do |s|
+      bookings.each do |b|
+        s += b.sms_summary
+      end
+    end
   end
 end

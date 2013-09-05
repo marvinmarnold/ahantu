@@ -41,7 +41,7 @@ gem 'cancan'
 gem 'will_paginate'
 gem 'carrierwave'
 gem 'rmagick'
-# gem 'aasm'
+gem "rest-client", :require => 'rest_client'
 
 group :test, :development do
   gem "rspec-rails"

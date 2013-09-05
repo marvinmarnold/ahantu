@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :max_adults
       t.boolean :published
       t.float :default_price
+      t.string :short
 
       t.timestamps
     end

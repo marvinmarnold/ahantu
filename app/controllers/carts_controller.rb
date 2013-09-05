@@ -43,7 +43,7 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1.json
   def update
     respond_to do |format|
-      if @cart.update(cart_params) && @cart.submit
+      if @cart.update(cart_params) && @cart.authorize_payment
         format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
       else
         format.html { render action: 'edit' }

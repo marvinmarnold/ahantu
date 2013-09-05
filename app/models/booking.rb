@@ -8,6 +8,18 @@ class Booking < ActiveRecord::Base
 
   before_validation :set_vals
 
+  def sms_summary
+  	"#{checkin}-#{checkout}/item.short" 
+  end
+
+  def checkin
+  	line_items.last.booking_at
+  end
+
+  def checkout
+  	line_items.first.booking_at
+  end
+
  private
 
  	def set_vals
