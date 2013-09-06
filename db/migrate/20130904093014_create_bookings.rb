@@ -7,6 +7,7 @@ class CreateBookings < ActiveRecord::Migration
       t.integer :adults
       t.string :name_at_checkout
       t.integer :quantity
+      t.boolean :confirmed, default: false
 
       t.timestamps
     end

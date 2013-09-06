@@ -1,0 +1,16 @@
+Booking confirmation - <%= @cart %>
+===============================================
+ 
+An order has just been placed at <%= @cart.shop %>. Contact the hotel and reply to this email with the order number to confirm. Reply with X + order number to nullify the order.
+
+Order number: <%= @cart.order_number %>
+Hotel name: <%= @cart.shop %>
+Hotel telephone: <%= @cart.shop.telephone %>
+Order total: <%= @cart.shop_cut %>
+
+Order details:
+<% i = 0 %>
+<% @cart.bookings.each do |b| %>
+	<%= "#{i}. #{b} - #{b.shop_cut}" %>
+<% end %>
+ 

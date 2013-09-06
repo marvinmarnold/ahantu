@@ -41,6 +41,22 @@ class Cart < ActiveRecord::Base
     id.to_s.rjust(6, '0')
   end
 
+  def shop
+    bookings.first.shop
+  end
+
+  def confirmed?
+    bookings.all? { |b| b.confirmed }
+  end
+
+  def to_s
+    "#{order_number} - #{shop}"
+  end
+
+  def shop_cut
+    bookings.map { |b| b.shop_cut }.reduce(:+)
+  end
+
   ##############################################################################################################
   ### state machine
   ##############################################################################################################
@@ -68,12 +84,8 @@ class Cart < ActiveRecord::Base
       transition :authorizing_payment => :submitted
     end
 
-    event :confirm_order do
-      transition :submitted => :order_confirmed
-    end
-
     event :pay do
-      transition :order_confirmed => :processing_payment
+      transition :submitted => :processing_payment
     end
 
     event :confirm_payment do
@@ -88,8 +100,12 @@ class Cart < ActiveRecord::Base
 
 private
 
+  def responsibles
+    shop.responsibles
+  end
+
   def submit_payment_authorization
-    #TODO
+    #TODO - paypal
     self.submit
   end
 
@@ -106,6 +122,10 @@ private
 
   def send_email_confirmation
     #send email to all responsibles
+    responsibles.each do |r|
+      
+    end
+    #send email to shop
   end
 
   def set_payment_amount

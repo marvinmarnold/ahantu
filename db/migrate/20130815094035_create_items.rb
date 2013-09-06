@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :quantity
       t.belongs_to :shop, index: true
       t.integer :max_adults
-      t.boolean :published
+      t.boolean :published, default: false
       t.float :default_price
       t.string :short
 

@@ -15,6 +15,7 @@ FactoryGirl.define do
     website3 "MyString"
     website4 "MyString"
     website5 "MyString"
+    commission_pct 10
 
     factory :complete_shop do
         logo { RandomHelper.rand_shop_logo }

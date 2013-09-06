@@ -20,7 +20,39 @@ class Booking < ActiveRecord::Base
   	line_items.first.booking_at
   end
 
+  def shop
+    item.shop
+  end
+
+  def nights
+    checkin - checkout - 1
+  end
+
+  def dates
+    "#{checkin} - #{checkout}"
+  end
+
+  def to_s
+    "#{item} - #{dates} (#{dates} nights)"
+  end
+
+  def shop_cut
+    total * shop_cut_modifier
+  end
+
+  def total
+    quantity * line_items.map { |l| l.total }.reduce(:+)
+  end
+
  private
+
+  def commission
+    commission_pct/100
+  end
+
+  def shop_cut_modifier
+    1 - commission
+  end
 
  	def set_vals
  		self.name_at_checkout = item.name

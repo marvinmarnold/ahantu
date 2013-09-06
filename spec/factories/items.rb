@@ -7,6 +7,7 @@ FactoryGirl.define do
     max_adults 1
     published false
     default_price 1.5
+    short "XXX"
 
     factory :complete_item do 
     	default_price { rand(1000) }

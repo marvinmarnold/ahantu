@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130904182250) do
+ActiveRecord::Schema.define(version: 20130906104014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20130904182250) do
     t.integer  "adults"
     t.string   "name_at_checkout"
     t.integer  "quantity"
+    t.boolean  "confirmed",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -94,8 +95,9 @@ ActiveRecord::Schema.define(version: 20130904182250) do
     t.integer  "quantity"
     t.integer  "shop_id"
     t.integer  "max_adults"
-    t.boolean  "published"
+    t.boolean  "published",     default: false
     t.float    "default_price"
+    t.string   "short"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -157,6 +159,16 @@ ActiveRecord::Schema.define(version: 20130904182250) do
     t.datetime "updated_at"
   end
 
+  create_table "responsibilities", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "shop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "responsibilities", ["shop_id"], name: "index_responsibilities_on_shop_id", using: :btree
+  add_index "responsibilities", ["user_id"], name: "index_responsibilities_on_user_id", using: :btree
+
   create_table "room_searches", force: true do |t|
     t.integer  "search_id"
     t.integer  "adults"
@@ -202,7 +214,7 @@ ActiveRecord::Schema.define(version: 20130904182250) do
   create_table "shops", force: true do |t|
     t.integer  "user_id"
     t.integer  "city_id"
-    t.boolean  "published"
+    t.boolean  "published",      default: false
     t.string   "logo"
     t.string   "address1"
     t.string   "address2"
@@ -212,6 +224,7 @@ ActiveRecord::Schema.define(version: 20130904182250) do
     t.string   "website3"
     t.string   "website4"
     t.string   "website5"
+    t.float    "commission_pct"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
