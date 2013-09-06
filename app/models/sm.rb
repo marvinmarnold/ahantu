@@ -18,4 +18,13 @@ class Sm < ActiveRecord::Base
       :text => sms.message.encode('ascii', :invalid => :replace, :undef => :replace, :replace => ' ')
     }})
   end
+
+  def sanitized
+    Sm.sanitize(message)
+  end
+
+  def self.sanitize(s)
+    s.downcase.delete(' ')
+  end
+
 end

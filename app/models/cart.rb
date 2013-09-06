@@ -57,6 +57,20 @@ class Cart < ActiveRecord::Base
     bookings.map { |b| b.shop_cut }.reduce(:+)
   end
 
+  def receive_confirmation(sms)
+    if sms.sanitized.match("^#{order_number}")
+      confirm
+    elsif sms.sanitized.match("^x#{order_number}")
+      cancle
+    else
+      false
+    end
+  end
+
+  def self.find_cart(order_number)
+    Cart.all.reject { |c| c.confirmed? }.find { |c| c.order_number == order_number }
+  end
+
   ##############################################################################################################
   ### state machine
   ##############################################################################################################
@@ -92,6 +106,11 @@ class Cart < ActiveRecord::Base
       transition :processing_payment => :payment_received
     end
 
+    after_transition :on => :cancle, :do => :send_cancelation
+    even :cancle do
+      transition all => :canceled
+    end
+
   end
 
   ##############################################################################################################
@@ -100,6 +119,14 @@ class Cart < ActiveRecord::Base
 
 private
 
+  def confirm
+    bookings.each { |b| b.confirm }
+  end
+
+  def unconfirm
+    cancle
+  end
+
   def responsibles
     shop.responsibles
   end
@@ -107,6 +134,15 @@ private
   def submit_payment_authorization
     #TODO - paypal
     self.submit
+  end
+
+  def send_cancelation
+    #send phone notice
+    send_email_cancelation
+  end
+
+  def send_email_cancelation
+    ShopperMailer.cancelation(self).deliver
   end
 
   def send_confirmation
@@ -123,7 +159,7 @@ private
   def send_email_confirmation
     #send email to all responsibles
     responsibles.each do |r|
-      
+      SalespersonMailer.booking_confirmation(self).deliver
     end
     #send email to shop
   end

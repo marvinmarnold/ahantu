@@ -44,6 +44,10 @@ class Booking < ActiveRecord::Base
     quantity * line_items.map { |l| l.total }.reduce(:+)
   end
 
+  def confirm
+    update_attributes!(confirmed: true)
+  end
+
  private
 
   def commission
