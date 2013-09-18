@@ -1,12 +1,15 @@
-set :stages, %w(lixele ahantu staging)
-set :default_stage, "staging"
-require 'capistrano/ext/multistage'
+# set :stages, %w(lixele ahantu staging)
+# set :default_stage, "staging"
+# require 'capistrano/ext/multistage'
 
 set :rvm_ruby_string, :local        # use the same ruby as used locally for deployment
 set :use_sudo, false # To install rvm on system.
 set :rvm_type, :system
 set :rvm_autolibs_flag, :enable
 set :rvm_install_with_sudo, true
+
+server "www.ahantu.com", :web, :app, :db, primary: true
+set :branch, "ahantu"
 
 before 'deploy', 'rvm:install_rvm'  # update RVM
 before 'deploy', 'rvm:install_ruby' # install Ruby and create gemset (both if missing)
@@ -46,10 +49,10 @@ namespace :seed do
   end
 end
 
-namespace :brand do
+# namespace :brand do
 	desc "copy over environment variables"
   task :copy_environment, roles: :web do
     upload("public/tempindex.html", "#{deploy_to}/current/public/index.html", :via => :scp)
     upload(".env.production", "#{deploy_to}/current/.env.production", :via => :scp)
   end
-end
+# end
