@@ -9,7 +9,7 @@ set :rvm_autolibs_flag, :enable
 set :rvm_install_with_sudo, true
 
 server "www.ahantu.com", :web, :app, :db, primary: true
-set :branch, "ahantu"
+set :branch, "master"
 
 before 'deploy', 'rvm:install_rvm'  # update RVM
 before 'deploy', 'rvm:install_ruby' # install Ruby and create gemset (both if missing)
