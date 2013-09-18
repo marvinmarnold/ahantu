@@ -15,7 +15,6 @@ class Search < ActiveRecord::Base
     filtered_shops.uniq
   end
 
-
   def filtered_by_keyword(filtered_shops = Shop.published)
     k = "%#{self.keyword}%"
     if self.keyword.present?
@@ -50,6 +49,10 @@ class Search < ActiveRecord::Base
 
   def dates
     checkin_at..(checkout_at-1.day)
+  end
+
+  def active?
+    self.created_at > self.user.last_cart.created_at
   end
 
 private

@@ -1,33 +1,28 @@
 Ahantu::Application.routes.draw do
 
   resources :sms
-
   resources :line_items
-
   resources :bookings
+  resources :searches
+  resources :descriptions
+  resources :items
+  resources :shops
+  resources :credit_cards
+  resources :carts
+  get 'carts/:id/checkout' => 'carts#edit', as: :checkout
 
   devise_for :shopper_profiles,
     :controllers => {
       :registrations => "shopper_profile_registrations",
-      :sessions => "member_profile_sessions",
-      :passwords => "devise_passwords"
+      # :sessions => "member_profile_sessions",
+      # :passwords => "devise_passwords"
     }
-  resources :searches
-
-  resources :descriptions
-
-  resources :items
-
-  resources :shops
-
-  resources :carts
-  get 'carts/:id/checkout' => 'carts#edit', as: :checkout
 
   get "about" => "pages#about", as: :about
   get "pages/set_language", as: :set_language
   get "contact" => "pages#contact", as: :contact
-  get "sms_entry_point", :to => "sms#start_point"
-  resources :credit_cards
+
+  # get "sms_entry_point", :to => "sms#start_point"
 
   root 'pages#index'
 

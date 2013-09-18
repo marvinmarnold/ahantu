@@ -1,7 +1,6 @@
 class ShopperProfileRegistrationsController < DeviseRegistrationsController
-
   def create
-    build_resource
+    build_resource(sign_up_params)
 
     if resource.save
       current_user.move_to_profile(resource)

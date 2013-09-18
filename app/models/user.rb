@@ -15,11 +15,24 @@ class User < ActiveRecord::Base
   before_validation :set_guest_profile
 
   def search
-    ((s = searches).blank?) ? new_search : s.first
+    ((s = relevant_searches).blank?) ? new_search : s.first
+  end
+
+  def relevant_searches
+    searches.find_all { |s| s.active? }
   end
 
   def new_search
     searches.build
+  end
+
+  def move_to_profile(new_profile)
+    self.profile = new_profile
+    self.save!
+  end
+
+  def last_cart
+    carts.submitted.order("created_at DESC").first
   end
 
 private

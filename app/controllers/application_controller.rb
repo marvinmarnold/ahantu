@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   def current_cart
-    @current_cart ||= current_user.carts.find_by_id(session[current_cart_symbol])
+    @current_cart ||= current_user.carts.unsubmitted.find_by_id(session[current_cart_symbol])
   end
   helper_method :current_cart
 

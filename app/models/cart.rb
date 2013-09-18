@@ -1,13 +1,15 @@
 class Cart < ActiveRecord::Base
   belongs_to :user
   belongs_to :billing_information
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   accepts_nested_attributes_for :bookings
 
   validates :user_id,
     presence: true
 
+  scope :submitted, lambda { where.not(state: :shopping) }
+  scope :unsubmitted, lambda { where(state: :shopping) }
 
   def total
   	subtotal + taxes
@@ -93,7 +95,7 @@ class Cart < ActiveRecord::Base
       transition :shopping => :authorizing_payment
     end
 
-    after_transition :on => :submit, :do => :send_confirmation
+    after_transition :on => :submit, :do => :process_submission
     event :submit do
       transition :authorizing_payment => :submitted
     end
@@ -118,6 +120,15 @@ class Cart < ActiveRecord::Base
   ##############################################################################################################
 
 private
+
+  def process_submission
+    send_confirmation
+    clear_unused_carts
+  end
+
+  def clear_unused_carts
+    user.carts.unsubmitted.destroy_all
+  end
 
   def confirm
     bookings.each { |b| b.confirm }

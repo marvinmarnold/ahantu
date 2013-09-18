@@ -1,7 +1,7 @@
 class Booking < ActiveRecord::Base
   belongs_to :cart
   belongs_to :item
-  has_many :line_items
+  has_many :line_items, dependent: :destroy
 
   validates :item_id, :quantity, :name_at_checkout,
   	presence: true
@@ -9,7 +9,7 @@ class Booking < ActiveRecord::Base
   before_validation :set_vals
 
   def sms_summary
-  	"#{checkin}-#{checkout}/item.short" 
+  	"#{checkin}-#{checkout}/item.short"
   end
 
   def checkin
