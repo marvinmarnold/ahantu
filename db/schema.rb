@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20130906104014) do
 
   create_table "carts", force: true do |t|
     t.integer  "user_id"
+    t.datetime "checkout_at"
     t.datetime "payment_at"
     t.float    "payment_amount"
     t.integer  "billing_information_id"

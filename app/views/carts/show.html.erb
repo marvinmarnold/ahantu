@@ -1,14 +1,16 @@
 <p>
-  <strong>Payment at:</strong>
-  <%= @cart.payment_at %>
+  <strong>Confirmation number:</strong>
+  <%= @cart.order_number %>
 </p>
 
 <p>
-  <strong>Payment amount:</strong>
-  <%= @cart.payment_amount %>
+  <strong>Reservation made:</strong>
+  <%= @cart.checkout_at %>
 </p>
 
 <p>
   <strong>Billing information:</strong>
   <%= @cart.billing_information %>
 </p>
+
+<%= render 'bookings/index', cart: @cart %>

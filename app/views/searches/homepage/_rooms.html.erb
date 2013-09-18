@@ -1,9 +1,10 @@
 <div class="well span4">
-		<h3>Step 3: What</h3>
+		<h3><%= t "page.index.search.step3" %></h3>
 		<%= f.fields_for :room_searches do |b| %>
 			<div class="row-fluid">
+        <%= render "shared/custom_errors", errors: b.object.errors[:adults] %>
 		  	<div class="span4"><%= b.label :adults %></div>
-		  	<div class="span4"><%= b.input_field :adults, as: :select, collection: 1..9 %></div>
+		  	<div class="span4"><%= b.input_field :adults, as: :select, collection: 1..9, include_blank: false %></div>
 		  	<div class="span4"><%= b.link_to_remove "Remove", class: "btn btn-mini btn-warning" %></div>
 		  </div>
 		<% end %>

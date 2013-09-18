@@ -21,4 +21,13 @@
 
 en:
   guest_profile:
-    to_s: "Guest account - please login"
+    to_s: "Guest account"
+  shop:
+    show:
+      enter_booking_details: "Enter booking details"
+  page:
+    index:
+      search:
+        step1: "Step 1: What"
+        step2: "Step 2: When"
+        step3: "Step 3: Rooms"

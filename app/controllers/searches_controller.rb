@@ -17,6 +17,7 @@ class SearchesController < ApplicationController
   # GET /searches/new
   def new
     @search = Search.new
+    @search.room_searches.build
   end
 
   # GET /searches/1/edit

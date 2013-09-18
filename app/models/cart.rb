@@ -17,7 +17,7 @@ class Cart < ActiveRecord::Base
   	0
   end
 
-  def taxes 
+  def taxes
   	5
   end
 
@@ -78,7 +78,7 @@ class Cart < ActiveRecord::Base
   state_machine :state, :initial => :shopping do
 
     state :authorizing_payment do
-      validates :billing_information_id, :email, :phone, :payment_amount,
+      validates :billing_information_id, :email, :phone, :payment_amount, :checkout_at,
         presence: true
     end
 
@@ -87,7 +87,7 @@ class Cart < ActiveRecord::Base
         presence: true
     end
 
-    before_transition :shopping => :authorizing_payment, :do => :set_payment_amount
+    before_transition :shopping => :authorizing_payment, :do => :prepare_for_checkout
     after_transition :on => :authorize_payment, :do => :submit_payment_authorization
     event :authorize_payment do
       transition :shopping => :authorizing_payment
@@ -162,6 +162,15 @@ private
       SalespersonMailer.booking_confirmation(self).deliver
     end
     #send email to shop
+  end
+
+  def prepare_for_checkout
+    set_payment_amount
+    set_checkout_at
+  end
+
+  def set_checkout_at
+    self.checkout_at = Time.now
   end
 
   def set_payment_amount

@@ -5,7 +5,7 @@ class CreditCard < BillingInformation
   validates :number, :first_name, :expiration, :brand, :cvv, :last_name,
     presence: true
 
-  def name
+  def to_s
     "#{brand} - #{first_name} #{last_name} - #{last_four}"
   end
 

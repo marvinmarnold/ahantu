@@ -48,4 +48,11 @@
   <%= @shop.website5 %>
 </p>
 
-<%= render 'carts/shop_menu' %>
+<% if searched? %>
+  <%= render 'carts/shop_menu' %>
+<% else %>
+  <% @shop.items.each do |i| %>
+    <%= render 'items/show_shared', i: i %>
+    <%= link_to t("shop.show.enter_booking_details"), new_search_path, class: "btn btn-large btn-link" %>
+  <% end %>
+<% end %>
