@@ -107,7 +107,7 @@ class Cart < ActiveRecord::Base
     end
 
     after_transition :on => :cancle, :do => :send_cancelation
-    even :cancle do
+    event :cancle do
       transition all => :canceled
     end
 

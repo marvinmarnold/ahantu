@@ -1,0 +1,6 @@
+ky:
+  date:
+    order:
+      - :day
+      - :month
+      - :year

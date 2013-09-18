@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :responsibilities
 	belongs_to :profile, polymorphic: true
 
-	delegate :guest?, :to_s, :shopper?, :shop_owner?, :salesperson?, :admin?, :email, :locale,
+	delegate :guest?, :to_s, :shopper?, :shop_owner?, :salesperson?, :admin?, :email, :locale, :set_locale,
     to: :profile
 
   validates :profile_id,

@@ -1,12 +1,12 @@
 Ahantu::Application.routes.draw do
-  
+
   resources :sms
 
   resources :line_items
 
   resources :bookings
 
-  devise_for :shopper_profiles, 
+  devise_for :shopper_profiles,
     :controllers => {
       :registrations => "shopper_profile_registrations",
       :sessions => "member_profile_sessions",
@@ -20,13 +20,12 @@ Ahantu::Application.routes.draw do
 
   resources :shops
 
-  get "pages/index"
-
-  resources :carts 
+  resources :carts
   get 'carts/:id/checkout' => 'carts#edit', as: :checkout
 
-  get "pages/about"
-  get "pages/contact"
+  get "about" => "pages#about", as: :about
+  get "pages/set_language", as: :set_language
+  get "contact" => "pages#contact", as: :contact
   get "sms_entry_point", :to => "sms#start_point"
   resources :credit_cards
 
@@ -72,7 +71,7 @@ Ahantu::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

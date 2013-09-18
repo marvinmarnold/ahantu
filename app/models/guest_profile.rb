@@ -5,7 +5,7 @@ class GuestProfile < Profile
   end
 
   def to_s
-  	"TODO"
+  	I18n.t("guest_profile.to_s")
   end
 
   def email

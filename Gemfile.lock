@@ -138,6 +138,13 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    maildir (2.1.0)
+    mailman (0.7.0)
+      activesupport (>= 2.3.4)
+      i18n (>= 0.4.1)
+      listen (>= 0.4.1)
+      mail (>= 2.0.3)
+      maildir (>= 0.5.0)
     meta_request (0.2.8)
       callsite
       rack-contrib
@@ -293,6 +300,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   less-rails
+  mailman
   meta_request
   nested_form
   pg

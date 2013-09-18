@@ -1,28 +1,7 @@
 <div class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
+	<div class="navbar-inner">
   	<div class="container">
-      <%= link_to "ahantu", root_path, class: "brand" %>
-			<span class="navbar-text float-right">
-			  <%= current_user %>
-			</span>
-			<% if current_user.guest? %>
-				<ul class="nav pull-right">
-					<% if current_cart.present? %>
-						<li><%= link_to "Checkout", checkout_path(current_cart) %></li>
-						<li class="divider-vertical"></li>
-					<% end %>
-			  
-			    <li>
-			      <%= link_to "Sign in", new_shopper_profile_session_path %>
-			    </li>
-			    <li class="divider-vertical"></li>
-			    <li>
-			      <%= link_to "Sign up", new_shopper_profile_registration_path %>
-			    </li>
-			  </ul>
-			 <% else %>
-					<%= current_user %>
-			<% end %>
-			</div>
-	</div>
+     	<%= render 'shared/navbar_inner' %>
+		</div>
+  </div>
 </div>

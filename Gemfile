@@ -42,6 +42,7 @@ gem 'will_paginate'
 gem 'carrierwave'
 gem 'rmagick'
 gem "rest-client", :require => 'rest_client'
+gem 'mailman', :require => false
 
 group :test, :development do
   gem "rspec-rails"

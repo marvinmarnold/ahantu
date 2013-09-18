@@ -1,0 +1,24 @@
+<div id="myCarousel" class="carousel slide">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <% shops.each do |shop| %>
+      <%= content_tag "div", class: append_first("item", "active") do %>
+      <%= content_tag "a", href: url_for(shop) do %>
+      <%= image_tag shop.logo_url(:banner) %>
+        <div class="carousel-caption">
+          <h4><%= shop.name %></h4>
+          <p><%= truncate(shop.description, length: 75) %></p>
+        </div>
+      <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
