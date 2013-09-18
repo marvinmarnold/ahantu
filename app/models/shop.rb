@@ -18,4 +18,8 @@ class Shop < Describable
 
   validates :published,
     :inclusion => { in: [true, false] }
+
+  def to_s
+    name
+  end
 end

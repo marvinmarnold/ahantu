@@ -31,3 +31,8 @@ en:
         step1: "Step 1: What"
         step2: "Step 2: When"
         step3: "Step 3: Rooms"
+  navbar:
+    account_settings:
+      title: "Account settings"
+      order_history: "Order history"
+      update_information: "Update registration"

@@ -3,35 +3,22 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Shop</th>
       <th>Total at checkout</th>
-      <th>Payment at</th>
-      <th>Payment amount</th>
+      <th>Submitted att</th>
       <th>Billing inform</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @carts.each do |cart| %>
       <tr>
-        <td><%= cart.user %></td>
-        <td><%= cart.shop %></td>
-        <td><%= cart.total_at_checkout %></td>
-        <td><%= cart.payment_at %></td>
-        <td><%= cart.payment_amount %></td>
-        <td><%= cart.billing_inform %></td>
-        <td><%= link_to 'Show', cart %></td>
-        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to cart.shop, cart.shop, class: "btn btn-link" %></td>
+        <td><%= link_to cart.total, cart, class: "btn btn-link" %></td>
+        <td><%= link_to cart.checkout_at, cart, class: "btn btn-link" %></td>
+        <td><%= link_to cart.billing_information, cart, class: "btn btn-link" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Cart', new_cart_path %>

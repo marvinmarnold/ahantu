@@ -16,11 +16,11 @@ class Cart < ActiveRecord::Base
   end
 
   def subtotal
-  	0
+  	bookings.map { |b| b.total }.reduce(:+)
   end
 
   def taxes
-  	5
+  	0
   end
 
   def self.new_from_search(search)
