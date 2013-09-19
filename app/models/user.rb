@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     carts.submitted.order("created_at DESC").first
   end
 
+  def last_checkout_at
+    last_cart.present? ? last_cart.created_at : Time.at(0)
+  end
+
 private
 
   def set_guest_profile

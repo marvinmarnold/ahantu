@@ -52,7 +52,7 @@ class Search < ActiveRecord::Base
   end
 
   def active?
-    self.created_at > self.user.last_cart.created_at
+    self.created_at > [self.user.last_checkout_at, 1.week.ago].max
   end
 
 private

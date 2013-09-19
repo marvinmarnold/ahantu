@@ -1,0 +1,3 @@
+class SalespersonProfile < DeviseProfile
+
+end
