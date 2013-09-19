@@ -1,4 +1,4 @@
-class ShopperProfileRegistrationsController < DeviseRegistrationsController
+class DeviseProfileRegistrationsController < DeviseRegistrationsController
   def create
     build_resource(sign_up_params)
 

@@ -11,9 +11,9 @@ Ahantu::Application.routes.draw do
   resources :carts
   get 'carts/:id/checkout' => 'carts#edit', as: :checkout
 
-  devise_for :shopper_profiles,
+  devise_for :shopper_profiles, :salesperson_profiles,
     :controllers => {
-      :registrations => "shopper_profile_registrations",
+      :registrations => "devise_profile_registrations",
       # :sessions => "member_profile_sessions",
       # :passwords => "devise_passwords"
     }

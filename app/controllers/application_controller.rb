@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_locale
+  before_action :configure_permitted_devise_profile_parameters, if: :devise_controller?
 
   def current_cart
     @current_cart ||= current_user.carts.unsubmitted.find_by_id(session[current_cart_symbol])
@@ -50,7 +51,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_location
 
-private
+protected
 
   def current_user_symbol
     :current_users_id
@@ -67,5 +68,11 @@ private
   def set_locale
     I18n.locale = current_user.locale
   end
+
+  def configure_permitted_devise_profile_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :language_id
+    devise_parameter_sanitizer.for(:account_update) << :language_id
+  end
+
 
 end
