@@ -27,7 +27,7 @@ Ahantu::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  
+
   paypal_options = {
     :login => ENV["paypal_login"],
     :password => ENV["paypal_password"],
@@ -35,5 +35,19 @@ Ahantu::Application.configure do
   }
   ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
   ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+
+  config.action_mailer.default_url_options = { host: ENV["HOST_IP"] }
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: ENV["DOMAIN"],
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "#{ENV["EMAIL_USERNAME"]}@#{ENV["DOMAIN"]}",
+    password: ENV["EMAIL_PASSWORD"]
+  }
 end
 

@@ -170,7 +170,7 @@ private
   def send_email_confirmation
     #send email to all responsibles
     responsibles.each do |r|
-      SalespersonMailer.booking_confirmation(self).deliver
+      SalespersonMailer.booking_confirmation(self, r).deliver
     end
     #send email to shop
   end

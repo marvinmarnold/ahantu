@@ -95,21 +95,25 @@ module Seeder
 
     def create_default_accounts
       {
-          "salesperson" => SalespersonProfile,
+          # "salesperson" => SalespersonProfile,
           "shopper" => ShopperProfile,
-      }.each do |e, profile|
-          email = "#{e}@#{ENV["DOMAIN"]}"
-          password = "password"
-          puts "Creating: #{e}, #{profile}"
-
-          u = User.new
-          u.profile = profile.create!(
-              :email => email, 
-              :password => password, 
-              :password_confirmation => password
-          )
-          u.save!
+      }.each do |e, profile_type|
+        create_profile("#{e}@#{ENV["DOMAIN"]}", profile_type)
       end
+      create_profile("marvinmarnold@gmail.com", SalespersonProfile)
+    end
+
+    def create_profile(email, profile_type)
+      password = "password"
+      puts "Creating: #{email}, #{profile_type}"
+
+      u = User.new
+      u.profile = profile_type.create!(
+          :email => email,
+          :password => password,
+          :password_confirmation => password
+      )
+      u.save!
     end
 
   end
