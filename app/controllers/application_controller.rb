@@ -12,16 +12,21 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart
 
   def current_user
-    @current_user ||= User.find_by_id(session[current_user_symbol])
+    @current_user ||= current_profile.user
 
     unless @current_user.present?
       @current_user = User.create
-      session[current_user_symbol] = @current_user.id
+      session[current_profile_symbol] = @current_user.profile.id
     end
 
     @current_user
   end
   helper_method :current_user
+
+  def current_profile
+    @current_profile ||= current_shopper_profile
+    @current_profile ||= GuestProfile.find_by_id(session[current_profile_symbol])
+  end
 
   def current_search
     @current_search ||= current_user.search
@@ -53,8 +58,8 @@ class ApplicationController < ActionController::Base
 
 protected
 
-  def current_user_symbol
-    :current_users_id
+  def current_profile_symbol
+    :current_profile_id
   end
 
   def current_cart_symbol

@@ -94,12 +94,13 @@ module Seeder
     end
 
     def create_default_accounts
-      {
-          # "salesperson" => SalespersonProfile,
-          "shopper" => ShopperProfile,
-      }.each do |e, profile_type|
-        create_profile("#{e}@#{ENV["DOMAIN"]}", profile_type)
-      end
+      # {
+      #     "salesperson" => SalespersonProfile,
+      #     "shopper" => ShopperProfile,
+      # }.each do |e, profile_type|
+      #   create_profile("#{e}@#{ENV["DOMAIN"]}", profile_type)
+      # end
+      create_profile("marvin@ahantu.com", ShopperProfile)
       create_profile("marvinmarnold@gmail.com", SalespersonProfile)
     end
 

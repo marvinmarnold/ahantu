@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @confirmation.message %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @confirmation.type %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @confirmation.text %>
+</p>
+
+<p>
+  <strong>Booking:</strong>
+  <%= @confirmation.booking %>
+</p>
+
+<p>
+  <strong>Sent at:</strong>
+  <%= @confirmation.sent_at %>
+</p>
+
+<%= link_to 'Edit', edit_confirmation_path(@confirmation) %> |
+<%= link_to 'Back', confirmations_path %>

@@ -37,7 +37,7 @@ class Booking < ActiveRecord::Base
   end
 
   def shop_cut
-    total * shop_cut_modifier
+    total * shop.cut_modifier
   end
 
   def total
@@ -49,14 +49,6 @@ class Booking < ActiveRecord::Base
   end
 
  private
-
-  def commission
-    commission_pct/100
-  end
-
-  def shop_cut_modifier
-    1 - commission
-  end
 
  	def set_vals
  		self.name_at_checkout = item.name

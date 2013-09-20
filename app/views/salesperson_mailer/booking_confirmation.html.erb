@@ -4,14 +4,21 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Welcome to example.com</h1>
+    <h1>Booking confirmation - <%= @cart %></h1>
     <p>
-      You have successfully signed up to example.com,
-      your username is: <%= @user.email %>.<br/>
+      An order has just been placed at <%= @cart.shop %>. Contact the hotel and reply to this email with the order number to confirm. Reply with X + order number to nullify the order.<br/>
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      Order number: <%= @cart.order_number %>
+Hotel name: <%= @cart.shop %>
+Hotel telephone: <%= @cart.shop.telephone %>
+Order total: <%= @cart.shop_cut %>
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>Order details:
+<% i = 0 %>
+<% @cart.bookings.each do |b| %>
+  <%= "#{i}. #{b} - #{b.shop_cut}" %>
+<% end %>
+</p>
   </body>
 </html>

@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   def about
   end
 
-  def contact
+  def contactinfo
   end
 
   def set_language

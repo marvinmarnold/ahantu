@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130919174834) do
+ActiveRecord::Schema.define(version: 20130920155056) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -67,6 +67,33 @@ ActiveRecord::Schema.define(version: 20130919174834) do
   end
 
   add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
+
+  create_table "confirmations", force: true do |t|
+    t.text     "message"
+    t.string   "type"
+    t.integer  "booking_id"
+    t.datetime "sent_at"
+    t.integer  "sender_id"
+    t.string   "sender_type"
+    t.integer  "recipient_id"
+    t.string   "recipient_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "confirmations", ["booking_id"], name: "index_confirmations_on_booking_id", using: :btree
+  add_index "confirmations", ["recipient_id", "recipient_type"], name: "index_confirmations_on_recipient_id_and_recipient_type", using: :btree
+  add_index "confirmations", ["sender_id", "sender_type"], name: "index_confirmations_on_sender_id_and_sender_type", using: :btree
+
+  create_table "contacts", force: true do |t|
+    t.string   "type"
+    t.integer  "user_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
   create_table "descriptions", force: true do |t|
     t.integer  "language_id"

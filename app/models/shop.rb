@@ -22,4 +22,16 @@ class Shop < Describable
   def to_s
     name
   end
+
+  def telephone
+    "TODO"
+  end
+
+  def commission
+    self.commission_pct/100
+  end
+
+  def cut_modifier
+    1 - self.commission
+  end
 end

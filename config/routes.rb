@@ -1,6 +1,8 @@
 Ahantu::Application.routes.draw do
 
-  resources :sms
+  resources :contacts
+  resources :confirmations
+
   resources :line_items
   resources :bookings
   resources :searches
@@ -20,7 +22,7 @@ Ahantu::Application.routes.draw do
 
   get "about" => "pages#about", as: :about
   get "pages/set_language", as: :set_language
-  get "contact" => "pages#contact", as: :contact
+  get "contactinfo" => "pages#contactinfo", as: :contactinfo
 
   # get "sms_entry_point", :to => "sms#start_point"
 

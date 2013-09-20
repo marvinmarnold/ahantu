@@ -13,6 +13,9 @@ class CreateShops < ActiveRecord::Migration
       t.string :website3
       t.string :website4
       t.string :website5
+      t.string :phone1
+      t.string :phone2
+      t.string :phone3
       t.float :commission_pct
 
       t.timestamps

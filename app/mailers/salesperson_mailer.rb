@@ -3,6 +3,7 @@ class SalespersonMailer < ActionMailer::Base
 
   def booking_confirmation(cart, salesperson_user)
     @user = salesperson_user
+    @cart = cart
     @url  = "http://example.com/login"
     mail(:to => @user.email, :subject => "Booking confirmation - #{cart.order_number} - #{cart.shop}")
   end

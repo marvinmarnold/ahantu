@@ -1,2 +1,3 @@
 class ShopperProfile < DeviseProfile
+
 end

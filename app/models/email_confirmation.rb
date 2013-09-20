@@ -1,0 +1,3 @@
+class EmailConfirmation < Confirmation
+
+end

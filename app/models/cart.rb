@@ -59,13 +59,21 @@ class Cart < ActiveRecord::Base
     bookings.map { |b| b.shop_cut }.reduce(:+)
   end
 
-  def receive_confirmation(sms)
-    if sms.sanitized.match("^#{order_number}")
+  #
+  # Hardcoded return codes
+  # :confirmed - Order confirmed
+  # :canceled - Order canceled
+  # false - Confirmation code does match
+  #
+  def receive_confirmation(confirmation)
+    if sanitized_order_number(confirmation.sanitized_message).match("^#{order_number}")
       confirm
-    elsif sms.sanitized.match("^x#{order_number}")
+      return :confirmed
+    elsif sanitized_order_number(confirmation.sanitized_message).match("^x#{order_number}")
       cancle
+      return :canceled
     else
-      false
+      return false
     end
   end
 
@@ -108,7 +116,6 @@ class Cart < ActiveRecord::Base
       transition :processing_payment => :payment_received
     end
 
-    after_transition :on => :cancle, :do => :send_cancelation
     event :cancle do
       transition all => :canceled
     end
@@ -132,10 +139,6 @@ private
 
   def confirm
     bookings.each { |b| b.confirm }
-  end
-
-  def unconfirm
-    cancle
   end
 
   def responsibles
@@ -199,4 +202,5 @@ private
       end
     end
   end
+
 end

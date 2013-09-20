@@ -1,0 +1,15 @@
+<%= simple_form_for(@confirmation) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :message %>
+    <%= f.input :type %>
+    <%= f.input :text %>
+    <%= f.association :booking %>
+    <%= f.input :sent_at %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
