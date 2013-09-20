@@ -20,3 +20,10 @@ development:
   database: ahantu_development
   pool: 5
   template: template0
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: ahantu_test
+  pool: 5
+  template: template0

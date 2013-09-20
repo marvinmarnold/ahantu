@@ -3,13 +3,13 @@
 FactoryGirl.define do
   factory :item do
     quantity 1
-    shop nil
+    shop
     max_adults 1
     published false
     default_price 1.5
     short "XXX"
 
-    factory :complete_item do 
+    factory :complete_item do
     	default_price { rand(1000) }
     	published true
     	max_adults { RandomHelper.r1(10) }

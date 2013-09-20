@@ -1,8 +1,9 @@
+
 class Language < ActiveRecord::Base
 
 	def self.default
 		if (l = Language.where(default: true)).blank?
-			l = Language.scoped
+			l = Language.all
 		end
 		l.first
 	end

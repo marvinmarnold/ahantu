@@ -2,12 +2,12 @@
 
 FactoryGirl.define do
   factory :booking do
-    cart nil
-    item nil
-    responsible_first_name "MyString"
-    responsible_last_name "MyString"
+    cart
+    item
+    responsible_name "MyString"
+    name_at_checkout "TODO"
+    confirmed false
     adults 1
-    name_at_checkout "MyString"
     quantity 1
   end
 end
