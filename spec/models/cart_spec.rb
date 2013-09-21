@@ -8,7 +8,7 @@ describe Cart do
   end
 
   it "confirms order with correct order number" do
-    confirmation_code = @cart.receive_confirmation(create(:email_confirmaiton, message: @cart.order_number))
+    confirmation_code = @cart.receive_confirmation(create(:email_confirmation, message: @cart.order_number))
     expect(confirmation_code).to eq :confirmed
   end
 end

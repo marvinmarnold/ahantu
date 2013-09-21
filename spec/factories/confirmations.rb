@@ -4,7 +4,6 @@ FactoryGirl.define do
   factory :confirmation do
     message "MyString"
     type ""
-    text "MyText"
     booking nil
     sent_at "2013-09-20 16:33:32"
 

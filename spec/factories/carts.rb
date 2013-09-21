@@ -13,7 +13,7 @@ FactoryGirl.define do
         RandomHelper.r1(10).times { create(
           :booking,
           cart: c,
-          item: create(:item, shop: shop),
+          item: shop.items.sample,
         ) }
       end
 

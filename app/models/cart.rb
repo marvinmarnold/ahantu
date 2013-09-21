@@ -66,10 +66,10 @@ class Cart < ActiveRecord::Base
   # false - Confirmation code does match
   #
   def receive_confirmation(confirmation)
-    if sanitized_order_number(confirmation.sanitized_message).match("^#{order_number}")
+    if confirmation.sanitized_message.match("^#{order_number}")
       confirm
       return :confirmed
-    elsif sanitized_order_number(confirmation.sanitized_message).match("^x#{order_number}")
+    elsif confirmation.sanitized_message.match("^x#{order_number}")
       cancle
       return :canceled
     else

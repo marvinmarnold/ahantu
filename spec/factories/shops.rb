@@ -20,7 +20,7 @@ FactoryGirl.define do
     factory :complete_shop do
         logo { RandomHelper.rand_shop_logo }
         published true
-        city { create(:real_city) }
+        city { create(:complete_city) }
         after(:create) do |c, evaluator|
             c.descriptions << create(:description,
                 describable: c,

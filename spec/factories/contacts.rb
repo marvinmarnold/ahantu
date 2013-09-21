@@ -5,5 +5,9 @@ FactoryGirl.define do
     type ""
     user nil
     value "MyString"
+
+    factory :email_address, class: "EmailAddress" do
+
+    end
   end
 end

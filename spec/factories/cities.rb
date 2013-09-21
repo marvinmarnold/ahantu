@@ -5,7 +5,7 @@ FactoryGirl.define do
     name "MyString"
     province nil
 
-    factory :real_city do
+    factory :complete_city do
       province { create(:province) }
     end
   end
