@@ -58,7 +58,6 @@ group :test, :development do
   gem "capybara"
   gem "guard-rspec"
   gem "rb-fsevent"
-  gem "zeus"
 end
 
 # Use unicorn as the app server

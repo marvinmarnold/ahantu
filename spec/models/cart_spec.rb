@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Cart do
   before(:all) do
     Language.create(name: "English", abbr: :en)
-    binding.pry
+    # binding.pry
     @cart = create(:cart_submitted)
   end
 
