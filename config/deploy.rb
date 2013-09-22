@@ -1,3 +1,5 @@
+require "dotenv/capistrano"
+
 # set :stages, %w(lixele ahantu staging)
 # set :default_stage, "staging"
 # require 'capistrano/ext/multistage'
@@ -16,7 +18,6 @@ before 'deploy', 'rvm:install_ruby' # install Ruby and create gemset (both if mi
 
 require "rvm/capistrano"
 require 'bundler/capistrano'
-require "dotenv/capistrano"
 
 load "config/recipes/base"
 load "config/recipes/nginx"
