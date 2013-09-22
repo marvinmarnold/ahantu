@@ -108,27 +108,6 @@ ActiveRecord::Schema.define(version: 20130920155056) do
   add_index "descriptions", ["describable_id", "describable_type"], name: "index_descriptions_on_describable_id_and_describable_type", using: :btree
   add_index "descriptions", ["language_id"], name: "index_descriptions_on_language_id", using: :btree
 
-  create_table "devise_profiles", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "type"
-    t.integer  "language_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "devise_profiles", ["email"], name: "index_devise_profiles_on_email", unique: true, using: :btree
-  add_index "devise_profiles", ["language_id"], name: "index_devise_profiles_on_language_id", using: :btree
-  add_index "devise_profiles", ["reset_password_token"], name: "index_devise_profiles_on_reset_password_token", unique: true, using: :btree
-
   create_table "guest_profiles", force: true do |t|
     t.integer  "language_id"
     t.datetime "created_at"
@@ -167,6 +146,27 @@ ActiveRecord::Schema.define(version: 20130920155056) do
   end
 
   add_index "line_items", ["booking_id"], name: "index_line_items_on_booking_id", using: :btree
+
+  create_table "member_profiles", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "role"
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "member_profiles", ["email"], name: "index_member_profiles_on_email", unique: true, using: :btree
+  add_index "member_profiles", ["language_id"], name: "index_member_profiles_on_language_id", using: :btree
+  add_index "member_profiles", ["reset_password_token"], name: "index_member_profiles_on_reset_password_token", unique: true, using: :btree
 
   create_table "phones", force: true do |t|
     t.integer  "shop_id"

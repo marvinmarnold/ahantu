@@ -1,6 +1,6 @@
-class DeviseCreateDeviseProfiles < ActiveRecord::Migration
+class DeviseCreateMemberProfiles < ActiveRecord::Migration
   def change
-    create_table(:devise_profiles) do |t|
+    create_table(:member_profiles) do |t|
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
@@ -19,7 +19,7 @@ class DeviseCreateDeviseProfiles < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
-      t.string :type
+      t.string :role, index: true
       t.belongs_to :language, index: true
 
       ## Confirmable
@@ -37,9 +37,9 @@ class DeviseCreateDeviseProfiles < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :devise_profiles, :email,                :unique => true
-    add_index :devise_profiles, :reset_password_token, :unique => true
-    # add_index :devise_profiles, :confirmation_token,   :unique => true
-    # add_index :devise_profiles, :unlock_token,         :unique => true
+    add_index :member_profiles, :email,                :unique => true
+    add_index :member_profiles, :reset_password_token, :unique => true
+    # add_index :member_profiles, :confirmation_token,   :unique => true
+    # add_index :member_profiles, :unlock_token,         :unique => true
   end
 end

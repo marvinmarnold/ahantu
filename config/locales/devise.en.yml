@@ -58,7 +58,7 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
-  devise_profile_registrations:
-    shopper_profile:
+  member_profile_registrations:
+    member_profile:
       signed_up: "Thanks for signing up. Search and start finding hotels now!"
       updated: "Profile updated!"

@@ -1,3 +1,0 @@
-class ShopperProfile < DeviseProfile
-
-end

@@ -104,12 +104,13 @@ module Seeder
       create_profile("marvinmarnold@gmail.com", SalespersonProfile)
     end
 
-    def create_profile(email, profile_type)
+    def create_profile(email, role)
       password = "password"
-      puts "Creating: #{email}, #{profile_type}"
+      puts "Creating: #{email}, #{role}"
 
       u = User.new
-      u.profile = profile_type.create!(
+      u.profile = MemberProfile.create!(
+          :role => role,
           :email => email,
           :password => password,
           :password_confirmation => password

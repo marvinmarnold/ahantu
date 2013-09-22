@@ -1,2 +1,0 @@
-class SalespersonProfile < DeviseProfile
-end

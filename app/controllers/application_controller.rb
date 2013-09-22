@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_profile
-    @current_profile ||= current_shopper_profile
+    @current_profile ||= current_member_profile
     @current_profile ||= GuestProfile.find_by_id(session[current_profile_symbol])
 
     unless @current_profile.present?

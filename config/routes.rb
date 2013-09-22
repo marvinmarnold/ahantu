@@ -13,13 +13,26 @@ Ahantu::Application.routes.draw do
   resources :carts
   get 'carts/:id/checkout' => 'carts#edit', as: :checkout
 
-  devise_for :shopper_profiles, :salesperson_profiles,
+  ####################################
+  # Profile routes
+  ####################################
+  devise_for :member_profiles,
     :controllers => {
-      :registrations => "devise_profile_registrations",
-      # :sessions => "member_profile_sessions",
+      :registrations => "member_profile_registrations",
+      # :sessions => "devise_profile_sessions",
       # :passwords => "devise_passwords"
     }
 
+  # devise_for :salesperson_profiles,
+  #   :controllers => {
+  #     # :registrations => "devise_profile_registrations",
+  #     # :sessions => "devise_profile_sessions",
+  #     # :passwords => "devise_passwords"
+  #   }
+
+  ####################################
+  #
+  ####################################
   get "about" => "pages#about", as: :about
   get "pages/set_language", as: :set_language
   get "contactinfo" => "pages#contactinfo", as: :contactinfo
