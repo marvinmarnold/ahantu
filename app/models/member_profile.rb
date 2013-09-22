@@ -9,6 +9,7 @@ class MemberProfile < Profile
   after_create :send_welcome_email
 
   validates :role, presence: true
+  validate :valid_role?
 
   before_validation :set_shopper_role
 
@@ -16,8 +17,10 @@ class MemberProfile < Profile
   scope   :salespersons, lambda { where(role: "salesperson") }
   scope   :shoppers, lambda { where(role: "shopper") }
 
+  ROLES = %w[admin salesperson shop_owner shopper]
+
   def guest?
-    role?("guest")
+    false
   end
 
   def admin?
@@ -51,7 +54,12 @@ private
   end
 
   def set_shopper_role
+    self.role = self.role.downcase if self.role.present?
     self.role ||= "shopper"
+  end
+
+  def valid_role?
+    ROLES.include?(self.role) ? true : errors[:role] << I18n.t('simple_form.error_notification.member_profile.invalid_role')
   end
 
 end
