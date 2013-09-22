@@ -42,7 +42,7 @@ ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 after "deploy", "seed:fake"
-before "seed:fake", "brand:copy_environment"
+before "seed:fake", "copy_environment"
 
 namespace :seed do
   desc "Seed db with fake data"

@@ -53,8 +53,8 @@ group :test, :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
-  gem 'faker'
-	gem "factory_girl_rails"
+ #  gem 'faker'
+	# gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
   gem "rb-fsevent"
@@ -74,3 +74,7 @@ group :deployment do
   gem 'capistrano', :require => false
   gem 'rvm-capistrano', :require => false
 end
+
+#TEMPORARY
+gem 'faker'
+gem "factory_girl_rails"
