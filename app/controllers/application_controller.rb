@@ -13,19 +13,20 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= current_profile.user
-
-    unless @current_user.present?
-      @current_user = User.create
-      session[current_profile_symbol] = @current_user.profile.id
-    end
-
-    @current_user
   end
   helper_method :current_user
 
   def current_profile
     @current_profile ||= current_shopper_profile
     @current_profile ||= GuestProfile.find_by_id(session[current_profile_symbol])
+
+    unless @current_profile.present?
+      user = User.create
+      session[current_profile_symbol] = user.profile.id
+      @current_profile = user.profile
+    end
+
+    @current_profile
   end
 
   def current_search
