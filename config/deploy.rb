@@ -16,6 +16,7 @@ before 'deploy', 'rvm:install_ruby' # install Ruby and create gemset (both if mi
 
 require "rvm/capistrano"
 require 'bundler/capistrano'
+require "dotenv/capistrano"
 
 load "config/recipes/base"
 load "config/recipes/nginx"
@@ -53,6 +54,6 @@ end
 	desc "copy over environment variables"
   task :copy_environment, roles: :web do
     upload("public/tempindex.html", "#{deploy_to}/current/public/index.html", :via => :scp)
-    upload(".env.production", "#{deploy_to}/current/.env.production", :via => :scp)
+    # upload(".env.production", "#{deploy_to}/current/.env.production", :via => :scp)
   end
 # end
