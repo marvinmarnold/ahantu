@@ -13,6 +13,13 @@
         edit_registration_path(current_user.profile) %>
     </li>
     <li class="divider"></li>
+    <% if can? :create_shop_owner, MemberProfile %>
+      <li>
+        <%= link_to t("navbar.account_settings.register_new_shop"),
+          new_member_profile_registration_path %>
+      </li>
+      <li class="divider"></li>
+    <% end %>
     <li>
       <%= link_to t("devise.sessions.signout"),
       destroy_session_path(current_user.profile),

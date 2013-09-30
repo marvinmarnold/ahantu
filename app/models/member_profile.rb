@@ -28,7 +28,7 @@ class MemberProfile < Profile
   end
 
   def salesperson?
-    role?("salesperson")
+    role?("salesperson") || admin?
   end
 
   def shop_owner?

@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
 
     @current_profile
   end
+  helper_method :current_profile
 
   def current_search
     @current_search ||= current_user.search

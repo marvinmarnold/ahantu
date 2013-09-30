@@ -1,7 +1,7 @@
 <%= link_to "ahantu", root_path, class: "brand" %>
 <span class="navbar-text float-right"><%= current_user %></span>
 <ul class="nav pull-right">
-	<% if current_user.guest? %>
+	<% if can? :set_language, current_profile %>
 		<li class="divider-vertical"></li>
 	    <% Language.all.each do |language| %>
 	      <li><%= link_to language.name, set_language_path(language_id: language.id, location: current_location) %></li>

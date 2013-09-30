@@ -8,6 +8,9 @@
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
     <%= f.association :language, :required => true %>
+    <% if can? :sign_up, MemberProfile %>
+      <%= f.input :role, as: :select, collection: roles_can_assign %>
+    <% end %>
   </div>
 
   <div class="form-actions">

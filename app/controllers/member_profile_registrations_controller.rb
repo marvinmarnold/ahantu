@@ -18,4 +18,10 @@ class MemberProfileRegistrationsController < DeviseRegistrationsController
       respond_with resource
     end
   end
+
+  def  roles_can_assign
+    ["test"]
+  end
+  helper_method :roles_can_assign
+
 end

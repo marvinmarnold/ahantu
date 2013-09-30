@@ -27,3 +27,10 @@ test:
   database: ahantu_test
   pool: 5
   template: template0
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: ahantu_production
+  pool: 5
+  template: template0
