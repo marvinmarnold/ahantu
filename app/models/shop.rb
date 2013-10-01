@@ -13,7 +13,7 @@ class Shop < Describable
 
   mount_uploader :logo, LogoUploader
 
-  validates :city_id, :commission_pct,
+  validates :city_id, :commission_pct, :user_id,
   	presence: true
 
   validates :published,

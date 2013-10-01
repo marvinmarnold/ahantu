@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_authorization_check
+
   def index
   	@search = new_search
   	@search.room_searches.build

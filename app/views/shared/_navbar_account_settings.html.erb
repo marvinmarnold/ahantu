@@ -5,7 +5,7 @@
   </a>
   <ul class="dropdown-menu">
     <li>
-      <%= link_to t("navbar.account_settings.order_history"),
+      <%= link_to t("navbar.account_settings.shopper.order_history"),
         carts_path %>
     </li>
     <li>
@@ -15,8 +15,15 @@
     <li class="divider"></li>
     <% if can? :create_shop_owner, MemberProfile %>
       <li>
-        <%= link_to t("navbar.account_settings.register_new_shop"),
+        <%= link_to t("navbar.account_settings.salesperson.register_new_shop"),
           new_member_profile_registration_path %>
+      </li>
+      <li class="divider"></li>
+    <% end %>
+    <% if can? :update, Shop %>
+      <li>
+        <%= link_to t("navbar.account_settings.shop_owner.manage_shops"),
+          shops_path %>
       </li>
       <li class="divider"></li>
     <% end %>

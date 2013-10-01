@@ -100,9 +100,12 @@ module Seeder
       # }.each do |e, profile_type|
       #   create_profile("#{e}@#{ENV["DOMAIN"]}", profile_type)
       # end
-      create_profile("marvin@ahantu.com", "admin")
-      create_profile("marvinmarnold@gmail.com", "salesperson")
-      create_profile("maarnold@alum.mit.edu", "shopper")
+      # create_profile("marvin@ahantu.com", "admin")
+      # create_profile("marvinmarnold@gmail.com", "salesperson")
+      # create_profile("maarnold@alum.mit.edu", "shopper")
+      create_profile("shopper@ahantu.com", "shopper")
+      create_profile("salesperson@ahantu.com", "salesperson")
+      create_profile("shop_owner@ahantu.com", "shop_owner")
     end
 
     def create_profile(email, role)
@@ -117,6 +120,8 @@ module Seeder
           :password_confirmation => password
       )
       u.save!
+
+      u
     end
 
   end

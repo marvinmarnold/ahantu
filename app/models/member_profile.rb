@@ -16,6 +16,7 @@ class MemberProfile < Profile
   scope   :admins, lambda { where(role: "admin") }
   scope   :salespersons, lambda { where(role: "salesperson") }
   scope   :shoppers, lambda { where(role: "shopper") }
+  scope   :shop_owners, lambda { where(role: "shop_owner") }
 
   ROLES = %w[admin salesperson shop_owner shopper]
 

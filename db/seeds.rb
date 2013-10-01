@@ -14,9 +14,18 @@ Language.create(name: "Kinyarwanda", abbr: "ky")
 Seeder.gen_locations("vendor/rwanda.csv")
 
 Seeder.create_hotel_tags
-FactoryGirl.create_list(:complete_shop_w_items, 40, city: City.all.sample)
-
 Seeder.create_default_accounts
+FactoryGirl.create_list(:complete_shop_w_items,
+  3,
+  city: City.all.sample,
+  user: MemberProfile.shop_owners.first.user
+)
+
+FactoryGirl.create_list(:complete_shop_w_items,
+  40,
+  city: City.all.sample
+)
+
 Shop.all.each do |s|
   s.responsibilities.create!(user_id: MemberProfile.salespersons.first.user.id)
 end

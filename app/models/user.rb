@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	has_many :carts
   has_many :searches
   has_many :responsibilities
+  has_many :shops
 	belongs_to :profile, polymorphic: true
 
 	delegate :guest?, :to_s, :shopper?, :shop_owner?, :salesperson?, :admin?, :email, :locale, :set_locale,

@@ -2,5 +2,11 @@
 
 FactoryGirl.define do
   factory :user do
+    factory :member do
+      profile { create(:member_profile) }
+      factory :shop_owner do
+        profile { create(:member_profile, role: "shop_owner") }
+      end
+    end
   end
 end

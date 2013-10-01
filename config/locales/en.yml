@@ -34,6 +34,11 @@ en:
   navbar:
     account_settings:
       title: "Account settings"
-      order_history: "Order history"
       update_information: "Update registration"
-      register_new_shop: "Register hotel"
+      shopper:
+        order_history: "Order history"
+      salesperson:
+        register_new_shop: "Register hotel"
+      shop_owner:
+        manage_shops: "Manage shops"
+

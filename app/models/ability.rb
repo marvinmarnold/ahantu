@@ -8,6 +8,8 @@ class Ability
     elsif user.salesperson?
         can :create_shop_owner, MemberProfile
         can :sign_up, MemberProfile
+    elsif user.shop_owner?
+        can [:update, :destroy, :read], Shop
     end
     # Define abilities for the passed in user here. For example:
     #
