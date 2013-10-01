@@ -1,10 +1,17 @@
-<%= simple_form_for(@shop) do |f| %>
+<%= simple_nested_form_for(@shop) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.association :user %>
+    <% if can? :admin, Shop %>
+      <%= f.association :user %>
+    <% end %>
+    <% if can? :publish, Shop %>
+      <%= f.input :published %>
+    <% else %>
+      <%= @shop.published %>
+    <% end %>
+    <%= render 'descriptions/form', f: f, klasses: "shops", klass_instance: @shop %>
     <%= f.association :city %>
-    <%= f.input :published %>
     <%= f.input :logo %>
     <%= f.input :address1 %>
     <%= f.input :address2 %>

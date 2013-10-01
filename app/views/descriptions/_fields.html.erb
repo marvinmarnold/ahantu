@@ -1,0 +1,4 @@
+<%= f.input :name %>
+<%= f.input :description, :input_html => { rows: 10 } unless skip_body %>
+<%= f.input :language_id, as: :select, collection: Language.all.map { |l| [l, l.id]} %>
+<%= f.link_to_remove t("shops.form.descriptions.remove"), :class => 'btn btn-mini btn-danger' %>

@@ -1,7 +1,7 @@
 <h4><%= t("#{klasses}.form.descriptions.title") %></h4>
 <%= render "shared/custom_errors", errors: klass_instance.errors[:descriptions] %>
 <%= f.simple_fields_for :descriptions do |description_form| %>
-  <%= render "descriptions/fields", f: description_form,
+  <%= render "descriptions/form", f: description_form,
                                   title: t("#{klasses}.form.descriptions.title_each"),
                                   remove: t("#{klasses}.form.descriptions.remove_each"),
                                   skip_body: false %>

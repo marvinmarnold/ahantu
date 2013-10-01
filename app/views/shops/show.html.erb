@@ -1,3 +1,17 @@
+<% if can?(:update, Shop) %>
+  <%= link_to url_for(toggle_as_user), class: "btn btn-mini btn-info" do %>
+    <%= content_tag :i,
+      '',
+      :class => 'icon-search' %>
+    <%= t("shop.show.switch_perspective") %>
+  <% end %>
+  <%= render "shared/admin_preview_language" %>
+<% end %>
+
+<% if can_and_want_shop_admin? %>
+  <%= link_to t("shop.show.edit"), edit_shop_path(@shop), class: "btn btn-link" %>
+<% end %>
+
 <p>
   <strong>City:</strong>
   <%= @shop.city %>

@@ -1,0 +1,15 @@
+<h4>
+  <%= t("shared.admin_preview_language.title", language: admin_preview_language) %>
+</h4>
+
+<h5>
+  <%= t("shared.admin_preview_language.switch_to") %>
+  <% Language.all.each do |language| %>
+    <% unless language.abbr == admin_preview_language.abbr %>
+      <%= link_to language,
+        url_for(admin_preview_language: language.abbr),
+        class: "btn btn-mini"
+      %>
+    <% end %>
+  <% end %>
+</h5>

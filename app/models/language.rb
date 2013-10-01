@@ -1,5 +1,8 @@
-
 class Language < ActiveRecord::Base
+
+  def to_s
+    name
+  end
 
 	def self.default
 		if (l = Language.where(default: true)).blank?
