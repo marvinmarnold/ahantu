@@ -4,13 +4,13 @@
 		<% @cart.bookings.each do |b| %>
 			<%= content_tag "div", class: "span#{diver(@cart.bookings.size)} input radio optional" do %>
 				<span>
-					<%= content_tag "input", id: cart_bookings_attributes_id(j, i.id),
+					<%= content_tag "input", id: cart_bookings_attributes_id(j, item.id),
 						class: "radio optional",
 						type: "radio",
-						value: i.id,
+						value: item.id,
 						name: "cart[bookings_attributes][#{j}][item_id]" do %>
 					<% end %>
-					<%= content_tag "label", class: "collection_radio", for: cart_bookings_attributes_id(j, i.id) do %>
+					<%= content_tag "label", class: "collection_radio", for: cart_bookings_attributes_id(j, item.id) do %>
 						<%= "Book for Reservation #{j+1} (#{b.adults} ppl)" %>
 					<% end %>
 		    </span>

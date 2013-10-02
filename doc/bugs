@@ -2,3 +2,4 @@ flash message after profile update is in old language even on language change
 nothing preventing anyone from being responsible for a shop
 should not be able to really delete shops. only hide them
 destroy not working for nested_form
+create cart method removed form carts controller stupidly

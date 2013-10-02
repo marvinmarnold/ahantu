@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def admin_preview_language_
-    l_abbr = params[:admin_preview_language]
+    l_abbr = admin_preview_language_abbr
     (l_abbr.present? && (l = Language.find_by_abbr(l_abbr))) ?
       l : Language.find_by_abbr(I18n.locale)
   end

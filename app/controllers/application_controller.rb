@@ -100,4 +100,9 @@ protected
     can?(action, obj) && !pretending_to_be_customer?
   end
 
+  def admin_preview_language_abbr
+    params[:admin_preview_language]
+  end
+  helper_method :admin_preview_language_abbr
+
 end

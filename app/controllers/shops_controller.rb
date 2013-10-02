@@ -14,6 +14,7 @@ class ShopsController < ApplicationController
   # GET /shops/1.json
   def show
     @cart = Cart.new_from_search(current_search)
+    I18n.locale = admin_preview_language_abbr if !pretending_to_be_customer?
   end
 
   # GET /shops/new
