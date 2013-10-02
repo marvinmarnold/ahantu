@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_layout, only: [:edit]
+  before_action :set_shop
+  before_action :set_item
+  before_action :set_layout, only: [:edit, :new]
   load_and_authorize_resource
 
   # GET /items/new
   def new
-    @item = Item.new
   end
 
   # GET /items/1/edit
@@ -15,15 +15,11 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
-
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @item }
+        format.html { redirect_to new_shop_item_path(@shop, @item), notice: 'Item was successfully created.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -33,11 +29,9 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to @shop, notice: 'Item was successfully updated.' }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,17 +41,27 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url }
-      format.json { head :no_content }
+      format.html { redirect_to @shop }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @shop = current_user.shops.find(params[:shop_id])
-      @item = @shop.items.find(params[:id])
+      case params["action"]
+      when "show" || "edit" || "update" || "destroy"
+        @item = @shop.items.find(params[:id])
+      when "new"
+        @item = Item.new
+      when "create"
+        @item = @shop.items.build(item_params)
+      end
     end
+
+    def set_shop
+      @shop = current_user.shops.find(params[:shop_id])
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
@@ -66,7 +70,9 @@ class ItemsController < ApplicationController
         :max_adults,
         :published,
         :default_price,
-        :price_adjustment_attributes => [:price, :start_at, :end_at])
+        :price_adjustments_attributes => [:price, :start_at, :end_at],
+        :descriptions_attributes => [:name, :language_id, :description]
+      )
     end
 
     def set_layout

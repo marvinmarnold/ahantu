@@ -10,7 +10,7 @@ class Describable < ActiveRecord::Base
   accepts_nested_attributes_for :descriptions,
     :allow_destroy => true
 
-  # validate :one_description
+  validate :one_description
   validate :one_per_language
 
   def description
@@ -27,14 +27,14 @@ class Describable < ActiveRecord::Base
 
 private
   def one_description
-    errors[:descriptions] << I18n.t('descriptions.form.errors.atleast_one') if descriptions.blank?
+    errors[:descriptions] << I18n.t('description.form.errors.atleast_one') if descriptions.blank?
   end
 
   def one_per_language
     language_present = {}
     descriptions.each do |description|
       language_present[description.language_id] = (language_present[description.language_id].blank?) ? true :
-                      errors[:descriptions] << I18n.t('descriptions.form.errors.duplicate_language')
+                      errors[:descriptions] << I18n.t('description.form.errors.duplicate_language')
     end
   end
 

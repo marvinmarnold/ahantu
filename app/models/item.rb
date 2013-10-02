@@ -4,7 +4,7 @@ class Item < Describable
   has_many :price_adjustments
   accepts_nested_attributes_for :price_adjustments
 
-  validates :default_price, :max_adults, :short, :quantity,
+  validates :default_price, :max_adults, :quantity,
     presence: true
   validates :published,
     :inclusion => { in: [true, false] }

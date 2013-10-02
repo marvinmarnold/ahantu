@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  description:
+    form:
+      errors:
+        atleast_one: "Must provide at least one descriptin"
   item:
     edit:
       edit_links:
