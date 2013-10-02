@@ -12,6 +12,7 @@ class Shop < Describable
   has_many :responsibles, through: :responsibilities, source: :user
 
   scope   :published, lambda { where(published: true) }
+  scope   :not_shop, lambda { |shop| where(Shop.arel_table[:id].not_eq(shop.id)) }
 
   mount_uploader :logo, LogoUploader
 
