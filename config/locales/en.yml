@@ -24,6 +24,11 @@ en:
     edit:
       edit_links:
         edit_shop: "< Edit shop"
+    form:
+      price_adjustments:
+        title: "Adjust seasonal prices"
+        add: "Add price adjustment"
+        remove: "Remove price adjustment"
   guest_profile:
     to_s: "Guest account"
   shop:

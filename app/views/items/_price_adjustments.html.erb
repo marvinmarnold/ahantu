@@ -1,0 +1,12 @@
+<h4><%= t("item.form.price_adjustments.title") %></h4>
+<%= render "shared/custom_errors", errors: @item.errors[:price_adjustments] %>
+<%= f.simple_fields_for :price_adjustments do |price_adjustments_form| %>
+    <%= price_adjustments_form.input :price %>
+    <%= price_adjustments_form.input :start_at, as: :date %>
+    <%= price_adjustments_form.input :end_at, as: :date %>
+    <%= price_adjustments_form.link_to_remove t("item.form.price_adjustments.remove"), :class => 'btn btn-mini btn-danger' %>
+   <br/><br/>
+<% end %>
+<p>
+  <%= f.link_to_add t("item.form.price_adjustments.add"), :price_adjustments, :class => 'btn btn-mini btn-success' %>
+</p>
