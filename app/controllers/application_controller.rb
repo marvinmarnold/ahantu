@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :configure_permitted_devise_profile_parameters, if: :devise_controller?
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
   def current_cart
     @current_cart ||= current_user.carts.unsubmitted.find_by_id(session[current_cart_symbol])
   end

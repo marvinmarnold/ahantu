@@ -48,12 +48,12 @@ class ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      case params["action"]
-      when "show" || "edit" || "update" || "destroy"
+      a = params["action"]
+      if a == "show" || a == "edit" || a == "update" || a == "destroy"
         @item = @shop.items.find(params[:id])
-      when "new"
+      elsif a == "new"
         @item = Item.new
-      when "create"
+      elsif a == "create"
         @item = @shop.items.build(item_params)
       end
     end
@@ -70,8 +70,8 @@ class ItemsController < ApplicationController
         :max_adults,
         :published,
         :default_price,
-        :price_adjustments_attributes => [:price, :start_at, :end_at],
-        :descriptions_attributes => [:name, :language_id, :description]
+        :price_adjustments_attributes => [:price, :start_at, :end_at, :destroy_],
+        :descriptions_attributes => [:name, :language_id, :description, :destroy_]
       )
     end
 
