@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   has_many :searches
   has_many :responsibilities
   has_many :responsible_shops, through: :responsibilities, source: :shop
+  has_many :responsible_carts, through: :responsible_shops, source: :carts
   has_many :owned_shops, class_name: "Shop"
+  has_many :client_carts, through: :owned_shops, source: :carts
 	belongs_to :profile, polymorphic: true
 
 	delegate :guest?, :to_s, :shopper?, :shop_owner?, :salesperson?,
@@ -42,9 +44,11 @@ class User < ActiveRecord::Base
     last_cart.present? ? last_cart.created_at : Time.at(0)
   end
 
-def shops
+  def shops
     case profile.role
-    when "shopper" || "guest"
+    when "shopper"
+      Shop.none
+    when "guest"
       Shop.none
     when "shop_owner"
       owned_shops
@@ -52,6 +56,21 @@ def shops
       responsible_shops
     when "admin"
       Shop.all
+    end
+  end
+
+  def browsable_carts
+    case profile.role
+    when "shopper"
+      carts.submitted
+    when "guest"
+      carts.submitted
+    when "shop_owner"
+      client_carts
+    when "salesperson"
+      responsible_carts
+    when "admin"
+      Cart.all
     end
   end
 

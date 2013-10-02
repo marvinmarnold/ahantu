@@ -5,12 +5,17 @@ class Ability
     # user = current_user
     if user.guest?
         can :set_language, Profile
+    end
+    if user.guest? || user.shopper?
+        can [:update, :read], Cart
     elsif user.salesperson?
         can :create_shop_owner, MemberProfile
         can :sign_up, MemberProfile
+        can :read, Cart
     elsif user.shop_owner?
         can [:update, :destroy, :read], Shop
         can :manage, Item
+        can :read, Cart
     end
     # Define abilities for the passed in user here. For example:
     #

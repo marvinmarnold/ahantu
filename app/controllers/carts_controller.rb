@@ -1,11 +1,12 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
   layout "rightbar", only: [:edit]
+  load_and_authorize_resource
 
   # GET /carts
   # GET /carts.json
   def index
-    @carts = current_user.carts.submitted
+    @carts = current_user.browsable_carts
   end
 
   # GET /carts/1
@@ -13,30 +14,8 @@ class CartsController < ApplicationController
   def show
   end
 
-  # GET /carts/new
-  def new
-    @cart = Cart.new
-  end
-
   # GET /carts/1/edit
   def edit
-  end
-
-  # POST /carts
-  # POST /carts.json
-  def create
-    @cart = current_user.carts.build(cart_params)
-
-    respond_to do |format|
-      if @cart.save
-        @cart.fill_bookings(current_search)
-        session[current_cart_symbol] = @cart.id
-        format.html { redirect_to edit_cart_path(@cart)}
-      else
-        format.html { render action: 'new' }
-
-      end
-    end
   end
 
   # PATCH/PUT /carts/1
