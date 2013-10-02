@@ -63,10 +63,10 @@ private
   end
 
   def future_check_in
-    errors[:checkin_at] << I18n.t('searches.form.errors.future_check_in') unless checkin_at >= Date.today
+    errors[:checkin_at] << I18n.t('search.form.errors.future_checkin') unless checkin_at >= Date.today
   end
 
   def later_check_out
-    errors[:checkout_at] << I18n.t('searches.form.errors.later_check_out') unless checkout_at > checkin_at
+    errors[:checkout_at] << I18n.t('search.form.errors.later_checkout') unless checkout_at > checkin_at
   end
 end

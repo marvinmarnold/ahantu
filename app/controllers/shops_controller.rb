@@ -2,7 +2,7 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
   before_action :set_layout, only: [:edit, :show]
 
-  load_and_authorize_resource
+  authorize_resource
 
   # GET /shops
   # GET /shops.json

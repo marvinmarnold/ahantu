@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_shop
   before_action :set_item
   before_action :set_layout, only: [:edit, :new]
-  load_and_authorize_resource
+  authorize_resource
 
   # GET /items/new
   def new

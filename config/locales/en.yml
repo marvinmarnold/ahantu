@@ -36,6 +36,11 @@ en:
         remove: "Remove price adjustment"
   guest_profile:
     to_s: "Guest account"
+  search:
+    form:
+      errors:
+        later_checkout: "Checkout must be after checkin"
+        future_checkin: "Check in must be sometime in the future"
   shop:
     show:
       enter_booking_details: "Enter booking details"

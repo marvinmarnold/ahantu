@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
   layout "rightbar", only: [:edit]
-  load_and_authorize_resource
+  authorize_resource
 
   # GET /carts
   # GET /carts.json

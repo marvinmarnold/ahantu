@@ -8,6 +8,7 @@ class Ability
     end
     if user.guest? || user.shopper?
         can [:update, :read], Cart
+        can [:create, :update, :read], Search
     elsif user.salesperson?
         can :create_shop_owner, MemberProfile
         can :sign_up, MemberProfile

@@ -2,6 +2,8 @@ class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
   layout "leftbar", only: [:show, :new]
 
+  authorize_resource
+
   # GET /searches
   # GET /searches.json
   def index
@@ -43,7 +45,7 @@ class SearchesController < ApplicationController
   def update
     respond_to do |format|
       if @search.update(search_params)
-        format.html { redirect_to @search, notice: 'Search was successfully updated.' }
+        format.html { redirect_to @search }
       else
         format.html { render action: 'edit' }
       end
@@ -67,6 +69,12 @@ class SearchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def search_params
-      params.require(:search).permit(:keyword, :checkin_at, :checkout_at, :room_searches_attributes => [:adults], :tag_ids => [])
+      params.require(:search).permit(
+        :keyword,
+        :checkin_at,
+        :checkout_at,
+        :room_searches_attributes => [:adults, :_destroy],
+        :tag_ids => []
+      )
     end
 end
