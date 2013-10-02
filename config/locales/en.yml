@@ -23,7 +23,8 @@ en:
   description:
     form:
       errors:
-        atleast_one: "Must provide at least one descriptin"
+        atleast_one: "Must provide at least one description"
+        duplicate_language: "Cannot have two descriptions in the same language"
   item:
     edit:
       edit_links:
