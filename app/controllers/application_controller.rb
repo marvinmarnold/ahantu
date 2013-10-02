@@ -82,5 +82,18 @@ protected
     devise_parameter_sanitizer.for(:account_update) << :language_id
   end
 
+  def admin_preview_role_sym
+    :as_customer
+  end
+  helper_method :admin_preview_role_sym
+
+  def pretending_to_be_customer?
+    params[admin_preview_role_sym] == "true"
+  end
+  helper_method :pretending_to_be_customer?
+
+  def can_and_want?(action, obj)
+    can?(action, obj) && !pretending_to_be_customer?
+  end
 
 end

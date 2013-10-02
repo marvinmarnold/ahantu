@@ -3,11 +3,10 @@ module ApplicationHelper
 		(12/n).to_i
 	end
 
-  @@appended = {}
-
   def append_first(base_text, append_text)
-    base_text = append_text(base_text, append_text, !@@appended.try(base_text))
-    @@appended[base_text] ||= true
+    @appended ||= {}
+    base_text = append_text(base_text, append_text, !@appended.try(base_text))
+    @appended[base_text] ||= true
 
     base_text
   end
@@ -27,22 +26,17 @@ module ApplicationHelper
   end
 
   def toggle_as_user
-    (params[:as_customer] == "true") ? {as_customer: "false"} : {as_customer: "true"}
+    toggle = {
+      t("shared.admin_preview_role.customer") => "false",
+      t("shared.admin_preview_role.shop_owner") => "true"
+    }[admin_preview_role]
+    {admin_preview_role_sym => toggle}
   end
 
-  # def can_and_want?(a, b)
-  #   false
-  # end
-
-  # def pretending_to_be_customer?
-  #   true
-  # end
-
-  def can_and_want?(action, obj)
-    can?(action, obj) && !pretending_to_be_customer?
+  def admin_preview_role
+    @admin_preview_role ||= pretending_to_be_customer? ?
+      t("shared.admin_preview_role.customer") :
+      t("shared.admin_preview_role.shop_owner")
   end
 
-  def pretending_to_be_customer?
-    params[:as_customer] == "true"
-  end
 end

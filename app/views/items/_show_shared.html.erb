@@ -1,15 +1,21 @@
 <p>
   <strong>Name:</strong>
-  <%= i.name %>
-  <%= i.description %>
+  <%= item.name %>
+  <%= item.description %>
 </p>
 
 <p>
   <strong>Max adults:</strong>
-  <%= i.max_adults %>
+  <%= item.max_adults %>
 </p>
 
 <p>
   <strong>Default price:</strong>
-  <%= i.default_price %>
+  <%= item.default_price %>
 </p>
+<% if can_and_want_shop_admin? %>
+  <%= link_to t("shop.show.edit_item"),
+    edit_shop_item_path(@shop, item),
+    class: "btn btn-large btn-success"
+  %>
+<% end %>

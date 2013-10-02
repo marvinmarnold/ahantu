@@ -33,7 +33,7 @@ class MemberProfile < Profile
   end
 
   def shop_owner?
-    role?("shop_owner")
+    role?("shop_owner") || salesperson?
   end
 
   def shopper?

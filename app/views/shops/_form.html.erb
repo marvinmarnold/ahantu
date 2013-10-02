@@ -2,9 +2,6 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <% if can? :admin, Shop %>
-      <%= f.association :user %>
-    <% end %>
     <% if can? :publish, Shop %>
       <%= f.input :published %>
     <% else %>

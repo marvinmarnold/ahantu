@@ -1,15 +1,14 @@
+<% content_for :side do %>
+  <%= render 'shops/edit_links' %>
+<% end %>
+
 <% if can?(:update, Shop) %>
-  <%= link_to url_for(toggle_as_user), class: "btn btn-mini btn-info" do %>
-    <%= content_tag :i,
-      '',
-      :class => 'icon-search' %>
-    <%= t("shop.show.switch_perspective") %>
-  <% end %>
-  <%= render "shared/admin_preview_language" %>
+  <%= render 'shared/admin_preview_role' %>
 <% end %>
 
 <% if can_and_want_shop_admin? %>
-  <%= link_to t("shop.show.edit"), edit_shop_path(@shop), class: "btn btn-link" %>
+  <%= render "shared/admin_preview_language" %>
+  <%= link_to t("shop.show.edit"), edit_shop_path(@shop), class: "btn btn-large btn-success" %>
 <% end %>
 
 <p>
@@ -65,7 +64,7 @@
   <%= render 'carts/shop_menu' %>
 <% else %>
   <% @shop.items.each do |i| %>
-    <%= render 'items/show_shared', i: i %>
+    <%= render 'items/show_shared', item: i %>
     <%= link_to t("shop.show.enter_booking_details"), new_search_path, class: "btn btn-large btn-link" %>
   <% end %>
 <% end %>

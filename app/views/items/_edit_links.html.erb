@@ -1,0 +1,8 @@
+<%= link_to t("shop.edit.edit_links.show"), @shop, class: "btn btn-link" %>
+<%= link_to t("item.edit.edit_links.edit_shop"), edit_shop_path(@shop), class: "btn btn-link" %>
+<% @shop.items.each do |item| %>
+  <% unless item == @item %>
+  <%= link_to t("shop.edit.edit_links.edit_item", item: item),
+    edit_shop_item_path(@shop,item), class: "btn btn-link" %>
+  <% end %>
+<% end %>

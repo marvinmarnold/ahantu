@@ -1,5 +1,7 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
+  before_action :set_layout, only: [:edit, :show]
+
   load_and_authorize_resource
 
   # GET /shops
@@ -63,6 +65,11 @@ class ShopsController < ApplicationController
     end
   end
 
+  def can_and_want_shop_admin?
+    can_and_want?(:update, Shop)
+  end
+  helper_method :can_and_want_shop_admin?
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shop
@@ -71,6 +78,12 @@ class ShopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:user_id, :city_id, :published, :logo, :address1, :address2, :directions, :website1, :website2, :website3, :website4, :website5)
+      params.require(:shop).permit(:city_id, :published, :logo, :address1, :address2, :directions, :website1, :website2, :website3, :website4, :website5)
+    end
+
+    def set_layout
+      if params["action"] == "edit" || can_and_want_shop_admin?
+        render layout: "leftbar"
+      end
     end
 end

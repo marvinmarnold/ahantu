@@ -10,6 +10,7 @@ class Ability
         can :sign_up, MemberProfile
     elsif user.shop_owner?
         can [:update, :destroy, :read], Shop
+        can :manage, Item
     end
     # Define abilities for the passed in user here. For example:
     #

@@ -20,13 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  item:
+    edit:
+      edit_links:
+        edit_shop: "< Edit shop"
   guest_profile:
     to_s: "Guest account"
   shop:
     show:
       enter_booking_details: "Enter booking details"
-      switch_perspective: "Switch perspective"
       edit: "Edit shop"
+    edit:
+      edit_links:
+        show: "<< Preview shop"
+        edit_item: "Edit item: %{item} >>"
   page:
     index:
       search:
@@ -47,3 +54,8 @@ en:
     admin_preview_language:
       switch_to: "Switch to"
       title: "You are currently viewing in %{language}"
+    admin_preview_role:
+        button: "Switch perspective"
+        title: "You are currently viewing as %{role}"
+        customer: "a customer"
+        shop_owner: "a shop owner"

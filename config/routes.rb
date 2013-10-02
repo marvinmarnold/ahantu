@@ -7,8 +7,12 @@ Ahantu::Application.routes.draw do
   resources :bookings
   resources :searches
   resources :descriptions
-  resources :items
-  resources :shops
+
+  resources :shops do
+    resources :items
+  end
+
+
   resources :credit_cards
   resources :carts
   get 'carts/:id/checkout' => 'carts#edit', as: :checkout

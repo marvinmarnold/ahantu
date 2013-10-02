@@ -1,9 +1,9 @@
-<%= simple_form_for(@item) do |f| %>
+<%= simple_nested_form_for([@shop, @item]) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
+    <%= render 'descriptions/form', f: f, klasses: "items", klass_instance: @item %>
     <%= f.input :quantity %>
-    <%= f.association :shop %>
     <%= f.input :max_adults %>
     <%= f.input :published %>
     <%= f.input :default_price %>

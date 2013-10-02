@@ -1,0 +1,9 @@
+<h4>
+  <%= t("shared.admin_preview_role.title", role: admin_preview_role) %>
+</h4>
+<%= link_to url_for(toggle_as_user), class: "btn btn-mini btn-info" do %>
+  <%= content_tag :i,
+    '',
+    :class => 'icon-search' %>
+  <%= t("shared.admin_preview_role.button") %>
+<% end %>
