@@ -5,10 +5,10 @@ module ApplicationHelper
 
   def append_first(base_text, append_text)
     @appended ||= {}
-    base_text = append_text(base_text, append_text, !@appended.try(base_text))
+    appended_text = append_text(base_text, append_text, !@appended[base_text])
     @appended[base_text] ||= true
 
-    base_text
+    appended_text
   end
 
   def append_text(base_text, append_text, if_true)
