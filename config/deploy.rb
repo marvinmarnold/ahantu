@@ -13,8 +13,8 @@ set :rvm_install_with_sudo, true
 server "www.ahantu.com", :web, :app, :db, primary: true
 set :branch, "master"
 
-before 'deploy:setup', 'rvm:install_rvm'  # update RVM
-before 'deploy:setup', 'rvm:install_ruby' # install Ruby and create gemset (both if missing)
+before 'deploy:install', 'rvm:install_rvm'  # update RVM
+before 'deploy:install', 'rvm:install_ruby' # install Ruby and create gemset (both if missing)
 
 require "rvm/capistrano"
 require 'bundler/capistrano'
