@@ -122,7 +122,6 @@ ActiveRecord::Schema.define(version: 20130920155056) do
     t.integer  "max_adults"
     t.boolean  "published",     default: false
     t.float    "default_price"
-    t.string   "short"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -236,6 +235,26 @@ ActiveRecord::Schema.define(version: 20130920155056) do
 
   add_index "searches", ["shop_id"], name: "index_searches_on_shop_id", using: :btree
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
+
+  create_table "shopper_profiles", force: true do |t|
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+  end
+
+  add_index "shopper_profiles", ["email"], name: "index_shopper_profiles_on_email", unique: true, using: :btree
+  add_index "shopper_profiles", ["language_id"], name: "index_shopper_profiles_on_language_id", using: :btree
+  add_index "shopper_profiles", ["reset_password_token"], name: "index_shopper_profiles_on_reset_password_token", unique: true, using: :btree
 
   create_table "shops", force: true do |t|
     t.integer  "user_id"

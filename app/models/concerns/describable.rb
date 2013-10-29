@@ -10,7 +10,7 @@ class Describable < ActiveRecord::Base
   accepts_nested_attributes_for :descriptions,
     :allow_destroy => true
 
-  validate :one_description
+  # validate :one_description
   validate :one_per_language
 
   def description

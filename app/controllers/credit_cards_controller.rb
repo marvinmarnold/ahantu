@@ -1,5 +1,6 @@
 class CreditCardsController < ApplicationController
   before_action :set_credit_card, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   # GET /credit_cards
   # GET /credit_cards.json

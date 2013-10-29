@@ -14,6 +14,23 @@ class CartsController < ApplicationController
   def show
   end
 
+  # POST /carts
+  # POST /carts.json
+  def create
+    @cart = current_user.carts.build(cart_params)
+
+    respond_to do |format|
+      if @cart.save
+        @cart.fill_bookings(current_search)
+        session[current_cart_symbol] = @cart.id
+        format.html { redirect_to edit_cart_path(@cart)}
+      else
+        format.html { render action: 'new' }
+
+      end
+    end
+  end
+
   # GET /carts/1/edit
   def edit
   end

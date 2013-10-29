@@ -6,10 +6,12 @@ class Ability
     if user.guest?
         can :set_language, Profile
     end
+
     if user.guest? || user.shopper?
-        can [:update, :read], Cart
+        can [:manage], Cart
         can [:create, :update, :read], Search
         can [:read], Shop
+        can [:manage], CreditCard
     elsif user.salesperson?
         can :create_shop_owner, MemberProfile
         can :sign_up, MemberProfile
@@ -19,6 +21,7 @@ class Ability
         can :manage, Item
         can :read, Cart
     end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
