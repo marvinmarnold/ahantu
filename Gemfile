@@ -68,7 +68,7 @@ gem 'will_paginate-bootstrap'
 gem "less-rails"
 gem "therubyracer"
 gem 'redis'
-gem 'dotenv-rails'
+gem 'figaro'
 
 #TEMPORARY
 gem 'faker'
