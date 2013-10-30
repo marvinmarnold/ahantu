@@ -73,3 +73,7 @@ gem 'dotenv-rails'
 #TEMPORARY
 gem 'faker'
 gem "factory_girl_rails"
+
+gem 'rails_12factor', group: :production
+
+ruby "2.0.0"
