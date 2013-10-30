@@ -70,11 +70,6 @@ gem "therubyracer"
 gem 'redis'
 gem 'dotenv-rails'
 
-group :deployment do
-  gem 'capistrano', :require => false
-  gem 'rvm-capistrano', :require => false
-end
-
 #TEMPORARY
 gem 'faker'
 gem "factory_girl_rails"
