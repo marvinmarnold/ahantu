@@ -69,6 +69,8 @@ gem "less-rails"
 gem "therubyracer"
 gem 'redis'
 gem 'figaro'
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+
 
 #TEMPORARY
 gem 'faker'

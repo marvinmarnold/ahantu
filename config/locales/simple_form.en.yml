@@ -5,9 +5,6 @@ en:
     required:
       text: 'required'
       mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Some errors were found, please take a look:"
       member_profile:
@@ -15,6 +12,14 @@ en:
     labels:
       credit_card:
         cvv: "Security code (CVV)"
+      search:
+        new:
+          submit: "Search"
+        checkin_at: "Check-in"
+        checkout_at: "Check-out"
+    hints:
+      search:
+        keyword: "City, neighborhood, hotel name, etc."
     # Labels and hints examples
     # labels:
     #   password: 'Password'

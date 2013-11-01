@@ -6,9 +6,7 @@
   	<%= render 'searches/homepage/when', f: f %>
   	<%= render 'searches/homepage/rooms', f: f %>
   </div>
-  
-	<div class="jumbotron">
-	    <%= f.button :submit, class: "btn btn-primary btn-lg" %>
-	</div>
+
+	<%= f.button :submit, t("simple_form.labels.search.new.submit"),  class: "btn btn-success btn-lg btn-block" %>
 
 <% end %>

@@ -1,5 +1,5 @@
 <div class="well span4">
 	<h3><%= t "page.index.search.step2" %></h3>
-  <%= f.input :checkin_at %>
-  <%= f.input :checkout_at %>
+  <%= f.input :checkin_at, as: :string, :input_html => { :data => {behaviour: "datepicker"}} %>
+  <%= f.input :checkout_at, as: :string, :input_html => { :data => {behaviour: "datepicker"}} %>
 </div>
