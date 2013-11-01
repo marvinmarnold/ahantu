@@ -54,6 +54,11 @@ en:
       errors:
         atleast_one: "Must provide at least one description"
         duplicate_language: "Cannot have two descriptions in the same language"
+  footer:
+    links:
+      terms: "Terms of service"
+      contact: "Contact us"
+      about: "About us"
   item:
     edit:
       edit_links:

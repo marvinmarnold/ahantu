@@ -13,6 +13,9 @@ class PagesController < ApplicationController
   def contactinfo
   end
 
+  def terms
+  end
+
   def set_language
     store_location(params[:location])
     current_user.set_locale Language.find(params[:language_id])

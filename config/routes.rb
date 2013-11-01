@@ -38,6 +38,7 @@ Ahantu::Application.routes.draw do
   #
   ####################################
   get "about" => "pages#about", as: :about
+  get "terms" => "pages#terms", as: :terms
   get "pages/set_language", as: :set_language
   get "contactinfo" => "pages#contactinfo", as: :contactinfo
 
