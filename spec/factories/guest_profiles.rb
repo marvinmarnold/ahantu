@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :guest_profile do
-    language nil
+    language
   end
 end

@@ -13,11 +13,15 @@ class Booking < ActiveRecord::Base
   end
 
   def checkin
-  	line_items.last.booking_at
+  	date_ordered_line_items.first.booking_at
   end
 
   def checkout
-  	line_items.first.booking_at
+  	date_ordered_line_items.last.booking_at
+  end
+
+  def date_ordered_line_items
+    line_items.sort { |a, b| a.booking_at <=> b.booking_at}
   end
 
   def shop

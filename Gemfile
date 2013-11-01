@@ -56,7 +56,7 @@ group :test, :development do
  #  gem 'faker'
 	# gem "factory_girl_rails"
   gem "capybara"
-  gem "guard-rspec"
+  gem 'guard-rspec', require: false
   gem "rb-fsevent"
 end
 

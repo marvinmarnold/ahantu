@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :city do
     name "MyString"
-    province nil
+    province
 
     factory :complete_city do
       province { create(:province) }

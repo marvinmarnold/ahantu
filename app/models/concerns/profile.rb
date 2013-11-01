@@ -39,7 +39,7 @@ class Profile < ActiveRecord::Base
 private
 
   def set_language
-    self.language_id ||= Language.default.id
+    self.language_id ||= Language.default.try(:id)
   end
 
 end

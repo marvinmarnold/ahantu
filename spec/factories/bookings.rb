@@ -9,5 +9,9 @@ FactoryGirl.define do
     confirmed false
     adults 1
     quantity 1
+
+    factory :complete_booking do
+      item { FactoryGirl.create(:complete_item) }
+    end
   end
 end

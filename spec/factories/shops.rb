@@ -4,7 +4,7 @@ require 'random_helper'
 FactoryGirl.define do
   factory :shop do
     user { create(:shop_owner) }
-    city nil
+    city
     published false
     logo "MyString"
     address1 "MyString"

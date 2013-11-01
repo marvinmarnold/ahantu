@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :member_profile do
-    language nil
+    language
     password "password"
     password_confirmation "password"
     email { Faker::Internet.email }
