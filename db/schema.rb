@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20130920155056) do
     t.string   "state"
     t.string   "email"
     t.string   "phone"
+    t.string   "order_confirmation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

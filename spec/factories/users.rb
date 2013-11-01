@@ -5,7 +5,7 @@ FactoryGirl.define do
     factory :member do
       profile { create(:member_profile) }
       factory :shop_owner do
-        profile { create(:member_profile, role: "shop_owner") }
+        profile { create(:member_profile, role: "shop_owner", language: Language.default) }
       end
     end
   end

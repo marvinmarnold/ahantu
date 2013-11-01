@@ -40,7 +40,7 @@ class Cart < ActiveRecord::Base
   end
 
   def order_number
-    id.to_s.rjust(6, '0')
+    id.to_s.rjust(10 , '0')
   end
 
   def shop
@@ -88,7 +88,8 @@ class Cart < ActiveRecord::Base
   state_machine :state, :initial => :shopping do
 
     state :authorizing_payment do
-      validates :billing_information_id, :email, :phone, :payment_amount, :checkout_at,
+      before_validation :set_order_confirmation
+      validates :billing_information_id, :email, :phone, :payment_amount, :checkout_at, :order_confirmation,
         presence: true
     end
 
@@ -127,6 +128,10 @@ class Cart < ActiveRecord::Base
   ##############################################################################################################
 
 private
+
+  def set_order_confirmation
+    self[:order_confirmation] = SecureRandom.hex.upcase[0,5] + order_number
+  end
 
   def process_submission
     send_confirmation

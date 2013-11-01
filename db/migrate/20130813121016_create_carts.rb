@@ -9,6 +9,7 @@ class CreateCarts < ActiveRecord::Migration
       t.string :state
       t.string :email
       t.string :phone
+      t.string :order_confirmation
 
       t.timestamps
     end

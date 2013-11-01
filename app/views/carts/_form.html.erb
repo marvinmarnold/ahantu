@@ -4,7 +4,7 @@
     <h3><%= t "cart.edit.room_details.title" %></h3>
     <% @cart.bookings.each.with_index do |booking, i| %>
       <%= f.simple_fields_for :bookings, booking do |b| %>
-        <h4><%= t "cart.edit.room_details.subtitle", i: i+1, item: booking_short(b.object) %></h4>
+        <h4><%= t "cart.edit.room_details.subtitle", i: i+1, item: b.object %></h4>
         <%= b.input :responsible_name, required: true %>
       <% end %>
     <% end %>
