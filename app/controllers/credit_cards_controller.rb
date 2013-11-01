@@ -1,6 +1,7 @@
 class CreditCardsController < ApplicationController
   before_action :set_credit_card, only: [:show, :edit, :update, :destroy]
   authorize_resource
+  layout "rightbar", only: [:new]
 
   # GET /credit_cards
   # GET /credit_cards.json
@@ -28,7 +29,7 @@ class CreditCardsController < ApplicationController
     @credit_card = current_user.credit_cards.build(credit_card_params)
     respond_to do |format|
       if @credit_card.save
-        format.html { redirect_to checkout_path(current_cart), notice: 'Billing information was successfully created.' }
+        format.html { redirect_to checkout_path(current_cart), notice: I18n.t("credit_card.create.notice") }
       else
         format.html { render action: 'new' }
       end
@@ -38,13 +39,13 @@ class CreditCardsController < ApplicationController
   # PATCH/PUT /credit_cards/1
   # PATCH/PUT /credit_cards/1.json
   def update
-    respond_to do |format|
-      if @credit_card.update(credit_card_params)
-        format.html { redirect_to @credit_card, notice: 'Billing information was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
-    end
+        respond_to do |format|
+          if @credit_card.update(credit_card_params)
+            format.html { redirect_to @credit_card, notice: 'Billing information was successfully updated.' }
+          else
+            format.html { render action: 'edit' }
+          end
+        end
   end
 
   # DELETE /credit_cards/1

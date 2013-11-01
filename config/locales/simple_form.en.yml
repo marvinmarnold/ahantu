@@ -12,6 +12,9 @@ en:
       default_message: "Some errors were found, please take a look:"
       member_profile:
         invalid_role: "Not a valid role"
+    labels:
+      credit_card:
+        cvv: "Security code (CVV)"
     # Labels and hints examples
     # labels:
     #   password: 'Password'

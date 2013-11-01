@@ -40,7 +40,7 @@ class CartsController < ApplicationController
   def update
     respond_to do |format|
       if @cart.update(cart_params) && @cart.authorize_payment
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.html { redirect_to @cart, notice: I18n.t("cart.update.notice") }
       else
         format.html { render action: 'edit' }
       end

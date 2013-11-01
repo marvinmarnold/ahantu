@@ -1,2 +1,6 @@
 <h1><%= t "credit_card.new.title" %></h1>
 <%= render 'form' %>
+
+<% content_for :side do %>
+  <%= render 'credit_cards/security_info' %>
+<% end %>
