@@ -20,15 +20,5 @@ en:
     hints:
       search:
         keyword: "City, neighborhood, hotel name, etc."
-    # Labels and hints examples
-    # labels:
-    #   password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail para efetuar o sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   username: 'User name to sign in.'
-    #   password: 'No special characters, please.'
-
+        checkin_at: "mm/dd/yyyy"
+        checkout_at: "mm/dd/yyyy"
