@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
   def index
-    @searches = current_user.searches
+    redirect_to new_search_path
   end
 
   # GET /searches/1
@@ -24,6 +24,7 @@ class SearchesController < ApplicationController
 
   # GET /searches/1/edit
   def edit
+    redirect_to @search
   end
 
   # POST /searches

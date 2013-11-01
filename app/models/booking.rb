@@ -33,7 +33,7 @@ class Booking < ActiveRecord::Base
   end
 
   def to_s
-    "#{item} - #{dates} (#{dates} nights)"
+    item.to_s
   end
 
   def shop_cut

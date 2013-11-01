@@ -1,16 +1,28 @@
 class CreditCard < BillingInformation
-
+  # attr_accessor :name_on_card
 	validate :validate_card, on: :create
-
-  validates :number, :first_name, :expiration, :brand, :cvv, :last_name,
+  validates :number, :expiration, :brand, :cvv, :last_name,
     presence: true
 
+  CREDIT_CARD_TYPES = {
+    "Visa" => "visa",
+    "MasterCard" => "master"
+  }
+
   def to_s
-    "#{brand} - #{first_name} #{last_name} - #{last_four}"
+    "#{CREDIT_CARD_TYPES.key(brand)} - #{name_on_card} - #{last_four}"
   end
 
   def last_four
     number[-4,4]
+  end
+
+  def name_on_card
+    self.last_name
+  end
+
+  def name_on_card=(n)
+    self[:last_name] = n
   end
 
 private
@@ -30,8 +42,7 @@ private
       :verification_value => cvv,
       :month              => expiration.month,
       :year               => expiration.year,
-      :first_name         => first_name,
-      :last_name          => last_name
+      :name               => name_on_card,
     )
   end
 

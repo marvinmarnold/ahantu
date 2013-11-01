@@ -26,7 +26,6 @@ class CreditCardsController < ApplicationController
   # POST /credit_cards.json
   def create
     @credit_card = current_user.credit_cards.build(credit_card_params)
-
     respond_to do |format|
       if @credit_card.save
         format.html { redirect_to checkout_path(current_cart), notice: 'Billing information was successfully created.' }
@@ -65,6 +64,6 @@ class CreditCardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def credit_card_params
-      params.require(:credit_card).permit(:first_name, :last_name, :expiration, :type, :number, :cvv, :brand)
+      params.require(:credit_card).permit(:name_on_card, :expiration, :type, :number, :cvv, :brand)
     end
 end

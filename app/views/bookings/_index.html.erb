@@ -1,14 +1,14 @@
-<h1>Listing bookings</h1>
-<% cart.bookings.each do |booking| %>
-  <%= booking.item %>
-  <% booking.line_items.each do |l| %>
-    <div class='row-fluid'>
-    	<div class="span6">
-    		<%= l.booking_at %>
-    	</div>
-    	<div class="span6">
-    		<%= l.unit_price_at_checkout %>
-    	</div>
-    </div>
-  <% end %>
+<h4><%= t "booking.index.title" %></h4>
+<h6><%= t "booking.index.total", total: number_to_currency(cart.total) %>
+<% cart.bookings.each_with_index do |booking, i| %>
+  <hr/>
+  <h5><%= t("booking.index.room", i: i+1, item: booking.item, total: number_to_currency(booking.total)) %></h5>
+  <table class="table table-condensed table-striped">
+    <% booking.line_items.each do |l| %>
+      <tr>
+        <td><%= l l.booking_at, format: :long %></td>
+        <td><%= number_to_currency l.unit_price_at_checkout %></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>
