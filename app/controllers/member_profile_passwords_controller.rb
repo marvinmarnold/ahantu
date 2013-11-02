@@ -1,4 +1,4 @@
 class MemberProfilePasswordsController < Devise::PasswordsController
   skip_authorization_check
-  layout "centered", only: [:new]
+  layout "centered", only: [:new, :create]
 end

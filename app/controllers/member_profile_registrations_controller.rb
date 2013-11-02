@@ -1,8 +1,9 @@
 class MemberProfileRegistrationsController < DeviseRegistrationsController
-  layout "centered", only: [:new]
+  layout "centered", only: [:new, :create]
 
   def create
     build_resource(sign_up_params)
+
 
     if resource.save
       current_user.move_to_profile(resource)
