@@ -81,10 +81,10 @@ Ahantu::Application.configure do
   paypal_login = 'marvin-facilitator_api1.ahantu.com'
   paypal_password = '1376327303'
   paypal_signature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31AFC3EQLJ5v9zAI.4SXEg8jQMRU49'
-  host_ip = "146.185.163.82"
-  app_domain = "ahantu.com"
-  email_username = "info@ahantu.com"
-  email_password = "marviN!narcisio"
+  host_ip = '146.185.163.82'
+  app_domain = 'ahantu.com'
+  email_username = 'info@ahantu.com'
+  email_password = 'marviN!narcisio'
   # paypal_login = ENV["paypal_login"]
   # paypal_password = ENV["paypal_password"]
   # paypal_signature = ENV["paypal_signature"]
