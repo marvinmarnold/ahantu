@@ -2,8 +2,11 @@ class BaseUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   #include CarrierWave::RMagick
   include CarrierWave::RMagick
+  include CarrierWave::MimeTypes
 
-  storage :file
+  process :set_content_type
+
+  storage :fog
 
   def extension_white_list
     %w(jpg jpeg gif png)

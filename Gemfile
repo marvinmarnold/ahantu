@@ -40,6 +40,7 @@ gem 'devise'
 gem 'cancan'
 gem 'will_paginate'
 gem 'carrierwave'
+gem "fog"
 gem 'rmagick'
 gem "rest-client", :require => 'rest_client'
 gem 'mailman', :require => false
