@@ -85,6 +85,9 @@ en:
       errors:
         later_checkout: "Checkout must be after checkin"
         future_checkin: "Check in must be sometime in the future"
+    show:
+      result:
+        min_price: "Prices starting at"
   shop:
     show:
       enter_booking_details: "Enter booking details"

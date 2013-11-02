@@ -1,6 +1,22 @@
-<div class="well">
-	<%= link_to r.name, r %>
-	<% r.hotel_tags.each do |t| %>
-		<%= t %>
-	<% end %>
+
+<div class="row-fluid">
+  <%= content_tag "a", href: url_for(r), class: "well span12 search-result" do %>
+    <div class="row-fluid">
+      <div class="span9">
+        <h4><%= r %></h4>
+        <h6><%= shop_address(r) %></h6>
+        <%= image_tag r.logo_url(:thumb) %>
+      </div>
+      <div class="span3">
+        <h3><%= number_to_currency r.display_price %></h3>
+        <p class="muted"><%= t "search.show.result.min_price" %></p>
+        <hr/>
+        <ul>
+          <% r.hotel_tags.each do |t| %>
+            <li><%= t %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -22,6 +22,9 @@ class Shop < Describable
   validates :published,
     :inclusion => { in: [true, false] }
 
+  delegate :province,
+      to: :city
+
   def to_s
     name
   end
@@ -37,4 +40,9 @@ class Shop < Describable
   def cut_modifier
     1 - self.commission
   end
+
+  def display_price
+    items.map { |i| i.price }.min
+  end
+
 end

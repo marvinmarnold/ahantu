@@ -12,3 +12,12 @@
 .search-rooms {
   width: 50px;
 }
+
+$main-color: #ddd;
+$main-color-highlight: darken($main-color, 10%);
+
+.search-result:hover {
+  background-color: $main-color-highlight;
+  text-decoration: none;
+  color: black;
+}
