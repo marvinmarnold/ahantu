@@ -78,25 +78,39 @@ Ahantu::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  paypal_login = 'marvin-facilitator_api1.ahantu.com'
+  paypal_password = '1376327303'
+  paypal_signature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31AFC3EQLJ5v9zAI.4SXEg8jQMRU49'
+  host_ip = "146.185.163.82"
+  app_domain = "ahantu.com"
+  email_username = "info@ahantu.com"
+  email_password = "marviN!narcisio"
+  # paypal_login = ENV["paypal_login"]
+  # paypal_password = ENV["paypal_password"]
+  # paypal_signature = ENV["paypal_signature"]
+  # domain = ENV["DOMAIN"],
+  # user_name = "#{ENV["EMAIL_USERNAME"]}@#{ENV["DOMAIN"]}",
+  # email_password = ENV["EMAIL_PASSWORD"]
+
   paypal_options = {
-    :login => ENV["paypal_login"],
-    :password => ENV["paypal_password"],
-    :signature => ENV["paypal_signature"]
+    :login => paypal_login,
+    :password => paypal_password,
+    :signature => paypal_signature
   }
   ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
   ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
 
-  config.action_mailer.default_url_options = { host: ENV["HOST_IP"] }
+  config.action_mailer.default_url_options = { host: host_ip }
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: ENV["DOMAIN"],
+    domain: app_domain,
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "#{ENV["EMAIL_USERNAME"]}@#{ENV["DOMAIN"]}",
-    password: ENV["EMAIL_PASSWORD"]
+    user_name: email_username,
+    password: email_password
   }
 end
