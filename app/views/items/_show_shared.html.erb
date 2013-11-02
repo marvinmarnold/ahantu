@@ -1,7 +1,5 @@
-<p>
-  <strong>Name:</strong>
-  <%= item.name %>
-  <%= item.description %>
+<h3><%= item %></h3>
+ <p> <%= item.description %>
 </p>
 
 <p>
@@ -10,12 +8,8 @@
 </p>
 
 <p>
-  <strong>Default price:</strong>
-  <%= item.default_price %>
+  <%= number_to_currency item.default_price %>
 </p>
 <% if can_and_want_shop_admin? %>
-  <%= link_to t("shop.show.edit_item"),
-    edit_shop_item_path(@shop, item),
-    class: "btn btn-large btn-success"
-  %>
+  <%= link_to t("shop.show.edit_item"), edit_shop_item_path(@shop, item), class: "btn btn-large btn-success" %>
 <% end %>

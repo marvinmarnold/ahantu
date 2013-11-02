@@ -63,6 +63,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_location
 
+  def searched?
+    current_search.persisted?
+  end
+  helper_method :searched?
+
 protected
 
   def current_profile_symbol

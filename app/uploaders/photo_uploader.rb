@@ -5,7 +5,7 @@ class PhotoUploader < BaseUploader
   end
 
   version :banner do
-    process :resize_to_fit => [400, 400]
+    process :resize_to_fit => [650, 650]
   end
 
   # Override the filename of the uploaded files:

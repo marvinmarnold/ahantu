@@ -40,6 +40,8 @@ gem 'devise'
 gem 'cancan'
 gem 'will_paginate'
 gem 'carrierwave'
+gem 'carrierwave_direct'
+gem 'sidekiq'
 gem "fog"
 gem "unf"
 gem 'rmagick'

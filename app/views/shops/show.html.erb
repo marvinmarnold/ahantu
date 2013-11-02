@@ -14,21 +14,9 @@
 <h1><%= @shop %></h1>
 <h5><%= shop_address @shop %></h5>
 
-<div class="media">
-  <%= render 'shops/carousel', shop: @shop %>
+<div class="row-fluid">
+  <div class="span6"><%= render 'shops/carousel', shop: @shop %></div>
+  <div class="span5 offset1"><%= render "shops/details_tabs" %></div>
 </div>
 
-<p>
-  <strong>Directions:</strong>
-  <%= @shop.directions %>
-</p>
-
-
-<% if searched? %>
-  <%= render 'carts/shop_menu' %>
-<% else %>
-  <% @shop.items.each do |i| %>
-    <%= render 'items/show_shared', item: i %>
-    <%= link_to t("shop.show.enter_booking_details"), new_search_path, class: "btn btn-large btn-link" %>
-  <% end %>
-<% end %>
+<%= render 'carts/shop_menu' %>

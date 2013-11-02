@@ -87,11 +87,14 @@ en:
         future_checkin: "Check in must be sometime in the future"
     show:
       result:
-        min_price: "Prices starting at"
+        min_price: "average nightly price"
   shop:
     show:
       enter_booking_details: "Enter booking details"
       edit: "Edit shop"
+      details:
+        info: "Information"
+        directions: "Directions"
     edit:
       edit_links:
         show: "<< Preview shop"
