@@ -70,6 +70,16 @@ en:
         remove: "Remove price adjustment"
   guest_profile:
     to_s: "Guest account"
+  member_profile:
+    new:
+      submit: "Create account"
+  member_session:
+    new:
+      signin: "Sign in"
+      forgot_password: "Forgot password?"
+      signup: "Sign up"
+    forgot_password:
+      send_reminder: "Send password reminder"
   search:
     form:
       errors:

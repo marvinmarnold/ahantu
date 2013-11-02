@@ -23,8 +23,8 @@ Ahantu::Application.routes.draw do
   devise_for :member_profiles,
     :controllers => {
       :registrations => "member_profile_registrations",
-      # :sessions => "devise_profile_sessions",
-      # :passwords => "devise_passwords"
+      :sessions => "member_profile_sessions",
+      :passwords => "member_profile_passwords"
     }
 
   # devise_for :salesperson_profiles,

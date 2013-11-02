@@ -7,9 +7,13 @@
     <%= f.input :email, :required => true, :autofocus => true %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+  <hr />
+
+  <div class="pull-left">
+    <%= f.button :submit, t("member_session.forgot_password.send_reminder"), class: "btn btn-large btn-success" %>
+  </div>
+  <div class="pull-right">
+    <%= link_to t("member_session.new.signup"), new_registration_path(resource_name), class: "btn btn-link" %>
+    <%= link_to t("member_session.new.signin"), new_session_path(resource_name), class: "btn btn-link" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
