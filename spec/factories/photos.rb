@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :photo do
-    photo "MyString"
+    photo { RandomHelper.rand_shop_photo }
     photoable nil
   end
 end

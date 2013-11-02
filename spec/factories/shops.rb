@@ -7,8 +7,8 @@ FactoryGirl.define do
     city
     published false
     logo "MyString"
-    address1 "MyString"
-    address2 "MyString"
+    address1 { Faker::Address.street_address }
+    address2 { RandomHelper.bi_rand Faker::Address.secondary_address }
     directions "MyText"
     website1 "MyString"
     website2 "MyString"
@@ -27,6 +27,7 @@ FactoryGirl.define do
                 language: Language.default
             )
             RandomHelper.r1(4).times { create(:tagging, taggable: c, tag: HotelTag.all.sample) }
+            RandomHelper.r1(5).times { create(:photo, photoable: c) }
         end
         factory :complete_shop_w_items do
             after(:create) do |c, evaluator|

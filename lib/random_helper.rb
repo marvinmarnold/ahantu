@@ -8,8 +8,17 @@ module RandomHelper
       File.open(Dir[Rails.root.join("#{folder}/*")].sample)
     end
 
+    def rand_shop_photo
+      rand_file("vendor/hotels/generic/photos")
+    end
+
     def r1(n)
     	rand(n) + 1
+    end
+
+    #returns v or nil, 50% randomly
+    def bi_rand(v)
+      rand(2) > 1 ? v : nil
     end
 
   end

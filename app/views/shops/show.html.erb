@@ -11,54 +11,18 @@
   <%= link_to t("shop.show.edit"), edit_shop_path(@shop), class: "btn btn-large btn-success" %>
 <% end %>
 
-<p>
-  <strong>City:</strong>
-  <%= @shop.city %>
-</p>
+<h1><%= @shop %></h1>
+<h5><%= shop_address @shop %></h5>
 
-<p>
-  <%= image_tag @shop.logo_url(:preview) %>
-</p>
-
-<p>
-  <strong>Address1:</strong>
-  <%= @shop.address1 %>
-</p>
-
-<p>
-  <strong>Address2:</strong>
-  <%= @shop.address2 %>
-</p>
+<div class="media">
+  <%= render 'shops/carousel', shop: @shop %>
+</div>
 
 <p>
   <strong>Directions:</strong>
   <%= @shop.directions %>
 </p>
 
-<p>
-  <strong>Website1:</strong>
-  <%= @shop.website1 %>
-</p>
-
-<p>
-  <strong>Website2:</strong>
-  <%= @shop.website2 %>
-</p>
-
-<p>
-  <strong>Website3:</strong>
-  <%= @shop.website3 %>
-</p>
-
-<p>
-  <strong>Website4:</strong>
-  <%= @shop.website4 %>
-</p>
-
-<p>
-  <strong>Website5:</strong>
-  <%= @shop.website5 %>
-</p>
 
 <% if searched? %>
   <%= render 'carts/shop_menu' %>
