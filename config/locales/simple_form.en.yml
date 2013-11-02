@@ -20,5 +20,7 @@ en:
     hints:
       search:
         keyword: "City, neighborhood, hotel name, etc."
-        checkin_at: "mm/dd/yyyy"
-        checkout_at: "mm/dd/yyyy"
+    placeholders:
+      search:
+        checkin_at: "dd/mm/yyyy"
+        checkout_at: "dd/mm/yyyy"

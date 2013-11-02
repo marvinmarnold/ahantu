@@ -2,15 +2,29 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :keyword %>
-    <%= f.input :checkin_at %>
-    <%= f.input :checkout_at %>
-    <%= render 'tags/select_boxes', 
-      tags: HotelTag.all, 
-      obj: @search %>
+    <%= f.input :keyword, hint: false %>
+    <div class="row-fluid">
+      <div class="span6"><%= f.input :checkin_at, as: :string, :input_html => {
+        :data => { behaviour: "datepicker" },
+        value: f.object.checkin_at,
+        class: "search-date"
+      } %></div>
+      <div class="span6"><%= f.input :checkout_at, as: :string, :input_html => {
+        :data => { behaviour: "datepicker" },
+        value: f.object.checkout_at,
+        class: "search-date"
+      } %>
+      </div>
+    </div>
+
+    <hr />
+
+    <%= render 'tags/select_boxes', tags: HotelTag.all, obj: @search %>
   </div>
 
+  <hr />
+
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-block btn-success btn-large" %>
   </div>
 <% end %>
