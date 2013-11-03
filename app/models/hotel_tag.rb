@@ -1,3 +1,0 @@
-class HotelTag < Tag
-
-end

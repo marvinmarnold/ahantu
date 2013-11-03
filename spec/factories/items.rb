@@ -18,6 +18,7 @@ FactoryGirl.define do
                 describable: c,
                 language: Language.default
             )
+            RandomHelper.r1(4).times { create(:tagging, taggable: c, tag: Tag::RoomTag.all.sample) }
         end
     end
   end

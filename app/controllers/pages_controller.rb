@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   	@search = new_search
   	@search.room_searches.build
     @shops = browsable_shops
+    @tags = Tag::HotelTag.all
   end
 
   def about

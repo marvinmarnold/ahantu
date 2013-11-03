@@ -6,7 +6,7 @@ class Shop < Describable
   has_many :carts, through: :bookings
   has_many :taggings, as: :taggable
   has_many :photos, as: :photoable
-  has_many :hotel_tags, through: :taggings, class_name: "HotelTag", source: :tag
+  has_many :hotel_tags, through: :taggings, class_name: "Tag::HotelTag", source: :tag
   has_many :phones
   has_many :responsibilities
   has_many :responsibles, through: :responsibilities, source: :user

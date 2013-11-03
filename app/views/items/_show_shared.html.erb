@@ -1,15 +1,29 @@
-<h3><%= item %></h3>
- <p> <%= item.description %>
-</p>
+<div class="row-fluid">
+  <div class="span8">
+    <h3><%= item %></h3>
 
-<p>
-  <strong>Max adults:</strong>
-  <%= item.max_adults %>
-</p>
+    <p><%= item.description %></p>
 
-<p>
-  <%= number_to_currency item.default_price %>
-</p>
-<% if can_and_want_shop_admin? %>
-  <%= link_to t("shop.show.edit_item"), edit_shop_item_path(@shop, item), class: "btn btn-large btn-success" %>
-<% end %>
+  </div>
+  <div class="span4">
+        <div class="row-fluid">
+          <div class="span6"><h4><%= number_to_currency item.default_price %></h4></div>
+          <div class="span6"><span class="label label-warning"><%= t "item.show.details.max_adults", n: item.max_adults %></span></div>
+      </div>
+
+    <p class="muted"><%= t "search.show.result.min_price" %></p>
+    <% if can_and_want_shop_admin? %>
+      <%= link_to t("shop.show.edit_item"), edit_shop_item_path(@shop, item), class: "btn btn-large btn-success" %>
+    <% end %>
+    <hr />
+
+    <% item.room_tags.each_slice(2) do |tags_slice| %>
+      <div class="row-fluid">
+        <% tags_slice.each do |tag| %>
+          <div class="span6"><span class="label label-info"><%= tag %></span></div>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

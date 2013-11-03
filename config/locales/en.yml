@@ -68,6 +68,9 @@ en:
         title: "Adjust seasonal prices"
         add: "Add price adjustment"
         remove: "Remove price adjustment"
+    show:
+      details:
+        max_adults: "Max adults: %{n}"
   guest_profile:
     to_s: "Guest account"
   member_profile:

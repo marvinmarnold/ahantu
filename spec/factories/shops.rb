@@ -9,7 +9,7 @@ FactoryGirl.define do
     logo "MyString"
     address1 { Faker::Address.street_address }
     address2 { RandomHelper.bi_rand Faker::Address.secondary_address }
-    directions "MyText"
+    directions { Faker::Lorem.paragraph(sentence_count = 5) }
     website1 "MyString"
     website2 "MyString"
     website3 "MyString"
@@ -26,7 +26,7 @@ FactoryGirl.define do
                 describable: c,
                 language: Language.default
             )
-            RandomHelper.r1(4).times { create(:tagging, taggable: c, tag: HotelTag.all.sample) }
+            RandomHelper.r1(4).times { create(:tagging, taggable: c, tag: Tag::HotelTag.all.sample) }
             RandomHelper.r1(5).times { create(:photo, photoable: c) }
         end
         factory :complete_shop_w_items do
