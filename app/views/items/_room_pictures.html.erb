@@ -2,7 +2,11 @@
   <% room.photos.each_slice(4 )do |photo_slice| %>
     <div class="row-fluid">
       <% photo_slice.each do |photo| %>
-      <li class="span3"><%= image_tag photo.photo_url(:banner) %></li><% end %>
+        <li class="span3">
+          <%= link_to image_tag(photo.photo_url(:banner)), "#room-photo-#{photo.id}", :data => {toggle: "modal"} %>
+          <%= render 'items/room_photo_modal', photo: photo %>
+        </li>
+      <% end %>
     </div>
   <% end %>
 </ul>
