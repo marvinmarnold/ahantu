@@ -5,6 +5,8 @@ ready = ->
   $("[data-behaviour~=datepicker]").datepicker(
     format: 'dd/mm/yyyy'
   )
+  $('#search_keyword').autocomplete
+    source: "/search_suggestions"
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

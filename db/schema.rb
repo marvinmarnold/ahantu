@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920155056) do
+ActiveRecord::Schema.define(version: 20131103134247) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -223,6 +223,13 @@ ActiveRecord::Schema.define(version: 20130920155056) do
   end
 
   add_index "room_searches", ["search_id"], name: "index_room_searches_on_search_id", using: :btree
+
+  create_table "search_suggestions", force: true do |t|
+    t.string   "term"
+    t.integer  "popularity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "searches", force: true do |t|
     t.string   "keyword"

@@ -1,5 +1,7 @@
 Ahantu::Application.routes.draw do
 
+  resources :search_suggestions
+
   resources :contacts
   resources :confirmations
 

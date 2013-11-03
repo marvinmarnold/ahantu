@@ -25,6 +25,9 @@ class Shop < Describable
   delegate :province,
       to: :city
 
+  after_save :index
+  after_destroy :unindex
+
   def to_s
     name
   end
@@ -43,6 +46,21 @@ class Shop < Describable
 
   def display_price
     items.map { |i| i.price }.min
+  end
+
+  def published?
+    published
+  end
+
+private
+
+  def index
+    SearchSuggestion.unindex_shop self
+    SearchSuggestion.index_shop(self) if published?
+  end
+
+  def unindex
+    SearchSuggestion.unindex_shop self
   end
 
 end

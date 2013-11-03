@@ -1,53 +1,50 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+#Rails core
 gem 'rails', '4.0.0'
-
-# Use postgresql as the database for Active Record
-gem 'pg'
-
-# Use SCSS for stylesheets
+gem 'turbolinks'
+gem 'jbuilder', '~> 1.2'
+gem "therubyracer"
 gem 'sass-rails', '~> 4.0.0'
-
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+#servers
+gem 'pg'
+gem 'sidekiq'
+gem 'unicorn'
+gem 'redis'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
-gem 'activemerchant'
-gem 'figaro'
+#UI - added
+gem 'devise'
+gem 'will_paginate'
 gem 'simple_form'
 gem 'nested_form'
-gem 'devise'
-gem 'cancan'
-gem 'will_paginate'
+gem 'figaro'
 gem 'carrierwave'
 gem 'carrierwave_direct'
-gem 'sidekiq'
-gem "fog"
-gem "unf"
 gem 'rmagick'
+gem 'jquery-ui-rails'
+
+#bootstrap stuff
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+gem 'will_paginate-bootstrap'
+gem 'bootstrap-datepicker-rails'
+
+#general
+gem 'cancan'
 gem "rest-client", :require => 'rest_client'
 gem 'mailman', :require => false
+gem 'state_machine'
 
+#3rd party access
+gem 'activemerchant'
+gem "fog"
+gem "unf"
+
+#Testing and dev
 group :test, :development do
   gem "rspec-rails"
   gem 'pry'
@@ -64,18 +61,13 @@ group :test, :development do
   gem "rb-fsevent"
 end
 
-# Use unicorn as the app server
-gem 'state_machine'
-gem 'unicorn'
-gem "twitter-bootstrap-rails"
-gem 'will_paginate-bootstrap'
-gem "less-rails"
-gem "therubyracer"
-gem 'redis'
-gem 'figaro'
-gem 'bootstrap-datepicker-rails'
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
 
-
-#TEMPORARY
+#TEMPORARY for seeding
 gem 'faker'
 gem "factory_girl_rails"
+
+# Use unicorn as the app server

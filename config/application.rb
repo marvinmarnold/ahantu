@@ -20,6 +20,8 @@ module Ahantu
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :en
 
-    Date::DATE_FORMATS.merge!( default: '%d/%m/%Y' )
+    Date::DATE_FORMATS.merge!(default: '%d/%m/%Y')
+
+    config.middleware.insert_before 0, "SearchSuggestions"
   end
 end
