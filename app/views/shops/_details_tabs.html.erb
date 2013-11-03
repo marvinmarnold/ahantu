@@ -8,8 +8,10 @@
     <%= @shop.description %>
     <dl class="dl-horizontal">
       <% hotel_tag_categories_show.each do |c| %>
-        <dt><%= label_for_tag_category(c) %></dt>
-        <dd><%= c.all.join(", ") %></dd>
+        <% unless @shop.subclass_tags(c).blank? %>
+          <dt><%= label_for_tag_category(c) %></dt>
+          <dd><%= @shop.subclass_tags(c).all.join(", ") %></dd>
+        <% end %>
       <% end %>
     </dl>
   </div>

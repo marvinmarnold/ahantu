@@ -1,4 +1,6 @@
 class Shop < Describable
+  include Taggable
+
   belongs_to :user
   belongs_to :city
   has_many :items
@@ -6,11 +8,10 @@ class Shop < Describable
   has_many :carts, through: :bookings
   has_many :taggings, as: :taggable
   has_many :photos, as: :photoable
-  has_many :hotel_tags, through: :taggings, class_name: "Tag::HotelTag", source: :tag
   has_many :phones
   has_many :responsibilities
   has_many :responsibles, through: :responsibilities, source: :user
-
+  has_many :tags, through: :taggings, source: :tag
   scope   :published, lambda { where(published: true) }
   scope   :not_shop, lambda { |shop| where.not(id: shop.id) }
 
