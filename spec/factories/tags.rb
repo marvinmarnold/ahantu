@@ -8,5 +8,8 @@ FactoryGirl.define do
         language: Language.default
       )
     end
+
+    factory :hotel_tag, class: "HotelTag" do
+    end
   end
 end

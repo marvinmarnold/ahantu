@@ -31,7 +31,7 @@ class Search < ActiveRecord::Base
   def filtered_by_hotel_tags(filtered_shops = Shop.published)
     if self.hotel_tags.present?
       filtered_shops.each do |s|
-        hfiltered_shops = filtered_shops.not_shop(s) unless tags_match?(s)
+        filtered_shops = filtered_shops.not_shop(s) unless tags_match?(s)
       end
     end
 

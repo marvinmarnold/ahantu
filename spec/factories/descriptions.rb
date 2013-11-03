@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :description do
-    language nil
+    language
     name { Faker::Lorem.words.join " "}
     description { Faker::Lorem.sentences.join " " }
     describable nil

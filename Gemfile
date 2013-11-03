@@ -59,7 +59,7 @@ group :test, :development do
   gem "capybara"
   gem 'guard-rspec', require: false
   gem "rb-fsevent"
-  gem "rb-readline" #for guard readline errors
+  gem 'rb-readline', '~> 0.4.2' #for guard readline errors https://github.com/pry/pry/issues/921
 end
 
 group :doc do
