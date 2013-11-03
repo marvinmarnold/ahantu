@@ -1,21 +1,13 @@
-<%= simple_form_for(@search) do |f| %>
+<%= simple_nested_form_for(@search) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
     <%= f.input :keyword, hint: false %>
-    <div class="row-fluid">
-      <div class="span6"><%= f.input :checkin_at, as: :string, :input_html => {
-        :data => { behaviour: "datepicker" },
-        value: f.object.checkin_at,
-        class: "search-date"
-      } %></div>
-      <div class="span6"><%= f.input :checkout_at, as: :string, :input_html => {
-        :data => { behaviour: "datepicker" },
-        value: f.object.checkout_at,
-        class: "search-date"
-      } %>
-      </div>
-    </div>
+    <%= render "searches/when", f: f %>
+
+    <hr />
+
+    <%= render 'searches/rooms', f: f %>
 
     <hr />
 

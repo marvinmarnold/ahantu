@@ -1,7 +1,5 @@
 <div class="well span4 homepage-search">
 	<h3><%= t "page.index.search.step2" %></h3>
-  <div class="row-fluid">
-    <div class="span6"><%= f.input :checkin_at, as: :string, :input_html => { :data => {behaviour: "datepicker"}, class: "search-date"} %></div>
-    <div class="span6"><%= f.input :checkout_at, as: :string, :input_html => { :data => {behaviour: "datepicker"}, class: "search-date"} %></div>
-  </div>
+  <%= render 'searches/when', f: f %>
+
 </div>
