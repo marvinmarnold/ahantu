@@ -19,6 +19,7 @@ FactoryGirl.define do
                 language: Language.default
             )
             RandomHelper.r1(4).times { create(:tagging, taggable: c, tag: Tag::RoomTag.all.sample) }
+            RandomHelper.r1(10).times { create(:photo, photoable: c) }
         end
     end
   end

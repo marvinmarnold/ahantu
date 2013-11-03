@@ -1,0 +1,6 @@
+<dl class="dl-horizontal dl-nopadding">
+  <% room_tag_categories.each do |c| %>
+    <dt class="dl-nopadding"><%= label_for_tag_category(c) %></dt>
+    <dd class="dl-nopadding"><%= c.all.join(", ") %></dd>
+  <% end %>
+</dl>

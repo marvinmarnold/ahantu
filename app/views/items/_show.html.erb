@@ -3,12 +3,7 @@
     <h3><%= item %></h3>
     <p><%= item.description %></p>
 
-    <dl class="dl-horizontal dl-nopadding">
-      <% room_tag_categories.each do |c| %>
-        <dt class="dl-nopadding"><%= label_for_tag_category(c) %></dt>
-        <dd class="dl-nopadding"><%= c.all.join(", ") %></dd>
-      <% end %>
-    </dl>
+    <%= render 'items/room_details' %>
 
   </div>
 
@@ -29,6 +24,8 @@
     <div class="clearfix"></div>
 
     <hr />
+
+    <%= render 'items/room_pictures', room: item %>
 
   </div>
 </div>
