@@ -1,3 +1,38 @@
-<%= render 'items/show_shared', item: item %>
+<div class="row-fluid">
+  <div class="span6">
+    <h3><%= item %></h3>
+    <p><%= item.description %></p>
+
+    <dl class="dl-horizontal dl-nopadding">
+      <% room_tag_categories.each do |c| %>
+        <dt class="dl-nopadding"><%= label_for_tag_category(c) %></dt>
+        <dd class="dl-nopadding"><%= c.all.join(", ") %></dd>
+      <% end %>
+    </dl>
+
+  </div>
+
+  <div class="span5 offset1">
+    <h3 class="text-right"><%= number_to_currency item.default_price %></h3>
+    <p class="muted text-right"><%= t "search.show.result.min_price" %></p>
+
+    <% if can_and_want_shop_admin? %>
+      <%= link_to t("shop.show.edit_item"), edit_shop_item_path(@shop, item), class: "btn btn-large btn-success" %>
+    <% end %>
+
+    <% if can_one_click_checkout?(@cart) %>
+      <% @cart.bookings.each do |b| %>
+        <div><%= f.button :submit, t("cart.new.book_room"), class: "btn btn-large btn-success pull-right" %></div>
+      <% end %>
+    <% end %>
+
+    <div class="clearfix"></div>
+
+    <hr />
+
+  </div>
+</div>
+
 <br />
+
 <%= render 'bookings/form', f: f, item: item %>

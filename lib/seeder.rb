@@ -60,28 +60,33 @@ module Seeder
     end
 
     def create_hotel_tags
-      # create_hotel_language_tags
-      # create_hotel_facilities_tags
-      # create_hotel_internet_tags
+      create_hotel_language_tags
+      create_hotel_facility_tags
+      create_hotel_internet_tags
       create_hotel_service_tags
-      # create_tags [
-      #   "Swimming Pool",
-      #   "Wifi",
-      #   "Gym",
-      #   "Bed and Breakfast",
-      #   "Meeting Facilities",
-      #   "Pet Friendly",
-      #   "Restaurant",
-      #   "Self Catering",
-      #   "Eco-friendly",
-      #   "Handicapped accessible",
-      #   "Hot showers",
-      #   "Bar",
-      # ], HotelTag
     end
 
     def create_hotel_facility_tags
-      # 24-Hour Front Desk, Meeting/Banquet Facilities, Laundry, Dry Cleaning, Currency Exchange,  Elevator
+      create_tags [
+        "Swimming pool",
+        "Gym",
+        "Meeting rooms/banquet hall",
+        "Elevator",
+        "Eco-friendly",
+        "Handicapped accessible",
+        "Hot water",
+        "Bar",
+        "Restaurant",
+        "Self catering",
+        "Pet friendly",
+        "Parking"
+      ], Tag::HotelTag::FacilityTag
+    end
+
+    def create_hotel_internet_tags
+      create_tags [
+        "Wifi available"
+      ], Tag::HotelTag::InternetTag
     end
 
     def create_hotel_service_tags
@@ -108,7 +113,7 @@ module Seeder
         "Portuguese",
         "Swedish",
         "Dutch",
-      ], LanguageTag
+      ], Tag::HotelTag::LanguageTag
     end
 
     def create_room_tags
@@ -117,7 +122,6 @@ module Seeder
       create_room_view_tags
       create_room_internet_tags
       create_room_parking_tags
-      create_room_service_tags
     end
 
     def create_room_facility_tags
@@ -126,10 +130,9 @@ module Seeder
         "Interior bathroom",
         "Hot water",
         "Handicapped accessible",
-        "Pet friendly",
         "Air conditioned",
         "Heated"
-      ]
+      ], Tag::RoomTag::FacilityTag
     end
 
     def create_room_food_drink_tags
@@ -139,7 +142,7 @@ module Seeder
         "Room service",
         "Kitchen in room",
         "Barbeque/brai access"
-      ], FoodDrinkTag
+      ], Tag::RoomTag::FoodDrinkTag
     end
 
     def create_room_view_tags
@@ -149,7 +152,7 @@ module Seeder
         "Beach view",
         "Nature view",
         "City view"
-      ], ViewTag
+      ], Tag::RoomTag::ViewTag
     end
 
     def create_room_internet_tags
@@ -157,7 +160,7 @@ module Seeder
        "Free wifi",
        "Paid wifi",
        "No wifi"
-      ], InternetTag
+      ], Tag::RoomTag::InternetTag
     end
 
     def create_room_parking_tags
@@ -165,7 +168,7 @@ module Seeder
         "Free parking",
         "No parking",
         "Paid parking"
-      ], ParkingTag
+      ], Tag::RoomTag::ParkingTag
     end
 
     def create_tags(tag_list, tag_class)

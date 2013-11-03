@@ -14,7 +14,6 @@ class SearchesController < ApplicationController
   # GET /searches/1.json
   def show
     @results = @search.results.paginate(:page => params[:page], :per_page => per_page)
-    @tags = Tag::HotelTag.all
   end
 
   # GET /searches/new

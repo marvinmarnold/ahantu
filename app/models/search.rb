@@ -2,7 +2,7 @@ class Search < ActiveRecord::Base
   belongs_to :user
   belongs_to :shop
   has_many :taggings, as: :taggable
-  has_many :hotel_tags, through: :taggings, class_name: "HotelTag", source: :tag
+  has_many :hotel_tags, through: :taggings, class_name: "Tag::HotelTag", source: :tag
   has_many :room_searches
 
   accepts_nested_attributes_for :room_searches

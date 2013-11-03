@@ -4,6 +4,14 @@
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="info"><%= @shop.description %></div>
+  <div class="tab-pane active" id="info">
+    <%= @shop.description %>
+    <dl class="dl-horizontal">
+      <% hotel_tag_categories_show.each do |c| %>
+        <dt><%= label_for_tag_category(c) %></dt>
+        <dd><%= c.all.join(", ") %></dd>
+      <% end %>
+    </dl>
+  </div>
   <div class="tab-pane" id="directions"><%= @shop.directions %></div>
 </div>
