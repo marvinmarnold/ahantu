@@ -5,7 +5,14 @@
 <% if @search.empty? %>
   <%= render 'searches/no_results' %>
 <% else %>
-  <% @search.results.each do |r| %>
+
+  <%= render 'searches/search_options' %>
+
+  <% @results.each do |r| %>
     <%= render 'searches/result', r: r %>
   <% end %>
+
+  <div class="pull-left">
+    <%= will_paginate @results, :renderer => BootstrapPagination::Rails %>
+  </div>
 <% end %>

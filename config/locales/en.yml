@@ -91,6 +91,7 @@ en:
       no_results:
         title: "No shops match your search"
         subtitle: "Update your search on the left to see more results."
+      num_results: "results/page (%{n})"
   shop:
     show:
       enter_booking_details: "Enter booking details"

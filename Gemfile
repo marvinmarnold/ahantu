@@ -30,7 +30,7 @@ gem 'jquery-ui-rails'
 #bootstrap stuff
 gem "less-rails"
 gem "twitter-bootstrap-rails"
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap', '0.2.5'
 gem 'bootstrap-datepicker-rails'
 
 #general

@@ -1,0 +1,15 @@
+<div class="pull-left">
+  <%= will_paginate @results, :renderer => BootstrapPagination::Rails %>
+</div>
+
+<div class="btn-group pull-right search-options">
+  <%= link_to "#", :data => {toggle: "dropdown"}, class: "btn dropdown-toggle btn-inverse" do %>
+    <span><%= t "search.show.num_results", n: per_page %>&nbsp;</span><span class="caret"></span>
+  <% end %>
+  <ul class="dropdown-menu">
+    <li><%= link_to "15", url_for(per_page: 15), tabindex: "-1" %></li>
+    <li><%= link_to "30", url_for(per_page: 30), tabindex: "-1" %></li>
+    <li><%= link_to "50", url_for(per_page: 50), tabindex: "-1" %></li>
+    <li><%= link_to "100", url_for(per_page: 100), tabindex: "-1" %></li>
+  </ul>
+</div>

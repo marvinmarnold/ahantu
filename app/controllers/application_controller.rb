@@ -110,4 +110,9 @@ protected
   end
   helper_method :admin_preview_language_abbr
 
+  def per_page
+    @per_page ||= (p = params[:per_page]).blank? ? 15 : p.to_i
+  end
+  helper_method :per_page
+
 end
