@@ -8,7 +8,7 @@ class Search < ActiveRecord::Base
   accepts_nested_attributes_for :room_searches
 
   validate :future_check_in, :later_check_out
-  validates :keyword, :checkin_at, :checkout_at,
+  validates :keyword, :checkin_at, :checkout_at, :user_id,
     presence: true
 
   def results(filtered_shops = Shop.published)

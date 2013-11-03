@@ -5,8 +5,6 @@ class BaseUploader < CarrierWave::Uploader::Base
 
   process :set_content_type
 
-  storage :fog
-
   def extension_white_list
     %w(jpg jpeg gif png)
   end

@@ -3,10 +3,9 @@
 FactoryGirl.define do
   factory :search do
     keyword "MyString"
-    checkin_at "2013-08-15"
-    checkout_at "2013-08-15"
-    user nil
-    item nil
+    checkin_at { Date.tomorrow }
+    checkout_at { checkin_at + 1.weeks }
+    user
     shop nil
   end
 end

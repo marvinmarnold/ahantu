@@ -6,4 +6,10 @@ CarrierWave.configure do |config|
     # region: "s3-external-3"
   }
   config.fog_directory = 'ahantu'
+  if Rails.env.test? or Rails.env.development?
+    config.storage = :file
+  else
+    storage :fog
+  end
 end
+
