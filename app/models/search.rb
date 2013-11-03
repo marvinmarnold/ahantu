@@ -57,6 +57,10 @@ class Search < ActiveRecord::Base
     self.created_at > [self.user.last_checkout_at, 1.week.ago].max
   end
 
+  def empty?
+    results.empty?
+  end
+
 private
 
   # does the shop have at least the same tags as the search?

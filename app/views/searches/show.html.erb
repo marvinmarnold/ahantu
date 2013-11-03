@@ -1,8 +1,11 @@
 <% content_for :side do %>
 	<%= render 'searches/form' %>
 <% end %>
-  
-<% @search.results.each do |r| %>
-  <%= render 'searches/result', r: r %>
-<% end %>
 
+<% if @search.empty? %>
+  <%= render 'searches/no_results' %>
+<% else %>
+  <% @search.results.each do |r| %>
+    <%= render 'searches/result', r: r %>
+  <% end %>
+<% end %>

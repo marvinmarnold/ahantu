@@ -88,6 +88,9 @@ en:
     show:
       result:
         min_price: "average nightly price"
+      no_results:
+        title: "No shops match your search"
+        subtitle: "Update your search on the left to see more results."
   shop:
     show:
       enter_booking_details: "Enter booking details"
