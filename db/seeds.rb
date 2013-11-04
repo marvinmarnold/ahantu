@@ -20,7 +20,7 @@ Seeder.create_room_tags
 Seeder.create_default_accounts
 
 FactoryGirl.create_list(:complete_shop_w_items,
-  20,
+  5,
   city: City.all.sample,
   user: MemberProfile.shop_owners.first.user
 )
