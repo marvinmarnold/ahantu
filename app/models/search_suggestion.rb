@@ -9,10 +9,19 @@ class SearchSuggestion < ActiveRecord::Base
     end
   end
 
+  def self.unindex_phrase(phrase, inc = 1)
+    unindex_term(phrase, inc)
+    phrase.split.each { |t| unindex_term(t, inc) }
+  end
+
+  def self.index_phrase(phrase, inc = 1)
+    index_term(phrase, inc)
+    phrase.split.each { |t| index_term(t, inc) }
+  end
+
   def self.index_shop(shop, inc = 1)
     shop.descriptions.each do |d|
-      index_term(d.name, inc)
-      d.name.split.each { |t| index_term(t, inc) }
+      index_description d
     end
     index_term(shop.city.name, inc)
     index_term(shop.province.name, inc)
@@ -34,7 +43,6 @@ class SearchSuggestion < ActiveRecord::Base
       $redis.zincrby "search-suggestions:#{prefix}", inc, term
     end
   end
-
 
   def self.unindex_term(term, inc = -1)
     term = term.downcase

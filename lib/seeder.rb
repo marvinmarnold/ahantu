@@ -14,15 +14,15 @@ module Seeder
           country = country[i].strip
           old_country = "something"
           # old_country = Country.create!(name: country)
-          puts "Created country #{country}"
+          # puts "Created country #{country}"
         elsif old_country && province = province?(row)
           province = province[i].strip
           old_province = Province.create!(name: province)
-          puts "Created province #{province}"#{}} (#{old_country.id})"
+          # puts "Created province #{province}"#{}} (#{old_country.id})"
         elsif old_province && district = district?(row)
           district = district[i].strip
           City.create!(name: district, province: old_province)
-          puts "Created district #{district} (#{old_province.id})"
+          # puts "Created district #{district} (#{old_province.id})"
         else
           puts "Did not know what to do with #{row}"
         end
@@ -126,12 +126,12 @@ module Seeder
 
     def create_room_facility_tags
       create_tags [
-        "Secure safe",
+        "Personal safe",
         "Interior bathroom",
         "Hot water",
         "Handicapped accessible",
         "Air conditioned",
-        "Heated"
+        "Heated rooms"
       ], Tag::RoomTag::FacilityTag
     end
 
@@ -172,7 +172,9 @@ module Seeder
     end
 
     def create_tags(tag_list, tag_class)
-      tag_list.each { |t| tag_class.create.descriptions.create(language_id: Language.default.id, name: t) }
+      tag_list.each do |t|
+        tag = tag_class.create
+        tag.descriptions.create(language_id: Language.default.id, name: t) end
     end
 
     def create_default_accounts

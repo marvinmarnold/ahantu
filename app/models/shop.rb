@@ -26,7 +26,6 @@ class Shop < Describable
   delegate :province,
       to: :city
 
-  after_save :index
   after_destroy :unindex
 
   def to_s
@@ -54,11 +53,6 @@ class Shop < Describable
   end
 
 private
-
-  def index
-    SearchSuggestion.unindex_shop self
-    SearchSuggestion.index_shop(self) if published?
-  end
 
   def unindex
     SearchSuggestion.unindex_shop self

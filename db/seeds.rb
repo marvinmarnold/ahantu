@@ -8,6 +8,8 @@
 require 'factory_girl'
 require 'seeder'
 
+$redis.flushall
+
 Language.create(name: "English", abbr: "en", default: true)
 Language.create(name: "Français", abbr: "fr")
 Language.create(name: "Kinyarwanda", abbr: "ky")
