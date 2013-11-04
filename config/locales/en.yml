@@ -64,7 +64,9 @@ en:
   item:
     edit:
       edit_links:
-        edit_shop: "< Edit shop"
+        edit_shop: "< Edit hotel"
+        add_item: "Create new room"
+        edit_items: "Edit rooms"
     form:
       price_adjustments:
         title: "Adjust seasonal prices"
@@ -123,6 +125,13 @@ en:
         customer: "a customer"
         shop_owner: "a shop owner"
   shop:
+    form:
+      descriptions:
+        title_each: "Description of shop"
+        remove_each: "Remove description"
+        add: "Add shop description"
+      publish:
+        title: "Publish shop"
     show:
       enter_booking_details: "Enter booking details"
       edit: "Edit shop"
@@ -131,8 +140,19 @@ en:
         directions: "Directions"
     edit:
       edit_links:
-        show: "<< Preview shop"
+        show: "<< Preview hotel"
         edit_item: "Edit item: %{item} >>"
+      title: "Manage hotel"
+      branding:
+        title: "Branding"
+        descriptions: "Hotel name and description"
+        logo: "Upload logo"
+      location:
+        title: "Location information"
+        address: "Hotel address"
+        directions: "Directions"
+      websites:
+        title: "Websites"
     index:
       title: "Your shops"
       list:

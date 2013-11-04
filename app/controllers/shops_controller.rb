@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
-  before_action :set_layout, only: [:edit, :show]
+  layout :set_layout_name, only: [:edit, :show]
 
   authorize_resource
 
@@ -96,9 +96,11 @@ class ShopsController < ApplicationController
       )
     end
 
-    def set_layout
-      if params["action"] == "edit" || can_and_want_shop_admin?
-        render layout: "leftbar"
+    def set_layout_name
+      if  params["action"] == "edit" || (searched? && can_and_want_shop_admin?)
+        "leftbar"
+      else
+        "application"
       end
     end
 end

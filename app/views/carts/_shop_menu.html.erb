@@ -1,13 +1,13 @@
-<%= simple_form_for(@cart) do |f| %>
-  <%= f.error_notification %>
+<% unless current_search.blank? %>
+  <%= simple_form_for(@cart) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="inputs">
-		<% @shop.items.each do |i| %>
-      <hr />
-		  <%= render 'items/show', item: i, f: f %>
-		<% end %>
-  </div>
+    <div class="inputs">
+  		<% @shop.items.each do |i| %>
+        <hr />
+  		  <%= render 'items/show', item: i, f: f %>
+  		<% end %>
+    </div>
 
-
+  <% end %>
 <% end %>
-

@@ -17,6 +17,10 @@ en:
           submit: "Search"
         checkin_at: "Check-in"
         checkout_at: "Check-out"
+      shop:
+        address1: "Address"
+        address2: "Address"
+        website1: "Websites"
     hints:
       search:
         keyword: "City, neighborhood, hotel name, etc."

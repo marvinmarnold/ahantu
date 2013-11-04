@@ -2,15 +2,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # user = current_user
+    can [:manage], Search
+
     if user.guest?
         can :set_language, Profile
     end
 
     if user.guest? || user.shopper?
         can [:manage], Cart
-        can [:create, :update, :read], Search
-        can [:read], Shop
+        can [:read], Shop, published: true
         can [:manage], CreditCard
     elsif user.salesperson?
         can :create_shop_owner, MemberProfile

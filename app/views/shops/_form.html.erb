@@ -2,25 +2,53 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <% if can? :publish, Shop %>
-      <%= f.input :published %>
-    <% else %>
-      <%= @shop.published %>
-    <% end %>
-    <%= render 'descriptions/form', f: f, klasses: "shops", klass_instance: @shop %>
-    <%= f.association :city %>
-    <%= f.input :logo %>
-    <%= f.input :address1 %>
-    <%= f.input :address2 %>
-    <%= f.input :directions %>
-    <%= f.input :website1 %>
-    <%= f.input :website2 %>
-    <%= f.input :website3 %>
-    <%= f.input :website4 %>
-    <%= f.input :website5 %>
+
+    <hr />
+
+    <h3><%= t "shop.form.publish.title"%></h3>
+    <%= f.input :published %>
+
+    <hr />
+    <h3><%= t "shop.edit.branding.title"%></h3>
+    <h4><%= t "shop.edit.branding.descriptions" %></h4>
+    <%= render 'descriptions/form', f: f, klass: "shop", klass_instance: @shop %>
+
+    <br/>
+
+    <h4><%= t "shop.edit.branding.logo" %></h4>
+    <%= f.input :logo, label: false %>
+
+    <hr />
+
+    <div class="row-fluid">
+      <div class="span6">
+          <h3><%= t "shop.edit.location.title"%></h3>
+          <h4><%= t "shop.edit.location.address" %></h4>
+          <%= f.input :address1 %>
+          <%= f.input :address2, label: false %>
+          <%= f.association :city %>
+          <h4><%= t "shop.edit.location.directions" %></h4>
+          <%= f.input :directions, label: false %>
+      </div>
+      <div class="span6">
+        <h3><%= t "shop.edit.websites.title"%></h3>
+        <%= f.input :website1 %>
+        <%= f.input :website2, label: false %>
+        <%= f.input :website3, label: false %>
+        <%= f.input :website4, label: false %>
+        <%= f.input :website5, label: false %>
+      </div>
+    </div>
+
+
+
+
+
   </div>
 
+  <hr />
+
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-large btn-block btn-success" %>
   </div>
 <% end %>

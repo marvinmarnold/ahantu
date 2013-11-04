@@ -1,12 +1,12 @@
-<h4><%= t("#{klasses}.form.descriptions.title") %></h4>
 <%= render "shared/custom_errors", errors: klass_instance.errors[:descriptions] %>
 <%= f.simple_fields_for :descriptions do |description_form| %>
   <%= render "descriptions/fields", f: description_form,
-                                  title: t("#{klasses}.form.descriptions.title_each"),
-                                  remove: t("#{klasses}.form.descriptions.remove_each"),
+                                  title: t("#{klass}.form.descriptions.title_each"),
+                                  remove: t("#{klass}.form.descriptions.remove_each"),
                                   skip_body: false %>
-   <br/><br/>
+<hr/>
 <% end %>
 <p>
-  <%= f.link_to_add t("#{klasses}.form.descriptions.add"), :descriptions, :class => 'btn btn-mini btn-success' %>
+  <%= f.link_to_add t("#{klass}.form.descriptions.add"), :descriptions, :class => 'btn btn-block' %>
 </p>
+<hr/>
