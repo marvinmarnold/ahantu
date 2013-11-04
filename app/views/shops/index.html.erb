@@ -1,15 +1,12 @@
-<h1>Listing shops</h1>
+<h1><%= t "shop.index.title" %></h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>City</th>
-      <th>Published</th>
-      <th>Logo</th>
-      <th>Address1</th>
-      <th>Address2</th>
-      <th>Directions</th>
-      <th></th>
+      <th><%= t "shop.index.list.header.shop" %></th>
+      <th><%= t "shop.index.list.header.published" %></th>
+      <th><%= t "shop.index.list.header.last_sale" %></th>
+      <th><%= t "shop.index.list.header.last_payment" %></th>
       <th></th>
       <th></th>
     </tr>
@@ -18,15 +15,20 @@
   <tbody>
     <% @shops.each do |shop| %>
       <tr>
-        <td><%= shop.city %></td>
-        <td><%= shop.published %></td>
-        <td><%= image_tag shop.logo_url(:preview) %></td>
-        <td><%= shop.address1 %></td>
-        <td><%= shop.address2 %></td>
-        <td><%= shop.directions %></td>
-        <td><%= link_to 'Show', shop %></td>
-        <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-        <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <h5><%= shop %></h5>
+          <muted><h6><%= shop_address shop %></h6></muted>
+          <%= image_tag shop.logo_url(:thumb) %>
+        </td>
+        <td><%= shop_published_warning(shop).html_safe %></td>
+        <td><%= "shop.address1" %></td>
+        <td><%= "address2" %></td>
+        <td><%= link_to t("shop.index.edit", name: shop.name), edit_shop_path(shop), class: "btn btn-large btn-action" %></td>
+        <td><%= link_to t("shop.index.destroy"), shop,
+          method: :delete,
+          data: { confirm: t("shop.index.confirm_destroy") },
+          class: "btn btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

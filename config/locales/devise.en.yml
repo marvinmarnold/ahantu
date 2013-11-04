@@ -7,6 +7,16 @@ en:
       confirmed_and_signed_in: "Your account was successfully confirmed. You are now signed in."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+    errors:
+      messages:
+        already_confirmed: "was already confirmed, please try signing in"
+        confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+        expired: "has expired, please request a new one"
+        not_found: "not found"
+        not_locked: "was not locked"
+        not_saved:
+          one: "1 error prohibited this %{resource} from being saved:"
+          other: "%{count} errors prohibited this %{resource} from being saved:"
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
@@ -24,6 +34,13 @@ en:
         subject: "Reset password instructions"
       unlock_instructions:
         subject: "Unlock Instructions"
+    member_profile_registrations:
+      member_profile:
+        signed_up: "Thanks for signing up. Search and start finding hotels now!"
+        updated: "Profile updated!"
+    member_profile_sessions:
+      member_profile:
+        signed_in: "Welcome back! Use our contact form to let us know if you need help with anything."
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
@@ -48,17 +65,3 @@ en:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
-  errors:
-    messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
-      not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
-  member_profile_registrations:
-    member_profile:
-      signed_up: "Thanks for signing up. Search and start finding hotels now!"
-      updated: "Profile updated!"

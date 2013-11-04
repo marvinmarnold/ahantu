@@ -133,6 +133,20 @@ en:
       edit_links:
         show: "<< Preview shop"
         edit_item: "Edit item: %{item} >>"
+    index:
+      title: "Your shops"
+      list:
+        header:
+          shop: "Shop"
+          published: "Visible to public"
+          last_sale: "Last sale"
+          last_payment: "Last payment"
+        published_warning:
+          published: "Published"
+          unpublished: "Not published"
+      edit: "Edit %{name}"
+      destroy: "Delete"
+      confirm_destroy: "Are you sure you want to do this? This action is irreversible. Consider deactivating the shop instead."
   tag:
     category_names:
       hotel_tag:
