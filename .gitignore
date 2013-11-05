@@ -22,3 +22,4 @@ pickle-email-*.html
 *.rdb
 /public/uploads/
 /public/assets/
+*~*

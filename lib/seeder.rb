@@ -131,7 +131,10 @@ module Seeder
         "Hot water",
         "Handicapped accessible",
         "Air conditioned",
-        "Heated rooms"
+        "Heated rooms",
+        "Television",
+        "Interior office space",
+        "Telephone"
       ], Tag::RoomTag::FacilityTag
     end
 
@@ -141,7 +144,8 @@ module Seeder
         "Refrigerator",
         "Room service",
         "Kitchen in room",
-        "Barbeque/brai access"
+        "Barbeque/brai access",
+        "Minibar"
       ], Tag::RoomTag::FoodDrinkTag
     end
 
@@ -202,5 +206,90 @@ module Seeder
       u
     end
 
+    def preload_hotels
+      path_to_sample_csvs = "vendor/hotels/sample"
+      Dir[Rails.root.join("#{path_to_sample_csvs}/*")].each do |samples_path|
+        sample_hotel = create_hotel_from_general_info samples_path
+        # preload_rooms_for_hotel sample_hotel, samples_path
+      end
+    end
+
+    def create_hotel_from_general_info(hotel_root_path)
+      general_info_csv_path = "#{hotel_root_path}/general/info.csv"
+
+      r = CSV.read(general_info_csv_path, headers: false, encoding: "UTF-8", col_sep: ",", row_sep: "\n")
+
+      sample_hotel = create_hotel_from_arr r
+      add_descriptions_to_sample_hotel_from_arr sample_hotel, r
+      add_tags_to_sample_hotel_from_arr sample_hotel, r
+
+      sample_hotel
+    end
+
+    def create_hotel_from_arr(r)
+      binding.pry
+      hotel_params ={
+        address1: get_v(r[8]),
+        address2: get_v([9]),
+        city: City.find_by_name(get_v(r[10])),
+        directions: get_v(r[11]),
+        website1: get_v(r[12]),
+        website2: get_v(r[13]),
+        website3: get_v(r[14])
+      }
+
+      Shop.create!(hotel_params)
+    end
+
+    def add_descriptions_to_sample_hotel_from_arr(sample_hotel, r)
+      sample_hotel.descriptions.create!(
+        language_id: Language.find_by_abbr(:en),
+        name: name_en,
+        description: desc_en
+      )
+
+      sample_hotel.descriptions.create!(
+        language_id: Language.find_by_abbr(:fr),
+        name: name_fr,
+        description: desc_fr
+      )
+    end
+
+    def add_tags_to_sample_hotel_from_arr(sample_hotel, r)
+      tag_klass = nil
+      r.each do |row|
+        tag_klass = get_v(row).match("^Tag")
+
+        unless tag_klass == nil
+          new_tag = sample_hotel.tags.create!
+          new_tag.descriptions.create(
+            type: tag_klass,
+            language_id: Language.find_by_abbr(:en),
+            name: get_v(row)
+          )
+        end
+      end
+    end
+
+    def get_v(r)
+      r[1]
+    end
+
+    def preload_rooms_for_hotel(hotel_root_path)
+
+    end
+
   end
 end
+
+      # CSV.foreach(path_to_csv,
+      #   headers: true,
+      #   encoding: "UTF-8",
+      #   col_sep: ",",
+      #   row_sep: "\n")
+      # do |row_vals|
+      #   number = clean_phone_number(row_vals[0])
+      #   c = CellPhone.find_or_create_by_value!(number)
+      #   first_name, middle_names, last_name = split_names row_vals[1]
+      #   p = c.participant
+      # end
