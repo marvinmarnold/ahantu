@@ -15,24 +15,6 @@ module Seeder
       (parent = last_at_depth[depth - 1]).blank? ? nil : parent
     end
 
-    def add_descriptions(describable, h)
-      h["descriptions"].each do |lang, description_yaml|
-        description_yaml.merge!({
-          language_id: Language.find_by_abbr(lang).id
-        })
-        describable.descriptions.create!(description_yaml)
-      end
-    end
-
-    def add_photos(photoable, h)
-      Dir.glob("#{h[:photos.to_s]}/*") do |pic_path|
-        Photo.create!(
-          photoable: photoable,
-          image: File.open(pic_path),
-        )
-      end
-    end
-
     def create_hotel_tags
       create_hotel_language_tags
       create_hotel_facility_tags
@@ -196,6 +178,7 @@ module Seeder
       sample_hotel = create_hotel_from_arr r
       add_descriptions_to_describable_from_arr sample_hotel, r
       add_tags_to_taggable_from_arr sample_hotel, r
+      add_photos_to_photoable sample_hotel, "#{hotel_root_path}/general"
 
       sample_hotel
     end
@@ -260,6 +243,7 @@ module Seeder
         sample_room = create_room_from_arr hotel, r
         add_descriptions_to_describable_from_arr sample_room, r
         add_tags_to_taggable_from_arr sample_room, r
+        add_photos_to_photoable sample_room, room_path
       end
     end
 
@@ -272,6 +256,15 @@ module Seeder
       }
 
       hotel.items.create!(room_params)
+    end
+
+    def add_photos_to_photoable(photoable, root_path)
+      Dir.glob("#{root_path}/photos/*") do |pic_path|
+        Photo.create!(
+          photoable: photoable,
+          photo: File.open(pic_path),
+        )
+      end
     end
 
   end
