@@ -1,4 +1,5 @@
 <h1><%= t "cart.show.title" %></h1>
+<h3><%= t "cart.show.description", hotel: @cart.shop %></h3>
 <p>
   <strong>Confirmation number:</strong>
   <%= @cart.order_confirmation %>

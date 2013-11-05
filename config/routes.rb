@@ -16,9 +16,13 @@ Ahantu::Application.routes.draw do
     resources :items
   end
 
-
   resources :credit_cards
-  resources :carts
+
+  resources :carts do
+    collection do
+      get 'one_click_checkout'
+    end
+  end
   get 'carts/:id/checkout' => 'carts#edit', as: :checkout
 
   ####################################

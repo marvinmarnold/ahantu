@@ -22,9 +22,10 @@
 en:
   booking:
     index:
-      title: "Order summary"
+      title: "Reservation summary"
       total: "Order total - %{total}"
-      room: "Room %{i}: %{item} - %{total}"
+      room: "Room %{i}: %{item}"
+      subtotal: "Room %{i} subotal: %{subtotal}"
   cart:
     edit:
       submit: "Checkout - %{price}"
@@ -37,7 +38,8 @@ en:
     new:
       book_room: "Book room"
     show:
-      title: "Order confirmation"
+      title: "Reservation confirmation"
+      description: "%{hotel} - ahantu.com"
     update:
       notice: "Order submitted. Please check your email for a copy of this order confirmation."
   credit_card:

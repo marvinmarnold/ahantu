@@ -3,11 +3,17 @@
     <%= f.error_notification %>
 
     <div class="inputs">
-  		<% @shop.items.each do |i| %>
-        <hr />
-  		  <%= render 'items/show', item: i, f: f %>
-  		<% end %>
+      <% @shop.items.each do |i| %>
+        <hr class="thick"/>
+        <%= render 'items/show', item: i, f: f %>
+      <% end %>
     </div>
+
+  <hr class="thick"/>
+
+  <div class="actions">
+    <%= f.button :submit, "Checkout", class: "btn btn-block btn-large btn-success" %>
+  </div>
 
   <% end %>
 <% end %>

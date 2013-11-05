@@ -17,7 +17,11 @@
 
     <% if can_one_click_checkout?(@cart) %>
       <% @cart.bookings.each do |b| %>
-        <div><%= f.button :submit, t("cart.new.book_room"), class: "btn btn-large btn-success pull-right" %></div>
+        <div>
+        <%= link_to t("cart.new.book_room"),
+          one_click_checkout_carts_path(item_id: item.id),
+          class: "btn btn-large btn-success pull-right" %>
+        </div>
       <% end %>
     <% end %>
 

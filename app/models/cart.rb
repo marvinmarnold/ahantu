@@ -23,12 +23,13 @@ class Cart < ActiveRecord::Base
   	0
   end
 
-  def self.new_from_search(search)
+  def self.new_from_search(search, item = nil)
     Cart.new.tap do |c|
       unless search.blank?
         search.room_searches.each do |rs|
-          c.bookings.build(adults: rs.adults)
+          c.bookings.build(adults: rs.adults, item: item)
         end
+        c.user = search.user
       end
     end
   end

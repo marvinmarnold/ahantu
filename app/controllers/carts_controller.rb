@@ -26,7 +26,6 @@ class CartsController < ApplicationController
         format.html { redirect_to edit_cart_path(@cart)}
       else
         format.html { render action: 'new' }
-
       end
     end
   end
@@ -53,6 +52,20 @@ class CartsController < ApplicationController
     @cart.destroy
     respond_to do |format|
       format.html { redirect_to carts_url }
+    end
+  end
+
+  def one_click_checkout
+    @cart = Cart.new_from_search(current_search, Item.find(params[:item_id].to_i))
+
+    respond_to do |format|
+      if @cart.save
+        @cart.fill_bookings(current_search)
+        session[current_cart_symbol] = @cart.id
+        format.html { redirect_to edit_cart_path(@cart)}
+      else
+        format.html { render action: 'new' }
+      end
     end
   end
 
