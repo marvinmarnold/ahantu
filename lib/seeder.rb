@@ -235,21 +235,23 @@ module Seeder
     def add_tags_to_sample_hotel_from_arr(sample_hotel, r)
       tag_klass = nil
       r.each do |row|
-        tag_klass = get_v(row).try(:match, "^Tag")
+        if get_l(row).try(:match, "^Tag")
+          tag_klass = get_l(row)
+        end
 
-        unless tag_klass.blank?
-          new_tag = sample_hotel.tags.create!
-          new_tag.descriptions.create(
-            type: tag_klass,
-            language_id: Language.find_by_abbr(:en),
-            name: get_v(row)
-          )
+        if tag_klass.present? && get_v(row).present?
+          tag = tag_klass.constantize.joins(:descriptions).where("descriptions.name ilike :k", {k: get_l(row)}).first
+          Tagging.create(tag: tag, taggable: sample_hotel)
         end
       end
     end
 
     def get_v(r)
       r[2]
+    end
+
+    def get_l(r)
+      r[1]
     end
 
     def preload_rooms_for_hotel(hotel_root_path)
