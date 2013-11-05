@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'factory_girl'
 require 'seeder'
 
@@ -20,17 +13,15 @@ Seeder.create_room_tags
 Seeder.create_default_accounts
 Seeder.preload_hotels
 
+Shop.all.each do |s|
+  s.responsibilities.create!(user_id: MemberProfile.salespersons.first.user.id)
+end
+
+
+
+
 # FactoryGirl.create_list(:complete_shop_w_items,
 #   5,
 #   city: City.all.sample,
 #   user: MemberProfile.shop_owners.first.user
 # )
-
-# FactoryGirl.create_list(:complete_shop_w_items,
-#   2,
-#   city: City.all.sample
-# )
-
-Shop.all.each do |s|
-  s.responsibilities.create!(user_id: MemberProfile.salespersons.first.user.id)
-end

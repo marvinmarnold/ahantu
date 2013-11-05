@@ -184,7 +184,7 @@ module Seeder
       path_to_sample_csvs = "vendor/hotels/sample"
       Dir[Rails.root.join("#{path_to_sample_csvs}/*")].each do |samples_path|
         sample_hotel = create_hotel_from_general_info samples_path
-        # preload_rooms_for_hotel sample_hotel, samples_path
+        preload_rooms_for_hotel sample_hotel, samples_path
       end
     end
 
@@ -194,8 +194,8 @@ module Seeder
       r = CSV.read(general_info_csv_path, headers: false, encoding: "UTF-8", col_sep: ",", row_sep: "\n")
 
       sample_hotel = create_hotel_from_arr r
-      add_descriptions_to_sample_hotel_from_arr sample_hotel, r
-      add_tags_to_sample_hotel_from_arr sample_hotel, r
+      add_descriptions_to_describable_from_arr sample_hotel, r
+      add_tags_to_taggable_from_arr sample_hotel, r
 
       sample_hotel
     end
@@ -217,22 +217,22 @@ module Seeder
       Shop.create!(hotel_params)
     end
 
-    def add_descriptions_to_sample_hotel_from_arr(sample_hotel, r)
-
-      sample_hotel.descriptions.create!(
+    #MAKE SURE DESCRIPTIONS ROWS 2-5
+    def add_descriptions_to_describable_from_arr(describable, r)
+      describable.descriptions.create!(
         language: Language.find_by_abbr(:en),
         name: get_v(r[2]),
         description: get_v(r[3])
       )
 
-      sample_hotel.descriptions.create!(
+      describable.descriptions.create!(
         language: Language.find_by_abbr(:fr),
         name: get_v(r[4]),
         description: get_v(r[5])
       )
     end
 
-    def add_tags_to_sample_hotel_from_arr(sample_hotel, r)
+    def add_tags_to_taggable_from_arr(taggable, r)
       tag_klass = nil
       r.each do |row|
         if get_l(row).try(:match, "^Tag")
@@ -241,7 +241,7 @@ module Seeder
 
         if tag_klass.present? && get_v(row).present?
           tag = tag_klass.constantize.joins(:descriptions).where("descriptions.name ilike :k", {k: get_l(row)}).first
-          Tagging.create(tag: tag, taggable: sample_hotel)
+          Tagging.create(tag: tag, taggable: taggable)
         end
       end
     end
@@ -254,21 +254,25 @@ module Seeder
       r[1]
     end
 
-    def preload_rooms_for_hotel(hotel_root_path)
+    def preload_rooms_for_hotel(hotel, hotel_root_path)
+      Dir[Rails.root.join("#{hotel_root_path}/rooms/*")].each do |room_path|
+        r = CSV.read("#{room_path}/info.csv", headers: false, encoding: "UTF-8", col_sep: ",", row_sep: "\n")
+        sample_room = create_room_from_arr hotel, r
+        add_descriptions_to_describable_from_arr sample_room, r
+        add_tags_to_taggable_from_arr sample_room, r
+      end
+    end
 
+    def create_room_from_arr(hotel, r)
+      room_params ={
+        quantity: get_v(r[8]),
+        default_price: get_v(r[9]),
+        max_adults: get_v(r[10]),
+        published: true
+      }
+
+      hotel.items.create!(room_params)
     end
 
   end
 end
-
-      # CSV.foreach(path_to_csv,
-      #   headers: true,
-      #   encoding: "UTF-8",
-      #   col_sep: ",",
-      #   row_sep: "\n")
-      # do |row_vals|
-      #   number = clean_phone_number(row_vals[0])
-      #   c = CellPhone.find_or_create_by_value!(number)
-      #   first_name, middle_names, last_name = split_names row_vals[1]
-      #   p = c.participant
-      # end
