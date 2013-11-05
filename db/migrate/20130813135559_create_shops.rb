@@ -2,7 +2,7 @@ class CreateShops < ActiveRecord::Migration
   def change
     create_table :shops do |t|
       t.belongs_to :user, index: true
-      t.belongs_to :city, index: true
+      t.belongs_to :location, index: true
       t.boolean :published, default: false
       t.string :logo
       t.string :address1

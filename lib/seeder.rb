@@ -3,42 +3,16 @@ require 'csv'
 module Seeder
   class << self
     @password = "password"
-    def gen_locations(filename)
-      old_country = nil
-      old_province = nil
-      i = 2
-
-      CSV.foreach(filename, :col_sep => "\t", headers: false) do |row|
-        row = row[0].strip
-        if country = country?(row)
-          country = country[i].strip
-          old_country = "something"
-          # old_country = Country.create!(name: country)
-          # puts "Created country #{country}"
-        elsif old_country && province = province?(row)
-          province = province[i].strip
-          old_province = Province.create!(name: province)
-          # puts "Created province #{province}"#{}} (#{old_country.id})"
-        elsif old_province && district = district?(row)
-          district = district[i].strip
-          City.create!(name: district, province: old_province)
-          # puts "Created district #{district} (#{old_province.id})"
-        else
-          puts "Did not know what to do with #{row}"
-        end
+    def gen_locations(filename="vendor/rwanda.csv")
+      last_at_depth = {}
+      CSV.foreach(Rails.root.join("#{filename}"), headers: false, encoding: "UTF-8", col_sep: ";", row_sep: "\n") do |row|
+        depth = row.size
+        last_at_depth[depth] =  Location.create!(name: row[depth-1], parent: parent_node(depth, last_at_depth))
       end
     end
 
-    def country?(text)
-      text.match /\ACOUNTRY( de )?(.+)\z/i
-    end
-
-    def district?(text)
-      text.match /\ADistrito( de )?(.+)\z/i
-    end
-
-    def province?(text)
-      text.match /\AProvincia( de )?(.+)\z/i
+    def parent_node(depth, last_at_depth)
+      (parent = last_at_depth[depth - 1]).blank? ? nil : parent
     end
 
     def add_descriptions(describable, h)
@@ -227,40 +201,43 @@ module Seeder
     end
 
     def create_hotel_from_arr(r)
-      binding.pry
       hotel_params ={
         address1: get_v(r[8]),
-        address2: get_v([9]),
-        city: City.find_by_name(get_v(r[10])),
+        address2: get_v(r[9]),
+        location: Location.find_by_name(get_v(r[10])),
         directions: get_v(r[11]),
         website1: get_v(r[12]),
         website2: get_v(r[13]),
-        website3: get_v(r[14])
+        website3: get_v(r[14]),
+        commission_pct: 0.1,
+        user: MemberProfile.where(role: "shop_owner").first.user,
+        published: true
       }
 
       Shop.create!(hotel_params)
     end
 
     def add_descriptions_to_sample_hotel_from_arr(sample_hotel, r)
+
       sample_hotel.descriptions.create!(
-        language_id: Language.find_by_abbr(:en),
-        name: name_en,
-        description: desc_en
+        language: Language.find_by_abbr(:en),
+        name: get_v(r[2]),
+        description: get_v(r[3])
       )
 
       sample_hotel.descriptions.create!(
-        language_id: Language.find_by_abbr(:fr),
-        name: name_fr,
-        description: desc_fr
+        language: Language.find_by_abbr(:fr),
+        name: get_v(r[4]),
+        description: get_v(r[5])
       )
     end
 
     def add_tags_to_sample_hotel_from_arr(sample_hotel, r)
       tag_klass = nil
       r.each do |row|
-        tag_klass = get_v(row).match("^Tag")
+        tag_klass = get_v(row).try(:match, "^Tag")
 
-        unless tag_klass == nil
+        unless tag_klass.blank?
           new_tag = sample_hotel.tags.create!
           new_tag.descriptions.create(
             type: tag_klass,
@@ -272,7 +249,7 @@ module Seeder
     end
 
     def get_v(r)
-      r[1]
+      r[2]
     end
 
     def preload_rooms_for_hotel(hotel_root_path)

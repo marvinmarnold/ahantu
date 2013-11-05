@@ -4,7 +4,7 @@ require 'random_helper'
 FactoryGirl.define do
   factory :shop do
     user { create(:shop_owner) }
-    city
+    location
     published false
     logo "MyString"
     address1 { Faker::Address.street_address }
@@ -20,7 +20,7 @@ FactoryGirl.define do
     factory :complete_shop do
         logo { RandomHelper.rand_shop_logo }
         published true
-        city { create(:complete_city) }
+        location { create(:location) }
         after(:create) do |c, evaluator|
             c.descriptions << create(:description,
                 describable: c,

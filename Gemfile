@@ -38,6 +38,7 @@ gem 'cancan'
 gem "rest-client", :require => 'rest_client'
 gem 'mailman', :require => false
 gem 'state_machine'
+gem 'ancestry'
 
 #3rd party access
 gem 'activemerchant'

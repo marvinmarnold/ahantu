@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103134247) do
+ActiveRecord::Schema.define(version: 20131105124001) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -59,15 +59,6 @@ ActiveRecord::Schema.define(version: 20131103134247) do
 
   add_index "carts", ["billing_information_id"], name: "index_carts_on_billing_information_id", using: :btree
   add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
-
-  create_table "cities", force: true do |t|
-    t.string   "name"
-    t.integer  "province_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
 
   create_table "confirmations", force: true do |t|
     t.text     "message"
@@ -147,6 +138,13 @@ ActiveRecord::Schema.define(version: 20131103134247) do
 
   add_index "line_items", ["booking_id"], name: "index_line_items_on_booking_id", using: :btree
 
+  create_table "locations", force: true do |t|
+    t.string   "ancestry"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "member_profiles", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -198,12 +196,6 @@ ActiveRecord::Schema.define(version: 20131103134247) do
   end
 
   add_index "price_adjustments", ["item_id"], name: "index_price_adjustments_on_item_id", using: :btree
-
-  create_table "provinces", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "responsibilities", force: true do |t|
     t.integer  "user_id"
@@ -266,7 +258,7 @@ ActiveRecord::Schema.define(version: 20131103134247) do
 
   create_table "shops", force: true do |t|
     t.integer  "user_id"
-    t.integer  "city_id"
+    t.integer  "location_id"
     t.boolean  "published",      default: false
     t.string   "logo"
     t.string   "address1"
@@ -285,7 +277,7 @@ ActiveRecord::Schema.define(version: 20131103134247) do
     t.datetime "updated_at"
   end
 
-  add_index "shops", ["city_id"], name: "index_shops_on_city_id", using: :btree
+  add_index "shops", ["location_id"], name: "index_shops_on_location_id", using: :btree
   add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
 
   create_table "sms", force: true do |t|

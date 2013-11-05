@@ -2,7 +2,7 @@ class Shop < Describable
   include Taggable
 
   belongs_to :user
-  belongs_to :city
+  belongs_to :location
   has_many :items
   has_many :bookings, through: :items
   has_many :carts, through: :bookings
@@ -17,14 +17,11 @@ class Shop < Describable
 
   mount_uploader :logo, LogoUploader
 
-  validates :city_id, :commission_pct, :user_id,
+  validates :location_id, :commission_pct, :user_id,
   	presence: true
 
   validates :published,
     :inclusion => { in: [true, false] }
-
-  delegate :province,
-      to: :city
 
   after_destroy :unindex
 
@@ -50,6 +47,10 @@ class Shop < Describable
 
   def published?
     published
+  end
+
+  def locations
+    location.ancestors.reverse
   end
 
 private
