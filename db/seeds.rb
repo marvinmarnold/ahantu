@@ -18,8 +18,6 @@ Shop.all.each do |s|
 end
 
 
-
-
 # FactoryGirl.create_list(:complete_shop_w_items,
 #   5,
 #   city: City.all.sample,

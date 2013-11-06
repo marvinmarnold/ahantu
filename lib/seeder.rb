@@ -260,11 +260,15 @@ module Seeder
       hotel.items.create!(room_params)
     end
 
+    #nasty dependencies on parallel locations
     def add_photos_to_photoable(photoable, root_path)
+      s3_url = "http://ahantuhotelsamples.s3.amazonaws.com/"
+
       Dir.glob("#{root_path}/photos/*") do |pic_path|
+        remote_pic_path = s3_url + pic_path.gsub("/home/pili/workspace/ahantu/vendor/hotels/sample/","")
         Photo.create!(
           photoable: photoable,
-          photo: File.open(pic_path),
+          remote_photo_url: remote_pic_path,
         )
       end
     end
