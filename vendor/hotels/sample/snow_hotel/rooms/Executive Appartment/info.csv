@@ -1,0 +1,40 @@
+,,
+,Part 1: Description,
+,Room name english,Suite – Executive Apartment
+,Room description english,"This room has enough space to sit with friends and family, a kitchen and a mini bar. Do you want to cook your prefered food? Count on the hotel staff and they will help you shopping whether you want extra ingredients, whether you need a hand of the chef in your appartment kitchen."
+,Rooom name french,Suite – Appartement
+,Room description french,"Cette chambre possede assez d'espace pour des amis ou famille, une cuisine ainsi qu'un mini bar."
+,,
+,Part 2: Information,
+,Quantity,0
+,Price,120
+,Max adults,0
+,,
+,Part 3: Tags,
+,+Tag::RoomTag::FacilityTag,
+,Personal safe,
+,Interior bathroom,x
+,Hot water,
+,Handicapped accessible,
+,Air conditioned,
+,Heated rooms,
+,Television,x
+,Interior office space,x
+,Telephone,x
+,+Tag::RoomTag::FoodDrinkTag,
+,Breakfast included,x
+,Refrigerator,x
+,Minibar,x
+,Room service,
+,Kitchen in room,
+,Barbeque/brai access,
+,+Tag::RoomTag::ViewTag,
+,Terrace,
+,Street view,
+,Beach view,
+,Nature view,x
+,City view,
+,+Tag::RoomTag::InternetTag,
+,Free wifi,x
+,Paid wifi,
+,No wifi,

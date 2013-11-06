@@ -1,0 +1,52 @@
+,
+,Part 1: Description
+,Hotel name english
+,Hotel description english
+,Hotel name french
+,Hotel description french
+,
+,Part 2: Information
+,Address 1
+,Address 2
+,Location
+,Directions
+,Website1
+,Website2
+,Website3
+,
+,Part 3: Tags
+,Tag::HotelTag::FacilityTag
+,Swimming pool
+,Gym
+,Meeting rooms/banquet hall
+,Elevator
+,Eco-friendly
+,Handicapped accessible
+,Hot water
+,Bar
+,Restaurant
+,Self catering
+,Pet friendly
+,Parking
+,Camping
+,Tag::HotelTag::ServiceTag
+,24-hour front desk
+,Laundry
+,Room service
+,Currency exchange
+,Printing
+,Baggage storage
+,Tag::HotelTag::InternetTag
+,Wifi available
+,Tag::HotelTag::LanguageTag
+,Italian
+,French
+,Spanish
+,English
+,German
+,Kinyarwanda
+,Swahili
+,Arabic
+,Portuguese
+,Swedish
+,Dutch
