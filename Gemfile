@@ -15,6 +15,8 @@ gem 'pg'
 gem 'sidekiq'
 gem 'unicorn'
 gem 'redis'
+gem 'sinatra', require: false
+gem 'slim'
 
 #UI - added
 gem 'devise'

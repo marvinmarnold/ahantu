@@ -84,6 +84,10 @@ class Cart < ActiveRecord::Base
     Cart.all.reject { |c| c.confirmed? }.find { |c| c.order_number == order_number }
   end
 
+  def responsibles
+    shop.responsibles
+  end
+
   ##############################################################################################################
   ### state machine
   ##############################################################################################################
@@ -149,10 +153,6 @@ private
     bookings.each { |b| b.confirm }
   end
 
-  def responsibles
-    shop.responsibles
-  end
-
   def submit_payment_authorization
     #TODO - paypal
     self.submit
@@ -179,11 +179,7 @@ private
   end
 
   def send_email_confirmation
-    #send email to all responsibles
-    responsibles.each do |r|
-      SalespersonMailer.booking_confirmation(self, r).deliver
-    end
-    #send email to shop
+    EmailsWorker.perform_async(self.id)
   end
 
   def prepare_for_checkout

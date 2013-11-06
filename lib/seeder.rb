@@ -35,7 +35,8 @@ module Seeder
         "Restaurant",
         "Self catering",
         "Pet friendly",
-        "Parking"
+        "Parking",
+        "Camping"
       ], Tag::HotelTag::FacilityTag
     end
 
@@ -138,12 +139,13 @@ module Seeder
     end
 
     def create_default_accounts
-      # create_profile("marvin@ahantu.com", "admin")
-      # create_profile("marvinmarnold@gmail.com", "salesperson")
-      # create_profile("maarnold@alum.mit.edu", "shopper")
-      create_profile("shopper@ahantu.com", "shopper")
-      create_profile("salesperson@ahantu.com", "salesperson")
-      create_profile("shop_owner@ahantu.com", "shop_owner")
+      create_profile("maarnold@alum.mit.edu", "shopper")
+      create_profile("marvinmarnold@gmail.com", "salesperson")
+      create_profile("marvin@ahantu.com", "shop_owner")
+
+      # create_profile("shopper@ahantu.com", "shopper")
+      # create_profile("salesperson@ahantu.com", "salesperson")
+      # create_profile("shop_owner@ahantu.com", "shop_owner")
     end
 
     def create_profile(email, role)

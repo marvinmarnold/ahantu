@@ -53,6 +53,10 @@ class Shop < Describable
     location.ancestors.reverse
   end
 
+  def owner
+    self.user
+  end
+
 private
 
   def unindex

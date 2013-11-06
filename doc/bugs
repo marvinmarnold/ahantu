@@ -7,3 +7,8 @@ finish railscasts episode on aws s3 to do upload in background
 can't see hotel if no dates inputted.
 welcome message references contact form but no link and form does not exist
 can assign an item to a cart that belongs to shop item does not belong to
+
+todo
+1) emails - to store owner, responsibles (salespeople), shopper/guest after checkout
+2) paypal payments are working.
+3) salesperson creates shop, assigns to shop_owner account

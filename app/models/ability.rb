@@ -6,6 +6,7 @@ class Ability
 
     if user.guest?
         can :set_language, Profile
+        can :register_as_shop_owner, MemberProfile
     end
 
     if user.guest? || user.shopper?

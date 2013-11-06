@@ -6,7 +6,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = current_user.browsable_carts
+    redirect_to new_search_path
   end
 
   # GET /carts/1
@@ -37,6 +37,7 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
+    redirect_to @cart unless @cart.shopping?
     respond_to do |format|
       if @cart.update(cart_params) && @cart.authorize_payment
         format.html { redirect_to @cart, notice: I18n.t("cart.update.notice") }
@@ -49,10 +50,7 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart.destroy
-    respond_to do |format|
-      format.html { redirect_to carts_url }
-    end
+    redirect_to new_search_path
   end
 
   def one_click_checkout

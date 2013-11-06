@@ -10,7 +10,7 @@
     <% end %>
 
     <h3><%= t "cart.edit.contact_information" %></h3>
-    <%= f.input :email, required: true %>
+    <%= f.input :email, required: true, input_html: { value: current_user.email } %>
     <%= f.input :phone, required: true %>
 
     <h3><%= t "cart.edit.billing_information" %></h3>

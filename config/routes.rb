@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Ahantu::Application.routes.draw do
 
   resources :locations
@@ -17,6 +19,8 @@ Ahantu::Application.routes.draw do
   end
 
   resources :credit_cards
+
+  mount Sidekiq::Web, at: "/sidekiq"
 
   resources :carts do
     collection do

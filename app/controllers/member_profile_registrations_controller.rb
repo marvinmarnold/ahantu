@@ -4,7 +4,6 @@ class MemberProfileRegistrationsController < DeviseRegistrationsController
   def create
     build_resource(sign_up_params)
 
-
     if resource.save
       current_user.move_to_profile(resource)
       if resource.active_for_authentication?
@@ -23,7 +22,8 @@ class MemberProfileRegistrationsController < DeviseRegistrationsController
   end
 
   def  roles_can_assign
-    ["test"]
+    roles = []
+    roles << "shop_owner" if can? :register_as_shop_owner
   end
   helper_method :roles_can_assign
 
