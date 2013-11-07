@@ -14,9 +14,11 @@ FactoryGirl.define do
     	max_adults { RandomHelper.r1(10) }
     	quantity { RandomHelper.r1(10) }
         after(:create) do |c, evaluator|
+            language = Language.default
+            language ||= create(:language)
             c.descriptions << create(:description,
                 describable: c,
-                language: Language.default
+                language: language
             )
             RandomHelper.r1(4).times { create(:tagging, taggable: c, tag: Tag::RoomTag.all.sample) }
             RandomHelper.r1(10).times { create(:photo, photoable: c) }

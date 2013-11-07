@@ -26,7 +26,7 @@ class CreditCardsController < ApplicationController
   # POST /credit_cards
   # POST /credit_cards.json
   def create
-    @credit_card = current_user.credit_cards.build(credit_card_params)
+    @credit_card = current_user.credit_cards.build(credit_card_params.merge({ip_address: request.remote_ip}))
     respond_to do |format|
       if @credit_card.save
         format.html { redirect_to checkout_path(current_cart), notice: I18n.t("credit_card.create.notice") }
@@ -39,13 +39,13 @@ class CreditCardsController < ApplicationController
   # PATCH/PUT /credit_cards/1
   # PATCH/PUT /credit_cards/1.json
   def update
-        respond_to do |format|
-          if @credit_card.update(credit_card_params)
-            format.html { redirect_to @credit_card, notice: 'Billing information was successfully updated.' }
-          else
-            format.html { render action: 'edit' }
-          end
-        end
+    respond_to do |format|
+      if @credit_card.update(credit_card_params)
+        format.html { redirect_to @credit_card, notice: 'Billing information was successfully updated.' }
+      else
+        format.html { render action: 'edit' }
+      end
+    end
   end
 
   # DELETE /credit_cards/1

@@ -8,11 +8,18 @@ class Cart < ActiveRecord::Base
   validates :user_id,
     presence: true
 
+  delegate :credit_card,
+    to: :billing_information
+
   scope :submitted, lambda { where.not(state: :shopping) }
   scope :unsubmitted, lambda { where(state: :shopping) }
 
   def total
   	subtotal + taxes
+  end
+
+  def paypal_total
+    total * 100
   end
 
   def subtotal
@@ -95,7 +102,6 @@ class Cart < ActiveRecord::Base
   state_machine :state, :initial => :shopping do
 
     state :authorizing_payment do
-      before_validation :set_order_confirmation
       validates :billing_information_id, :email, :phone, :payment_amount, :checkout_at, :order_confirmation,
         presence: true
     end
@@ -154,8 +160,13 @@ private
   end
 
   def submit_payment_authorization
-    #TODO - paypal
-    self.submit
+    response = ::STANDARD_GATEWAY.authorize(paypal_total, credit_card, ip: billing_information.ip_address)
+    if response.success?
+      # gateway.capture(1000, response.authorization, ip: billing_information.ip_address)
+      return true
+    else
+      return false
+    end
   end
 
   def send_cancelation
@@ -183,6 +194,7 @@ private
   end
 
   def prepare_for_checkout
+    set_order_confirmation
     set_payment_amount
     set_checkout_at
   end

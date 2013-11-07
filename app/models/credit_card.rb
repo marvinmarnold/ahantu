@@ -25,17 +25,7 @@ class CreditCard < BillingInformation
     self[:last_name] = n
   end
 
-private
-
-	def validate_card
-    if !credit_card.valid?
-      credit_card.errors.full_messages.each do |message|
-        errors["base"] << message
-      end
-    end
-  end
-
-	def credit_card
+  def credit_card
     @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
       :brand              => brand,
       :number             => number,
@@ -46,5 +36,14 @@ private
     )
   end
 
+private
+
+	def validate_card
+    if !credit_card.valid?
+      credit_card.errors.full_messages.each do |message|
+        errors["base"] << message
+      end
+    end
+  end
 
 end

@@ -12,6 +12,7 @@ class Shop < Describable
   has_many :responsibilities
   has_many :responsibles, through: :responsibilities, source: :user
   has_many :tags, through: :taggings, source: :tag
+  has_many :hotel_tags, through: :taggings, source: :tag, class_name: "Tag::HotelTag"
   scope   :published, lambda { where(published: true) }
   scope   :not_shop, lambda { |shop| where.not(id: shop.id) }
 

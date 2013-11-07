@@ -22,9 +22,11 @@ FactoryGirl.define do
         published true
         location { create(:location) }
         after(:create) do |c, evaluator|
+            language = Language.default
+            language ||= create(:language)
             c.descriptions << create(:description,
                 describable: c,
-                language: Language.default
+                language: language
             )
             RandomHelper.r1(4).times { create(:tagging, taggable: c, tag: Tag::HotelTag.all.sample) }
             RandomHelper.r1(10).times { create(:photo, photoable: c) }

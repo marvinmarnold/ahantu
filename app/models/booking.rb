@@ -45,7 +45,7 @@ class Booking < ActiveRecord::Base
   end
 
   def total
-    quantity * line_items.map { |l| l.total }.reduce(:+)
+    quantity * line_item_unit_price
   end
 
   def confirm
@@ -53,6 +53,10 @@ class Booking < ActiveRecord::Base
   end
 
  private
+
+ def line_item_unit_price
+  line_items.map { |l| l.total }.reduce(:+) || 0
+ end
 
  	def set_vals
  		self.name_at_checkout = item.name

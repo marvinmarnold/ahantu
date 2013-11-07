@@ -3,13 +3,15 @@
 FactoryGirl.define do
   factory :tag do
   	after(:create) do |c, evaluator|
+      language = Language.default
+      language ||= create(:language)
       c.descriptions << create(:description,
         describable: c,
-        language: Language.default
+        language: language
       )
     end
 
-    factory :hotel_tag, class: "HotelTag" do
+    factory :hotel_tag, class: "Tag::HotelTag" do
     end
   end
 end
