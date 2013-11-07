@@ -42,8 +42,8 @@ Ahantu::Application.configure do
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
     paypal_login = 'marvin-facilitator_api1.ahantu.com'
-    paypal_password = 'AfQB7xBEGHT0Dx5rx8yZPL6B_plt2u8cvzw6e_9cx8Hcm8ftFRKho-_OBzj1'
-    paypal_signature = 'ENhs2hAGOuOykjmqVL00ht9KXaKbc9KpIbTLlKz1pzUhTt2fUOmFRUMTCXfh'
+    paypal_password = '1376327303'
+    paypal_signature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31AFC3EQLJ5v9zAI.4SXEg8jQMRU49'
     paypal_options = {
       :login => paypal_login,
       :password => paypal_password,
