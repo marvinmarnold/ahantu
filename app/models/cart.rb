@@ -113,7 +113,7 @@ class Cart < ActiveRecord::Base
 
     before_transition :on => :authorize_payment, :do => :prepare_for_checkout
     event :authorize_payment do
-      transition :shopping => :authorizing_payment
+      transition :shopping => :authorizing_payment, if: -> { submit_payment_authorization }
     end
 
     event :submit do
@@ -148,7 +148,7 @@ private
     self[:order_confirmation] = SecureRandom.hex.upcase[0,5] + order_number
   end
 
-  def process_submission
+  def finalize_submission
     send_confirmation
     clear_unused_carts
   end
@@ -163,11 +163,7 @@ private
 
   def submit_payment_authorization
     response = ::STANDARD_GATEWAY.authorize(paypal_total, credit_card, ip: billing_information.ip_address)
-    if response.success?
-      submit!
-    else
-      cancle_payment
-    end
+    response.success?
   end
 
   def send_cancelation

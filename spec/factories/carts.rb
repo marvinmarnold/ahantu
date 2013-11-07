@@ -17,12 +17,12 @@ FactoryGirl.define do
         ) }
       end
 
-      factory :cart_authorizing_payment do
+      factory :cart_ready_to_authorize do
         billing_information { create(:credit_card, user: user) }
         email "marvin@ahantu.com"
         phone "+34666891897"
         after(:create) do |c, evaluator|
-          c.authorize_payment
+          c.send :prepare_for_checkout
         end
 
         factory :cart_submitted do
