@@ -164,7 +164,6 @@ private
 
   def submit_payment_authorization
     response = ::STANDARD_GATEWAY.authorize(paypal_total, credit_card, ip: billing_information.ip_address)
-    binding.pry
     response.success?
   end
 
