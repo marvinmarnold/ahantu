@@ -6,6 +6,8 @@ class MemberProfile < Profile
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  attr_accessor :suggested_role
+
   after_create :send_welcome_email
 
   validates :role, presence: true

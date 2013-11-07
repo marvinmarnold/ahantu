@@ -122,10 +122,12 @@ en:
       switch_to: "Switch to"
       title: "You are currently viewing in %{language}"
     admin_preview_role:
-        button: "Switch perspective"
-        title: "You are currently viewing as %{role}"
-        customer: "a customer"
-        shop_owner: "a shop owner"
+      button: "Switch perspective"
+      title: "You are currently viewing as %{role}"
+      customer: "a customer"
+      shop_owner: "a shop owner"
+    register_as_shop_owner:
+      link: "Publish your hotel"
   shop:
     form:
       descriptions:

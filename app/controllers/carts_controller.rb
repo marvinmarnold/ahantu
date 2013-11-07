@@ -37,7 +37,7 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
-    redirect_to @cart unless @cart.shopping?
+    return redirect_to @cart unless @cart.shopping?
     respond_to do |format|
       if @cart.update(cart_params) && @cart.authorize_payment
         @cart.submit

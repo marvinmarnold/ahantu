@@ -1,8 +1,8 @@
 <h3>Find a hotel anywhere in Rwanda</h3>
 <%= render 'searches/homepage/form' %>
-
 <hr/>
-
+<%= link_to t("shared.register_as_shop_owner.link"), new_member_profile_registration_path(suggested_role_symbol => "shop_owner"), class: "btn btn-link" %>
+<hr/>
 <div class="row-fluid">
   <div class="span6">
     <h4>Featured hotels</h4>

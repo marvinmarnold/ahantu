@@ -78,6 +78,11 @@ protected
     :current_cart_id
   end
 
+  def suggested_role_symbol
+    :type
+  end
+  helper_method :suggested_role_symbol
+
   def clear_return_to
     session.delete(:return_to)
   end
@@ -89,6 +94,7 @@ protected
   def configure_permitted_devise_profile_parameters
     devise_parameter_sanitizer.for(:sign_up) << :language_id
     devise_parameter_sanitizer.for(:account_update) << :language_id
+    devise_parameter_sanitizer.for(:sign_up) << :role
   end
 
   def admin_preview_role_sym

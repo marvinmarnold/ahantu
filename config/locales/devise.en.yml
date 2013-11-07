@@ -41,6 +41,7 @@ en:
     member_profile_sessions:
       member_profile:
         signed_in: "Welcome back! Use our contact form to let us know if you need help with anything."
+        signed_out: "Peace."
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."

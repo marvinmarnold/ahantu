@@ -2,8 +2,9 @@ class MemberProfileRegistrationsController < DeviseRegistrationsController
   layout "centered", only: [:new, :create]
 
   def create
+    ensure_can_register_as_role
     build_resource(sign_up_params)
-
+    # binding.pry
     if resource.save
       current_user.move_to_profile(resource)
       if resource.active_for_authentication?
@@ -21,10 +22,10 @@ class MemberProfileRegistrationsController < DeviseRegistrationsController
     end
   end
 
-  def  roles_can_assign
-    roles = []
-    roles << "shop_owner" if can? :register_as_shop_owner
+  def ensure_can_register_as_role
+    suggested_role = params[:member_profile][:suggested_role]
+    if suggested_role.present? && can?("register_as_#{suggested_role}".to_sym, MemberProfile)
+      params[:member_profile][:role] ||= suggested_role
+    end
   end
-  helper_method :roles_can_assign
-
 end
