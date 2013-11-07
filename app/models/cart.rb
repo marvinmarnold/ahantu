@@ -116,6 +116,7 @@ class Cart < ActiveRecord::Base
       transition :shopping => :authorizing_payment, if: -> { submit_payment_authorization }
     end
 
+    after_transition :on => :submit, :do => :finalize_sumbission
     event :submit do
       transition :authorizing_payment => :submitted
     end

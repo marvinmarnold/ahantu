@@ -40,6 +40,7 @@ class CartsController < ApplicationController
     redirect_to @cart unless @cart.shopping?
     respond_to do |format|
       if @cart.update(cart_params) && @cart.authorize_payment
+        @cart.submit
         format.html { redirect_to @cart, notice: I18n.t("cart.update.notice") }
       else
         format.html { render action: 'edit' }
