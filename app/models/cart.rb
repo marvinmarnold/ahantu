@@ -113,7 +113,7 @@ class Cart < ActiveRecord::Base
 
     before_transition :on => :authorize_payment, :do => :prepare_for_checkout
     event :authorize_payment do
-      transition :shopping => :authorizing_payment, if: -> { submit_payment_authorization }
+      transition :shopping => :authorizing_payment, :if => lambda {|cart| cart.send :submit_payment_authorization }
     end
 
     after_transition :on => :submit, :do => :finalize_sumbission
@@ -164,6 +164,7 @@ private
 
   def submit_payment_authorization
     response = ::STANDARD_GATEWAY.authorize(paypal_total, credit_card, ip: billing_information.ip_address)
+    binding.pry
     response.success?
   end
 
