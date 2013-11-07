@@ -111,13 +111,11 @@ class Cart < ActiveRecord::Base
         presence: true
     end
 
-    before_transition :shopping => :authorizing_payment, :do => :prepare_for_checkout
-    after_transition :on => :authorize_payment, :do => :submit_payment_authorization
+    before_transition :on => :authorize_payment, :do => :prepare_for_checkout
     event :authorize_payment do
       transition :shopping => :authorizing_payment
     end
 
-    after_transition :on => :submit, :do => :process_submission
     event :submit do
       transition :authorizing_payment => :submitted
     end
@@ -128,6 +126,10 @@ class Cart < ActiveRecord::Base
 
     event :confirm_payment do
       transition :processing_payment => :payment_received
+    end
+
+    event :cancle_payment do
+      transition [:authorizing_payment] => :shopping
     end
 
     event :cancle do
@@ -162,10 +164,9 @@ private
   def submit_payment_authorization
     response = ::STANDARD_GATEWAY.authorize(paypal_total, credit_card, ip: billing_information.ip_address)
     if response.success?
-      # gateway.capture(1000, response.authorization, ip: billing_information.ip_address)
-      return true
+      submit!
     else
-      return false
+      cancle_payment
     end
   end
 
@@ -197,6 +198,7 @@ private
     set_order_confirmation
     set_payment_amount
     set_checkout_at
+    save
   end
 
   def set_checkout_at
