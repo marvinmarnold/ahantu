@@ -1,0 +1,31 @@
+<h1>Listing shop_requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>State</th>
+      <th>Request</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shop_requests.each do |shop_request| %>
+      <tr>
+        <td><%= shop_request.user %></td>
+        <td><%= shop_request.state %></td>
+        <td><%= shop_request.request %></td>
+        <td><%= link_to 'Show', shop_request %></td>
+        <td><%= link_to 'Edit', edit_shop_request_path(shop_request) %></td>
+        <td><%= link_to 'Destroy', shop_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shop request', new_shop_request_path %>

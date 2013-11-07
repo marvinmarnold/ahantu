@@ -1,0 +1,2 @@
+module ShopRequestsHelper
+end

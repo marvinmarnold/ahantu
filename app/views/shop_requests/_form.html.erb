@@ -1,0 +1,13 @@
+<%= simple_form_for(@shop_request) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.association :user %>
+    <%= f.input :state %>
+    <%= f.input :request %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

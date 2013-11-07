@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 Ahantu::Application.routes.draw do
 
+  resources :shop_requests
+
   resources :locations
 
   resources :search_suggestions

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @shop_request.user %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @shop_request.state %>
+</p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @shop_request.request %>
+</p>
+
+<%= link_to 'Edit', edit_shop_request_path(@shop_request) %> |
+<%= link_to 'Back', shop_requests_path %>
