@@ -1,7 +1,7 @@
 class GuestProfile < Profile
 
-  def guest?
-  	true
+  def role
+  	"guest"
   end
 
   def to_s

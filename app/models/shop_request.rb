@@ -1,6 +1,7 @@
 class ShopRequest < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :salesperson, class_name: "User"
+  belongs_to :shop_owner_profile, class_name: "MemberProfile"
+  belongs_to :salesperson_profile, class_name: "MemberProfile"
+  belongs_to :location
 
   validates :shop_name, :location_id,
     presence: true

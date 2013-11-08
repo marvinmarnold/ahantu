@@ -1,13 +1,12 @@
-<h1>Listing shop_requests</h1>
+<h1><%= t "shop_request.index.title" %></h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>State</th>
-      <th>Request</th>
-      <th></th>
-      <th></th>
+      <th><%= t "shop_request.index.table.heading.name" %></th>
+      <th><%= t "shop_request.index.table.heading.state" %></th>
+      <th><%= t "shop_request.index.table.heading.request" %></th>
+      <th><%= t "shop_request.index.table.heading.date" %></th>
       <th></th>
     </tr>
   </thead>
@@ -15,17 +14,12 @@
   <tbody>
     <% @shop_requests.each do |shop_request| %>
       <tr>
-        <td><%= shop_request.user %></td>
+        <td><%= shop_request.shop_name %></td>
         <td><%= shop_request.state %></td>
         <td><%= shop_request.request %></td>
-        <td><%= link_to 'Show', shop_request %></td>
-        <td><%= link_to 'Edit', edit_shop_request_path(shop_request) %></td>
-        <td><%= link_to 'Destroy', shop_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= shop_request.created_at %></td>
+        <td><%= link_to 'Destroy', shop_request, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Shop request', new_shop_request_path %>

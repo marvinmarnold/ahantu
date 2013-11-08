@@ -8,23 +8,27 @@ class Profile < ActiveRecord::Base
   before_validation :set_language
 
   def guest?
-    false
+    role?("guest")
   end
 
   def admin?
-    false
+    role?("admin")
   end
 
   def salesperson?
-    false
+    role?("salesperson")
   end
 
   def shop_owner?
-    false
+    role?("shop_owner")
   end
 
   def shopper?
-    false
+    role?("shopper")
+  end
+
+  def role?(role)
+    self.role.downcase == role
   end
 
   def locale

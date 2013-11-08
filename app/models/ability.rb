@@ -11,7 +11,7 @@ class Ability
 
     if user.guest? || user.shopper?
         can [:manage], Cart
-        can [:read], Shop, published: true
+        can [:show], Shop, published: true
         can [:manage], CreditCard
     elsif user.salesperson?
         can :create_shop_owner, MemberProfile

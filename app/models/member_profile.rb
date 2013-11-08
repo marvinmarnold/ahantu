@@ -26,29 +26,7 @@ class MemberProfile < Profile
 
   ROLES = %w[admin salesperson shop_owner shopper]
 
-  def guest?
-    false
-  end
 
-  def admin?
-    role?("admin")
-  end
-
-  def salesperson?
-    role?("salesperson")
-  end
-
-  def shop_owner?
-    role?("shop_owner")
-  end
-
-  def shopper?
-    role?("shopper")
-  end
-
-  def role?(role)
-    self.role.downcase == role
-  end
 
   def to_s
     self.email

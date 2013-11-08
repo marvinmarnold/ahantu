@@ -3,7 +3,7 @@
 
   <div class="inputs">
     <%= f.input :shop_name %>
-    <%= f.input :location %>
+    <%= f.association :location, required: true %>
     <%= f.input :request %>
   </div>
 

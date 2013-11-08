@@ -1,12 +1,13 @@
 <%= render "shared/top" %>
-
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span10 offset1">
-      <%= render "shared/errors" %>
-      <%= yield %>
+  <div id="content">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span10 offset1">
+          <%= render "shared/errors" %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
-  </div>
 </div>
 
 <%= render "shared/bottom" %>

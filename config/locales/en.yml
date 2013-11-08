@@ -159,6 +159,7 @@ en:
         title: "Websites"
     index:
       title: "Your hotels"
+      requests_link: "View pending requests for new hotel"
       list:
         header:
           shop: "Shop"
@@ -175,6 +176,14 @@ en:
     welcome_email:
       subject: "Welcome to ahantu.com"
   shop_request:
+    index:
+      title: "Your hotel registration history"
+    table:
+      heading:
+        name: "Hotel name"
+        state: "Status"
+        request: "Details"
+        date: "Submitted on"
     new:
       title: "Register a new hotel"
   tag:
