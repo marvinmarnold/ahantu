@@ -57,7 +57,7 @@ class MemberProfile < Profile
 private
 
   def send_welcome_email
-    EmailsWorker.send_welcome_email_async(self.id)
+    WelcomeEmailWorker.perform_async(self.id)
   end
 
   def set_shopper_role

@@ -188,7 +188,7 @@ private
   end
 
   def send_email_confirmation
-    EmailsWorker.send_booking_confirmations_async(self.id)
+    BookingConfirmationWorker.perform_async(self.id)
   end
 
   def prepare_for_checkout
