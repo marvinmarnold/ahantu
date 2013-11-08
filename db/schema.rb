@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106203720) do
+ActiveRecord::Schema.define(version: 20131107234058) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -236,6 +236,21 @@ ActiveRecord::Schema.define(version: 20131106203720) do
 
   add_index "searches", ["shop_id"], name: "index_searches_on_shop_id", using: :btree
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
+
+  create_table "shop_requests", force: true do |t|
+    t.integer  "shop_owner_profile_id"
+    t.integer  "salesperson_profile_id"
+    t.integer  "location_id"
+    t.string   "state"
+    t.text     "request"
+    t.string   "shop_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shop_requests", ["location_id"], name: "index_shop_requests_on_location_id", using: :btree
+  add_index "shop_requests", ["salesperson_profile_id"], name: "index_shop_requests_on_salesperson_profile_id", using: :btree
+  add_index "shop_requests", ["shop_owner_profile_id"], name: "index_shop_requests_on_shop_owner_profile_id", using: :btree
 
   create_table "shopper_profiles", force: true do |t|
     t.integer  "language_id"

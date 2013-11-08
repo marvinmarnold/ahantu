@@ -6,9 +6,13 @@ class MemberProfile < Profile
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :shop_requests, foreign_key: :shop_owner_profile_id, class_name: "ShopRequest"
+  has_many :assigned_shop_request, foreign_key: :salesperson_profile_id, class_name: "ShopRequest"
+
   attr_accessor :suggested_role
 
   after_create :send_welcome_email
+  after_create :create_shop_request_if_shop_owner
 
   validates :role, presence: true
   validate :valid_role?
@@ -31,11 +35,11 @@ class MemberProfile < Profile
   end
 
   def salesperson?
-    role?("salesperson") || admin?
+    role?("salesperson")
   end
 
   def shop_owner?
-    role?("shop_owner") || salesperson?
+    role?("shop_owner")
   end
 
   def shopper?
@@ -65,4 +69,9 @@ private
     ROLES.include?(self.role) ? true : errors[:role] << I18n.t('simple_form.error_notification.member_profile.invalid_role')
   end
 
+  def create_shop_request_if_shop_owner
+    shop_requests.create(
+      request: "Automatic request from account creation"
+    ) if shop_owner?
+  end
 end

@@ -171,6 +171,9 @@ en:
       edit: "Edit %{name}"
       destroy: "Delete"
       confirm_destroy: "Are you sure you want to do this? This action is irreversible. Consider deactivating the shop instead."
+  shop_request:
+    new:
+      title: "Register a new hotel"
   tag:
     category_names:
       hotel_tag:

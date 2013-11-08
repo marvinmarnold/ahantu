@@ -21,6 +21,7 @@ class Ability
         can [:update, :destroy, :read], Shop
         can :manage, Item
         can :read, Cart
+        can [:create, :read], ShopRequest
     end
 
     # Define abilities for the passed in user here. For example:
