@@ -24,25 +24,21 @@
       <div class="span6">
           <h3><%= t "shop.edit.location.title"%></h3>
           <h4><%= t "shop.edit.location.address" %></h4>
-          <%= f.input :address1 %>
+          <%= f.input :address1, label: false %>
           <%= f.input :address2, label: false %>
-          <%= f.association :city %>
+          <%= f.association :location %>
           <h4><%= t "shop.edit.location.directions" %></h4>
           <%= f.input :directions, label: false %>
       </div>
       <div class="span6">
         <h3><%= t "shop.edit.websites.title"%></h3>
-        <%= f.input :website1 %>
+        <%= f.input :website1, label: false %>
         <%= f.input :website2, label: false %>
         <%= f.input :website3, label: false %>
         <%= f.input :website4, label: false %>
         <%= f.input :website5, label: false %>
       </div>
     </div>
-
-
-
-
 
   </div>
 

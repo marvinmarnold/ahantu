@@ -178,12 +178,13 @@ en:
   shop_request:
     index:
       title: "Your hotel registration history"
-    table:
-      heading:
-        name: "Hotel name"
-        state: "Status"
-        request: "Details"
-        date: "Submitted on"
+      shops_link: "View registered shops"
+      table:
+        heading:
+          name: "Hotel name"
+          state: "Status"
+          request: "Details"
+          date: "Submitted on"
     new:
       title: "Register a new hotel"
   tag:

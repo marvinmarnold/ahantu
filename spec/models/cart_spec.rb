@@ -14,7 +14,7 @@ describe Cart do
     end
   end
 
-  it "authorizes payments through paypal", focus: true do
+  it "authorizes payments through paypal" do
     @cart = create(:cart_ready_to_authorize)
     expect(@cart.send(:submit_payment_authorization)).to be_true
   end

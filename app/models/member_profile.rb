@@ -49,6 +49,8 @@ private
 
   def create_shop_request_if_shop_owner
     shop_requests.create(
+      shop_name: "First shop from account creation",
+      location: Location.first,
       request: "Automatic request from account creation"
     ) if shop_owner?
   end
