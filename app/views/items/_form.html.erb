@@ -2,15 +2,16 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= render 'descriptions/form', f: f, klasses: "items", klass_instance: @item %>
+    <%= render 'descriptions/form', f: f, klass: "item", klass_instance: @item %>
     <%= f.input :quantity %>
     <%= f.input :max_adults %>
     <%= f.input :published %>
     <%= f.input :default_price %>
+    <hr/>
     <%= render 'items/price_adjustments', f: f %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn btn-block btn-success btn-large" %>
   </div>
 <% end %>

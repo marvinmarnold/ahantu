@@ -16,4 +16,8 @@ module ShopsHelper
 
     content_tag "span", class: "badge #{status_class}" do label end
   end
+
+  def shop_request_id
+    params[ref_shop_request_symbol]
+  end
 end

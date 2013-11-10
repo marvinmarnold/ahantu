@@ -13,8 +13,12 @@ class Shop < Describable
   has_many :responsibles, through: :responsibilities, source: :user
   has_many :tags, through: :taggings, source: :tag
   has_many :hotel_tags, through: :taggings, source: :tag, class_name: "Tag::HotelTag"
+
+  attr_accessor :shop_request_id
+
   scope   :published, lambda { where(published: true) }
   scope   :not_shop, lambda { |shop| where.not(id: shop.id) }
+  scope   :unowned, lambda { where(user_id: nil) }
 
   mount_uploader :logo, LogoUploader
 
@@ -27,6 +31,7 @@ class Shop < Describable
   validate :published_and_valid
 
   after_destroy :unindex
+  after_create :fill_shop_request
 
   def to_s
     name
@@ -58,6 +63,14 @@ class Shop < Describable
 
   def owner
     self.user
+  end
+
+  def fill_shop_request
+    if shop_request_id.present?
+      shop_request = ShopRequest.find(shop_request_id)
+      shop_request.update_attributes(shop_id: self.id)
+      shop_request.complete
+    end
   end
 
 private

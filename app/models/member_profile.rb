@@ -6,8 +6,8 @@ class MemberProfile < Profile
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :shop_requests, foreign_key: :shop_owner_profile_id, class_name: "ShopRequest"
-  has_many :assigned_shop_request, foreign_key: :salesperson_profile_id, class_name: "ShopRequest"
+  has_many :owned_shop_requests, foreign_key: :shop_owner_profile_id, class_name: "ShopRequest"
+  has_many :assigned_shop_requests, foreign_key: :salesperson_profile_id, class_name: "ShopRequest"
 
   attr_accessor :suggested_role
 
@@ -30,6 +30,16 @@ class MemberProfile < Profile
 
   def to_s
     self.email
+  end
+
+  def shop_requests
+    if shop_owner?
+      owned_shop_requests
+    elsif salesperson?
+      assigned_shop_requests
+    else
+      ShopRequest.none
+    end
   end
 
 private

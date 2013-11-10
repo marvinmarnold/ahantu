@@ -1,1 +1,9 @@
-hi
+<%= simple_form_for(shop_request) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.association :shop, collection: current_user.shops.unowned %>
+
+  <div class="actions">
+    <%= f.button :submit, t("shop_request.index.submit"), class: "btn btn-block btn-success btn-mini" %>
+  </div>
+<% end %>

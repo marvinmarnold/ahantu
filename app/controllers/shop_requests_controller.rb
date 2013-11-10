@@ -6,7 +6,7 @@ class ShopRequestsController < ApplicationController
   # GET /shop_requests
   # GET /shop_requests.json
   def index
-    @shop_requests = ShopRequest.all
+    @shop_requests = current_user.shop_requests.all
   end
 
   # GET /shop_requests/1
@@ -60,7 +60,7 @@ class ShopRequestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shop_request
-      @shop_request = ShopRequest.find(params[:id])
+      @shop_request = current_user.shop_requests.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

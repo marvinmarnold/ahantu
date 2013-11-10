@@ -12,4 +12,8 @@ class GuestProfile < Profile
   	nil
   end
 
+  def shop_requests
+    ShopRequest.none
+  end
+
 end

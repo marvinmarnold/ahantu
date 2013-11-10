@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :client_carts, through: :owned_shops, source: :carts
 	belongs_to :profile, polymorphic: true
 
-	delegate :guest?, :to_s, :shopper?, :shop_owner?, :salesperson?,
+	delegate :guest?, :to_s, :shopper?, :shop_owner?, :salesperson?, :admin?, :shop_requests,
     :admin?, :email, :locale, :set_locale,
       to: :profile
 
@@ -45,31 +45,29 @@ class User < ActiveRecord::Base
   end
 
   def shops
-    case profile.role
-    when "shopper"
+    if shopper?
       Shop.none
-    when "guest"
+    elsif guest?
       Shop.none
-    when "shop_owner"
+    elsif shop_owner?
       owned_shops
-    when "salesperson"
+    elsif salesperson?
       responsible_shops
-    when "admin"
+    elsif admin?
       Shop.all
     end
   end
 
   def browsable_carts
-    case profile.role
-    when "shopper"
+    if shopper?
       carts.submitted
-    when "guest"
+    elsif guest?
       carts.submitted
-    when "shop_owner"
+    elsif shop_owner?
       client_carts
-    when "salesperson"
+    elsif salesperson?
       responsible_carts
-    when "admin"
+    elsif admin?
       Cart.all
     end
   end

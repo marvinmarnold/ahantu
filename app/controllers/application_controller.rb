@@ -83,6 +83,11 @@ protected
   end
   helper_method :suggested_role_symbol
 
+  def ref_shop_request_symbol
+    :sr
+  end
+  helper_method :ref_shop_request_symbol
+
   def clear_return_to
     session.delete(:return_to)
   end

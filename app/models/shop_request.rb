@@ -4,6 +4,8 @@ class ShopRequest < ActiveRecord::Base
   belongs_to :location
   belongs_to :shop
 
+  scope   :incomplete, lambda { where.not(state: "completed") }
+
   validates :shop_name, :location_id, :shop_owner_profile_id,
     presence: true
 
@@ -21,6 +23,10 @@ class ShopRequest < ActiveRecord::Base
     shop_owner_profile.user
   end
 
+  def to_s
+    shop_owner
+  end
+
   ##############################################################################################################
   ### state machine
   ##############################################################################################################
@@ -32,9 +38,17 @@ class ShopRequest < ActiveRecord::Base
         presence: true
     end
 
-    # before_transition :on => :authorize_payment, :do => :prepare_for_checkout
+    state :completed do
+      validates :shop_id,
+        presence: true
+    end
+
     event :assign do
       transition :open => :assigned
+    end
+
+    event :complete do
+      transition :assigned => :completed
     end
 
   end

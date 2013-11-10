@@ -35,7 +35,7 @@ class ShopsController < ApplicationController
     respond_to do |format|
       if @shop.save
         @shop.responsibilities.create!(user: current_user)
-        format.html { redirect_to shop_requests, notice: t("shop.create.notice")}
+        format.html { redirect_to shop_requests_path, notice: t("shop.create.notice")}
       else
         format.html { render action: 'new' }
       end
@@ -97,6 +97,7 @@ class ShopsController < ApplicationController
         :website3,
         :website4,
         :website5,
+        :shop_request_id,
         :descriptions_attributes => [:name, :language_id, :description, :destroy_]
       )
     end

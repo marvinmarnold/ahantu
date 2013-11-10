@@ -22,13 +22,13 @@
         <td>
           <%= t("shop_request.state_synonyms.#{shop_request.state}") %>
           <% if can_assign_shop_to_shop_request? shop_request %>
-            <%= render 'shop_requests/assignment_form' %>
+            <%= render 'shop_requests/assignment_form', shop_request: shop_request %>
           <% end %>
         </td>
         <td><%= shop_request.request %></td>
-        <td><%= shop_request.created_at %></td>
+        <td><%= l shop_request.created_at, format: :long %></td>
         <td>
-          <%= link_to 'Create shop', new_shop_path, class: "btn btn-success btn-block" %>
+          <%= link_to 'Create shop', new_shop_path(ref_shop_request_symbol => shop_request.id), class: "btn btn-success btn-block" %>
           <%= link_to 'Destroy', shop_request, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block" %>
         </td>
       </tr>

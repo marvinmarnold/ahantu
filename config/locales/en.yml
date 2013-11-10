@@ -70,10 +70,16 @@ en:
         add_item: "Create new room"
         edit_items: "Edit rooms"
     form:
+      descriptions:
+        title_each: "Room description"
+        remove_each: "Remove description"
+        add: "Add description"
       price_adjustments:
         title: "Adjust seasonal prices"
         add: "Add price adjustment"
         remove: "Remove price adjustment"
+    new:
+      title: "New room"
     show:
       details:
         max_adults: "Max adults: %{n}"
@@ -176,6 +182,8 @@ en:
       edit: "Edit %{name}"
       destroy: "Delete"
       confirm_destroy: "Are you sure you want to do this? This action is irreversible. Consider deactivating the shop instead."
+    new:
+      title: "Shop creation form"
   shopper_mailer:
     welcome_email:
       subject: "Welcome to ahantu.com"
@@ -186,6 +194,7 @@ en:
     index:
       title: "Your hotel registration history"
       shops_link: "View registered shops"
+      submit: "Assign shop"
       table:
         heading:
           name: "Hotel name"

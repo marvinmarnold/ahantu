@@ -8,6 +8,9 @@
     <h3><%= t "shop.form.admin.title"%></h3>
     <%= f.input :published %>
     <%= f.input :commission_pct %>
+    <%= f.input :shop_request_id, :input_html => { :value => shop_request_id },
+      collection: current_user.shop_requests.incomplete,
+      value_method: :id %>
 
     <hr />
     <h3><%= t "shop.edit.branding.title"%></h3>
@@ -48,4 +51,5 @@
   <div class="actions">
     <%= f.button :submit, class: "btn btn-large btn-block btn-success" %>
   </div>
+
 <% end %>
