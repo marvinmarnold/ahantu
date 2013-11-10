@@ -13,9 +13,9 @@ class ShopsController < ApplicationController
   # GET /shops/1
   # GET /shops/1.json
   def show
-      redirect_to new_search_path unless searched?
-      @cart = Cart.new_from_search(current_search)
-      I18n.locale = admin_preview_language_abbr if !pretending_to_be_customer?
+    redirect_to new_search_path unless can_show?
+    @cart = Cart.new_from_search(current_search)
+    I18n.locale = admin_preview_language_abbr if !pretending_to_be_customer?
   end
 
   # GET /shops/new
@@ -31,16 +31,13 @@ class ShopsController < ApplicationController
   # POST /shops.json
   def create
     @shop = Shop.new(shop_params)
-    binding.pry
 
     respond_to do |format|
       if @shop.save
         @shop.responsibilities.create!(user: current_user)
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @shop }
+        format.html { redirect_to shop_requests, notice: t("shop.create.notice")}
       else
         format.html { render action: 'new' }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,10 +48,8 @@ class ShopsController < ApplicationController
     respond_to do |format|
       if @shop.update(shop_params)
         format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -75,6 +70,12 @@ class ShopsController < ApplicationController
   helper_method :can_and_want_shop_admin?
 
   private
+
+    def can_show?
+      cannot?(:create, Cart) ||
+      searched?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_shop
       @shop = Shop.find(params[:id])

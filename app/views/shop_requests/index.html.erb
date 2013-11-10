@@ -19,7 +19,12 @@
       <tr>
         <% if can? :update, ShopRequest %><td><%= shop_request.shop_owner %></td><% end %>
         <td><%= shop_request.shop_name %></td>
-        <td><%= shop_request.state %></td>
+        <td>
+          <%= t("shop_request.state_synonyms.#{shop_request.state}") %>
+          <% if can_assign_shop_to_shop_request? shop_request %>
+            <%= render 'shop_requests/assignment_form' %>
+          <% end %>
+        </td>
         <td><%= shop_request.request %></td>
         <td><%= shop_request.created_at %></td>
         <td>

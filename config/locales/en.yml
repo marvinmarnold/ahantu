@@ -129,6 +129,8 @@ en:
     register_as_shop_owner:
       link: "Publish your hotel"
   shop:
+    create:
+      notice: 'Shop was successfully created. Please associate it to a request.'
     form:
       descriptions:
         title_each: "Description of shop"
@@ -178,6 +180,9 @@ en:
     welcome_email:
       subject: "Welcome to ahantu.com"
   shop_request:
+    state_synonyms:
+      open: "Awaiting hotel creation"
+      assigned: "Awaiting hotel creation"
     index:
       title: "Your hotel registration history"
       shops_link: "View registered shops"

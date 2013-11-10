@@ -6,5 +6,6 @@ describe ShopRequest do
     @salesperson = create(:salesperson)
     @shop_request.assign_to @salesperson
     expect(@shop_request.salesperson).to eq @salesperson
+    expect(@shop_request.state).to eq "assigned"
   end
 end

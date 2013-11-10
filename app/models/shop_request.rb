@@ -10,6 +10,7 @@ class ShopRequest < ActiveRecord::Base
   def assign_to(salesperson)
     self.salesperson_profile = salesperson.profile
     self.save
+    assign
   end
 
   def salesperson
@@ -26,15 +27,15 @@ class ShopRequest < ActiveRecord::Base
 
   state_machine :state, :initial => :open do
 
-    # state :authorizing_payment do
-    #   validates :billing_information_id, :email, :phone, :payment_amount, :checkout_at, :order_confirmation,
-    #     presence: true
-    # end
+    state :assigned do
+      validates :salesperson_profile_id,
+        presence: true
+    end
 
     # before_transition :on => :authorize_payment, :do => :prepare_for_checkout
-    # event :authorize_payment do
-    #   transition :shopping => :authorizing_payment, :if => lambda {|cart| cart.send :submit_payment_authorization }
-    # end
+    event :assign do
+      transition :open => :assigned
+    end
 
   end
 
