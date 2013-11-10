@@ -18,11 +18,13 @@ class Shop < Describable
 
   mount_uploader :logo, LogoUploader
 
-  validates :location_id, :commission_pct, :user_id,
+  validates :location_id, :commission_pct, :directions,
   	presence: true
 
   validates :published,
     :inclusion => { in: [true, false] }
+
+  validate :published_and_valid
 
   after_destroy :unindex
 
@@ -62,6 +64,10 @@ private
 
   def unindex
     SearchSuggestion.unindex_shop self
+  end
+
+  def published_and_valid
+    errors[:published] << I18n.t('shop.form.errors.published_and_valid') if published? && user_id.blank?
   end
 
 end

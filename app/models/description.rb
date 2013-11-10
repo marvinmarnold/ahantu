@@ -2,7 +2,7 @@ class Description < ActiveRecord::Base
   belongs_to :language
   belongs_to :describable, polymorphic: true
 
-  validates :describable_id, :language, :describable_type,
+  validates  :language,# :describable_type, :describable_id, # Not yet possible with polymorphics
     presence: true
 
   before_update :index_if_changed_and_belongs_to_shop

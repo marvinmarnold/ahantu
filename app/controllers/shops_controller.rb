@@ -31,9 +31,11 @@ class ShopsController < ApplicationController
   # POST /shops.json
   def create
     @shop = Shop.new(shop_params)
+    binding.pry
 
     respond_to do |format|
       if @shop.save
+        @shop.responsibilities.create!(user: current_user)
         format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
         format.json { render action: 'show', status: :created, location: @shop }
       else
@@ -82,6 +84,8 @@ class ShopsController < ApplicationController
     def shop_params
       params.require(:shop).permit(
         :city_id,
+        :location_id,
+        :commission_pct,
         :published,
         :logo,
         :address1,

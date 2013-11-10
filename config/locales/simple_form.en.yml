@@ -22,7 +22,10 @@ en:
         address1: "Address"
         address2: "Address"
         website1: "Websites"
+        commission_pct: "Commission percentage"
     hints:
+      shop:
+        commission_pct: "Format 12.3, 4.0, etc."
       search:
         keyword: "City, neighborhood, hotel name, etc."
     placeholders:

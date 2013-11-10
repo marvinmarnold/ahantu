@@ -134,8 +134,10 @@ en:
         title_each: "Description of shop"
         remove_each: "Remove description"
         add: "Add shop description"
-      publish:
-        title: "Publish shop"
+      admin:
+        title: "Administration"
+      errors:
+        published_and_valid: "You cannot publish a shop that is not owned by anybody"
     show:
       enter_booking_details: "Enter booking details"
       edit: "Edit shop"
