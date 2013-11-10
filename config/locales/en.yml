@@ -185,6 +185,7 @@ en:
           state: "Status"
           request: "Details"
           date: "Submitted on"
+          shop_owner: "Requester"
     new:
       title: "Register a new hotel"
   tag:

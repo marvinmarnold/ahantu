@@ -26,7 +26,7 @@
           <h4><%= t "shop.edit.location.address" %></h4>
           <%= f.input :address1, label: false %>
           <%= f.input :address2, label: false %>
-          <%= f.association :location %>
+          <div id='location-drilldown'><%= f.association :location %></div>
           <h4><%= t "shop.edit.location.directions" %></h4>
           <%= f.input :directions, label: false %>
       </div>

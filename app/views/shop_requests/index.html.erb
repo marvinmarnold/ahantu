@@ -5,6 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <% if can? :update, ShopRequest %><th><%= t "shop_request.index.table.heading.shop_owner" %></th><% end %>
       <th><%= t "shop_request.index.table.heading.name" %></th>
       <th><%= t "shop_request.index.table.heading.state" %></th>
       <th><%= t "shop_request.index.table.heading.request" %></th>
@@ -16,11 +17,15 @@
   <tbody>
     <% @shop_requests.each do |shop_request| %>
       <tr>
+        <% if can? :update, ShopRequest %><td><%= shop_request.shop_owner %></td><% end %>
         <td><%= shop_request.shop_name %></td>
         <td><%= shop_request.state %></td>
         <td><%= shop_request.request %></td>
         <td><%= shop_request.created_at %></td>
-        <td><%= link_to 'Destroy', shop_request, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <td>
+          <%= link_to 'Create shop', new_shop_path, class: "btn btn-success btn-block" %>
+          <%= link_to 'Destroy', shop_request, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

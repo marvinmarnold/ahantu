@@ -17,6 +17,10 @@ Shop.all.each do |s|
   s.responsibilities.create!(user_id: MemberProfile.salespersons.first.user.id)
 end
 
+ShopRequest.all.each do |sr|
+  sr.assign_to MemberProfile.salespersons.first.user
+end
+
 
 # FactoryGirl.create_list(:complete_shop_w_items,
 #   5,
