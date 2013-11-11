@@ -82,7 +82,6 @@ class CartsController < ApplicationController
         :phone,
         :billing_information_id,
         :bookings_attributes => [:item_id, :adults, :responsible_name, :id]
-        :search_attributes => [:search_id]
       )
     end
 

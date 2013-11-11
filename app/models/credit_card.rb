@@ -41,7 +41,7 @@ private
 	def validate_card
     if !credit_card.valid?
       credit_card.errors.full_messages.each do |message|
-        errors["base"] << message
+        errors["credit_card"] << message
       end
     end
   end

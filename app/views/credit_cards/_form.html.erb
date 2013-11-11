@@ -1,5 +1,6 @@
 <%= simple_form_for(@credit_card) do |f| %>
   <%= f.error_notification %>
+  <%= render "shared/custom_errors", errors: @credit_card.errors[:credit_card] %>
 
   <%= f.input :brand, collection: credit_card_types %>
   <%= f.input :name_on_card, required: true %>
