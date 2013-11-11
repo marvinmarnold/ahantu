@@ -7,6 +7,7 @@ finish railscasts episode on aws s3 to do upload in background
 can't see hotel if no dates inputted.
 welcome message references contact form but no link and form does not exist
 can assign an item to a cart that belongs to shop item does not belong to
+in development search suggestions stops after first load. seems to be a rails error
 
 todo
 1) blog type formatting for shop descriptions. overkill?
@@ -18,4 +19,3 @@ todo
 7) solve location stuff/list from placide/javascript dropdown/same in excel
 8) bed size
 9) cancelations
-10) case where go to shop w/o search.

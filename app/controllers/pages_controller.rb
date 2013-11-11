@@ -3,7 +3,6 @@ class PagesController < ApplicationController
 
   def index
   	@search = new_search
-  	@search.room_searches.build
     @shops = browsable_shops
     @tags = Tag::HotelTag.all
   end

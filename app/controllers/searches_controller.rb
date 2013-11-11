@@ -1,7 +1,6 @@
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy, :finalize]
-  layout "leftbar", only: [:show, :new]
-  layout "centered", only: [:finalize]
+  layout :custom_layout, only: [:show, :new, :finalize]
 
   authorize_resource
 
@@ -64,7 +63,6 @@ class SearchesController < ApplicationController
   end
 
   def finalize
-
   end
 
   private
@@ -82,5 +80,13 @@ class SearchesController < ApplicationController
         :room_searches_attributes => [:adults, :_destroy],
         :tag_ids => []
       )
+    end
+
+    def custom_layout
+      if params[:action] == "show" || params[:action] == "new"
+        "leftbar"
+      else
+        "centered"
+      end
     end
 end
