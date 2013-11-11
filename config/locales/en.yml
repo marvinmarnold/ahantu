@@ -112,6 +112,8 @@ en:
       shop_owner:
         manage_shops: "Manage shops"
   search:
+    finalize:
+      title: "Complete booking information"
     form:
       errors:
         later_checkout: "Checkout must be after checkin"

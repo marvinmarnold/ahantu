@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  before_action :set_search, only: [:show, :edit, :update, :destroy]
+  before_action :set_search, only: [:show, :edit, :update, :destroy, :finalize]
   layout "leftbar", only: [:show, :new]
 
   authorize_resource
@@ -13,13 +13,13 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
+    return redirect_to @serch.shop if @search.shop.present?
     @results = @search.results.paginate(:page => params[:page], :per_page => per_page)
   end
 
   # GET /searches/new
   def new
-    @search = Search.new
-    @search.room_searches.build
+    new_search
   end
 
   # GET /searches/1/edit
@@ -60,6 +60,10 @@ class SearchesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to searches_url }
     end
+  end
+
+  def finalize
+
   end
 
   private

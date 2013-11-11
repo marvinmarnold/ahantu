@@ -3,18 +3,19 @@ require 'sidekiq/web'
 Ahantu::Application.routes.draw do
 
   resources :shop_requests
-
   resources :locations
-
   resources :search_suggestions
-
   resources :contacts
   resources :confirmations
-
+  resources :descriptions
   resources :line_items
   resources :bookings
-  resources :searches
-  resources :descriptions
+
+  resources :searches do
+    member do
+      get 'finalize'
+    end
+  end
 
   resources :shops do
     resources :items

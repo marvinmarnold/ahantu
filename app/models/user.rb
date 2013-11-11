@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 	has_many :billing_informations
 	has_many :credit_cards
 	has_many :carts
-  has_many :searches
+  has_many :searches, inverse_of: :user
   has_many :responsibilities
   has_many :responsible_shops, through: :responsibilities, source: :shop
   has_many :responsible_carts, through: :responsible_shops, source: :carts
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   before_validation :set_guest_profile
 
   def search
-    ((s = relevant_searches).blank?) ? new_search : s.first
+    ((s = relevant_searches).blank?) ? new_search : s.order("created_at DESC").first
   end
 
   def relevant_searches
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def new_search
-    searches.build
+    searches.build.add_suggested_room_searches
   end
 
   def move_to_profile(new_profile)
@@ -70,6 +70,26 @@ class User < ActiveRecord::Base
     elsif admin?
       Cart.all
     end
+  end
+
+  def suggested_checkin_at
+    Date.today
+  end
+
+  def suggested_checkout_at
+    suggested_checkin_at + suggested_stay_length
+  end
+
+  def suggested_stay_length
+    1.week
+  end
+
+  def suggested_num_room_searches
+    1
+  end
+
+  def suggested_room_search_adults
+    2
   end
 
 private
