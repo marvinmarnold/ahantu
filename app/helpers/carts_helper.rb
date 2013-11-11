@@ -6,4 +6,10 @@ module CartsHelper
   def can_one_click_checkout?(cart)
     cart.bookings.size == 1
   end
+
+  def show_checkout_button?
+    current_cart.present? &&
+    params[:controller] != "carts" &&
+    params[:action] != "edit"
+  end
 end

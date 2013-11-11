@@ -18,7 +18,7 @@
 		</li>
 	<% end %>
 
-	<% if current_cart.present? %>
+	<% if show_checkout_button? %>
 		<li><%= link_to "Checkout", checkout_path(current_cart) %></li>
 		<li class="divider-vertical"></li>
 	<% end %>
