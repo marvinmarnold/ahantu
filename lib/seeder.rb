@@ -54,6 +54,7 @@ module Seeder
     def create_hotel_from_general_info(hotel_root_path)
       general_info_csv_path = "#{hotel_root_path}/general/info.csv"
 
+      puts "Reading hotel #{general_info_csv_path}"
       r = CSV.read(general_info_csv_path, headers: false, encoding: "UTF-8", col_sep: ",", row_sep: "\n")
 
       sample_hotel = create_hotel_from_arr r, hotel_root_path
@@ -122,6 +123,7 @@ module Seeder
 
     def preload_rooms_for_hotel(hotel, hotel_root_path)
       Dir[Rails.root.join("#{hotel_root_path}/rooms/*")].each do |room_path|
+        puts "Reading room #{room_path}/info.csv"
         r = CSV.read("#{room_path}/info.csv", headers: false, encoding: "UTF-8", col_sep: ",", row_sep: "\n")
         sample_room = create_room_from_arr hotel, r
         add_descriptions_to_describable_from_arr sample_room, r

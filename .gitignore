@@ -24,3 +24,5 @@ pickle-email-*.html
 /public/assets/
 *~*
 /vendor/hotels/sample/**/photos/*
+/vendor/hotels/**/*.jpg
+/vendor/hotels/structure/

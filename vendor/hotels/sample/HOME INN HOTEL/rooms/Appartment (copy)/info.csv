@@ -1,0 +1,40 @@
+,,
+,Part 1: Description,
+,Room name english,Appartment full board
+,Room description english,"With this appartment, you can enjoy your stay while enjoying the hills of Musanze. With chairs and a table, you can sit outside and relax or work in a calm place."
+,Rooom name french,Appartement avec repas et petit dejeuner
+,Room description french,"Avec cet appartement pendant votre sejour, vous pouvez contempler la beaute des collines de Musanze. Avec des chaises ainsi qu'une table, vous sortirez et resterez dans ces chaises pour relaxer ou travailler dans un endroit calme."
+,,
+,Part 2: Information,
+,Quantity,0
+,Price,150
+,Max adults,2
+,,
+,Part 3: Tags,
+,Tag::RoomTag::FacilityTag,
+,Personal safe,
+,Interior bathroom,
+,Hot water,
+,Handicapped accessible,
+,Air conditioned,
+,Heated rooms,
+,Television,
+,Interior office space,
+,Telephone,
+,Tag::RoomTag::FoodDrinkTag,
+,Breakfast included,
+,Refrigerator,
+,Minibar,
+,Room service,
+,Kitchen in room,
+,Barbeque/brai access,
+,Tag::RoomTag::ViewTag,
+,Terrace,
+,Street view,
+,Beach view,
+,Nature view,x
+,City view,
+,Tag::RoomTag::InternetTag,
+,Free wifi,x
+,Paid wifi,
+,No wifi,

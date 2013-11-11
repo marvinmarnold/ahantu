@@ -61,6 +61,14 @@ class Search < ActiveRecord::Base
     results.empty?
   end
 
+  def suggested_checkin_at(_user)
+    checkin_at || Date.today
+  end
+
+  def suggested_checkout_at(_user)
+    checkout_at || suggested_checkin_at(user) + 1.week
+  end
+
 private
 
   # does the shop have at least the same tags as the search?

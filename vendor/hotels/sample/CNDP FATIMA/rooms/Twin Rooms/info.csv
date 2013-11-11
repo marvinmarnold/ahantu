@@ -1,0 +1,40 @@
+,,
+,Part 1: Description,
+,Room name english,Twin Room
+,Room description english,
+,Rooom name french,
+,Room description french,
+,,
+,Part 2: Information,
+,Quantity,0
+,Price,0
+,Max adults,2
+,,
+,Part 3: Tags,
+,Tag::RoomTag::FacilityTag,
+,Personal safe,
+,Interior bathroom,x
+,Hot water,x
+,Handicapped accessible,
+,Air conditioned,
+,Heated rooms,
+,Television,
+,Interior office space,
+,Telephone,
+,Tag::RoomTag::FoodDrinkTag,
+,Breakfast included,
+,Refrigerator,
+,Minibar,
+,Room service,
+,Kitchen in room,
+,Barbeque/brai access,
+,Tag::RoomTag::ViewTag,
+,Terrace,
+,Street view,
+,Beach view,
+,Nature view,
+,City view,
+,Tag::RoomTag::InternetTag,
+,Free wifi,x
+,Paid wifi,
+,No wifi,
