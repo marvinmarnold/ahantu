@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def relevant_searches
-    searches.find_all { |s| s.active? }
+    Search.active searches
   end
 
   def new_search

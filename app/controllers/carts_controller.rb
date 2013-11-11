@@ -39,7 +39,8 @@ class CartsController < ApplicationController
   def update
     return redirect_to @cart unless @cart.shopping?
     respond_to do |format|
-      if @cart.update(cart_params) && @cart.authorize_payment
+      if @cart.update(cart_params_w_search) && @cart.authorize_payment
+        @cart.update_attributes(search: current_search)
         @cart.submit
         format.html { redirect_to @cart, notice: I18n.t("cart.update.notice") }
       else
@@ -76,6 +77,13 @@ class CartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.require(:cart).permit(:email, :phone, :billing_information_id, :bookings_attributes => [:item_id, :adults, :responsible_name, :id])
+      params.require(:cart).permit(
+        :email,
+        :phone,
+        :billing_information_id,
+        :bookings_attributes => [:item_id, :adults, :responsible_name, :id]
+        :search_attributes => [:search_id]
+      )
     end
+
 end

@@ -4,12 +4,22 @@ class Search < ActiveRecord::Base
   has_many :taggings, as: :taggable
   has_many :hotel_tags, through: :taggings, class_name: "Tag::HotelTag", source: :tag
   has_many :room_searches
+  has_one :cart
+  scope   :submitted, lambda { joins(:cart) }
 
   accepts_nested_attributes_for :room_searches
 
   validate :future_check_in, :later_check_out
   validates :keyword, :checkin_at, :checkout_at, :user_id,
     presence: true
+
+  def self.active(searches)
+    q = searches
+    submitted.each do |s|
+      q.where.not(id: s.id)
+    end
+    q.where("created_at > ?", 1.week.ago)
+  end
 
   def results(filtered_shops = Shop.published)
     filtered_shops = filtered_by_keyword(filtered_shops)
@@ -53,10 +63,6 @@ class Search < ActiveRecord::Base
     checkin_at..(checkout_at-1.day)
   end
 
-  def active?
-    self.created_at > [self.user.last_checkout_at, 1.week.ago].max
-  end
-
   def empty?
     results.empty?
   end
@@ -69,16 +75,20 @@ class Search < ActiveRecord::Base
     checkout_at || suggested_checkin_at(_user) + _user.suggested_stay_length
   end
 
-  def self.create_unfinalized(user, shop)
+  def self.build_unfinalized(user, shop)
     new(
       user: user,
       shop: shop,
       keyword: shop.name,
       checkin_at: user.suggested_checkin_at,
       checkout_at: user.suggested_checkout_at
-    ).add_suggested_room_searches(user)
+    ).add_suggested_room_searches
+  end
 
-    search.add_suggested_room_searches
+  def self.create_unfinalized(user, shop)
+    search = build_unfinalized(user, shop)
+    search.save
+    search
   end
 
   def add_suggested_room_searches

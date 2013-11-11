@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110135711) do
+ActiveRecord::Schema.define(version: 20131111212122) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -56,9 +56,11 @@ ActiveRecord::Schema.define(version: 20131110135711) do
     t.string   "order_confirmation"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "search_id"
   end
 
   add_index "carts", ["billing_information_id"], name: "index_carts_on_billing_information_id", using: :btree
+  add_index "carts", ["search_id"], name: "index_carts_on_search_id", using: :btree
   add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
   create_table "confirmations", force: true do |t|

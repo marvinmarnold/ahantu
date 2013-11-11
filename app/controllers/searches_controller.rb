@@ -1,6 +1,7 @@
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy, :finalize]
   layout "leftbar", only: [:show, :new]
+  layout "centered", only: [:finalize]
 
   authorize_resource
 
@@ -13,7 +14,7 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
-    return redirect_to @serch.shop if @search.shop.present?
+    return redirect_to @search.shop if @search.shop.present?
     @results = @search.results.paginate(:page => params[:page], :per_page => per_page)
   end
 

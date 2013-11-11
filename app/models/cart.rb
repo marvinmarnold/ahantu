@@ -2,6 +2,7 @@ class Cart < ActiveRecord::Base
   belongs_to :user
   belongs_to :billing_information
   has_many :bookings, dependent: :destroy
+  has_one :search
 
   accepts_nested_attributes_for :bookings
 
@@ -101,8 +102,18 @@ class Cart < ActiveRecord::Base
 
   state_machine :state, :initial => :shopping do
 
+    state :shopping do
+      validate :not_assigned_to_search
+    end
+
     state :authorizing_payment do
       validates :billing_information_id, :email, :phone, :payment_amount, :checkout_at, :order_confirmation,
+        presence: true
+
+    end
+
+    state :submitted do
+      validates :search_id,
         presence: true
     end
 
@@ -118,17 +129,18 @@ class Cart < ActiveRecord::Base
 
     after_transition :on => :submit, :do => :finalize_submission
     event :submit do
-      transition :authorizing_payment => :submitted
+      transition [:authorizing_payment] => :submitted
     end
 
     event :pay do
-      transition :submitted => :processing_payment
+      transition [:submitted] => :processing_payment
     end
 
     event :confirm_payment do
-      transition :processing_payment => :payment_received
+      transition [:processing_payment] => :payment_received
     end
 
+    before_transition :on => :cancle_payment, :do => :reset_cart
     event :cancle_payment do
       transition [:authorizing_payment] => :shopping
     end
@@ -144,6 +156,14 @@ class Cart < ActiveRecord::Base
   ##############################################################################################################
 
 private
+
+  def not_assigned_to_search
+    errors[:search_id] << I18n.t('cart.form.errors.not_assigned_to_search') if search.present?
+  end
+
+  def reset_cart
+    update_attributes(search_id: nil)
+  end
 
   def set_order_confirmation
     self[:order_confirmation] = SecureRandom.hex.upcase[0,5] + order_number
