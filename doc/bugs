@@ -9,4 +9,9 @@ welcome message references contact form but no link and form does not exist
 can assign an item to a cart that belongs to shop item does not belong to
 
 todo
-3) salesperson creates shop, assigns to shop_owner account
+1) blog type formatting for shop descriptions. overkill?
+2) upload all shops placide gave
+3) call taxes in md
+4) work on contract
+5) picture upload on shop/item creation
+6) shop_request id should carry over
