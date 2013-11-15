@@ -9,6 +9,7 @@ class Item < Describable
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings, source: :tag
   accepts_nested_attributes_for :price_adjustments
+  accepts_nested_attributes_for :photos
 
   validates :default_price, :max_adults, :quantity,
     presence: true

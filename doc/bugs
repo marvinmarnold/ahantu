@@ -2,7 +2,6 @@ flash message after profile update is in old language even on language change
 nothing preventing anyone from being responsible for a shop
 should not be able to really delete shops. only hide them
 destroy not working for nested_form
-create cart method removed form carts controller stupidly
 finish railscasts episode on aws s3 to do upload in background
 can't see hotel if no dates inputted.
 welcome message references contact form but no link and form does not exist
@@ -15,7 +14,6 @@ todo
 3) call taxes in md
 4) work on contract
 5) picture upload on shop/item creation
-6) shop_request id should carry over
 7) solve location stuff/list from placide/javascript dropdown/same in excel
 8) bed size
 9) cancelations

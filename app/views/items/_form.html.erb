@@ -8,6 +8,16 @@
     <%= f.input :published %>
     <%= f.input :default_price %>
     <hr/>
+    <%= f.simple_fields_for :photos do |photo_form| %>
+      <% if photo_form.object.persisted? %>
+        <%= image_tag photo_form.object.photo_url(:thumb) %>
+      <% else %>
+        <%= photo_form.input :photo, label: false %>
+      <% end %>
+      <%= photo_form.link_to_remove t("item.form.photos.remove"), class: "btn btn-mini btn-warning" %>
+    <% end %>
+    <%= f.link_to_add t("item.form.photos.add"), :photos, :class => 'btn btn-block' %>
+    <hr/>
     <%= render 'items/price_adjustments', f: f %>
   </div>
 

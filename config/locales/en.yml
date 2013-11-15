@@ -77,11 +77,15 @@ en:
         edit_shop: "< Edit hotel"
         add_item: "Create new room"
         edit_items: "Edit rooms"
+      title: "Edit item"
     form:
       descriptions:
         title_each: "Room description"
         remove_each: "Remove description"
         add: "Add description"
+      photos:
+        add: "Upload photo"
+        remove: "Remove photo"
       price_adjustments:
         title: "Adjust seasonal prices"
         add: "Add price adjustment"
