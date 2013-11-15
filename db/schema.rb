@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111212122) do
+ActiveRecord::Schema.define(version: 20131115160944) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 20131111212122) do
   add_index "confirmations", ["booking_id"], name: "index_confirmations_on_booking_id", using: :btree
   add_index "confirmations", ["recipient_id", "recipient_type"], name: "index_confirmations_on_recipient_id_and_recipient_type", using: :btree
   add_index "confirmations", ["sender_id", "sender_type"], name: "index_confirmations_on_sender_id_and_sender_type", using: :btree
+
+  create_table "contact_forms", force: true do |t|
+    t.string   "subject"
+    t.string   "from"
+    t.string   "to"
+    t.string   "state"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contacts", force: true do |t|
     t.string   "type"

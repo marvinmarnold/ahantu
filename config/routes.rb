@@ -2,10 +2,12 @@ require 'sidekiq/web'
 
 Ahantu::Application.routes.draw do
 
+  resources :contact_forms
+
   resources :shop_requests
   resources :locations
   resources :search_suggestions
-  resources :contacts
+  # resources :contacts
   resources :confirmations
   resources :descriptions
   resources :line_items
@@ -55,7 +57,6 @@ Ahantu::Application.routes.draw do
   get "about" => "pages#about", as: :about
   get "terms" => "pages#terms", as: :terms
   get "pages/set_language", as: :set_language
-  get "contactinfo" => "pages#contactinfo", as: :contactinfo
 
   # get "sms_entry_point", :to => "sms#start_point"
 

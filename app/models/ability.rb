@@ -4,6 +4,7 @@ class Ability
   def initialize(user)
     can [:manage], Search
     can :read, Location
+    can [:create], ContactForm
 
     if user.guest?
         can :set_language, Profile
