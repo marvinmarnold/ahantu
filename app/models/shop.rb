@@ -1,7 +1,7 @@
 class Shop < Describable
   include Taggable
 
-  belongs_to :user
+  belongs_to :user, inverse_of: :owned_shops
   belongs_to :location
   has_many :items
   has_many :bookings, through: :items
@@ -37,6 +37,10 @@ class Shop < Describable
     name
   end
 
+  def last_sale
+    carts.order("submitted_at DESC").first.try(:submitted_at)
+  end
+
   def telephone
     "TODO"
   end
@@ -70,6 +74,7 @@ class Shop < Describable
       shop_request = ShopRequest.find(shop_request_id)
       shop_request.update_attributes(shop_id: self.id)
       shop_request.complete
+      update_attributes(user_id: shop_request.shop_owner.id)
     end
   end
 

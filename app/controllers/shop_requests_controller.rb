@@ -6,7 +6,7 @@ class ShopRequestsController < ApplicationController
   # GET /shop_requests
   # GET /shop_requests.json
   def index
-    @shop_requests = current_user.shop_requests.all
+    return redirect_to shops_path
   end
 
   # GET /shop_requests/1

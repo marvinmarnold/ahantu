@@ -15,8 +15,6 @@ module Seeder
       (parent = last_at_depth[depth - 1]).blank? ? nil : parent
     end
 
-
-
     def create_default_accounts
       create_profile("maarnold@alum.mit.edu", "shopper")
       create_profile("marvinmarnold@gmail.com", "salesperson")

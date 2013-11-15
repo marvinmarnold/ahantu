@@ -38,6 +38,11 @@ en:
     form:
       errors:
         not_assigned_to_search: "Cart cannot be assigned to search before checkout"
+    index:
+      nothing:
+        title: "No order history"
+        text: "Book some rooms to save money."
+      title: "Order history"
     new:
       book_room: "Book room"
     show:
@@ -175,6 +180,9 @@ en:
     index:
       title: "Your hotels"
       requests_link: "View pending requests for new hotel"
+      nothing:
+        title: "You have no hotels"
+        text: "Complete a new request or wait for your old request to be handled."
       list:
         header:
           shop: "Shop"
@@ -200,6 +208,9 @@ en:
       title: "Your hotel registration history"
       shops_link: "View registered shops"
       submit: "Assign shop"
+      nothing:
+        title: "You have no requests"
+        text: "Complete a new request if you want an additional hotel."
       table:
         heading:
           name: "Hotel name"

@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
 	has_many :billing_informations
 	has_many :credit_cards
-	has_many :carts
   has_many :searches, inverse_of: :user
+  has_many :carts, through: :searches
   has_many :responsibilities
   has_many :responsible_shops, through: :responsibilities, source: :shop
   has_many :responsible_carts, through: :responsible_shops, source: :carts
-  has_many :owned_shops, class_name: "Shop"
+  has_many :owned_shops, class_name: "Shop", inverse_of: :user
   has_many :client_carts, through: :owned_shops, source: :carts
 	belongs_to :profile, polymorphic: true
 

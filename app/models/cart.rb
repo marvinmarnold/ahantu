@@ -1,12 +1,11 @@
 class Cart < ActiveRecord::Base
-  belongs_to :user
   belongs_to :billing_information
   has_many :bookings, dependent: :destroy
-  has_one :search
+  belongs_to :search
 
   accepts_nested_attributes_for :bookings
 
-  validates :user_id,
+  validates :search_id,
     presence: true
 
   delegate :credit_card,
@@ -37,7 +36,7 @@ class Cart < ActiveRecord::Base
         search.room_searches.each do |rs|
           c.bookings.build(adults: rs.adults, item: item)
         end
-        c.user = search.user
+        c.search = search
       end
     end
   end
@@ -96,20 +95,23 @@ class Cart < ActiveRecord::Base
     shop.responsibles
   end
 
+  def user
+    search.user
+  end
+
   ##############################################################################################################
   ### state machine
   ##############################################################################################################
 
   state_machine :state, :initial => :shopping do
-
+    after_transition any => [:submitted, :processing_payment, :payment_processed, :cancelled], do: :set_timestamp
     state :shopping do
       validate :not_assigned_to_search
     end
 
     state :authorizing_payment do
-      validates :billing_information_id, :email, :phone, :payment_amount, :checkout_at, :order_confirmation,
+      validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation,
         presence: true
-
     end
 
     state :submitted do
@@ -118,8 +120,6 @@ class Cart < ActiveRecord::Base
     end
 
     state :payment_processed do
-      validates :payment_at,
-        presence: true
     end
 
     before_transition :on => :authorize_payment, :do => :prepare_for_checkout
@@ -146,7 +146,7 @@ class Cart < ActiveRecord::Base
     end
 
     event :cancle do
-      transition all => :canceled
+      transition all => :cancelled
     end
 
   end
@@ -157,8 +157,12 @@ class Cart < ActiveRecord::Base
 
 private
 
+  def set_timestamp
+    update_attributes("#{state}_at" => Time.now)
+  end
+
   def not_assigned_to_search
-    errors[:search_id] << I18n.t('cart.form.errors.not_assigned_to_search') if search.present?
+    errors[:base] << I18n.t('cart.form.errors.not_assigned_to_search') unless search.present?
   end
 
   def reset_cart
@@ -214,12 +218,7 @@ private
   def prepare_for_checkout
     set_order_confirmation
     set_payment_amount
-    set_checkout_at
     save
-  end
-
-  def set_checkout_at
-    self.checkout_at = Time.now
   end
 
   def set_payment_amount

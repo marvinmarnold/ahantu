@@ -1,0 +1,40 @@
+<% if @shops.present? %>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t "shop.index.list.header.shop" %></th>
+        <th><%= t "shop.index.list.header.published" %></th>
+        <th><%= t "shop.index.list.header.last_sale" %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @shops.each do |shop| %>
+        <tr>
+          <td>
+            <h5><%= shop %></h5>
+            <muted><h6><%= shop_address shop %></h6></muted>
+            <%= image_tag shop.logo_url(:thumb) %>
+          </td>
+          <td><%= shop_published_warning(shop).html_safe %></td>
+          <td><%= shop.last_sale %></td>
+          <td><%= link_to t("shop.index.edit", name: shop.name), edit_shop_path(shop), class: "btn btn-large btn-action" %></td>
+          <td><%= link_to t("shop.index.destroy"), shop,
+            method: :delete,
+            data: { confirm: t("shop.index.confirm_destroy") },
+            class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @shops, :renderer => BootstrapPagination::Rails %>
+<% else %>
+  <div class="hero-unit">
+    <h3><%= t "shop.index.nothing.title" %></h3>
+    <p><%= t "shop.index.nothing.text" %></p>
+  </div>
+<% end %>

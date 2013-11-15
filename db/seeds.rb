@@ -13,6 +13,12 @@ Seeder.create_room_tags
 Seeder.create_default_accounts
 # Seeder.preload_hotels
 
+FactoryGirl.create_list(:complete_shop_w_items,
+  40,
+  location: Location.all.sample,
+  user: MemberProfile.shop_owners.first.user
+)
+
 Shop.all.each do |s|
   s.responsibilities.create!(user_id: MemberProfile.salespersons.first.user.id)
 end
@@ -20,10 +26,3 @@ end
 ShopRequest.all.each do |sr|
   sr.assign_to MemberProfile.salespersons.first.user
 end
-
-
-FactoryGirl.create_list(:complete_shop_w_items,
-  40,
-  location: Location.all.sample,
-  user: MemberProfile.shop_owners.first.user
-)

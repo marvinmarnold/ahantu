@@ -6,7 +6,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    redirect_to new_search_path
+    @carts = current_user.browsable_carts
   end
 
   # GET /carts/1
@@ -39,7 +39,7 @@ class CartsController < ApplicationController
   def update
     return redirect_to @cart unless @cart.shopping?
     respond_to do |format|
-      if @cart.update(cart_params_w_search) && @cart.authorize_payment
+      if @cart.update(cart_params) && @cart.authorize_payment
         @cart.update_attributes(search: current_search)
         @cart.submit
         format.html { redirect_to @cart, notice: I18n.t("cart.update.notice") }

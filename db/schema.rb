@@ -45,9 +45,11 @@ ActiveRecord::Schema.define(version: 20131115160944) do
   add_index "bookings", ["item_id"], name: "index_bookings_on_item_id", using: :btree
 
   create_table "carts", force: true do |t|
-    t.integer  "user_id"
-    t.datetime "checkout_at"
-    t.datetime "payment_at"
+    t.datetime "submitted_at"
+    t.datetime "processing_payment_at"
+    t.datetime "payment_processed_at"
+    t.datetime "authorizing_processed_at"
+    t.datetime "cancelled_at"
     t.float    "payment_amount"
     t.integer  "billing_information_id"
     t.string   "state"
@@ -61,7 +63,6 @@ ActiveRecord::Schema.define(version: 20131115160944) do
 
   add_index "carts", ["billing_information_id"], name: "index_carts_on_billing_information_id", using: :btree
   add_index "carts", ["search_id"], name: "index_carts_on_search_id", using: :btree
-  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
   create_table "confirmations", force: true do |t|
     t.text     "message"
@@ -85,7 +86,7 @@ ActiveRecord::Schema.define(version: 20131115160944) do
     t.string   "from"
     t.string   "to"
     t.string   "state"
-    t.string   "body"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

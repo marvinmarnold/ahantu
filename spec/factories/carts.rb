@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :cart do
-    user
+    search
     payment_at nil
     payment_amount nil
     billing_information nil

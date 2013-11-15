@@ -7,7 +7,8 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
-    @shops = current_user.shops
+    @shops = current_user.shops.paginate(:page => params[:page], :per_page => per_page)
+    @shop_requests = current_user.shop_requests.incomplete.paginate(:page => params[:p], :per_page => per_page)
   end
 
   # GET /shops/1
@@ -35,7 +36,7 @@ class ShopsController < ApplicationController
     respond_to do |format|
       if @shop.save
         @shop.responsibilities.create!(user: current_user)
-        format.html { redirect_to shop_requests_path, notice: t("shop.create.notice")}
+        redirect_to new_shop_item_path(@shop), notice: t("shop.create.notice")
       else
         format.html { render action: 'new' }
       end
