@@ -14,7 +14,7 @@ Seeder.create_default_accounts
 # Seeder.preload_hotels
 
 FactoryGirl.create_list(:complete_shop_w_items,
-  40,
+  20,
   location: Location.all.sample,
   user: MemberProfile.shop_owners.first.user
 )
