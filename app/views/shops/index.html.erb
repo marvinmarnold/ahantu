@@ -3,6 +3,8 @@
   <div class="span6">
     <% if can? :create, ShopRequest %>
       <%= link_to t("shop.index.request_new_hotel"), new_shop_request_path, class: "btn btn-large pull-right" %>
+    <% elsif can? :create, Shop %>
+      <%= link_to t("shop.index.new_shop"), new_shop_path, class: "btn btn-large pull-right" %>
     <% end %>
   </div>
 </div>

@@ -20,7 +20,9 @@
     <br/>
 
     <h4><%= t "shop.edit.branding.logo" %></h4>
+    <%= image_tag(@shop.logo_url :thumb) if @shop.logo? %>
     <%= f.input :logo, label: false %>
+    <%= f.hidden_field :logo_cache %>
 
     <hr />
 
