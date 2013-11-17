@@ -20,7 +20,14 @@ Ahantu::Application.routes.draw do
   end
 
   resources :shops do
-    resources :items
+    resources :items do
+      member do
+        get 'photos'
+      end
+    end
+    member do
+      get 'photos'
+    end
   end
 
   resources :credit_cards

@@ -1,0 +1,24 @@
+<h1><%= t "item.photos.title" %></h1>
+
+<%= simple_nested_form_for([@shop, @item]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+
+
+    <%= f.simple_fields_for :photos do |photo_form| %>
+      <%= image_tag(photo_form.object.photo_url :thumb) if photo_form.object.photo? %>
+      <%= photo_form.input :photo, label: false %>
+      <%= photo_form.hidden_field :photo_cache %>
+      <%= photo_form.link_to_remove t("item.form.photos.remove"), class: "btn btn-mini btn-warning" %><br/><br/>
+    <% end %>
+    <%= f.link_to_add t("item.form.photos.add"), :photos, :class => 'btn' %>
+
+  </div>
+
+  <hr/>
+
+  <div class="actions">
+    <%= f.button :submit, class: "btn btn-block btn-success btn-large" %>
+  </div>
+<% end %>

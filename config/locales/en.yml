@@ -72,29 +72,38 @@ en:
       contact: "Contact us"
       about: "About us"
   item:
+    create:
+      notice: "Room successfully added to hotel"
     edit:
       edit_links:
         edit_shop: "< Edit hotel"
         add_item: "Create new room"
         edit_items: "Edit rooms"
-      title: "Edit item"
+      title: "Edit room"
     form:
       descriptions:
         title_each: "Room description"
         remove_each: "Remove description"
         add: "Add description"
+        title: "Descriptions"
+      details: "Room details"
       photos:
-        add: "Upload photo"
+        add: "Add a photo"
         remove: "Remove photo"
       price_adjustments:
         title: "Adjust seasonal prices"
         add: "Add price adjustment"
         remove: "Remove price adjustment"
+      status: "Status"
     new:
       title: "New room"
+    photos:
+      title: "Add pictures to your room"
     show:
       details:
         max_adults: "Max adults: %{n}"
+    update:
+      notice: "Room successfully updated"
   guest_profile:
     to_s: "Guest account"
   page:

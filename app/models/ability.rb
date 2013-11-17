@@ -19,6 +19,7 @@ class Ability
         can [:sign_up], MemberProfile
         can [:read], Cart
         can [:manage], Shop
+        can [:manage], Item
         can [:read, :update], ShopRequest
     elsif user.shop_owner?
         can [:update, :destroy, :read], Shop

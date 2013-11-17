@@ -90,6 +90,7 @@ class ShopsController < ApplicationController
         :commission_pct,
         :published,
         :logo,
+        :logo_cache,
         :address1,
         :address2,
         :directions,
