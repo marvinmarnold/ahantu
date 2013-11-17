@@ -1,5 +1,7 @@
 <%= link_to t("shop.edit.edit_links.show"), @shop, class: "btn btn-link" %><br/>
 <%= link_to t("item.edit.edit_links.edit_shop"), edit_shop_path(@shop), class: "btn btn-link" %>
+<%= link_to t("item.edit.edit_links.edit_photos"), photos_shop_path(@shop), class: "btn btn-link" %>
+
 <h4><%= t("item.edit.edit_links.edit_items") %></h4>
 <%= link_to t("item.edit.edit_links.add_item"), new_shop_item_path(@shop), class: "btn btn-info" %>
 

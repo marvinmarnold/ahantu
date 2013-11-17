@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :set_shop, only: [:show, :edit, :update, :destroy]
+  before_action :set_shop, only: [:show, :edit, :update, :destroy, :photos]
   layout :set_layout_name, only: [:edit, :show]
 
   authorize_resource
@@ -28,30 +28,29 @@ class ShopsController < ApplicationController
   def edit
   end
 
+  def photos
+    @shop.photos.build
+  end
+
   # POST /shops
   # POST /shops.json
   def create
     @shop = Shop.new(shop_params)
-
-    respond_to do |format|
-      if @shop.save
-        @shop.responsibilities.create!(user: current_user)
-        redirect_to new_shop_item_path(@shop), notice: t("shop.create.notice")
-      else
-        format.html { render action: 'new' }
-      end
+    if @shop.save
+      @shop.responsibilities.create!(user: current_user)
+      redirect_to photos_shop_path(@shop), notice: t("shop.create.notice")
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /shops/1
   # PATCH/PUT /shops/1.json
   def update
-    respond_to do |format|
-      if @shop.update(shop_params)
-        format.html { redirect_to @shop, notice: t("shop.update.notice") }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @shop.update(shop_params)
+      redirect_to new_shop_item_path(@shop), notice: t("shop.create.notice"), notice: t("shop.update.notice")
+    else
+      render action: 'edit'
     end
   end
 
@@ -100,7 +99,8 @@ class ShopsController < ApplicationController
         :website4,
         :website5,
         :shop_request_id,
-        :descriptions_attributes => [:id, :name, :language_id, :description, :destroy_]
+        :descriptions_attributes => [:id, :name, :language_id, :description, :destroy_],
+        :photos_attributes => [:id, :photo, :photo_cache]
       )
     end
 

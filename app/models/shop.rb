@@ -6,13 +6,15 @@ class Shop < Describable
   has_many :items
   has_many :bookings, through: :items
   has_many :carts, through: :bookings
-  has_many :taggings, as: :taggable
-  has_many :photos, as: :photoable
+  has_many :taggings, as: :taggable, dependent: :destroy
+  has_many :photos, as: :photoable, dependent: :destroy
   has_many :phones
-  has_many :responsibilities
+  has_many :responsibilities, dependent: :destroy
   has_many :responsibles, through: :responsibilities, source: :user
   has_many :tags, through: :taggings, source: :tag
   has_many :hotel_tags, through: :taggings, source: :tag, class_name: "Tag::HotelTag"
+
+  accepts_nested_attributes_for :photos, allow_destroy: true
 
   attr_accessor :shop_request_id
 

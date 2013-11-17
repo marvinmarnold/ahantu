@@ -79,6 +79,7 @@ en:
         edit_shop: "< Edit hotel"
         add_item: "Create new room"
         edit_items: "Edit rooms"
+        edit_photos: "Edit shop photos"
       title: "Edit room"
     form:
       descriptions:
@@ -169,6 +170,9 @@ en:
         title: "Administration"
       errors:
         published_and_valid: "You cannot publish a shop that is not owned by anybody"
+      photos:
+        add: "Add new photo"
+        remove: "Remove photo"
     index:
       destroy: "Delete"
       confirm_destroy: "Are you sure you want to do this? This action is irreversible. Consider deactivating the shop instead."
@@ -187,9 +191,12 @@ en:
         published_warning:
           published: "Published"
           unpublished: "Not published"
+    photos:
+      title: "Add photos to your hotel"
     show:
       enter_booking_details: "Enter booking details"
-      edit: "Edit shop"
+      edit: "Edit hotel"
+      edit_photos: "Edit hotel's photos"
       details:
         info: "Information"
         directions: "Directions"

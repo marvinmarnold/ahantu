@@ -9,6 +9,7 @@
 <% if can_and_want_shop_admin? %>
   <%= render "shared/admin_preview_language" %>
   <%= link_to t("shop.show.edit"), edit_shop_path(@shop), class: "btn btn-large btn-success" %>
+  <%= link_to t("shop.show.edit_photos"), photos_shop_path(@shop), class: "btn btn-link" %>
 <% end %>
 
 <h1><%= @shop %></h1>
