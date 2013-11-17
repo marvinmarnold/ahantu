@@ -3,11 +3,11 @@ class Search < ActiveRecord::Base
   belongs_to :shop
   has_many :taggings, as: :taggable
   has_many :hotel_tags, through: :taggings, class_name: "Tag::HotelTag", source: :tag
-  has_many :room_searches
+  has_many :room_searches, :dependent => :destroy
   has_one :cart
   scope   :submitted, lambda { joins(:cart) }
 
-  accepts_nested_attributes_for :room_searches
+  accepts_nested_attributes_for :room_searches, allow_destroy: true
 
   validate :future_check_in, :later_check_out
   validates :keyword, :checkin_at, :checkout_at, :user_id,

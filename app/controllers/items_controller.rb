@@ -70,8 +70,8 @@ class ItemsController < ApplicationController
         :max_adults,
         :published,
         :default_price,
-        :price_adjustments_attributes => [:price, :start_at, :end_at, :destroy_],
-        :descriptions_attributes => [:name, :language_id, :description, :destroy_]
+        :price_adjustments_attributes => [:id, :price, :start_at, :end_at, :destroy_],
+        :descriptions_attributes => [:id, :name, :language_id, :description, :destroy_]
       )
     end
 

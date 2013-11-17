@@ -77,7 +77,7 @@ class SearchesController < ApplicationController
         :keyword,
         :checkin_at,
         :checkout_at,
-        :room_searches_attributes => [:adults, :_destroy],
+        :room_searches_attributes => [:id, :adults, :_destroy],
         :tag_ids => []
       )
     end

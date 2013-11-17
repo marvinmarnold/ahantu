@@ -48,7 +48,7 @@ class ShopsController < ApplicationController
   def update
     respond_to do |format|
       if @shop.update(shop_params)
-        format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
+        format.html { redirect_to @shop, notice: t("shop.update.notice") }
       else
         format.html { render action: 'edit' }
       end
@@ -99,7 +99,7 @@ class ShopsController < ApplicationController
         :website4,
         :website5,
         :shop_request_id,
-        :descriptions_attributes => [:name, :language_id, :description, :destroy_]
+        :descriptions_attributes => [:id, :name, :language_id, :description, :destroy_]
       )
     end
 
