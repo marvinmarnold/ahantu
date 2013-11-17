@@ -32,7 +32,7 @@ class Search < ActiveRecord::Base
 
   def filtered_by_availability(filtered_shops = Shop.published)
     filtered_shops.each do |filtered_shop|
-      filtered_shops.where.not(id: filtered_shop.id) unless shop_available?(filtered_shop)
+      filtered_shops = filtered_shops.where.not(id: filtered_shop.id) unless shop_available?(filtered_shop)
     end
 
     filtered_shops
@@ -66,8 +66,8 @@ class Search < ActiveRecord::Base
   end
 
   def shop_available?(_shop)
-    dates.each do |date|
-      if !shop_available_on_date?(_shop, date)
+    nights.each do |night|
+      if !shop_available_on_date?(_shop, night)
         return false
       end
     end
@@ -76,22 +76,22 @@ class Search < ActiveRecord::Base
   end
 
   def shop_available_on_date?(_shop, date)
-    original_demand = room_demand_hash
-    original_availability = _shop.available_items(date, adults)
+    room_carry_over = 0
 
-    original_demand.each do |_adults, num_rooms|
-
+    #sort demand from highest num_adults to smallest
+    room_demand.to_a.sort { |x,y| y[0] <=> x[0] }.each do |_adults, demand|
+      extra_rooms = _shop.num_available_items(date, _adults) - demand
+      room_carry_over += extra_rooms
+      if room_carry_over < 0
+        return false
+      end
     end
-    # Search.accumulate_by_adults(self.room_searches)
-    # Search.accumulate_by_adults(_shop.available_items(date, adults))
-    # _shop.available_items(date, adults)
-    # item.availble?(date, adults)
   end
 
-  # returns an array of ItemAvailability
+  # { num adults => num needed }
   def room_demand
-    room_searches.each_with_object(Hash.new(0)) do |acc, h|
-      h[acc.adults] += 1
+    room_searches.each_with_object(Hash.new(0)) do |room_search, h|
+      h[room_search.adults] += 1
     end
   end
 

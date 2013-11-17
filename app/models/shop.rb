@@ -90,6 +90,10 @@ class Shop < Describable
     end}.sort { |x, y| x.max_adults <=> y.max_adults }
   end
 
+  def num_available_items(date, adults)
+    available_items(date, adults).inject(0) { |sum, item_availability| sum + item_availability.quantity }
+  end
+
 private
 
   def unindex

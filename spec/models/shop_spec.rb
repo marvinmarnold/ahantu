@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'item_availability'
 
 describe Shop do
-  it "gives all items available on a certain day with a minimum number of adults", focus: true do
+  it "gives all items available on a certain day with a minimum number of adults" do
     @shop = create(:shop)
     @i1 = create(:complete_item, shop: @shop, max_adults: 3, quantity: 1)
     @i2 = create(:complete_item, shop: @shop, max_adults: 1, quantity: 2)
@@ -24,6 +24,8 @@ describe Shop do
             )
         ]
     )
+    expect(@shop.num_available_items(Date.today, 1)).to eq(3)
     expect(@shop.available_items(Date.today, 4)).to eq([])
+    expect(@shop.num_available_items(Date.today, 4)).to eq(0)
   end
 end
