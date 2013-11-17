@@ -2,11 +2,11 @@ class Cart < ActiveRecord::Base
   belongs_to :billing_information
   has_many :bookings, dependent: :destroy
   belongs_to :search
+  belongs_to :user
+
+  validates :user_id, presence: true
 
   accepts_nested_attributes_for :bookings
-
-  validates :search_id,
-    presence: true
 
   delegate :credit_card,
     to: :billing_information
@@ -36,7 +36,6 @@ class Cart < ActiveRecord::Base
         search.room_searches.each do |rs|
           c.bookings.build(adults: rs.adults, item: item)
         end
-        c.search = search
       end
     end
   end
@@ -95,9 +94,6 @@ class Cart < ActiveRecord::Base
     shop.responsibles
   end
 
-  def user
-    search.user
-  end
 
   ##############################################################################################################
   ### state machine
@@ -162,7 +158,7 @@ private
   end
 
   def not_assigned_to_search
-    errors[:base] << I18n.t('cart.form.errors.not_assigned_to_search') unless search.present?
+    errors[:base] << I18n.t('cart.form.errors.not_assigned_to_search') if search.present?
   end
 
   def reset_cart

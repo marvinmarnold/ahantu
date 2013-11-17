@@ -80,6 +80,16 @@ class Shop < Describable
     end
   end
 
+  # returns hash of { item_id => num available on date }
+  # only rooms where max_adults > adults will be included in hash
+  # num of rooms available must be > 0
+  def available_items(date, adults)
+    [].tap { |a| items.big_enough(adults).map do |item|
+      num_rooms_available = item.num_available(date)
+      a << ItemAvailability.new(item: item, quantity: num_rooms_available, max_adults: item.max_adults ) if num_rooms_available > 0
+    end}.sort { |x, y| x.max_adults <=> y.max_adults }
+  end
+
 private
 
   def unindex

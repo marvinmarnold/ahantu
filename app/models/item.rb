@@ -1,3 +1,5 @@
+require 'item_availability'
+
 class Item < Describable
   include Taggable
 
@@ -5,6 +7,7 @@ class Item < Describable
   has_many :photos, as: :photoable, dependent: :destroy
   has_many :price_adjustments, dependent: :destroy
   has_many :bookings
+  has_many :line_items, through: :bookings
   has_many :carts, through: :bookings
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings, source: :tag
@@ -18,6 +21,7 @@ class Item < Describable
     :inclusion => { in: [true, false] }
 
   scope   :published, lambda { where(published: true) }
+  scope   :big_enough, ->(num_adults) { where("max_adults >= ?", num_adults) }
 
   def price(d = Time.now)
   	default_price
@@ -25,5 +29,13 @@ class Item < Describable
 
   def to_s
   	name
+  end
+
+  def num_available(date)
+    quantity - num_unavailable(date)
+  end
+
+  def num_unavailable(date)
+    line_items.where(:booking_at => date).size
   end
 end

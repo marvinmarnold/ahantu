@@ -22,9 +22,26 @@ class Search < ActiveRecord::Base
   end
 
   def results(filtered_shops = Shop.published)
+    filtered_shops = filtered_by_shop(filtered_shops)
     filtered_shops = filtered_by_keyword(filtered_shops)
     filtered_shops = filtered_by_hotel_tags(filtered_shops)
+    filtered_shops = filtered_by_availability(filtered_shops)
+
     filtered_shops.uniq
+  end
+
+  def filtered_by_availability(filtered_shops = Shop.published)
+    filtered_shops.each do |filtered_shop|
+      filtered_shops.where.not(id: filtered_shop.id) unless shop_available?(filtered_shop)
+    end
+
+    filtered_shops
+  end
+
+  def filtered_by_shop(filtered_shops = Shop.published)
+    filtered_shops = filtered_shops.where(id: shop.id) if shop.present?
+
+    filtered_shops
   end
 
   def filtered_by_keyword(filtered_shops = Shop.published)
@@ -48,6 +65,36 @@ class Search < ActiveRecord::Base
     filtered_shops
   end
 
+  def shop_available?(_shop)
+    dates.each do |date|
+      if !shop_available_on_date?(_shop, date)
+        return false
+      end
+    end
+
+    true
+  end
+
+  def shop_available_on_date?(_shop, date)
+    original_demand = room_demand_hash
+    original_availability = _shop.available_items(date, adults)
+
+    original_demand.each do |_adults, num_rooms|
+
+    end
+    # Search.accumulate_by_adults(self.room_searches)
+    # Search.accumulate_by_adults(_shop.available_items(date, adults))
+    # _shop.available_items(date, adults)
+    # item.availble?(date, adults)
+  end
+
+  # returns an array of ItemAvailability
+  def room_demand
+    room_searches.each_with_object(Hash.new(0)) do |acc, h|
+      h[acc.adults] += 1
+    end
+  end
+
   def has_hotel_tag?(tag)
     hotel_tags.include? tag
   end
@@ -59,7 +106,7 @@ class Search < ActiveRecord::Base
     ids.each { |tag_id| taggings.create(tag_id: tag_id)}
   end
 
-  def dates
+  def nights
     checkin_at..(checkout_at-1.day)
   end
 

@@ -2,11 +2,10 @@
 
 FactoryGirl.define do
   factory :cart do
-    search
-    payment_at nil
+    search nil
+    user
     payment_amount nil
     billing_information nil
-
     factory :cart_shopping do
       after(:create) do |c, evaluator|
         shop = create(:complete_shop_w_items)
