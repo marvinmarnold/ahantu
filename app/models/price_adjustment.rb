@@ -3,4 +3,6 @@ class PriceAdjustment < ActiveRecord::Base
 
   validates :price, :start_at, :end_at,
     presence: true
+
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
 end

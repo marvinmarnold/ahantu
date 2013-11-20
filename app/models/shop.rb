@@ -27,6 +27,8 @@ class Shop < Describable
   validates :location_id, :commission_pct, :directions,
   	presence: true
 
+  validates :commission_pct, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
+
   validates :published,
     :inclusion => { in: [true, false] }
 

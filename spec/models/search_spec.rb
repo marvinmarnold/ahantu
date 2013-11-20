@@ -24,7 +24,7 @@ describe Search do
     end
   end
 
-  it "only returns shops with available items", focus: true do
+  it "only returns shops with available items" do
     @shop = create(:complete_shop)
     @item = create(:complete_item, shop: @shop, quantity: 1, max_adults: 1)
     @b1 = create(:booking, item: @item, cart: create(:cart), adults: @item.max_adults)

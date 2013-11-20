@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117151150) do
+ActiveRecord::Schema.define(version: 20131120210709) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20131117151150) do
     t.datetime "submitted_at"
     t.datetime "processing_payment_at"
     t.datetime "payment_processed_at"
-    t.datetime "authorizing_processed_at"
+    t.datetime "authorizing_payment_at"
     t.datetime "cancelled_at"
     t.float    "payment_amount"
     t.integer  "billing_information_id"
@@ -204,7 +204,7 @@ ActiveRecord::Schema.define(version: 20131117151150) do
 
   create_table "price_adjustments", force: true do |t|
     t.integer  "item_id"
-    t.string   "price"
+    t.float    "price"
     t.datetime "start_at"
     t.datetime "end_at"
     t.datetime "created_at"

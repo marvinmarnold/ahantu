@@ -17,6 +17,7 @@ FactoryGirl.define do
       end
 
       factory :cart_ready_to_authorize do
+        search
         billing_information { create(:credit_card, user: user) }
         email "marvin@ahantu.com"
         phone "+34666891897"

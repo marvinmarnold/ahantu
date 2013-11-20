@@ -17,14 +17,27 @@ class Item < Describable
 
   validates :default_price, :max_adults, :quantity,
     presence: true
+
   validates :published,
     :inclusion => { in: [true, false] }
+
+  validates :default_price, numericality: { greater_than_or_equal_to: 0 }
 
   scope   :published, lambda { where(published: true) }
   scope   :big_enough, ->(num_adults) { where("max_adults >= ?", num_adults) }
 
+  # t1, t2 inclusive
+  def price_over_period(t1, t2)
+    daily_prices = (t1..t2).map { |t| price t }
+    daily_prices.inject{ |sum, el| sum + el }.to_f / daily_prices.size
+  end
+
   def price(d = Time.now)
-  	default_price
+    if p = price_adjustments.find { |p| p.start_at.to_date <= d && p.end_at.to_date >= d}
+      p.price
+    else
+  	 default_price
+    end
   end
 
   def to_s

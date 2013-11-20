@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :price_adjustment do
     item nil
-    price "MyString"
+    price 10
     start_at "2013-08-15 13:29:21"
     end_at "2013-08-15 13:29:21"
   end

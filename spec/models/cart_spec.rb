@@ -4,7 +4,6 @@ describe Cart do
   context "submitted cart" do
     before(:all) do
       Language.create(name: "English", abbr: :en)
-      # binding.pry
       @cart = create(:cart_submitted)
     end
 

@@ -9,4 +9,11 @@ describe Item do
     expect(@i1.num_available(Date.today)).to eq(1)
     expect(@i1.num_available(Date.tomorrow)).to eq(2)
   end
+
+  it "returns the average price over a continuous period" do
+    @i1 = create(:complete_item, default_price: 5)
+    create :price_adjustment, start_at: 4.days.from_now, end_at: 7.days.from_now, item: @i1, price: 10
+
+    expect(@i1.price_over_period(Date.today, 4.days.from_now)).to eq 6
+  end
 end
