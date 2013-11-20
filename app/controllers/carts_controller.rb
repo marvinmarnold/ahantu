@@ -56,7 +56,7 @@ class CartsController < ApplicationController
   end
 
   def one_click_checkout
-    @cart = Cart.new_from_search(current_search, Item.find(params[:item_id].to_i))
+    @cart = current_user.carts.new_from_search(current_search, Item.find(params[:item_id].to_i))
 
     respond_to do |format|
       if @cart.save
@@ -64,7 +64,7 @@ class CartsController < ApplicationController
         session[current_cart_symbol] = @cart.id
         format.html { redirect_to edit_cart_path(@cart)}
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'edit' }
       end
     end
   end

@@ -42,7 +42,7 @@ class Cart < ActiveRecord::Base
 
   def fill_bookings(search)
     self.bookings.each do |b|
-      search.dates.each do |d|
+      search.nights.each do |d|
         b.line_items.create!(booking_at: d, unit_price_at_checkout: b.item.price(d))
       end
     end
