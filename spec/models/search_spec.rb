@@ -26,6 +26,7 @@ describe Search do
 
   it "only returns shops with available items" do
     @shop = create(:complete_shop)
+    _shops = Shop.where(id: @shop.id)
     @item = create(:complete_item, shop: @shop, quantity: 1, max_adults: 1)
     @b1 = create(:booking, item: @item, cart: create(:cart), adults: @item.max_adults)
     @item.quantity.times { create(:line_item, booking: @b1, booking_at: Date.today) }
@@ -36,11 +37,11 @@ describe Search do
     @s2 = create(:search, shop: @shop, checkin_at: Date.tomorrow, checkout_at: 4.days.from_now)
     create(:room_search, adults: @item.max_adults, search: @s2)
 
-    expect(@s1.filtered_by_availability).to eq []
-    expect(@s2.filtered_by_availability).to eq [@shop]
+    expect(@s1.filtered_by_availability(_shops)).to eq []
+    expect(@s2.filtered_by_availability(_shops)).to eq [@shop]
 
     @item = create(:complete_item, shop: @shop, quantity: 1, max_adults: 2)
-    expect(@s1.filtered_by_availability).to eq [@shop]
+    expect(@s1.filtered_by_availability(_shops)).to eq [@shop]
   end
 
   it "only returns shop if shop_id set" do

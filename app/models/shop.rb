@@ -57,8 +57,8 @@ class Shop < Describable
     1 - self.commission
   end
 
-  def display_price
-    items.map { |i| i.price }.min
+  def display_price(search)
+    items.map { |i| i.price_over_period(search.checkin_at, search.checkout_at) }.min
   end
 
   def published?

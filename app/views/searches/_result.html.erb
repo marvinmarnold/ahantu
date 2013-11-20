@@ -7,7 +7,7 @@
         <%= image_tag r.logo_url(:thumb) %>
       </div>
       <div class="span3">
-        <h3><%= number_to_currency r.display_price %></h3>
+        <h3><%= number_to_currency r.display_price(current_search) %></h3>
         <p class="muted"><%= t "search.show.result.min_price" %></p>
         <hr/>
         <dl>
