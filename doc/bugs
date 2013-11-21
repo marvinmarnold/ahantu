@@ -18,3 +18,4 @@ todo
 9) cancelations
 10) Can't have two price adjustments fro same period
 11) price adjustments are automatically annual
+12) cart submission shouldn't hang like that.

@@ -4,7 +4,8 @@ class Cart < ActiveRecord::Base
   belongs_to :search
   belongs_to :user
 
-  validates :user_id, presence: true
+  validates :user_id, :search_id,
+    presence: true
 
   accepts_nested_attributes_for :bookings
 
@@ -34,16 +35,12 @@ class Cart < ActiveRecord::Base
     Cart.new.tap do |c|
       unless search.blank?
         search.room_searches.each do |rs|
-          c.bookings.build(adults: rs.adults, item: item)
+          b = c.bookings.build(adults: rs.adults, item: item)
+          search.nights.each do |d|
+            b.line_items.create!(booking_at: d, unit_price_at_checkout: b.item.price(d))
+          end
         end
-      end
-    end
-  end
-
-  def fill_bookings(search)
-    self.bookings.each do |b|
-      search.nights.each do |d|
-        b.line_items.create!(booking_at: d, unit_price_at_checkout: b.item.price(d))
+        self.search = search
       end
     end
   end
@@ -102,17 +99,15 @@ class Cart < ActiveRecord::Base
   state_machine :state, :initial => :shopping do
     after_transition any => [:submitted, :processing_payment, :payment_processed, :cancelled], do: :set_timestamp
     state :shopping do
-      validate :not_assigned_to_search
     end
 
+    # before_transition any => [:authoziring_payment], do: :fill_bookings
     state :authorizing_payment do
       validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation,
         presence: true
     end
 
     state :submitted do
-      validates :search_id,
-        presence: true
     end
 
     state :payment_processed do
@@ -155,10 +150,6 @@ private
 
   def set_timestamp
     update_attributes("#{state}_at" => Time.now)
-  end
-
-  def not_assigned_to_search
-    errors[:base] << I18n.t('cart.form.errors.not_assigned_to_search') if search.present?
   end
 
   def reset_cart

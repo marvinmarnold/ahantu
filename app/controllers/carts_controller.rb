@@ -21,7 +21,6 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
-        @cart.fill_bookings(current_search)
         session[current_cart_symbol] = @cart.id
         format.html { redirect_to edit_cart_path(@cart)}
       else

@@ -11,6 +11,7 @@ describe Cart do
       confirmation_code = @cart.receive_confirmation(create(:email_confirmation, message: @cart.order_number))
       expect(confirmation_code).to eq :confirmed
     end
+
   end
 
   it "authorizes payments through paypal" do
