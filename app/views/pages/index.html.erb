@@ -1,18 +1,112 @@
-<h3>Find a hotel anywhere in Rwanda</h3>
-<%= render 'searches/homepage/form' %>
-<hr/>
-<%= link_to t("shared.register_as_shop_owner.link"), new_member_profile_registration_path(suggested_role_symbol => "shop_owner"), class: "btn btn-link" %>
-<hr/>
-<div class="row-fluid">
-  <div class="span6">
-    <h4>Featured hotels</h4>
-    <%= render 'shared/carousel', shops: @shops %>
-  </div>
-  <div class="span6">
-    <h4>Some text</h4>
-    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-    <p>It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to.</p>
-  </div>
+ <%= render 'searches/homepage/form' %>
 
-</div>
+    <!--Main Carousel here-->
+    <div id="carousel-example-generic" class="carousel slide main-carousel" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>	
+        </ol>
+        
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="/assets/slides/slide1.jpg" >
+                <div class="carousel-caption">
+                            <a href="#">
+                                <h3>Find a hotel anywhere in Rwanda</h3>
+                                <h2>NewYork</h2>
+                                <h2>$50</h2>
+                            </a>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/assets/slides/slide2.jpg" >
+                <div class="carousel-caption">
+                		<a href="#">
+                            <h3>Featured Hotel-2</h3>
+                            <h2>California</h2>
+                            <h2>$50</h2>
+                        </a>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/assets/slides/slide3.jpg" >
+                <div class="carousel-caption">
+                		<a href="#">
+                            <h3>Featured Hotel-3</h3>
+                            <h2>NewJersy</h2>
+                            <h2>$50</h2>
+                        </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        	<span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        	<span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    <!--Body Part here-->
+    <div class="container">
+    	<div class="col-md-8">
+        	<h2>Heading here</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+
+			<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+
+			<p>It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to. It is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to.</p>
+            
+            <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+		</div>
+        <div class="col-md-4">
+        	<!--Publish your Hotel-->
+            <a href="#" class="btn btn-lg btn-block publish-hotel" role="button">Publish your Hotel</a>
+        	<!--Featured Hotels carousel-->
+            <div id="carousel-featured-hotels" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-featured-hotels" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-featured-hotels" data-slide-to="1"></li>
+                    <li data-target="#carousel-featured-hotels" data-slide-to="2"></li>	
+                </ol>
+                
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="/assets/slides/slide1.1.jpg" >
+                        <div class="carousel-caption">
+                            <h3>Featured Hotel-1</h3>
+                            <p>Hotel details here</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/assets/slides/slide2.1.jpg" >
+                        <div class="carousel-caption">
+                            <h3>Featured Hotel-2</h3>
+                            <p>Hotel details here</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/assets/slides/slide3.1.jpg" >
+                        <div class="carousel-caption">
+                            <h3>Featured Hotel-3</h3>
+                            <p>Hotel details here</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-featured-hotels" data-slide="prev">
+                	<span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-featured-hotels" data-slide="next">
+                	<span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>

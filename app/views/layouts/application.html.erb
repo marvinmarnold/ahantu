@@ -1,14 +1,46 @@
-<%= render "shared/top" %>
+<!DOCTYPE html>
+<html>
+    <%= render 'shared/head' %> 
+<body>
+  <%= render 'shared/navbar' %>
+    <%= yield %>
 
-<div id="content">
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span10 offset1">
-        <%= render "shared/errors" %>
-        <%= yield %>
-      </div>
-    </div>
-  </div>
-</div>
+    <%= render 'shared/footer' %> 
 
-<%= render "shared/bottom" %>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap.js" type="text/javascript"></script>
+    <!--Custom javascript-->
+    <!--DatePicker here-->
+    <script src="/assets/bootstrap-datepicker.js"></script>
+    <script>
+		var nowTemp = new Date();
+		var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+		
+		var checkin = $('#dp1').datepicker({
+		onRender: function(date) {
+		return date.valueOf() < now.valueOf() ? 'disabled' : '';
+		}
+		}).on('changeDate', function(ev) {
+		if (ev.date.valueOf() > checkout.date.valueOf()) {
+		var newDate = new Date(ev.date)
+		newDate.setDate(newDate.getDate() + 1);
+		checkout.setValue(newDate);
+		}
+		checkin.hide();
+		$('#dp2')[0].focus();
+		}).data('datepicker');
+		var checkout = $('#dp2').datepicker({
+			onRender: function(date) {
+				return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+			}
+		}).on('changeDate', function(ev) {
+		checkout.hide();
+		}).data('datepicker');
+		
+  		$("#add").tooltip();
+		$("#remove").tooltip();
+	 </script>
+
+</body>
+</html>
