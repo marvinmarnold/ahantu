@@ -63,6 +63,7 @@ group :test, :development do
   gem 'guard-rspec', require: false
   gem "rb-fsevent"
   gem 'rb-readline', '~> 0.4.2' #for guard readline errors https://github.com/pry/pry/issues/921
+  gem 'railroady'
 end
 
 group :doc do

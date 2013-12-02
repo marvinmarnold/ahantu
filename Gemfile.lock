@@ -193,6 +193,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    railroady (1.1.1)
     rails (4.0.0)
       actionmailer (= 4.0.0)
       actionpack (= 4.0.0)
@@ -342,6 +343,7 @@ DEPENDENCIES
   pg
   pry
   pry-debugger
+  railroady
   rails (= 4.0.0)
   rb-fsevent
   rb-inotify
