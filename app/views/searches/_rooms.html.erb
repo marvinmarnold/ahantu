@@ -1,14 +1,12 @@
-<div class="col-md-7 col-xs-12 col-sm-12">
+
 <%= f.fields_for :room_searches do |b| %>
-        <div class="form-inline">
-            <label>Adults</label>
-            <div class="no-of-adults">
-                <%= b.input_field :adults, as: :select, collection: 1..9, include_blank: false, class: "search-rooms" %>
-            </div>
-            <%= b.link_to_remove "-", class: "btn btn-default remove"%>
-        </div>
+	            <label>Adults</label>
+	            <div class="no-of-adults">
+	                <%= b.input_field :adults, as: :select, collection: 1..9, include_blank: false, class: "search-rooms" %>
+	            </div>
+	            <%= b.link_to_remove "-", class: "btn btn-default remove", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Remove Room"%>
 <% end %>
-</div>
+ <div class="clearfix"></div>
 
 
 <!--         <button type="button" class="btn btn-default remove" id="remove" data-toggle="tooltip" data-placement="top" title="Remove Room">-</button> -->

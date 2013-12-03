@@ -123,8 +123,14 @@ h6{}
 .no-of-adults option{ background:#fff;color:#000;}
 
 
-.main-carousel .item h3{font-family:'PacificoRegular', Helvetica Neue, Helvetica, Arial, sans-serif; font-size:42px;color:#fff;}
-.main-carousel .item .carousel-caption{ background:url(/assets/slides/white-dot.png) repeat; top:8%;}
+.main-carousel .item h3{font-family:'PacificoRegular', Helvetica Neue, Helvetica, Arial, sans-serif; font-size:42px;color:#fff;
+background: url(../assets/slides/white-dot.png) repeat;
+text-align: left;
+padding: 15px 20px;
+display: inline-block;
+float: left;
+}
+.main-carousel .item .carousel-caption{top:8%; text-shadow:0 1px 6px #000;}
 .main-carousel .item .carousel-caption a{ color:#fff;}
 .main-carousel .item .carousel-caption a:hover h3{color:#ececec;text-decoration:none;}
 .main-carousel .item .carousel-caption a:hover{color:#ececec;text-decoration:none;}
@@ -213,6 +219,29 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endCo
 .main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:293px; }
 .carousel-inner > .item > img, .carousel-inner > .item > a > img{ margin:0 auto;}
 .carousel-inner > .item > img, .carousel-inner > .item { background:#000; overflow:hidden;}
+
+.absolute {
+z-index: 9999;
+position: absolute;
+top: 0px;
+}
+.absolute h4 {
+margin-top: 0px;
+}
+.carousel-caption.user-profile {
+position: absolute;
+width: 200px;
+text-align: right;
+float: right;
+bottom: inherit;
+right: 20px;
+top: 64% !important;
+background: none !important;
+left:auto;
+}
+.media-body{ margin-top:10px;}
+.media-body p{ font-size:12px;}
+.media-body h4{ font-size:18px;}
 
 /*Footer here*/
 

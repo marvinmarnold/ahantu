@@ -2,9 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
-  $("[data-behaviour~=datepicker]").datepicker(
-    format: 'dd/mm/yyyy'
-  )
   $('#search_keyword').autocomplete
     source: "/search_suggestions"
 

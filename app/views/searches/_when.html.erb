@@ -1,13 +1,29 @@
 <div class="row-fluid">
-  <div class="span6"><%= f.input :checkin_at, as: :string, :input_html => {
+  <div class="col-md-6">
+
+    <%= f.input :checkin_at, as: :string,:label => false, :placeholder=>"Checkin", :input_html => {
     :data => { behaviour: "datepicker" },
     value: f.object.suggested_checkin_at(current_user),
-    class: "search-date"
+    class: "datepicker",
+    readonly: true,
+    "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Checkin Date",
+     id:"dp1",
+    "data-date-format" => "dd/mm/yyyy"
   } %></div>
-  <div class="span6"><%= f.input :checkout_at, as: :string, :input_html => {
-    :data => { behaviour: "datepicker" },
+  <div class="col-md-6"><%= f.input :checkout_at, as: :string,:label => false, :placeholder => "Checkout", :input_html => {
+    :data => { behaviour: "datepicker"},
     value: f.object.suggested_checkout_at(current_user),
-    class: "search-date"
+    class: "col-md-6 datepicker",
+    readonly: true,
+    "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Checkout Date",
+    id:"dp2",
+    "data-date-format" => "dd/mm/yyyy",
   } %>
   </div>
 </div>
+
+
+<!--   <div class="col-md-6 "><input type="text" readonly class="datepicker" value="Checkin" data-date-format="mm/dd/yy" id="dp1"></div>
+    <div class="col-md-6">
+       <input type="text" readonly class="col-md-6 datepicker" value="Checkout" data-date-format="mm/dd/yy" id="dp2"></div>
+       <div class="clearfix"></div> -->

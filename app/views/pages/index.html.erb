@@ -1,4 +1,6 @@
+ 
  <%= render 'searches/homepage/form' %>
+
 
     <!--Main Carousel here-->
     <div id="carousel-example-generic" class="carousel slide main-carousel" data-ride="carousel">
@@ -9,36 +11,57 @@
             <li data-target="#carousel-example-generic" data-slide-to="2"></li>	
         </ol>
         
-        <!-- Wrapper for slides -->
+       <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <img src="/assets/slides/slide1.jpg" >
+                <img src="assets/slides/slide1.jpg" >
                 <div class="carousel-caption">
-                            <a href="#">
-                                <h3>Find a hotel anywhere in Rwanda</h3>
-                                <h2>NewYork</h2>
-                                <h2>$50</h2>
-                            </a>
+                    <a href="#"><h3>Find a hotel anywhere in Rwanda</h3></a>
+                </div>
+                <div class="carousel-caption user-profile">
+                    <div class="media pull-right">
+                        <a class="pull-right" href="#">
+                            <img src="/assets/profile-pic.jpg" alt="Ahantu" class="media-object"> 
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">John Smith</h4>
+                            <p>Newyork City</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="item">
-                <img src="/assets/slides/slide2.jpg" >
+                <img src="assets/slides/slide2.jpg" >
                 <div class="carousel-caption">
-                		<a href="#">
-                            <h3>Featured Hotel-2</h3>
-                            <h2>California</h2>
-                            <h2>$50</h2>
+                    <a href="#"><h3>Find a hotel anywhere in Rwanda</h3></a>
+                </div>
+                <div class="carousel-caption user-profile">
+                    <div class="media pull-right">
+                        <a class="pull-right" href="#">
+                            <img src="/assets/profile-pic.jpg" alt="Ahantu" class="media-object">
                         </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">John Smith</h4>
+                            <p>Newyork City</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="item">
-                <img src="/assets/slides/slide3.jpg" >
+                <img src="assets/slides/slide3.jpg" >
                 <div class="carousel-caption">
-                		<a href="#">
-                            <h3>Featured Hotel-3</h3>
-                            <h2>NewJersy</h2>
-                            <h2>$50</h2>
+                    <a href="#"><h3>Find a hotel anywhere in Rwanda</h3></a>
+                </div>
+                <div class="carousel-caption user-profile">
+                    <div class="media">
+                        <a class="pull-right" href="#">
+                            <img src="/assets/profile-pic.jpg" alt="Ahantu" class="media-object">
                         </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">John Smith</h4>
+                            <p>Newyork City</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,8 +88,9 @@
 		</div>
         <div class="col-md-4">
         	<!--Publish your Hotel-->
-            <a href="#" class="btn btn-lg btn-block publish-hotel" role="button">Publish your Hotel</a>
-        	<!--Featured Hotels carousel-->
+            <%= link_to t("shared.register_as_shop_owner.link"), new_member_profile_registration_path(suggested_role_symbol => "shop_owner"), class: "btn btn-lg btn-block publish-hotel", role:"button" %>
+<!--             <a href="#" class="btn btn-lg btn-block publish-hotel" role="button">Publish your Hotel</a>
+ -->        	<!--Featured Hotels carousel-->
             <div id="carousel-featured-hotels" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">

@@ -1,7 +1,6 @@
  <div class="step mid">
-                	<h4>Step 2 - When?</h4>
-                    <div class="col-md-6 "><input type="text" readonly class="datepicker" value="Checkin" data-date-format="mm/dd/yy" id="dp1"></div>
-                    <div class="col-md-6">
-                       <input type="text" readonly class="col-md-6 datepicker" value="Checkout" data-date-format="mm/dd/yy" id="dp2"></div>
-                       <div class="clearfix"></div>
+                	<h4><%= t "page.index.search.step2" %></h4>
+
+                	<%= render 'searches/when', f: f %>
+  
    </div>
