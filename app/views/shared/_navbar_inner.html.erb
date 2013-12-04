@@ -14,7 +14,7 @@
              <% if can? :set_language, current_profile %>
                     <li class="lang">
                     <div class="form-control">
-                        <select>
+                        <select id="change_language">
                             <% Language.all.each do |language| %>
                                 <option value='<%=language.id%>' class="style"><%=language.name%></option>
                             <% end %>

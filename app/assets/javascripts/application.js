@@ -9,7 +9,7 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require jquery_nested_form
 //= require bootstrap-datepicker
+//= require bootstrap
 //= require_tree .
 
 
@@ -42,6 +43,18 @@ function add_placeholder(id, placeholder) {
   el.onblur();
 }
 $(document).ready(function(){
+
+
+  $("#change_language").change(function(){
+      var path = window.location.pathname;
+      var language_id = $(this).val();
+      window.location.href = "/pages/set_language?language_id=" + language_id + "&location=" + path;
+
+  })
+
+
+
+
   add_placeholder('search_keyword', 'City, neighborhood, hotel name, etc.');
   //$(".add").tooltip();
   //$(".remove").tooltip();
