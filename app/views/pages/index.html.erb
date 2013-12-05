@@ -16,14 +16,14 @@
             <% @shops.each do |shop| %>
               <%= content_tag "div", class: append_first("item", "active") do %>
                   <%= content_tag "a", href: url_for(shop) do %>
-                  <%= image_tag shop.logo_url(:banner) %>
+                  <%= image_tag shop.banner_url(:banner) %>
                     <div class="carousel-caption">
                         <a href="#"><h3>Find a hotel anywhere in Rwanda</h3></a>
                     </div>
                     <div class="carousel-caption user-profile">
                         <div class="media">
                             <a class="pull-right" href="#">
-                                <img src="/assets/profile-pic.jpg" alt="Ahantu" class="media-object">
+                                <%= image_tag shop.logo_url(:thumb), class: "media-object" %>
                             </a>
                             <div class="media-body">
                                 <h4 class="media-heading"><%= shop.name %></h4>

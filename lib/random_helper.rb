@@ -8,6 +8,10 @@ module RandomHelper
       File.open(Dir[Rails.root.join("#{folder}/*")].sample)
     end
 
+    def rand_shop_banner
+      rand_file("vendor/hotels/generic/banners")
+    end
+
     def rand_shop_photo
       rand_file("vendor/hotels/generic/photos")
     end

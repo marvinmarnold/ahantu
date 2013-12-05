@@ -23,6 +23,7 @@ class Shop < Describable
   scope   :unowned, lambda { where(user_id: nil) }
 
   mount_uploader :logo, LogoUploader
+  mount_uploader :banner, BannerUploader
 
   validates :location_id, :commission_pct, :directions,
   	presence: true
