@@ -28,6 +28,7 @@ gem 'carrierwave'
 gem 'carrierwave_direct'
 gem 'rmagick'
 gem 'jquery-ui-rails'
+gem 'RedCloth'
 
 #bootstrap stuff
 gem "less-rails"
