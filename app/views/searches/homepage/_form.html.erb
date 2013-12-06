@@ -1,20 +1,17 @@
-
  <%= simple_nested_form_for(@search) do |f| %>
   <%= f.error_notification %>
 
- <section class="search-holder">
+    <section class="search-holder">
     	<ul class="container">
             <li class="col-md-4 col-sm-12 col-xs-12">
                 <%= render 'searches/homepage/keyword', f: f %>
             </li>
             <li class="col-md-4 col-sm-12 col-xs-12">
-                    <%= render 'searches/homepage/when', f: f %>
+                <%= render 'searches/homepage/when', f: f %>
             </li>
             <li class="col-md-4 col-sm-12 col-xs-12">
                 <%= render 'searches/homepage/rooms', f: f %>
             </li>
         </ul>
     </section>
-
 <% end %>
-

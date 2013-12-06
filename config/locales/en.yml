@@ -113,6 +113,12 @@ en:
         step1: "Step 1: What"
         step2: "Step 2: When"
         step3: "Step 3: Rooms"
+      subsection:
+        title: "Some title"
+        paragraph1: "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia"
+        paragraph2: "It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to. It is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to."
+        paragraph3: "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia."
+        paragraph4: "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia"
   member_profile:
     new:
       submit: "Create account"
