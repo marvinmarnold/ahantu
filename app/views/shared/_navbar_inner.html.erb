@@ -1,37 +1,33 @@
-            <ul class="top-menu">
+<ul class="top-menu">
+    <% if current_user.guest? && current_cart.blank? %>
+        <li>
+          <%= link_to "Sign in", new_member_profile_session_path %>
+        </li>
+        <li class="divider">|</li>
+        <li>
+          <%= link_to "Sign up", new_member_profile_registration_path %>
+        </li>
+    <% end %>
 
-
-                <% if current_user.guest? && current_cart.blank? %>
-                    <li>
-                      <%= link_to "Sign in", new_member_profile_session_path %>
-                    </li>
-                    <li class="divider">|</li>
-                    <li>
-                      <%= link_to "Sign up", new_member_profile_registration_path %>
-                    </li>
+    <% if can? :set_language, current_profile %>
+        <li class="lang">
+        <div class="form-control">
+            <select id="change_language">
+                <option value='<%=Language.current.id%>' class="style"><%= Language.current.name %></option>
+                <% Language.where.not(id: Language.current.id).each do |language| %>
+                    <option value='<%=language.id%>' class="style"><%= language.name %></option>
                 <% end %>
+            </select>
+         </div>
+        </li>
+    <% end %>
 
-             <% if can? :set_language, current_profile %>
-                    <li class="lang">
-                    <div class="form-control">
-                        <select id="change_language">
-                            <% Language.all.each do |language| %>
-                                <option value='<%=language.id%>' class="style"><%=language.name%></option>
-                            <% end %>
-                        </select>
-                     </div>
-                    </li>
-            <% end %>
+    <% if show_checkout_button? %>
+        <li><%= link_to "Checkout", checkout_path(current_cart) %></li>
+        <li class="divider-vertical"></li>
+    <% end %>
 
-            <% if show_checkout_button? %>
-            <li><%= link_to "Checkout", checkout_path(current_cart) %></li>
-            <li class="divider-vertical"></li>
-            <% end %>
-
-            <% unless current_user.guest? %>
-                <%= render 'shared/navbar_account_settings' %>
-            <% end %>
-            </ul>
-
-
-
+    <% unless current_user.guest? %>
+        <%= render 'shared/navbar_account_settings' %>
+    <% end %>
+</ul>
