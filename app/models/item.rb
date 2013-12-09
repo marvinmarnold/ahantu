@@ -6,7 +6,7 @@ class Item < Describable
   belongs_to :shop
   has_many :photos, as: :photoable, dependent: :destroy
   has_many :price_adjustments, dependent: :destroy
-  has_many :bookings
+  has_many :bookings, inverse_of: :item
   has_many :line_items, through: :bookings
   has_many :carts, through: :bookings
   has_many :taggings, as: :taggable, dependent: :destroy

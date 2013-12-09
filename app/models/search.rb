@@ -45,8 +45,8 @@ class Search < ActiveRecord::Base
   end
 
   def filtered_by_keyword(filtered_shops = Shop.published)
-    k = "%#{self.keyword}%"
     if self.keyword.present?
+      k = "%#{self.keyword}%"
       filtered_shops = filtered_shops.joins(:location).joins(:descriptions).
         where("descriptions.name ilike :k or locations.name ilike :k",
         { k: k })

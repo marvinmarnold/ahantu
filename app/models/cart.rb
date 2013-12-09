@@ -31,17 +31,24 @@ class Cart < ActiveRecord::Base
   	0
   end
 
-  def self.new_from_search(search, item = nil)
+  def self.new_with_bookings(search, item = nil)
     Cart.new.tap do |c|
       unless search.blank?
+        c.search = search
         search.room_searches.each do |rs|
           b = c.bookings.build(adults: rs.adults, item: item)
-          search.nights.each do |d|
-            b.line_items.create!(booking_at: d, unit_price_at_checkout: b.item.price(d))
-          end
         end
-        self.search = search
       end
+    end
+  end
+
+  def fill_bookings
+    self.bookings.each { |b| b.build_line_items(self.search) }
+  end
+
+  def build_bookings(search)
+    bookings.each do |booking|
+      booking.fill_line_items(search)
     end
   end
 

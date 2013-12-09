@@ -15,7 +15,7 @@ class ShopsController < ApplicationController
   # GET /shops/1.json
   def show
     return redirect_to finalize_search_path(Search.create_unfinalized(current_user, @shop)) unless can_show?
-    @cart = Cart.new_from_search(current_search)
+    @cart = Cart.new_with_bookings(current_search)
     I18n.locale = admin_preview_language_abbr if !pretending_to_be_customer?
   end
 

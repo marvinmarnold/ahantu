@@ -1,15 +1,12 @@
 <%= render "shared/top" %>
 
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span3 offset1">
+<div class="container">
+  <div class="col-md-3 col-md-offset-1">
       <%= yield :side %>
-    </div>
-    <div class="span7">
-      <%= render "shared/errors" %>
+  </div>
+    <div class="col-md-7">
       <%= yield %>
     </div>
-  </div>
 </div>
 
 <%= render "shared/bottom" %>

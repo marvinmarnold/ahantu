@@ -18,6 +18,8 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = current_user.carts.build(cart_params)
+    @cart.search = current_search
+    @cart.fill_bookings
 
     respond_to do |format|
       if @cart.save
@@ -31,6 +33,7 @@ class CartsController < ApplicationController
 
   # GET /carts/1/edit
   def edit
+    # binding.pry
   end
 
   # PATCH/PUT /carts/1
@@ -55,11 +58,11 @@ class CartsController < ApplicationController
   end
 
   def one_click_checkout
-    @cart = current_user.carts.new_from_search(current_search, Item.find(params[:item_id].to_i))
+    @cart = current_user.carts.new_with_bookings(current_search, Item.find(params[:item_id].to_i))
+    @cart.fill_bookings
 
     respond_to do |format|
       if @cart.save
-        @cart.fill_bookings(current_search)
         session[current_cart_symbol] = @cart.id
         format.html { redirect_to edit_cart_path(@cart)}
       else

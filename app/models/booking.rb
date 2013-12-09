@@ -1,6 +1,6 @@
 class Booking < ActiveRecord::Base
   belongs_to :cart
-  belongs_to :item
+  belongs_to :item, inverse_of: :bookings
   has_many :line_items, dependent: :destroy
 
   validates :item_id, :quantity, :name_at_checkout,
@@ -22,6 +22,14 @@ class Booking < ActiveRecord::Base
 
   def date_ordered_line_items
     line_items.sort { |a, b| a.booking_at <=> b.booking_at}
+  end
+
+  def build_line_items(search)
+    if line_items.blank? && item.present?
+      search.nights.each do |d|
+        line_items.build(booking_at: d, unit_price_at_checkout: item.price(d))
+      end
+    end
   end
 
   def shop
