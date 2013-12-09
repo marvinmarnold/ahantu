@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* 
+/*
 	Custom CSS Document
 	Author: Divakar Manikyam
 */
@@ -71,22 +71,22 @@ h6{}
     outline:none;-webkit-appearance:none;
     -moz-appearance:none;
     appearance:none;}
-.top-menu li.lang .form-control:hover{background: url(/assets/down-arrow.png) no-repeat 113px center #94ce7a;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
+.top-menu li.lang .form-control:hover{background: url(asset-path('down-arrow.png')) no-repeat 113px center #94ce7a;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
  	 /* ...and now for the proper property */
   	transition:.5s;}
-	
+
 /*Search Steps here*/
 
 .search-holder{background:#57494b;}
 .search-holder li{list-style:none;}
-.search-holder li .step{ margin:10px 0; background:url(/assets/grey_bg.png) repeat; min-height:115px; text-align:center; padding-bottom:15px;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
+.search-holder li .step{ margin:10px 0; background:url(asset-path('grey_bg.png')) repeat; min-height:115px; text-align:center; padding-bottom:15px;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
  	 /* ...and now for the proper property */
   	transition:.5s;}
 .search-holder li .step h4 {padding: 20px 0 10px; color:#3c2f2f; text-shadow:0 1px 0 #e2e1e0;}
 .search-holder li .step input[type=text]{ width:90%; background:#ebebeb; border:solid 1px #aaaaa9; border-radius:0px; margin:0 auto;}
-.search-holder li .step.mid{background:url(/assets/green_bg.png) repeat;}
+.search-holder li .step.mid{background:url(asset-path('green_bg.png')) repeat;}
 .search-holder li .step.mid h4{color:#274f14;text-shadow:0 1px 0 #98cd83;}
-.search-holder li .step.mid input[type=text].datepicker{background:url(/assets/calendar.png) no-repeat right center #ebebeb; border:solid 1px #6f9559; height:33px; width:100%; color:#919191;}
+.search-holder li .step.mid input[type=text].datepicker{background:url(asset-path('calendar.png')) no-repeat right center #ebebeb; border:solid 1px #6f9559; height:33px; width:100%; color:#919191;}
 .search-holder li .step.mid div.col-md-6{ margin-left:0px;}
 .search-holder ul{ margin-bottom:1px;}
 .search-holder li .step:hover{ box-shadow:0 1px 15px #111;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
@@ -96,7 +96,7 @@ h6{}
 .no-of-adults{
 	padding:0px;
     margin: 0 0 -13px;
-   	background: url(/assets/select-arrow.png) no-repeat 37px center #ebebeb;
+   	background: url(asset-path('select-arrow.png')) no-repeat 37px center #ebebeb;
     color:#fff;
 	border-radius:0px;
 	border:solid 1px #ada8a6;
@@ -162,7 +162,7 @@ padding: 3px 7px 9px;
 line-height: 22px;
 color: #fff;
 outline:none;
--webkit-tap-highlight-color:#274f14;	
+-webkit-tap-highlight-color:#274f14;
 }
 .add:hover, .add:active{background:#4d8134; color:#fff; border:none; outline:none;}
 .remove, .remove:focus, .remove:visited{
@@ -188,7 +188,7 @@ padding: 6px 7px 7px;
 color: #fff;
 outline:none;
 float:right;
--webkit-tap-highlight-color:#259dc0;	
+-webkit-tap-highlight-color:#259dc0;
 }
 .search:hover, .search:active{background:#47bee0; color:#fff; border:none; outline:none;}
 
@@ -259,14 +259,14 @@ footer .footer-logo{float:right;}
 /* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .top-menu li.lang select {padding-right:18px}
-	
+
 }
 
 
 /*Media queries here for responsiveness*/
 
 /* Large desktop */
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
 
 	.logo{float:left; margin:0px; text-align:left;}
 	.top-menu{float:right;}
@@ -274,8 +274,8 @@ footer .footer-logo{float:right;}
  }
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) { 
-	
+@media (min-width: 768px) and (max-width: 979px) {
+
 	.logo{float:none; margin:0px auto; text-align:center;}
 	.top-menu{margin: 18px auto 10px; float:none;}
 	.main-carousel .item h3{ font-size:32px;}
@@ -283,7 +283,7 @@ footer .footer-logo{float:right;}
 	.main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:293px;}
  }
 
-@media (min-width: 980px) and (max-width: 1200px) { 
+@media (min-width: 980px) and (max-width: 1200px) {
 
 	.step .form-inline{ margin:0 auto;}
 	.step .col-md-3{ padding-left:0px; padding-right:8px;}
@@ -291,8 +291,8 @@ footer .footer-logo{float:right;}
  }
 
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) { 
-	
+@media (max-width: 767px) {
+
 	.logo{float:none; margin:0px auto; text-align:center;}
 	.top-menu{margin: 18px auto 10px; float:none;}
 	.main-carousel .item h3{ font-size:24px;}
@@ -301,8 +301,8 @@ footer .footer-logo{float:right;}
  }
 
 /* Landscape phones and down */
-@media (max-width: 480px) { 
-	
+@media (max-width: 480px) {
+
 	.logo{float:none; margin:0px auto; text-align:center;}
 	.top-menu{margin: 18px auto 10px; float:none;}
 	.step .form-inline{float:none;}
@@ -310,6 +310,6 @@ footer .footer-logo{float:right;}
 	.main-carousel .item h3{ font-size:24px; line-height:24px}
 	.main-carousel .item h2{ font-size:14px;}
 	.main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:200px; }
-	
+
 
  }
