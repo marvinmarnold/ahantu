@@ -1,29 +1,37 @@
-<%= link_to "ahantu", root_path, class: "brand" %>
-<span class="navbar-text float-right"><%= current_user %></span>
-<ul class="nav pull-right">
-	<% if can? :set_language, current_profile %>
-		<li class="divider-vertical"></li>
-	    <% Language.all.each do |language| %>
-	      <li><%= link_to language.name, set_language_path(language_id: language.id, location: current_location) %></li>
-	    <% end %>
-		<li class="divider-vertical"></li>
-	<% end %>
-	<% if current_user.guest? && current_cart.blank? %>
-		<li>
-		  <%= link_to "Sign in", new_member_profile_session_path %>
-		</li>
-		<li class="divider-vertical"></li>
-		<li>
-		  <%= link_to "Sign up", new_member_profile_registration_path %>
-		</li>
-	<% end %>
+            <ul class="top-menu">
 
-	<% if show_checkout_button? %>
-		<li><%= link_to "Checkout", checkout_path(current_cart) %></li>
-		<li class="divider-vertical"></li>
-	<% end %>
 
-	<% unless current_user.guest? %>
-		<%= render 'shared/navbar_account_settings' %>
-	<% end %>
-</ul>
+                <% if current_user.guest? && current_cart.blank? %>
+                    <li>
+                      <%= link_to "Sign in", new_member_profile_session_path %>
+                    </li>
+                    <li class="divider">|</li>
+                    <li>
+                      <%= link_to "Sign up", new_member_profile_registration_path %>
+                    </li>
+                <% end %>
+
+             <% if can? :set_language, current_profile %>
+                    <li class="lang">
+                    <div class="form-control">
+                        <select id="change_language">
+                            <% Language.all.each do |language| %>
+                                <option value='<%=language.id%>' class="style"><%=language.name%></option>
+                            <% end %>
+                        </select>
+                     </div>
+                    </li>
+            <% end %>
+
+            <% if show_checkout_button? %>
+            <li><%= link_to "Checkout", checkout_path(current_cart) %></li>
+            <li class="divider-vertical"></li>
+            <% end %>
+
+            <% unless current_user.guest? %>
+                <%= render 'shared/navbar_account_settings' %>
+            <% end %>
+            </ul>
+
+
+

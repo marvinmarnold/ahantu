@@ -19,6 +19,7 @@ FactoryGirl.define do
 
     factory :complete_shop do
         logo { RandomHelper.rand_shop_logo }
+        banner { RandomHelper.rand_shop_banner }
         published true
         location { create(:location) }
         after(:create) do |c, evaluator|

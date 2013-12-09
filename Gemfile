@@ -28,11 +28,12 @@ gem 'carrierwave'
 gem 'carrierwave_direct'
 gem 'rmagick'
 gem 'jquery-ui-rails'
+gem 'RedCloth'
 
 #bootstrap stuff
 gem "less-rails"
-gem "twitter-bootstrap-rails"
 gem 'will_paginate-bootstrap', '0.2.5'
+gem "twitter-bootstrap-rails"
 gem 'bootstrap-datepicker-rails'
 
 #general

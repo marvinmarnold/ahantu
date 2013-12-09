@@ -1,12 +1,17 @@
-<%= simple_nested_form_for(@search) do |f| %>
+ <%= simple_nested_form_for(@search) do |f| %>
   <%= f.error_notification %>
 
-  <div class="inputs row-fluid">
-  	<%= render 'searches/homepage/keyword', f: f %>
-  	<%= render 'searches/homepage/when', f: f %>
-  	<%= render 'searches/homepage/rooms', f: f %>
-  </div>
-
-	<%= f.button :submit, t("simple_form.labels.search.new.submit"),  class: "btn btn-success btn-large btn-block" %>
-
+    <section class="search-holder">
+    	<ul class="container">
+            <li class="col-md-4 col-sm-12 col-xs-12">
+                <%= render 'searches/homepage/keyword', f: f %>
+            </li>
+            <li class="col-md-4 col-sm-12 col-xs-12">
+                <%= render 'searches/homepage/when', f: f %>
+            </li>
+            <li class="col-md-4 col-sm-12 col-xs-12">
+                <%= render 'searches/homepage/rooms', f: f %>
+            </li>
+        </ul>
+    </section>
 <% end %>

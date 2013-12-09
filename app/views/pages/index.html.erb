@@ -1,18 +1,15 @@
-<h3>Find a hotel anywhere in Rwanda</h3>
-<%= render 'searches/homepage/form' %>
-<hr/>
-<%= link_to t("shared.register_as_shop_owner.link"), new_member_profile_registration_path(suggested_role_symbol => "shop_owner"), class: "btn btn-link" %>
-<hr/>
-<div class="row-fluid">
-  <div class="span6">
-    <h4>Featured hotels</h4>
-    <%= render 'shared/carousel', shops: @shops %>
-  </div>
-  <div class="span6">
-    <h4>Some text</h4>
-    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-    <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-    <p>It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to.</p>
-  </div>
+ <%= render 'searches/homepage/form' %>
+ <%= render 'shared/carousel', shops: @shops %>
 
+<!--Body Part here-->
+<div class="container">
+	<div class="col-md-8">
+    	<%= raw textilize t("page.index.subsection") %>
+	</div>
+    <div class="col-md-4">
+    	<!--Publish your Hotel-->
+        <%= link_to t("shared.register_as_shop_owner.link"), new_member_profile_registration_path(suggested_role_symbol => "shop_owner"), class: "btn btn-lg btn-block publish-hotel", role:"button" %>
+
+        <%= render 'shared/carousel_small' %>
+    </div>
 </div>

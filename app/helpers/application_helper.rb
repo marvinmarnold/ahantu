@@ -39,4 +39,8 @@ module ApplicationHelper
       t("shared.admin_preview_role.shop_owner")
   end
 
+  def textilize(s)
+    RedCloth.new(s).to_html.html_safe
+  end
+
 end
