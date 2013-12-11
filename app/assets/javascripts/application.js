@@ -13,11 +13,10 @@
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require turbolinks
 //= require jquery_nested_form
-//= require bootstrap-datepicker
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require_tree .
 
 
