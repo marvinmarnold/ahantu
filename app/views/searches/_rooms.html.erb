@@ -4,7 +4,10 @@
 	            <div class="no-of-adults">
 	                <%= b.input_field :adults, as: :select, collection: 1..9, include_blank: false, class: "search-rooms" %>
 	            </div>
+	            <% if b.options[:child_index] != 0 %>
 	            <%= b.link_to_remove "-", class: "btn btn-default remove", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Remove Room"%>
+	            <% end %>
+
 <% end %>
  <div class="clearfix"></div>
 
