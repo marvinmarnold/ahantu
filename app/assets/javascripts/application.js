@@ -82,6 +82,14 @@ checkout.setValue(newDate);
 checkin.hide();
 $('#dp2')[0].focus();
 }).data('datepicker');
+
+
+$("#dp2").click(function(){
+  if(checkin){checkin.hide();}
+})
+$("#dp1").click(function(){
+  if(checkout){checkout.hide();}
+})
 var checkout = $('#dp2').datepicker({
   onRender: function(date) {
     return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
