@@ -255,7 +255,11 @@ footer ul li a:hover{color:#ccc; text-decoration:none;}
 footer .copy-rights{font-size:12px; color:#fff;}
 footer .footer-logo{float:right;}
 
-
+.absolute .fields:first-child {
+float: left;
+margin: 0px;
+}
+.absolute .fields{float:none; margin: 8px 0;}
 /* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .top-menu li.lang select {padding-right:18px}
@@ -281,6 +285,7 @@ footer .footer-logo{float:right;}
 	.main-carousel .item h3{ font-size:32px;}
 	.main-carousel .item h2{ font-size:24px;}
 	.main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:293px;}
+  .absolute{position:relative;}
  }
 
 @media (min-width: 980px) and (max-width: 1200px) { 
@@ -298,6 +303,7 @@ footer .footer-logo{float:right;}
 	.main-carousel .item h3{ font-size:24px;}
 	.main-carousel .item h2{ font-size:18px;}
 	.main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:253px; }
+  .absolute{position:relative;} 
  }
 
 /* Landscape phones and down */
@@ -310,6 +316,6 @@ footer .footer-logo{float:right;}
 	.main-carousel .item h3{ font-size:24px; line-height:24px}
 	.main-carousel .item h2{ font-size:14px;}
 	.main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:200px; }
-	
+	.absolute{position:relative;}
 
  }
