@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131205103643) do
+ActiveRecord::Schema.define(version: 20131216104524) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -309,6 +309,8 @@ ActiveRecord::Schema.define(version: 20131205103643) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "banner"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "shops", ["location_id"], name: "index_shops_on_location_id", using: :btree
