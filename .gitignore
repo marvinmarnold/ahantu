@@ -26,3 +26,7 @@ pickle-email-*.html
 /vendor/hotels/sample/**/photos/*
 /vendor/hotels/sample/**/*.jpg
 /vendor/hotels/structure/
+/config/*
+/db/*
+/lib/seeder.rb
+vendor

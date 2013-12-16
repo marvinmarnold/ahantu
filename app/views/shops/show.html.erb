@@ -12,12 +12,66 @@
   <%= link_to t("shop.show.edit_photos"), photos_shop_path(@shop), class: "btn btn-link" %>
 <% end %>
 
-<h1><%= @shop %></h1>
-<h5><%= shop_address @shop %></h5>
-
-<div class="row-fluid">
-  <div class="span6"><%= render 'shops/carousel', shop: @shop %></div>
-  <div class="span5 offset1"><%= render "shops/details_tabs" %></div>
+<div class="container">
+	<div class="col-md-8">
+		<div class="box">
+			<div class="top-section-heading">
+				<h2><%= @shop %></h2>
+			</div>
+			<div class="top-section-extra-info">
+				<h5><span class="glyphicon glyphicon-map-marker"></span> <%= shop_address @shop %></h5>
+			</div>
+			<div class="top-section-heading">
+				<%= render 'shops/carousel', shop: @shop %>
+			</div>
+			<div class="top-section-heading">
+				<h4 class="title">Overview</h4>
+				<p><%= @shop.description %></p>
+			</div>
+			<div id="availability" class="top-section-extra-info">
+				<h2>Rooms and Availability
+					<small>
+						<a href="#availability"><span class="glyphicon glyphicon-link"></span></a>
+					</small>
+				</h2>
+			</div>
+			<div class="top-section-heading">
+				<%= render 'carts/shop_menu' %>
+			</div>
+		</div>
+	</div>
+  
+	<div class="col-md-4">
+			
+			<div class="box">
+				<div class="top-section-heading" style='text-align:center'>
+					<h3><span class="glyphicon glyphicon-usd"></span> 300 - 600 <small>/night</small></h3>
+				</div>
+				<div class="top-section-extra-info">
+					<% hotel_tag_categories_show.each do |c| %>
+						<% unless @shop.subclass_tags(c).blank? %>
+							<h4 class="title"><%= label_for_tag_category(c) %></h4>
+							<% @shop.subclass_tags(c).each do |tag| %> 
+								  <p><span class="glyphicon glyphicon-ok-sign"></span> <%= tag %></p>
+							<% end %>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+			
+			<div class="box" style='text-align:center;'>
+				<div class="top-section-heading">
+					<h4 class="title">Directions</h4>
+				</div>
+				<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{shop_address @shop}&zoom=14&size=300x200&sensor=false" %>
+			</div>
+			<div class="box" style='text-align:center;'>
+				<div class="top-section-heading">
+					<h4 class="title">Similar Hotels</h4>
+					<%= @shop.directions %>
+				</div>
+			</div>
+			
+			
+  </div>
 </div>
-
-<%= render 'carts/shop_menu' %>

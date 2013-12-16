@@ -1,39 +1,50 @@
-<div class="row-fluid">
-  <div class="span6">
-    <h3><%= item %></h3>
-    <p><%= item.description %></p>
+<div class="panel panel-default">
 
-    <%= render 'items/room_details', room: item %>
+  <div class="panel-heading">
+		<h4 class='title'>
+			<%= item %>
+			<span class="pull-right">
+					<%= number_to_currency item.default_price %> <small><%= t "search.show.result.min_price" %></small>
+					<small>
+						&nbsp;&nbsp;&nbsp;
+						<% if can_and_want_shop_admin? %>
+							<%= link_to t("shop.show.edit_item"), edit_shop_item_path(@shop, item), class: "btn btn-mini btn-success" %>
+						<% end %>
+					</small>
+			</span>
+		</h4>
+	</div>
 
-  </div>
+  <div class="panel-body">
 
-  <div class="span5 offset1">
-    <h3 class="text-right"><%= number_to_currency item.default_price %></h3>
-    <p class="muted text-right"><%= t "search.show.result.min_price" %></p>
+		<div class="row-fluid">
+			<div class="col-md-4">
+				<%= render 'items/room_pictures', room: item %>
+			</div>
+			<div class="col-md-8" style='border-left: 1px solid #eee;'>
+				<h5><%= item.description.humanize %></h5>
+				<%= render 'items/room_details', room: item %>
+			</div>
+		</div>
 
-    <% if can_and_want_shop_admin? %>
-      <%= link_to t("shop.show.edit_item"), edit_shop_item_path(@shop, item), class: "btn btn-large btn-success" %>
-    <% end %>
-
-    <% if can_one_click_checkout?(@cart) %>
-      <% @cart.bookings.each do |b| %>
-        <div>
-        <%= link_to t("cart.new.book_room"),
-          one_click_checkout_carts_path(item_id: item.id),
-          class: "btn btn-large btn-success pull-right" %>
-        </div>
-      <% end %>
-    <% end %>
-
-    <div class="clearfix"></div>
-
-    <hr />
-
-    <%= render 'items/room_pictures', room: item %>
-
-  </div>
+	</div>
+	
+	<div class="panel-footer">
+		<h5>	
+			<a target='#share'>.</a>
+			<span class="pull-right" style='margin-top:-10px;'>
+				<% if can_one_click_checkout?(@cart) %>
+					<% @cart.bookings.each do |b| %>
+						<%= link_to one_click_checkout_carts_path(item_id: item.id),
+							class: "btn btn-large btn-success" do %>
+							<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<%= t("cart.new.book_room") %>
+						<% end %>
+					<% end %>
+				<% end %>
+			</span>
+		</h5>
+	</div>
+	
 </div>
-
-<br />
 
 <%= render 'bookings/form', f: f, item: item %>

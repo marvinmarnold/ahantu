@@ -2,7 +2,7 @@ module ShopsHelper
   def shop_address(shop)
     [].tap do |a|
       [shop.address1, shop.address2, shop.locations].each { |i| a << i unless i.blank? }
-    end.join(", ")
+    end.join(", ").upcase
   end
 
   def shop_published_warning(shop)

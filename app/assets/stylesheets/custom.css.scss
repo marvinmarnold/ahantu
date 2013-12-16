@@ -24,6 +24,7 @@ h1{}
 h2{}
 h3{}
 h4{font-family:'PacificoRegular', Helvetica Neue, Helvetica, Arial, sans-serif}
+h4.title{font-family:Helvetica Neue, Helvetica, Arial, sans-serif; font-weight:600;font-size:17px;}
 h5{}
 h6{}
 
@@ -121,6 +122,45 @@ h6{}
  	 /* ...and now for the proper property */
   	transition:.5s;}
 .no-of-adults option{ background:#fff;color:#000;}
+
+/*  Shop Details page */
+
+.box{
+	-moz-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 2px 0px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 2px 0px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0 1px 2px 0px;
+	border: 1px solid #E0E0E0;
+	background: none repeat scroll 0% 0% #FFF;
+	position: relative;
+	padding: 10px;
+	margin-bottom: 20px;
+	width: 100%;
+	float: left;
+	height: auto !important;
+	
+}
+
+.top-section-heading {
+    width: 100%;
+    height: auto;
+    float: left;
+}
+.top-section-extra-info {
+    width: 100%;
+    height: auto;
+    float: left;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+    padding-top: 12px;
+}
+
+.location-box{
+	border: solid #e0e0e0 1px;
+}
+
+.location-box h1,.location-box h2,.location-box h3, .location-box h4{
+	padding-left:10px;
+}
 
 
 .main-carousel .item h3{font-family:'PacificoRegular', Helvetica Neue, Helvetica, Arial, sans-serif; font-size:42px;color:#fff;
