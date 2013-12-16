@@ -99,6 +99,8 @@ class ShopsController < ApplicationController
         :website4,
         :website5,
         :shop_request_id,
+        :latitude,
+        :longitude,
         :descriptions_attributes => [:id, :name, :language_id, :description, :destroy_],
         :photos_attributes => [:id, :photo, :photo_cache]
       )
