@@ -1,7 +1,7 @@
 @charset "UTF-8";
-/* 
-	Custom CSS Document
-	Author: Divakar Manikyam
+/*
+        Custom CSS Document
+        Author: Divakar Manikyam
 */
 
 /*Fonts here*/
@@ -47,7 +47,7 @@ h6{}
     border-radius:20px;
     background: url(asset-path('down-arrow.png')) no-repeat 113px center #7daf66;
     color:#fff;
-	text-shadow:0 1px 0 #333;
+        text-shadow:0 1px 0 #333;
     border:0;
     outline:0;
     display: inline-block;
@@ -55,33 +55,33 @@ h6{}
     -moz-appearance:none;
     appearance:none;
     cursor:pointer;
-	width:135px;
-	overflow:hidden;
-	-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
- 	 /* ...and now for the proper property */
-  	transition:.5s;
+        width:135px;
+        overflow:hidden;
+        -o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
+          /* ...and now for the proper property */
+          transition:.5s;
 }
 .top-menu li.lang .form-control select{ width:150px; background:transparent;padding:0;
     margin: 0;
     -webkit-border-radius:20px;
     -moz-border-radius:20px;
     border-radius:20px; color:#fff;
-	text-shadow:0 1px 0 #333;
+        text-shadow:0 1px 0 #333;
     border:none;
     outline:none;-webkit-appearance:none;
     -moz-appearance:none;
     appearance:none;}
 .top-menu li.lang .form-control:hover{background: url(asset-path("down-arrow.png")) no-repeat 113px center #94ce7a;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
- 	 /* ...and now for the proper property */
-  	transition:.5s;}
-	
+          /* ...and now for the proper property */
+          transition:.5s;}
+
 /*Search Steps here*/
 
 .search-holder{background:#57494b;}
 .search-holder li{list-style:none;}
 .search-holder li .step{ margin:10px 0; background:url(asset-path("grey_bg.png")) repeat; min-height:115px; text-align:center; padding-bottom:15px;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
- 	 /* ...and now for the proper property */
-  	transition:.5s;}
+          /* ...and now for the proper property */
+          transition:.5s;}
 .search-holder li .step h4 {padding: 20px 0 10px; color:#3c2f2f; text-shadow:0 1px 0 #e2e1e0;}
 .search-holder li .step input[type=text]{ width:90%; background:#ebebeb; border:solid 1px #aaaaa9; border-radius:0px; margin:0 auto;}
 .search-holder li .step.mid{background:url(asset-path("green_bg.png")) repeat;}
@@ -90,36 +90,36 @@ h6{}
 .search-holder li .step.mid div.col-md-6{ margin-left:0px;}
 .search-holder ul{ margin-bottom:1px;}
 .search-holder li .step:hover{ box-shadow:0 1px 15px #111;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
- 	 /* ...and now for the proper property */
-  	transition:.5s;}
+          /* ...and now for the proper property */
+          transition:.5s;}
 
 .no-of-adults{
-	padding:0px;
+        padding:0px;
     margin: 0 0 -13px;
-   	background: url(asset-path("select-arrow.png")) no-repeat 37px center #ebebeb;
+           background: url(asset-path("select-arrow.png")) no-repeat 37px center #ebebeb;
     color:#fff;
-	border-radius:0px;
-	border:solid 1px #ada8a6;
+        border-radius:0px;
+        border:solid 1px #ada8a6;
     outline:none;
     display: inline-block;
     -webkit-appearance:none;
     -moz-appearance:none;
     appearance:none;
     cursor:pointer;
-	width:74px;
-	height:33px;
-	color:#000;
-	-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
- 	 /* ...and now for the proper property */
-  	transition:.5s;
-	overflow:hidden;
-	}
+        width:74px;
+        height:33px;
+        color:#000;
+        -o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
+          /* ...and now for the proper property */
+          transition:.5s;
+        overflow:hidden;
+        }
 .no-of-adults select{ padding:5px; background:none;border-radius:0px;
-	border:0;
+        border:0;
     outline:0; width:94px;height:33px;}
 .no-of-adults:hover{background: url(asset-path("select-arrow-hover.png")) no-repeat 37px center #ebebeb;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
- 	 /* ...and now for the proper property */
-  	transition:.5s;}
+          /* ...and now for the proper property */
+          transition:.5s;}
 .no-of-adults option{ background:#fff;color:#000;}
 
 
@@ -140,8 +140,8 @@ select {
     -moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
-	outline:0;
-	background:none;
+        outline:0;
+        background:none;
 }
 select:focus, select:visited{outline:0; background:transparent;}
 select option.style{background:#fff; padding:5px; color:#000; font-size:14px; border:none; text-shadow:none;}
@@ -162,7 +162,7 @@ padding: 3px 7px 9px;
 line-height: 22px;
 color: #fff;
 outline:none;
--webkit-tap-highlight-color:#274f14;	
+-webkit-tap-highlight-color:#274f14;
 }
 .add:hover, .add:active{background:#4d8134; color:#fff; border:none; outline:none;}
 .remove, .remove:focus, .remove:visited{
@@ -188,16 +188,16 @@ padding: 6px 7px 7px;
 color: #fff;
 outline:none;
 float:right;
--webkit-tap-highlight-color:#259dc0;	
+-webkit-tap-highlight-color:#259dc0;
 }
 .search:hover, .search:active{background:#47bee0; color:#fff; border:none; outline:none;}
 
 .publish-hotel, .publish-hotel:visited{background:#274f14; border-radius:0px; margin-top:10px; color:#a2c990; text-shadow:0 1px 0 #000; font-size:24px; font-weight:lighter;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
- 	 /* ...and now for the proper property */
-  	transition:.5s;-webkit-tap-highlight-color:#274f14;}
+          /* ...and now for the proper property */
+          transition:.5s;-webkit-tap-highlight-color:#274f14;}
 .publish-hotel:hover{color:#a2c990;background:#3d7124;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;
- 	 /* ...and now for the proper property */
-  	transition:.5s;}
+          /* ...and now for the proper property */
+          transition:.5s;}
 
 /*Featured Hotels Carousel*/
 
@@ -262,59 +262,59 @@ margin: 0px;
 /* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .top-menu li.lang select {padding-right:18px}
-	
+
 }
 
 
 /*Media queries here for responsiveness*/
 
 /* Large desktop */
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
 
-	.logo{float:left; margin:0px; text-align:left;}
-	.top-menu{float:right;}
+        .logo{float:left; margin:0px; text-align:left;}
+        .top-menu{float:right;}
 
  }
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) { 
-	
-	.logo{float:none; margin:0px auto; text-align:center;}
-	.top-menu{margin: 18px auto 10px; float:none;}
-	.main-carousel .item h3{ font-size:32px;}
-	.main-carousel .item h2{ font-size:24px;}
-	.main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:293px;}
+@media (min-width: 768px) and (max-width: 979px) {
+
+        .logo{float:none; margin:0px auto; text-align:center;}
+        .top-menu{margin: 18px auto 10px; float:none;}
+        .main-carousel .item h3{ font-size:32px;}
+        .main-carousel .item h2{ font-size:24px;}
+        .main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:293px;}
   .absolute{position:relative;}
  }
 
-@media (min-width: 980px) and (max-width: 1200px) { 
+@media (min-width: 980px) and (max-width: 1200px) {
 
-	.step .form-inline{ margin:0 auto;}
-	.step .col-md-3{ padding-left:0px; padding-right:8px;}
+        .step .form-inline{ margin:0 auto;}
+        .step .col-md-3{ padding-left:0px; padding-right:8px;}
 
  }
 
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) { 
-	
-	.logo{float:none; margin:0px auto; text-align:center;}
-	.top-menu{margin: 18px auto 10px; float:none;}
-	.main-carousel .item h3{ font-size:24px;}
-	.main-carousel .item h2{ font-size:18px;}
-	.main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:253px; }
-  .absolute{position:relative;} 
+@media (max-width: 767px) {
+
+        .logo{float:none; margin:0px auto; text-align:center;}
+        .top-menu{margin: 18px auto 10px; float:none;}
+        .main-carousel .item h3{ font-size:24px;}
+        .main-carousel .item h2{ font-size:18px;}
+        .main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:253px; }
+  .absolute{position:relative;}
  }
 
 /* Landscape phones and down */
-@media (max-width: 480px) { 
-	
-	.logo{float:none; margin:0px auto; text-align:center;}
-	.top-menu{margin: 18px auto 10px; float:none;}
-	.step .form-inline{float:none;}
-	button.search, button.search:focus {float: none;width: 100%;margin:8px 8px 0;}
-	.main-carousel .item h3{ font-size:24px; line-height:24px}
-	.main-carousel .item h2{ font-size:14px;}
-	.main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:200px; }
-	.absolute{position:relative;}
+@media (max-width: 480px) {
+
+        .logo{float:none; margin:0px auto; text-align:center;}
+        .top-menu{margin: 18px auto 10px; float:none;}
+        .step .form-inline{float:none;}
+        button.search, button.search:focus {float: none;width: 100%;margin:8px 8px 0;}
+        .main-carousel .item h3{ font-size:24px; line-height:24px}
+        .main-carousel .item h2{ font-size:14px;}
+        .main-carousel .carousel-inner, .main-carousel .carousel-inner > .item, .main-carousel .carousel-inner > .item > img{min-height:200px; }
+        .absolute{position:relative;}
 
  }
