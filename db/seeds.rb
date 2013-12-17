@@ -11,7 +11,7 @@ Seeder.gen_locations("vendor/rwanda.csv")
 Seeder.create_hotel_tags
 Seeder.create_room_tags
 Seeder.create_default_accounts
-Seeder.preload_hotels
+# Seeder.preload_hotels
 
 FactoryGirl.create_list(:complete_shop_w_items,
   20,
