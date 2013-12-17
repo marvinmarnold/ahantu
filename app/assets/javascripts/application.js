@@ -57,7 +57,7 @@ var ready = function(){
 
 
 
-  add_placeholder('search_keyword', 'City, neighborhood, hotel name, etc.');
+  //add_placeholder('search_keyword', 'City, neighborhood, hotel name, etc.');
   //$(".add").tooltip();
   //$(".remove").tooltip();
 
