@@ -1,18 +1,30 @@
-<div id="myCarousel" class="carousel slide shop-carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <!-- Carousel items -->
-  <div class="carousel-inner">
-    <% shop.photos.each do |photo| %>
-      <%= content_tag "div", class: append_first("item", "active") do %>
-        <%= image_tag photo.photo_url(:banner) %>
-      <% end %>
-    <% end %>
-  </div>
-  <!-- Carousel nav -->
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+<div class="col-md-10" id="carousalBox" style='padding:10px;width:100%'>
+	<div id="myCarousel" class="carousel slide">
+		<!-- Carousel items -->
+		<div class="carousel-inner">
+			<% shop.photos.each_with_index do |photo, index| %>
+				<%= content_tag "div", class: append_first("item", "active") , :data => {:slide_number => "#{index}" } do %>
+					<%= image_tag photo.photo_url(:banner) %>
+				<% end %>
+			<% end %>
+		</div>
+		<!-- Carousel nav -->
+		<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	</div>
+</div>
+
+<!-- thumb navigation carousel -->
+<div class="col-md-10 hidden-sm hidden-xs" id="slider-thumbs">
+	<!-- thumb navigation carousel items -->
+	<ul class="list-inline">
+		
+		<% shop.photos.each_with_index do |photo, index| %>
+			<li> 
+				<%= content_tag "a", id: "carousel-selector-#{index}"  , class: append_first('', "selected") do %>
+					<%= image_tag photo.photo_url(:thumb) , :class=>"img-responsive" %>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>		
 </div>

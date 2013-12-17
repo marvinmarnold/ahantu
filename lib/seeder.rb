@@ -73,7 +73,7 @@ module Seeder
         website1: get_v(r[12]),
         website2: get_v(r[13]),
         website3: get_v(r[14]),
-        logo: File.open(pic_path),
+        #logo: File.open(pic_path),
         commission_pct: 0.1,
         user: MemberProfile.where(role: "shop_owner").first.user,
         published: true
