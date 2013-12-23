@@ -62,16 +62,23 @@
 			<div class="box" style='text-align:center;'>
 				<div class="top-section-heading">
 					<h4 class="title">Directions</h4>
-				</div>
-				<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{shop_address @shop}&zoom=14&size=300x200&sensor=false" %>
-			</div>
-			<div class="box" style='text-align:center;'>
-				<div class="top-section-heading">
-					<h4 class="title">Similar Hotels</h4>
-					<%= @shop.directions %>
-				</div>
+        </div>
+        <div class="top-section-extra-info" style='text-align:left;color:#696E75;font-size:14px;'>
+          <%= @shop.directions %>
+        </div>        
+      </div>
+			<div id='map'>
 			</div>
 			
 			
   </div>
 </div>
+
+
+<script>
+    new GMaps({
+      div: '#map',
+      lat: <%= @shop.latitude %>,
+      lng: <%= @shop.longitude %>
+    });
+</script>

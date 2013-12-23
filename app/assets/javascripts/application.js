@@ -17,6 +17,7 @@
 //= require jquery_nested_form
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require gmaps
 //= require_tree .
 
 
@@ -46,6 +47,7 @@ function add_placeholder(id, placeholder) {
 
 var ready = function(){
 
+  
 	$('#myCarousel').carousel({
 			interval: 4000
 	});
