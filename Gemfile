@@ -53,7 +53,7 @@ group :test, :development do
   gem "rspec-rails"
   gem 'pry'
   gem 'pry-debugger'
-  gem 'rb-inotify'
+  gem 'rb-inotify', :require => false
   gem 'ruby-prof'
   gem 'better_errors'
   gem 'binding_of_caller'
