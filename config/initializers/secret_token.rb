@@ -9,5 +9,5 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Ahantu::Application.config.secret_key_base = ENV["SECRET_TOKEN"]
+Ahantu::Application.config.secret_key_base = 'd5a14e24da799f1708e91e962522c6a32337fb0c7f798493d21a8e8f02b3736c53e6ce4e0c539e4f3d169b3dfc990c54a6d6290f67e78cc67d74c1457a12f608'
 
