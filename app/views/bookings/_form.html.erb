@@ -1,9 +1,9 @@
 <% unless can_one_click_checkout?(@cart) %>
 	<div class="panel-footer">
 		<% j = 0 %>
-		<div class="row-fluid">
+		<div class="row" style='margin:0;'>
 			<% @cart.bookings.each do |b| %>
-				<%= content_tag "div", class: "span#{diver(@cart.bookings.size)} input radio optional" do %>
+				<%= content_tag "div", class: "col-md-#{diver(@cart.bookings.size)} input radio optional" do %>
 					<span>
 						<%= content_tag "input", id: cart_bookings_attributes_id(j, item.id),
 							class: "radio optional",
