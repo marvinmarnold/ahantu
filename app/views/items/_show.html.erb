@@ -29,22 +29,22 @@
 
 	</div>
 	
-	<div class="panel-footer">
-		<h5>	
-			<a target='#share'>.</a>
-			<span class="pull-right" style='margin-top:-10px;'>
-				<% if can_one_click_checkout?(@cart) %>
-					<% @cart.bookings.each do |b| %>
-						<%= link_to one_click_checkout_carts_path(item_id: item.id),
-							class: "btn btn-large btn-success" do %>
-							<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<%= t("cart.new.book_room") %>
+	<%= render 'bookings/form', f: f, item: item %>
+	<% if can_one_click_checkout?(@cart) %>
+		<div class="panel-footer">
+			<h5>	
+				<a target='#share'>&nbsp;</a>
+				<span class="pull-right" style='margin-top:-10px;'>
+						<% @cart.bookings.each do |b| %>
+							<%= link_to one_click_checkout_carts_path(item_id: item.id),
+								class: "btn btn-large btn-success" do %>
+								<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<%= t("cart.new.book_room") %>
+							<% end %>
 						<% end %>
-					<% end %>
-				<% end %>
-			</span>
-		</h5>
-	</div>
+				</span>
+			</h5>
+		</div>
+	<% end %>
 	
 </div>
 
-<%= render 'bookings/form', f: f, item: item %>

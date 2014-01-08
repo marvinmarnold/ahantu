@@ -3,10 +3,12 @@
     <%= f.error_notification %>
 		<% @shop.items.each do |i| %>
 			<%= render 'items/show', item: i, f: f %>
+    <% end %>    
+    <% if !can_one_click_checkout?(@cart) %>
+      <div class="actions" style='float:right;'>
+        <%= f.button :submit, "Checkout", class: "btn btn-large btn-success" %>
+      </div>
 		<% end %>    
-		<div class="actions" style='display:none;'>
-			<%= f.button :submit, "Checkout", class: "btn btn-block btn-large btn-success" %>
-		</div>
 
   <% end %>
 <% end %>

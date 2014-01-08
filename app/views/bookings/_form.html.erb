@@ -1,5 +1,5 @@
 <% unless can_one_click_checkout?(@cart) %>
-	<div class="well">
+	<div class="panel-footer">
 		<% j = 0 %>
 		<div class="row-fluid">
 			<% @cart.bookings.each do |b| %>
