@@ -305,11 +305,11 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-size: 12px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #F2F2F2;
+  background-color: #FEFFFF;
 }
 
 input,
@@ -481,7 +481,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -1865,8 +1865,9 @@ legend {
 
 label {
   display: inline-block;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   font-weight: bold;
+  font-size: 12px;
 }
 
 input[type="search"] {
