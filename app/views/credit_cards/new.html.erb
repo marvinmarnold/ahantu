@@ -1,6 +1,20 @@
-<h1><%= t "credit_card.new.title" %></h1>
-<%= render 'form' %>
+<div class="container">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6">
+    <div class="box" style=''>
 
-<% content_for :side do %>
-  <%= render 'credit_cards/security_info' %>
-<% end %>
+      <h3><%= t "credit_card.new.title" %></h3>
+      <%= render 'form' %>
+
+      <% content_for :side do %>
+        <%= render 'credit_cards/security_info' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+  </div>
+
+</div>
+

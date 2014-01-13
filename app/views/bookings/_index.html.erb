@@ -1,19 +1,22 @@
-<div class="well">
-<h4><%= t "booking.index.title" %></h4>
-<h5><%= t "booking.index.total", total: number_to_currency(cart.total) %></h5>
-<% cart.bookings.each_with_index do |booking, i| %>
-  <hr/>
-  <h5><%= t("booking.index.room", i: i+1, item: booking.item ) %></h5>
-  <table class="table table-condensed">
-    <% booking.line_items.each do |l| %>
-      <tr>
-        <td><%= l l.booking_at, format: :long %></td>
-        <td><%= number_to_currency l.unit_price_at_checkout %></td>
-      </tr>
+<div class="panel panel-default">  
+    <div class="panel-heading">
+      <h5><%= t "booking.index.title" %></h5>
+      <h6><%= t "booking.index.total", total: number_to_currency(cart.total) %></h6>
+    </div>
+    <% cart.bookings.each_with_index do |booking, i| %>
+      <table class="table">
+        <th colspan="2"><h5><%= t("booking.index.room", i: i+1, item: booking.item ) %></h5> 
+        </th>
+        <% booking.line_items.each do |l| %>
+          <tr>
+            <td><%= l l.booking_at, format: :long %></td>
+            <td><%= number_to_currency l.unit_price_at_checkout %></td>
+          </tr>
+        <% end %>
+        <td colspan="2"><h5><%= t("booking.index.subtotal", i: i+1, subtotal: number_to_currency(booking.total))%></h5></td>
+      </table>
     <% end %>
-    <td colspan="2"><strong><%= t("booking.index.subtotal", i: i+1, subtotal: number_to_currency(booking.total))%></strong></td>
-  </table>
-<% end %>
-<hr/>
-<h5><%= t "booking.index.total", total: number_to_currency(cart.total) %></h5>
+  <div class="panel-footer"><h5><%= t "booking.index.total", total: number_to_currency(cart.total) %></h5></div>
 </div>
+  
+
