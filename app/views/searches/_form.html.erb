@@ -1,12 +1,10 @@
 <%= simple_nested_form_for(@search) do |f| %>
   <%= f.error_notification %>
 
-  <div class="inputs">
-    <%= f.input :keyword, hint: false %>
+  <div class="form-group">
+
+    <%= f.input :keyword, hint: false , :input_html => { class: "form-control" } %>    
     <%= render "searches/when", f: f %>
-
-    <hr />
-
     <%= render 'searches/rooms', f: f %>
 
     <%= render 'tags/hotel_tags_select', tags: @tags, obj: @search %>

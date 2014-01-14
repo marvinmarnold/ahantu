@@ -1,19 +1,21 @@
-<div class="row-fluid">
+<div class="clearfix"></div>
+<div class="row">
   <div class="col-md-6">
 
-    <%= f.input :checkin_at, as: :string,:label => false, :placeholder=>"Checkin", :input_html => {
+    <%= f.input :checkin_at, as: :string, :placeholder=>"Checkin", :input_html => {
     :data => { behaviour: "datepicker" },
     value: f.object.suggested_checkin_at(current_user),
-    class: "datepicker",
+    class: "datepicker form-control",
     readonly: true,
     "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Checkin Date",
      id:"dp1",
     "data-date-format" => "dd/mm/yyyy"
   } %></div>
-  <div class="col-md-6"><%= f.input :checkout_at, as: :string,:label => false, :placeholder => "Checkout", :input_html => {
+  <div class="col-md-6">
+    <%= f.input :checkout_at, as: :string, :placeholder => "Checkout", :input_html => {
     :data => { behaviour: "datepicker"},
     value: f.object.suggested_checkout_at(current_user),
-    class: "col-md-6 datepicker",
+    class: "datepicker form-control",
     readonly: true,
     "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Checkout Date",
     id:"dp2",

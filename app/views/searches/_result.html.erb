@@ -1,24 +1,27 @@
-<div class="row-fluid">
-  <%= content_tag "a", href: url_for(r), class: "well span12 search-result" do %>
-    <div class="row-fluid">
-      <div class="span9">
-        <h4><%= r %></h4>
-        <h6><%= shop_address(r) %></h6>
-        <%= image_tag r.logo_url(:thumb) %>
-      </div>
-      <div class="span3">
-        <h3><%= number_to_currency r.display_price(current_search) %></h3>
-        <p class="muted"><%= t "search.show.result.min_price" %></p>
-        <hr/>
-        <dl>
-          <% hotel_tag_categories_search.each do |c| %>
-            <% unless r.subclass_tags(c).blank? %>
-              <dt><%= label_for_tag_category(c) %></dt>
-              <dd><%= r.subclass_tags(c).all.join(", ") %></dd>
+<%= content_tag "a", href: url_for(r), class: "thumbnail" do %>
+    <div class="row">
+        <div class="col-xs-3 col-md-3 text-center">
+          <%= image_tag r.logo_url(:preview) , :class=>"img-rounded img-responsive" %>
+          <h4>
+            <%= number_to_currency r.display_price(current_search) %>
+            <br/>
+            <small>
+              <%= t "search.show.result.min_price" %>
+            </small>
+          </h4>
+        </div>
+        <div class="col-xs-9 col-md-9 section-box" style='color:#333;'>
+          <h2><%= r %></h2>
+          <h6><%= shop_address(r) %></h6>
+          <hr/>
+          <dl>
+            <% hotel_tag_categories_search.each do |c| %>
+              <% unless r.subclass_tags(c).blank? %>
+                <dt><%= label_for_tag_category(c) %></dt>
+                <dd><%= r.subclass_tags(c).all.join(", ") %></dd>
+              <% end %>
             <% end %>
-          <% end %>
-        </dl>
-      </div>
+          </dl>
+        </div>
     </div>
-  <% end %>
-</div>
+<% end %>

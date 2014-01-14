@@ -1,30 +1,45 @@
-<% if @carts.present? %>
-  <h1><%= t "cart.index.title" %></h1>
-
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Shop</th>
-        <th>Total at checkout</th>
-        <th>Submitted att</th>
-        <th>Billing inform</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @carts.each do |cart| %>
-        <tr>
-          <td><%= link_to cart.shop, cart.shop, class: "btn btn-link" %></td>
-          <td><%= link_to cart.total, cart, class: "btn btn-link" %></td>
-          <td><%= link_to cart.submitted_at, cart, class: "btn btn-link" %></td>
-          <td><%= link_to cart.billing_information, cart, class: "btn btn-link" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <div class="hero-unit">
-    <h3><%= t "cart.index.nothing.title" %></h3>
-    <p><%= t "cart.index.nothing.text" %></p>
+<div class="container">
+  <div class="col-md-1">
   </div>
-<% end %>
+  <div class="col-md-10">
+    <div class="box" style=''>
+
+      <% if @carts.present? %>
+        <h3><%= t "cart.index.title" %></h3>
+        <hr/>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Shop</th>
+              <th>Total at checkout</th>
+              <th>Submitted att</th>
+              <th>Billing inform</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @carts.each do |cart| %>
+              <tr>
+                <td><%= link_to cart.shop, cart.shop, class: "btn btn-link" %></td>
+                <td><%= link_to cart.total, cart, class: "btn btn-link" %></td>
+                <td><%= link_to cart.submitted_at, cart, class: "btn btn-link" %></td>
+                <td><%= link_to cart.billing_information, cart, class: "btn btn-link" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+          <h3>
+            <%= t "cart.index.nothing.title" %>
+            <br/>
+            <small><%= t "cart.index.nothing.text" %></small>
+          </h3>
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="col-md-1">
+  </div>
+
+</div>

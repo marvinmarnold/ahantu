@@ -1,18 +1,28 @@
-<% content_for :side do %>
-	<%= render 'searches/form' %>
-<% end %>
-
-<% if @search.empty? %>
-  <%= render 'searches/no_results' %>
-<% else %>
-
-  <%= render 'searches/search_options' %>
-
-  <% @results.each do |r| %>
-    <%= render 'searches/result', r: r %>
-  <% end %>
-
-  <div class="pull-left">
-    <%= will_paginate @results, :renderer => BootstrapPagination::Rails %>
+<div class="container">
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        FILTER SEARCH
+      </div>
+      <div class="panel-body">
+        <%= render 'searches/form' %>
+      </div>
+    </div>
   </div>
-<% end %>
+  <div class="col-md-9">
+
+
+      <% if @search.empty? %>
+        <%= render 'searches/no_results' %>
+      <% else %>
+        <%= render 'searches/search_options' %>
+
+        <% @results.each do |r| %>
+          <%= render 'searches/result', r: r %>
+        <% end %>
+        <%= will_paginate @results, renderer: BootstrapPagination::Rails %>
+      <% end %>
+
+  </div>
+
+</div>

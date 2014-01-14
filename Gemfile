@@ -32,7 +32,7 @@ gem 'RedCloth'
 
 #bootstrap stuff
 gem "less-rails"
-gem 'will_paginate-bootstrap', '0.2.5'
+gem 'will_paginate-bootstrap'
 #gem "twitter-bootstrap-rails"
 #gem 'bootstrap-datepicker-rails'
 
