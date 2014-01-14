@@ -12,16 +12,16 @@
         </div>
         <div class="col-xs-9 col-md-9 section-box" style='color:#333;'>
           <h2><%= r %></h2>
-          <h6><%= shop_address(r) %></h6>
+          <h6><span class="glyphicon glyphicon-map-marker"></span> <%= shop_address(r) %></h6>
           <hr/>
-          <dl>
-            <% hotel_tag_categories_search.each do |c| %>
-              <% unless r.subclass_tags(c).blank? %>
-                <dt><%= label_for_tag_category(c) %></dt>
-                <dd><%= r.subclass_tags(c).all.join(", ") %></dd>
+          <% hotel_tag_categories_search.each do |c| %>
+            <% unless r.subclass_tags(c).blank? %>
+              <h4 class="title"><%= label_for_tag_category(c) %></h4>
+              <% r.subclass_tags(c).each do |tag| %> 
+                <span><span class="glyphicon glyphicon-ok-sign"></span> <%= tag %></span>&nbsp;
               <% end %>
             <% end %>
-          </dl>
+          <% end %>
         </div>
     </div>
 <% end %>

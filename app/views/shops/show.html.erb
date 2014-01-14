@@ -52,7 +52,7 @@
 						<% unless @shop.subclass_tags(c).blank? %>
 							<h4 class="title"><%= label_for_tag_category(c) %></h4>
 							<% @shop.subclass_tags(c).each do |tag| %> 
-								  <p><span class="glyphicon glyphicon-ok-sign"></span> <%= tag %></p>
+								  <span><span class="glyphicon glyphicon-ok-sign"></span> <%= tag %></span>&nbsp;
 							<% end %>
 						<% end %>
 					<% end %>
