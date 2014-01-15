@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy, :finalize]
-  # layout :custom_layout, only: [:show, :new, :finalize]
+  layout :custom_layout, only: [:new, :finalize]
 
   authorize_resource
 

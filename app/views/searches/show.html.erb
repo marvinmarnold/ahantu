@@ -1,21 +1,12 @@
 <div class="container">
   <div class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        FILTER SEARCH
-      </div>
-      <div class="panel-body">
-        <%= render 'searches/form' %>
-      </div>
-    </div>
+    <%= render 'searches/form' %>
   </div>
   <div class="col-md-9">
-
-
       <% if @search.empty? %>
         <%= render 'searches/no_results' %>
       <% else %>
-        <%= render 'searches/search_options' %>
+      <%= render 'searches/search_options' %>
 
         <% @results.each do |r| %>
           <%= render 'searches/result', r: r %>

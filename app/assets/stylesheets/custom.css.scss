@@ -94,7 +94,7 @@ h6{}
 .search-holder li .step input[type=text]{ width:90%; background:#ebebeb; border:solid 1px #aaaaa9; border-radius:0px; margin:0 auto;}
 .search-holder li .step.mid{background:url(asset-path("green_bg.png")) repeat;}
 .search-holder li .step.mid h4{color:#274f14;text-shadow:0 1px 0 #98cd83;}
-.search-holder li .step.mid input[type=text].datepicker{background:url(asset-path("calendar.png")) no-repeat right center #ebebeb; border:solid 1px #6f9559; height:33px; width:100%; color:#919191;}
+.search-holder li .step.mid input[type=text].datepicker , .customdate {background:url(asset-path("calendar.png")) no-repeat right center #ebebeb; border:solid 1px #6f9559; height:33px; width:100%; color:#919191; border-radius:0px; font-size: 1em; }
 .search-holder li .step.mid div.col-md-6{ margin-left:0px;}
 .search-holder ul{ margin-bottom:1px;}
 .search-holder li .step:hover{ box-shadow:0 1px 15px #111;-o-transition:.5s;-ms-transition:.5s;-moz-transition:.5s;-webkit-transition:.5s;

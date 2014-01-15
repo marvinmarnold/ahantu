@@ -1,11 +1,12 @@
 <%= hidden_field_tag search_tag_name, nil%>
 <% hotel_tag_categories_search.each do |c| %>
-  <hr />
-  <h5><%= label_for_tag_category(c) %></h5>
+  <h4><%= label_for_tag_category(c) %></h4>
   <% c.all.each do |t| %>
+   <div class="checkbox">
     <%= content_tag "label", for: search_tag_id(t) do %>
       <%= check_box_tag search_tag_name, t.id, obj.has_hotel_tag?(t), id: search_tag_id(t) %>
       <%= t %>
     <% end %>
+    </div>
   <% end %>
 <% end %>
