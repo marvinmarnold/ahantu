@@ -1,7 +1,7 @@
 <div class="panel panel-default">  
     <div class="panel-heading">
-      <h5><%= t "booking.index.title" %></h5>
-      <h6><%= t "booking.index.total", total: number_to_currency(cart.total) %></h6>
+      <h5 class=''><%= t "booking.index.title" %></h5>
+      <span><%= t "booking.index.total", total: number_to_currency(cart.total) %></span>
     </div>
     <% cart.bookings.each_with_index do |booking, i| %>
       <table class="table">

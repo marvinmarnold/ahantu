@@ -359,7 +359,7 @@ img {
   padding: 4px;
   line-height: 1.428571429;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #D9D9D9;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
@@ -1643,12 +1643,12 @@ th {
   padding: 8px;
   line-height: 1.428571429;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #D9D9D9;
 }
 
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #dddddd;
+  border-bottom: 2px solid #D9D9D9;
 }
 
 .table > caption + thead > tr:first-child > th,
@@ -1661,7 +1661,7 @@ th {
 }
 
 .table > tbody + tbody {
-  border-top: 2px solid #dddddd;
+  border-top: 2px solid #D9D9D9;
 }
 
 .table .table {
@@ -1678,7 +1678,7 @@ th {
 }
 
 .table-bordered {
-  border: 1px solid #dddddd;
+  border: 1px solid #D9D9D9;
 }
 
 .table-bordered > thead > tr > th,
@@ -1687,7 +1687,7 @@ th {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #dddddd;
+  border: 1px solid #D9D9D9;
 }
 
 .table-bordered > thead > tr > th,
@@ -1803,7 +1803,7 @@ table th[class*="col-"] {
     margin-bottom: 15px;
     overflow-x: scroll;
     overflow-y: hidden;
-    border: 1px solid #dddddd;
+    border: 1px solid #D9D9D9;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;
   }
@@ -4122,7 +4122,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #D9D9D9;
 }
 
 .nav-tabs > li {
@@ -4138,7 +4138,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav-tabs > li > a:hover {
-  border-color: #eeeeee #eeeeee #dddddd;
+  border-color: #eeeeee #eeeeee #D9D9D9;
 }
 
 .nav-tabs > li.active > a,
@@ -4147,7 +4147,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #555555;
   cursor: default;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #D9D9D9;
   border-bottom-color: transparent;
 }
 
@@ -4188,12 +4188,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-tabs.nav-justified > .active > a,
 .nav-tabs.nav-justified > .active > a:hover,
 .nav-tabs.nav-justified > .active > a:focus {
-  border: 1px solid #dddddd;
+  border: 1px solid #D9D9D9;
 }
 
 @media (min-width: 768px) {
   .nav-tabs.nav-justified > li > a {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #D9D9D9;
     border-radius: 4px 4px 0 0;
   }
   .nav-tabs.nav-justified > .active > a,
@@ -4278,12 +4278,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-tabs-justified > .active > a,
 .nav-tabs-justified > .active > a:hover,
 .nav-tabs-justified > .active > a:focus {
-  border: 1px solid #dddddd;
+  border: 1px solid #D9D9D9;
 }
 
 @media (min-width: 768px) {
   .nav-tabs-justified > li > a {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #D9D9D9;
     border-radius: 4px 4px 0 0;
   }
   .nav-tabs-justified > .active > a,
@@ -4723,12 +4723,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default .navbar-toggle {
-  border-color: #dddddd;
+  border-color: #D9D9D9;
 }
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #dddddd;
+  background-color: #D9D9D9;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -4957,7 +4957,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   line-height: 1.428571429;
   text-decoration: none;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #D9D9D9;
 }
 
 .pagination > li:first-child > a,
@@ -5002,7 +5002,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #999999;
   cursor: not-allowed;
   background-color: #ffffff;
-  border-color: #dddddd;
+  border-color: #D9D9D9;
 }
 
 .pagination-lg > li > a,
@@ -5077,7 +5077,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   display: inline-block;
   padding: 5px 14px;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #D9D9D9;
   border-radius: 15px;
 }
 
@@ -5271,7 +5271,7 @@ a.list-group-item.active > .badge,
   margin-bottom: 20px;
   line-height: 1.428571429;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #D9D9D9;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
@@ -5553,7 +5553,7 @@ a.thumbnail.active {
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid #D9D9D9;
 }
 
 .list-group-item:first-child {
@@ -5678,7 +5678,7 @@ a.list-group-item.active:focus .list-group-item-text {
 
 .panel > .panel-body + .table,
 .panel > .panel-body + .table-responsive {
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #D9D9D9;
 }
 
 .panel > .table-bordered,
@@ -5752,8 +5752,8 @@ a.list-group-item.active:focus .list-group-item-text {
 
 .panel-footer {
   padding: 10px 15px;
-  background-color: #FDFDFD;
-  border-top: 1px solid #dddddd;
+  background-color: #f8f8f8;
+  border-top: 1px solid #D9D9D9;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -5773,7 +5773,7 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 
 .panel-group .panel-heading + .panel-collapse .panel-body {
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #D9D9D9;
 }
 
 .panel-group .panel-footer {
@@ -5781,7 +5781,7 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 
 .panel-group .panel-footer + .panel-collapse .panel-body {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #D9D9D9;
 }
 
 .panel-default {
@@ -5790,12 +5790,12 @@ a.list-group-item.active:focus .list-group-item-text {
 
 .panel-default > .panel-heading {
   color: #333333;
-  background-color: #FDFDFD;
+  background-color: #f8f8f8;
   border-color: #FCFCFC;
 }
 
 .panel-default > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #dddddd;
+  border-top-color: #D9D9D9;
 }
 
 .panel-default > .panel-heading > .dropdown .caret {
@@ -5803,7 +5803,7 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 
 .panel-default > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #dddddd;
+  border-bottom-color: #D9D9D9;
 }
 
 .panel-primary {

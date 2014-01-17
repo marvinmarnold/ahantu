@@ -1,20 +1,36 @@
-<h1><%= t "cart.show.title" %></h1>
-<h3><%= t "cart.show.description", hotel: @cart.shop %></h3>
-<p>
-  <strong>Confirmation number:</strong>
-  <%= @cart.order_confirmation %>
-</p>
+<div class="container">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6">
+    <div class="box" style=''>
+      <h5><%= t "cart.show.title" %></h5>
+      <blockquote>
+        <h4 style='text-transform:uppercase;'><%= t "cart.show.description", hotel: @cart.shop %></h4>
+      </blockquote>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="pull-right"><%= @cart.order_confirmation %></span>
+          <strong><span class="glyphicon glyphicon-check"></span>&nbsp;Confirmation number</strong>
+        </li>
+        <li class="list-group-item">
+          <span class="pull-right"><%= @cart.submitted_at %></span>
+          <strong><span class="glyphicon glyphicon-check"></span>&nbsp;Reservation made</strong>          
+        </li>
+        <li class="list-group-item">
+          <span class="pull-right"><%= @cart.billing_information %></span>
+          <strong><span class="glyphicon glyphicon-check"></span>&nbsp;Billing information</strong>
+        </li>
+      </ul>
 
-<p>
-  <strong>Reservation made:</strong>
-  <%= l @cart.submitted_at, format: :long %>
-</p>
+      <%= render 'bookings/index', cart: @cart %>
 
-<p>
-  <strong>Billing information:</strong>
-  <%= @cart.billing_information %>
-</p>
+    </div>
+  </div>
 
-<br/>
+  <div class="col-md-3">
+  </div>
 
-<%= render 'bookings/index', cart: @cart %>
+</div>
+
+
+
