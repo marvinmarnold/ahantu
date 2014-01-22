@@ -4,6 +4,7 @@ class Profile < ActiveRecord::Base
   has_one :user, as: :profile, dependent: :destroy
 
   belongs_to :language
+  scope   :shoppers, lambda { where(role: "shopper") }
 
   before_validation :set_language
 

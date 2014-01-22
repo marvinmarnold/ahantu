@@ -10,7 +10,7 @@ Seeder.gen_locations("vendor/rwanda.csv")
 
 Seeder.create_hotel_tags
 Seeder.create_room_tags
-# Seeder.create_default_accounts
+Seeder.create_default_accounts
 Seeder.preload_hotels
 
 FactoryGirl.create_list(:complete_shop_w_items,
@@ -26,3 +26,5 @@ end
 ShopRequest.all.each do |sr|
   sr.assign_to MemberProfile.salespersons.first.user
 end
+
+FactoryGirl.create_list(:cart_submitted, 20, user: MemberProfile.shoppers.first.user)

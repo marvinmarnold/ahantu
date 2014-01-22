@@ -57,7 +57,7 @@ class Cart < ActiveRecord::Base
   end
 
   def shop
-    bookings.first.shop
+    self.bookings.first.shop
   end
 
   def confirmed?
