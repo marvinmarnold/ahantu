@@ -1,17 +1,14 @@
-
-                <div class="step absolute">
-                	<h4><%= t "page.index.search.step3" %></h4>
-                	<div class="col-md-7 col-xs-12 col-sm-12">
-        				<div class="form-inline">
-
-		                    <%= render 'searches/rooms', f: f %>
-		                </div>
-		            </div>    
-                    <div class="col-md-5 col-xs-12 col-sm-12">
-                    	<%= f.link_to_add "+", :room_searches, class: "btn btn-default add pull-left",:data => { :target => ".form-inline"},"data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Add Room"  %>
-                        
-
-                    	<%= f.button :submit, t("simple_form.labels.search.new.submit"),  class: "btn btn-info search pull-right" %>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+<div class="step absolute">
+	<h4><%= t "page.index.search.step3" %></h4>
+	<div class="col-md-7 col-xs-12 col-sm-12">
+		<div class="form-inline">
+            <%= render 'searches/rooms', f: f %>
+            <div class="clearfix"></div>
+        </div>
+    </div>    
+    <div class="col-md-5 col-xs-12 col-sm-12">
+        <%= f.link_to_add "+", :room_searches, class: "btn btn-default add pull-left",:data => { :target => ".form-inline"},"data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Add Room"  %>
+        <%= f.button :submit, t("simple_form.labels.search.new.submit"),  class: "btn btn-info search pull-right" %>
+    </div>
+    <div class="clearfix"></div>
+</div>

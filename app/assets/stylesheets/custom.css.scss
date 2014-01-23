@@ -268,7 +268,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endCo
 .carousel-inner > .item > img, .carousel-inner > .item { background:#000; overflow:hidden;}
 
 .absolute {
-z-index: 9999;
+z-index: 100;
 position: absolute;
 top: 0px;
 }

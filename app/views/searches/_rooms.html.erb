@@ -1,13 +1,12 @@
 <%= f.fields_for :room_searches do |b| %>
     <label>Adults</label>
     <div class="no-of-adults">
-        <%= b.input_field :adults, as: :select, collection: 1..9, include_blank: false, class: "search-rooms" %>
+      <%= b.input_field :adults, as: :select, collection: 1..9, include_blank: false, class: "search-rooms" %>
     </div>
     <% if b.options[:child_index] != 0 %>
       <%= b.link_to_remove "-", class: "btn btn-default remove", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Remove Room"%>
     <% end %>
 <% end %>
-
 <!--         <button type="button" class="btn btn-default remove" id="remove" data-toggle="tooltip" data-placement="top" title="Remove Room">-</button> -->
 <!--         <button type="button" class="btn btn-default add" id="add" data-toggle="tooltip" data-placement="top" title="Add Room">+</button>
 -->
