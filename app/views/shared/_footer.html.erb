@@ -3,15 +3,15 @@
 	<div class="container">
         <div class="col-md-8">
             <ul>
-                <li><a href="#">About us</a></li>
+                <li><%= link_to t("footer.links.about"), about_path %></li>
                 <li>|</li>
-                <li><a href="#">Contact us</a></li>
+                <li><%= link_to t("footer.links.contact"), new_contact_form_path %></li>
                 <li>|</li>
-                <li><a href="#">Terms of service</a></li>
+                <li><%= link_to t("footer.links.terms"), terms_path %></li>
             </ul>
             <div class="clearfix"></div>
             <div class="copy-rights">
-                Copyrights &#169 Ahantu 2013
+                <%= t("footer.copyright") %>
             </div>
         </div>
         <div class="col-md-4">
