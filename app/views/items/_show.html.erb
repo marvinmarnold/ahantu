@@ -22,17 +22,17 @@
 				<%= render 'items/room_pictures', room: item %>
 			</div>
 			<div class="col-md-8" style='border-left: 1px solid #eee;'>
-				<h5><%= item.description.humanize %></h5>
+				<h5><%= item.description.try :humanize %></h5>
 				<%= render 'items/room_details', room: item %>
 			</div>
 		</div>
 
 	</div>
-	
+
 	<%= render 'bookings/form', f: f, item: item %>
 	<% if can_one_click_checkout?(@cart) %>
 		<div class="panel-footer">
-			<h5>	
+			<h5>
 				<a target='#share'>&nbsp;</a>
 				<span class="pull-right" style='margin-top:-10px;'>
 						<% @cart.bookings.each do |b| %>
@@ -45,6 +45,6 @@
 			</h5>
 		</div>
 	<% end %>
-	
+
 </div>
 

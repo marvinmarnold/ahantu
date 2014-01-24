@@ -209,6 +209,9 @@ en:
       details:
         info: "Information"
         directions: "Directions"
+      rooms: "Rooms & Availability"
+      details: "Hotel details"
+      directions: "Directions"
     edit:
       edit_links:
         show: "<< Preview hotel"
