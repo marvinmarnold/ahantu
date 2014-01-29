@@ -13,6 +13,10 @@ class CreditCard < BillingInformation
     "#{CREDIT_CARD_TYPES.key(brand)} - #{name_on_card} - #{last_four}"
   end
 
+  def short
+    "#{CREDIT_CARD_TYPES.key(brand)} - #{last_four}"
+  end
+
   def last_four
     number[-4,4]
   end
