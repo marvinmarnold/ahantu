@@ -39,6 +39,7 @@ en:
         signed_up: "Thanks for signing up. Search and start finding hotels now!"
         updated: "Profile updated!"
     member_profile_sessions:
+      signout: "Sign out"
       member_profile:
         signed_in: "Welcome back! Use our contact form to let us know if you need help with anything."
         signed_out: "Peace."
