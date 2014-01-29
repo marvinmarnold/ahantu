@@ -13,7 +13,7 @@
             <td><%= number_to_currency l.unit_price_at_checkout %></td>
           </tr>
         <% end %>
-        <td colspan="2"><h5><%= t("booking.index.subtotal", i: i+1, subtotal: number_to_currency(booking.total))%></h5></td>
+        <td colspan="2" style='text-align:right;'><h5><%= t("booking.index.subtotal", i: i+1, subtotal: number_to_currency(booking.total))%></h5></td>
       </table>
     <% end %>
   <div class="panel-footer"><h5><%= t "booking.index.total", total: number_to_currency(cart.total) %></h5></div>

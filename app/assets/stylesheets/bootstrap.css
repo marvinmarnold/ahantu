@@ -1967,7 +1967,7 @@ output {
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
-  cursor: not-allowed;
+  cursor: pointer;
   background-color: #eeeeee;
 }
 
@@ -2038,7 +2038,7 @@ fieldset[disabled] .radio,
 fieldset[disabled] .radio-inline,
 fieldset[disabled] .checkbox,
 fieldset[disabled] .checkbox-inline {
-  cursor: not-allowed;
+  cursor: pointer;
 }
 
 .input-sm {
@@ -2280,7 +2280,7 @@ textarea.input-lg {
 .btn[disabled],
 fieldset[disabled] .btn {
   pointer-events: none;
-  cursor: not-allowed;
+  cursor: pointer;
   opacity: 0.65;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
@@ -3543,7 +3543,7 @@ input[type="button"].btn-block {
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
   text-decoration: none;
-  cursor: not-allowed;
+  cursor: pointer;
   background-color: transparent;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
@@ -4092,7 +4092,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav > li.disabled > a:focus {
   color: #999999;
   text-decoration: none;
-  cursor: not-allowed;
+  cursor: pointer;
   background-color: transparent;
 }
 
@@ -5000,7 +5000,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > .disabled > a:hover,
 .pagination > .disabled > a:focus {
   color: #999999;
-  cursor: not-allowed;
+  cursor: pointer;
   background-color: #ffffff;
   border-color: #D9D9D9;
 }
@@ -5102,7 +5102,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pager .disabled > a:focus,
 .pager .disabled > span {
   color: #999999;
-  cursor: not-allowed;
+  cursor: pointer;
   background-color: #ffffff;
 }
 

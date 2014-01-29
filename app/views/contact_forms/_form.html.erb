@@ -1,13 +1,16 @@
 <%= simple_form_for(@contact_form) do |f| %>
   <%= f.error_notification %>
-
-  <div class="inputs">
-    <%= f.input :subject %>
-    <%= f.input :from %>
-    <%= f.input :body %>
+  <div class="form-group">
+    <label for="inputUsernameEmail">Subject</label>
+    <%= f.input_field :subject, :required => false, :autofocus => true , :label => false , :class => "form-control input-lg" %>
   </div>
-
-  <div class="actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <label for="inputUsernameEmail">From (Email)</label>
+    <%= f.input_field :from, :required => true, :autofocus => true , :label => false , :class => "form-control input-lg" %>
   </div>
+  <div class="form-group">
+    <label for="inputPassword">Message</label>
+    <%= f.input_field :body, :required => true , :label => false , :class => "form-control input-lg"  %>
+  </div>
+  <%= f.button :submit, "Contact us", class: "btn btn-primary btn-lg" %>
 <% end %>
