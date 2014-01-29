@@ -48,7 +48,8 @@ Ahantu::Application.routes.draw do
     :controllers => {
       :registrations => "member_profile_registrations",
       :sessions => "member_profile_sessions",
-      :passwords => "member_profile_passwords"
+      :passwords => "member_profile_passwords",
+      :omniauth_callbacks => "omniauth_callbacks"
     }
 
   # devise_for :salesperson_profiles,

@@ -47,6 +47,8 @@ gem 'ancestry'
 gem 'activemerchant'
 gem "fog"
 gem "unf"
+gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
 
 #Testing and dev
 group :test, :development do

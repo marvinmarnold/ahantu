@@ -27,5 +27,4 @@ pickle-email-*.html
 /vendor/hotels/sample/**/*.jpg
 /vendor/hotels/structure/
 vendor
-db
 TODO

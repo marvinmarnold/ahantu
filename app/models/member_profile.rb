@@ -3,7 +3,7 @@ class MemberProfile < Profile
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :owned_shop_requests, foreign_key: :shop_owner_profile_id, class_name: "ShopRequest"
@@ -41,6 +41,40 @@ class MemberProfile < Profile
       ShopRequest.none
     end
   end
+
+def self.from_omniauth(auth)
+  conditions = auth.slice(:provider, :uid)
+  throw :undefined_prodiver_or_uid unless conditions.present?
+  where(conditions).first_or_create do |member_profile|
+    member_profile.provider = auth.provider
+    member_profile.uid = auth.uid
+    member_profile.email = auth.info.email
+    member_profile.role = "shopper"
+  end
+end
+
+def self.new_with_session(params, session)
+  if session["devise.member_profile_attributes"]
+    new(session["devise.member_profile_attributes"], without_protection: true) do |member_profile|
+      member_profile.attributes = params
+      member_profile.valid?
+    end
+  else
+    super
+  end
+end
+
+def password_required?
+  super && provider.blank?
+end
+
+def update_with_password(params, *options)
+  if encrypted_password.blank?
+    update_attributes(params, *options)
+  else
+    super
+  end
+end
 
 private
 

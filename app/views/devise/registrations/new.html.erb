@@ -17,22 +17,24 @@
         <hr class="hr-or">
         <span class="span-or">or</span>
       </div>
-      
+
       <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
         <div class="form-group">
           <label for="inputUsernameEmail">Email</label>
           <%= f.input_field :email, :required => true, :autofocus => true , :label => false , :class => "form-control input-lg" %>
         </div>
-        <div class="form-group">
-          <%= link_to t("member_session.new.forgot_password"), new_password_path(resource_name), class: "pull-right" %>
-          <label for="inputPassword">Password</label>
-          <%= f.input_field :password, :required => true , :label => false , :class => "form-control input-lg"  %>
-        </div>
-        <div class="form-group">
-          <label for="inputPassword">Confirm Password</label>
-          <%= f.input_field :password_confirmation, :required => true , :label => false ,:class => "form-control input-lg" %>
-        </div>
+        <% if f.object.password_required? %>
+          <div class="form-group">
+            <%= link_to t("member_session.new.forgot_password"), new_password_path(resource_name), class: "pull-right" %>
+            <label for="inputPassword">Password</label>
+            <%= f.input_field :password, :required => true , :label => false , :class => "form-control input-lg"  %>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Confirm Password</label>
+            <%= f.input_field :password_confirmation, :required => true , :label => false ,:class => "form-control input-lg" %>
+          </div>
+        <% end %>
         <div class="form-group">
           <label for="inputPassword">Language</label>
           <%= f.input_field :language, as: :select, collection: Language.all, :required => true , :label => false , :class => "form-control input-lg" , :wrapper => false %>
@@ -40,14 +42,14 @@
         <% if can? :sign_up, MemberProfile %>
           <div class="form-group">
             <label for="inputPassword">Role</label>
-            <%= f.input_field :role, as: :select, collection: roles_can_assign , :label => false , :class => "form-control input-lg" %>          
+            <%= f.input_field :role, as: :select, collection: roles_can_assign , :label => false , :class => "form-control input-lg" %>
           </div>
         <% end %>
         <%= f.input_field :suggested_role, :as => :hidden, :input_html => { :value => suggested_role } %>
         <%= f.button :submit, t("member_profile.new.submit"), class: "btn btn btn-primary btn-lg" %>
       <% end %>
     </div>
-    
+
   </div>
 
   <div class="col-md-3">
@@ -57,10 +59,10 @@
 
 
 
-    
-    
-    
-    
 
 
-    
+
+
+
+
+
