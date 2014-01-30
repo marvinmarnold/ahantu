@@ -55,7 +55,7 @@ end
 
 def self.new_with_session(params, session)
   if session["devise.member_profile_attributes"]
-    new(session["devise.member_profile_attributes"], without_protection: true) do |member_profile|
+    new(session["devise.member_profile_attributes"]) do |member_profile|
       member_profile.attributes = params
       member_profile.valid?
     end
