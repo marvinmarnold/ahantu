@@ -11,7 +11,7 @@ h3 {
 <%= simple_form_for(@cart) do |f| %>
   <%= f.error_notification %>
   <%= render "shared/custom_errors", errors: @cart.errors[:billing_information_id] %>
-    
+
   <div class="panel panel-info">
     <div class="panel-heading">
       <%= link_to "Add Credit Card", new_credit_card_path, class: "pull-right " %>
@@ -20,13 +20,23 @@ h3 {
     <div class="panel-body">
       <% if current_user.billing_informations.present? %>
         <p>Select a Card</p>
-        <%= f.association :billing_information, collection: current_user.credit_cards , :label => false , :input_html => {:class => "form-control input-sm"} %>
+        <table>
+        <%= f.association :billing_information, collection: current_user.credit_cards , as: :radio_buttons, :label => false , :input_html => {:class => "form-control input-sm"} do |cards| %>
+          <% cards.object.each do |card| %>
+            <tr>
+              <td><%= card.short %></td>
+              <td><%= card.name_on_card %></td>
+              <td><%= card.expiration %></td>
+            </tr>
+          <% end %>
+        <% end %>
+        </table>
       <% else %>
         <p><%= t "cart.edit.no_billing_information" %></p>
       <% end %>
     </div>
   </div>
-  
+
 
   <div class="panel panel-info">
     <div class="panel-heading">
@@ -43,10 +53,10 @@ h3 {
           </div>
         <% end %>
       <% end %>
-    
+
     </div>
   </div>
-  
+
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3><%= t "cart.edit.contact_information" %></h3>
@@ -64,5 +74,5 @@ h3 {
   </div>
 
   <%= f.button :submit, t("cart.edit.submit", price: number_to_currency(@cart.total, locale: :en)), class: "btn btn-success btn-lg pull-right" %>
-  
+
 <% end %>

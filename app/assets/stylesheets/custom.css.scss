@@ -41,8 +41,8 @@ h6{}
 
 /*Top menu here*/
 
-.top-menu {padding:0px; margin:18px 0px 10px; width:269px; height:30px;}
-.top-menu li{float:left; list-style:none; padding:0 5px; font-size:14px;}
+.top-menu {padding:0px; margin:18px 0px 10px; height:30px;}
+.top-menu li{float:left; list-style:none; padding:0 5px; font-size:14px; }
 .top-menu li a{color:#57494b;}
 .top-menu li a:hover{color:#7daf66; text-decoration:none;}
 .top-menu li:last-child{padding:0px;}
@@ -395,3 +395,15 @@ margin: 0px;
     text-align: center;
     line-height: 300%;
   }
+
+
+h3.heading {
+  text-align: left;
+  margin: 0px;
+  line-height: 100%;
+  text-transform:uppercase;
+  color: #00ABCC;
+  font-size: 19px;
+}
+
+

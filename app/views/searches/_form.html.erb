@@ -36,16 +36,26 @@
         </div>
 
         <div class="form-group">
-            <%= f.fields_for :room_searches do |b| %>
-                <label>Adults</label>
-                <br/>
-                <div class="no-of-adults">
-                    <%= b.input_field :adults, as: :select, collection: 1..9, include_blank: false, class: "search-rooms form-control" %>
-                </div>
-                <% if b.options[:child_index] != 0 %>
-                  <%= b.link_to_remove "-", class: "btn btn-success remove", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Remove Room"%>
+          <div class="row">
+            <div class="col-md-9 col-xs-12 col-sm-12">
+              <div class="form-inline">
+                <%= f.fields_for :room_searches do |b| %>
+                    <label>Adults</label>
+                    <div class="no-of-adults">
+                        <%= b.input_field :adults, as: :select, collection: 1..9, include_blank: false, class: "search-rooms form-control" %>
+                    </div>
+                    <% if b.options[:child_index] != 0 %>
+                      <%= b.link_to_remove "-", class: "btn btn-success remove", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Remove Room"%>
+                    <% end %>
                 <% end %>
-            <% end %>
+                <div class="clearfix"></div>
+                <br />
+              </div>
+            </div>
+            <div class="col-md-3 col-xs-12 col-sm-12">
+              <%= f.link_to_add "+", :room_searches, class: "btn btn-default add pull-left",:data => { :target => ".form-inline"},"data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Add Room"  %>
+            </div>
+          </div>
         </div>
     
       </div>
