@@ -24,7 +24,6 @@
 
     <% if show_checkout_button? %>
         <li><%= link_to "Checkout", checkout_path(current_cart) %></li>
-        <li class="divider">|</li>
     <% end %>
 
     <% unless current_user.guest? %>
