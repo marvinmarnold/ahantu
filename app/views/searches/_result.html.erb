@@ -17,8 +17,8 @@
           <% hotel_tag_categories_search.each do |c| %>
             <% unless r.subclass_tags(c).blank? %>
               <h4 class="title"><%= label_for_tag_category(c) %></h4>
-              <% r.subclass_tags(c).each do |tag| %> 
-                <span><span class="glyphicon glyphicon-ok-sign"></span> <%= tag %></span>&nbsp;
+              <% r.subclass_tags(c).each do |tag| %>
+                <span><span class="glyphicon glyphicon-ok-sign"></span> <%= tag %></span><br/>
               <% end %>
             <% end %>
           <% end %>
