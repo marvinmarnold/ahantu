@@ -1,11 +1,11 @@
-<div class="panel panel-default">  
+<div class="panel panel-default">
     <div class="panel-heading">
       <h5 class=''><%= t "booking.index.title" %></h5>
       <span><%= t "booking.index.total", total: number_to_currency(cart.total) %></span>
     </div>
     <% cart.bookings.each_with_index do |booking, i| %>
       <table class="table">
-        <th colspan="2"><h5><%= t("booking.index.room", i: i+1, item: booking.item ) %></h5> 
+        <th colspan="2"><h5><%= t("booking.index.room", i: i+1, item: booking.item ) %></h5>
         </th>
         <% booking.line_items.each do |l| %>
           <tr>
@@ -16,7 +16,7 @@
         <td colspan="2" style='text-align:right;'><h5><%= t("booking.index.subtotal", i: i+1, subtotal: number_to_currency(booking.total))%></h5></td>
       </table>
     <% end %>
-  <div class="panel-footer"><h5><%= t "booking.index.total", total: number_to_currency(cart.total) %></h5></div>
+  <div class="panel-footer"><h5><strong><%= t "booking.index.total", total: number_to_currency(cart.total) %></strong></h5></div>
 </div>
-  
+
 

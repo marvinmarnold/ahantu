@@ -14,12 +14,12 @@ h3 {
 
   <div class="panel panel-info">
     <div class="panel-heading">
-      <%= link_to "Add Credit Card", new_credit_card_path, class: "pull-right " %>
+      <%= link_to t("cart.form.add_card"), new_credit_card_path, class: "pull-right " %>
       <h3><%= t "cart.edit.billing_information" %></h3>
     </div>
     <div class="panel-body">
       <% if current_user.billing_informations.present? %>
-        <p>Select a Card</p>
+        <p><%= t "cart.form.select_card" %></p>
         <table>
         <%= f.association :billing_information, collection: current_user.credit_cards , as: :radio_buttons, :label => false , :input_html => {:class => "form-control input-sm"} do |cards| %>
           <% cards.object.each do |card| %>
@@ -32,7 +32,7 @@ h3 {
         <% end %>
         </table>
       <% else %>
-        <p><%= t "cart.edit.no_billing_information" %></p>
+        <p><%= t "cart.edit.no_billing_information" %> <%=  link_to t("cart.edit.no_billing_information_link"), new_credit_card_path %></p>
       <% end %>
     </div>
   </div>

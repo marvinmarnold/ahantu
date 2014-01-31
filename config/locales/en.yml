@@ -34,10 +34,13 @@ en:
         subtitle: "Room %{i}: %{item}"
       contact_information: "Part 3: Contact information"
       billing_information: "Part 1: Billing information"
-      no_billing_information: "No credit cards on file. Please add one."
+      no_billing_information: "No credit cards on file. Please "
+      no_billing_information_link: "add one."
     form:
       errors:
         not_assigned_to_search: "Cart cannot be assigned to search before checkout"
+      add_card: "Add credit card"
+      select_cart: "Select a credit card"
     index:
       nothing:
         title: "No order history"
