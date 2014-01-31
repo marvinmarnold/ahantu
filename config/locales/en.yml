@@ -129,6 +129,26 @@ en:
                   It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all'-'powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to. It is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to.
 
                   Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia
+    about:
+      title: "About ahantu"
+      history:
+        title: "History"
+        body: |+
+              Something
+
+              Something else
+      team:
+        title: "Team"
+        person1: |+
+                  h3. Placide Habineza
+
+                  Placide HABINEZA was born in 1981, married and has a 3 year old daughter (expecting a second soon!). He has a Bachelors Degree in Translation and Interpreting from the National University of Rwanda in 2007. He is a Conference Interpreter and has worked in different domains, like health, economics, but more interested in social entrepreneurship. He is a member of Kaami Arts, a local NGO that aims at promoting the welfare of children and Kaami carry out their advocacy using different forms of arts (theatre, music, dance and drama).
+
+                  Hobbies: Watching movies, acting, traveling and music.
+        person2: |+
+                  h3. Marvin Arnold
+
+                  Marvin has nothing interesting to say at the moment.
   member_profile:
     new:
       submit: "Create account"
