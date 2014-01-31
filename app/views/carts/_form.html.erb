@@ -21,10 +21,10 @@ h3 {
       <% if current_user.billing_informations.present? %>
         <p><%= t "cart.form.select_card" %></p>
         <table>
-        <%= f.association :billing_information, collection: current_user.credit_cards ,
-          as: :radio_buttons,
-          :label_method => lambda {|c| card_radio_select c },
-          :label => false %>
+        <%= f.collection_radio_buttons :billing_information_id, current_user.credit_cards, :id, :id,
+          :label => false , :input_html => {:class => "form-control input-sm"}  do |credit_card| %>
+          <% card_radio_select(credit_card) %>
+        <% end %>
         </table>
       <% else %>
         <p><%= t "cart.edit.no_billing_information" %> <%=  link_to t("cart.edit.no_billing_information_link"), new_credit_card_path %></p>

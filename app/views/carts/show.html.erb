@@ -1,3 +1,4 @@
+<%= link_to t("cart.show.continue_shopping"), root_path %>
 <div class="container">
   <div class="col-md-2">
   </div>
@@ -10,15 +11,15 @@
       <ul class="list-group">
         <li class="list-group-item">
           <span class="pull-right"><%= @cart.order_confirmation %></span>
-          <strong><span class="glyphicon glyphicon-check"></span>&nbsp;Confirmation number</strong>
+          <strong><span class="glyphicon glyphicon-check"></span>&nbsp;<%= t "cart.show.confirmation_num" %></strong>
         </li>
         <li class="list-group-item">
-          <span class="pull-right"><%= @cart.submitted_at %></span>
-          <strong><span class="glyphicon glyphicon-check"></span>&nbsp;Reservation made</strong>          
+          <span class="pull-right"><%= l @cart.submitted_at.to_date, format: :long %></span>
+          <strong><span class="glyphicon glyphicon-check"></span>&nbsp;<%= t "cart.show.reserved_at" %></strong>
         </li>
         <li class="list-group-item">
           <span class="pull-right"><%= @cart.billing_information %></span>
-          <strong><span class="glyphicon glyphicon-check"></span>&nbsp;Billing information</strong>
+          <strong><span class="glyphicon glyphicon-check"></span>&nbsp;<%= t "cart.show.billing_info" %></strong>
         </li>
       </ul>
 

@@ -50,7 +50,11 @@ en:
       book_room: "Book room"
     show:
       title: "Reservation confirmation"
+      continue_shopping: "Make another reservation"
       description: "%{hotel} - ahantu.com"
+      confirmation_num: "Confirmation number"
+      reserved_at: "Reserved on"
+      billing_info: "Billing information"
     update:
       notice: "Order submitted. Please check your email for a copy of this order confirmation."
   credit_card:
