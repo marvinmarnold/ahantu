@@ -20,10 +20,20 @@ h3 {
     <div class="panel-body">
       <% if current_user.billing_informations.present? %>
         <p><%= t "cart.form.select_card" %></p>
-        <table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Credit Card</th>
+              <th>Name on Card</th>
+              <th>Expires on</th>
+            </tr>
+          </thead>
         <%= f.collection_radio_buttons :billing_information_id, current_user.credit_cards, :id, :id,
           :label => false , :input_html => {:class => "form-control input-sm"}  do |credit_card| %>
-          <% card_radio_select(credit_card) %>
+          <tr>
+            <%= card_radio_select(credit_card) %>
+          </tr>
         <% end %>
         </table>
       <% else %>
