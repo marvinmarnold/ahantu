@@ -50,6 +50,7 @@ en:
       book_room: "Book room"
     show:
       title: "Reservation confirmation"
+      continue_shopping: "Make another reservation"
       description: "%{hotel} - ahantu.com"
       confirmation_num: "Confirmation number"
       reserved_at: "Reserved on"
