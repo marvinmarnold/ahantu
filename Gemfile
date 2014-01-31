@@ -35,6 +35,7 @@ gem "less-rails"
 gem 'will_paginate-bootstrap'
 #gem "twitter-bootstrap-rails"
 #gem 'bootstrap-datepicker-rails'
+gem 'skeuocard-rails'
 
 #general
 gem 'cancan'
