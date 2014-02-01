@@ -34,10 +34,13 @@ en:
         subtitle: "Room %{i}: %{item}"
       contact_information: "Part 3: Contact information"
       billing_information: "Part 1: Billing information"
-      no_billing_information: "No credit cards on file. Please add one."
+      no_billing_information: "No credit cards on file. Please "
+      no_billing_information_link: "add one."
     form:
       errors:
         not_assigned_to_search: "Cart cannot be assigned to search before checkout"
+      add_card: "Add credit card"
+      select_cart: "Select a credit card"
     index:
       nothing:
         title: "No order history"
@@ -47,7 +50,11 @@ en:
       book_room: "Book room"
     show:
       title: "Reservation confirmation"
+      continue_shopping: "Make another reservation"
       description: "%{hotel} - ahantu.com"
+      confirmation_num: "Confirmation number"
+      reserved_at: "Reserved on"
+      billing_info: "Billing information"
     update:
       notice: "Order submitted. Please check your email for a copy of this order confirmation."
   credit_card:
@@ -114,14 +121,66 @@ en:
         step1: "Step 1: What"
         step2: "Step 2: When"
         step3: "Step 3: Rooms"
+      carousel_text: "Find a hotel in Rwanda"
       subsection: |+
-                  h2. Some title
+                  h2. The land of a Thousand Hills
 
-                  Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia
+                  "The land of a Thousand Hills", Rwanda is a green undulating landscape of hills, gardens and tea plantations. It offers tourists a one of a kind journey - home to one third of the world remaining Mountain Gorillas, one third of Africa's bird species, several species of primates, volcanoes, game reserve, resorts and islands on the expansive lake Kivu, graceful dancers, artistic crafts and friendly people.
 
-                  It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all'-'powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to. It is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to.
+                  h4. Volcanoes
 
-                  Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia
+                  The magnificent Virunga Mountains, situated in the Northern Province of Rwanda, on the border of Rwanda, DRC and Uganda. These mountains consist of six Volcanoes, 125 km2 of mountain forest, and are home to the famous gorilla families.
+
+                  The Volcanoes National Park was first gazetted in 192 5, as a small area bounded by Karisimbi, Bisoke and Mikeno Volcanoes, intended to protect the gorillas from poaching. It was the very first National Park to be created in Africa.
+
+                  There are many activities to be enjoyed in this area apart from Gorillas Trekking in the Volcanoes National Park. This area is home to numerous caves, a number of Cultural and Community Tourism initiates as well as being an excellent location for bird watching.
+
+                  For the sport enthusiast there are a number of hiki ng trails in the magestic Virunga Mountains or you can enjoy cycl ing the area, boating on the Twin lakes or even try your hand at fishing .
+
+                  h4. Nyungwe National Park
+
+                  Nyungwe National Park offers a rare and important habitat for many species, especially primates and birds. And at over 1000 km2, Nyungwe is Africa’s largest protected mountain rainforest.
+
+                  With about 310 bird species, 26 of which are endemic, Nyungwe is one of the most important -- and still undiscovered -- bird watching destinations in Africa. Reaching to almost 3000 meters above sea level with Mount Bigugu the highest point in the Park, Nyungwe’s forests extend to altitudes occupied by few other forests in Africa. Nyungwe is also home to one of Africa's greatest concentrations of chimpanzees and a sometimes noisy, acrobatic combination of other primates such as Ruwenzori colobus and Lhotse’s monkeys. A variety of hiking and walking trails criss-cross the Park leading to a canopy walk, primate tracking adventures, the southernmost source of the Nile and ecotourism attractions. The park includes a colorful array of orchids, butterflies, moths and other insects. The forest has a growing network of walking and hiking trails and a number of camping sites near the Uwinka Visitor Center. Cultural tourism activities are being developed near the edge of the Park. New trails and camping sites are planned and being constructed as part of the USAID-sponsored Nyungwe Nziza Project, as are new ways of both observing and enjoying the Park.
+
+                  h4. Akagera National Park
+
+                  Set at a relatively low altitude on the border with Tanzania, Akagera National Park could  scarcely be more different in mood to the breezy cultivated hills that characterize much of Rwanda. Dominated to the east by the labyrinth of swamps and lakes that follow the meandering course of the Akagera River,  the most remote source of the Nile, this is a diverse landscape of tangled acacia woodland interspersed with  open grassland, high rolling hills along the western boundary and patches of thick forest.
+
+                  h4. Rwandan Culture
+
+                  Rwanda has a rich culture evidenced in the diversity of fine crafts and strong traditions. These include music and dance and a variety of arts and crafts. Sought after crafts include pottery, basketry, painting, jewelry, wood carving and metalwork.
+
+                  A window on Rwanda's history is provided by numerous Memorial sites and Museums preserved around the country. A number of Community Based Tourism experiences offer travellers the opportunity to experience cultural life.
+
+                  h4. Learn more
+
+                  To learn more about Rwanda, check out the  and the "The Official Website of Rwanda Tourism":http://www.rwandatourism.com and the "Rwanda Development Board":http://www.rdb.rw/
+    about:
+      title: "About ahantu"
+      history:
+        title: "History"
+        body: |+
+              Rwanda is taking huge steps to become a dominant player in the African and global ICT sector. Ahantu.com is dedicated to being a part of this important movement for the country. After meeting in 2010, Placide and Marvin realized that there was immense room for technical innovation in Rwanda. This website will act as proof that simple technical innovations are just as necessary in Rwanda as anywhere else.
+
+              With a strong team and focus on privacy and security, we hope to quickly grow the services Ahantu provides far  beyond just hotel bookings. Join us on the journey.
+
+              If you have any questions, "contact us":/contact, find us on twitter "@ahantubookings":https://twitter.com/ahantubookings, or check us out on "Facebook":http://www.facebook.com/ahantu.
+
+      team:
+        title: "Team"
+        person1: |+
+                  h3. Placide Habineza
+
+                  Placide HABINEZA was born in 1981, married and has a 3 year old daughter (expecting a second soon!). He has a Bachelors Degree in Translation and Interpreting from the National University of Rwanda in 2007. He is a Conference Interpreter and has worked in different domains, like health, economics, but more interested in social entrepreneurship. He is a member of Kaami Arts, a local NGO that aims at promoting the welfare of children and Kaami carry out their advocacy using different forms of arts (theatre, music, dance and drama).
+
+                  Hobbies: Watching movies, acting, traveling and music.
+        person2: |+
+                  h3. Marvin Arnold
+
+                  Placide's first born baby, Marvina (above), is super cute. That just needs to be said. Marvin, is much less interesting. But just to put you at ease, he graduated from MIT in Electrical Engineering and Computer Science. He is adamant about privacy & security and really wants you to feel safe when booking with Ahantu. Have fun in Rwanda and welcome to the Ahantu family!
+
+                  Hobbies: Waragi, Akabenze, Akabanga, & mayonnaise!
   member_profile:
     new:
       submit: "Create account"
@@ -154,7 +213,7 @@ en:
         min_price: "average nightly price"
       no_results:
         title: "No shops match your search"
-        subtitle: "Update your search on the left to see more results."
+        subtitle: "Update your search to find hotels."
       num_results: "Displaying %{n} results/page"
   shared:
     admin_preview_language:
@@ -166,7 +225,7 @@ en:
       customer: "a customer"
       shop_owner: "a shop owner"
     register_as_shop_owner:
-      link: "Publish your hotel"
+      link: "Register your hotel"
   shop:
     create:
       notice: 'Shop was successfully created. Please associate it to a request.'

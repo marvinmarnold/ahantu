@@ -1,14 +1,25 @@
-<h3 class='heading'>History</h3>
-<br />
-<p>
-Donec eu aliquet augue. Maecenas et nibh euismod, varius lectus et, faucibus sem. Curabitur ut molestie eros, id cursus arcu. Mauris convallis luctus felis, eu mollis lacus pellentesque eget. Curabitur varius pharetra arcu ac bibendum. Curabitur laoreet ligula in risus elementum, eget molestie velit varius. Suspendisse id accumsan felis. Praesent pulvinar fringilla eros non ultricies. Sed sollicitudin quis dolor at egestas. Donec porttitor sem ut convallis euismod. Sed turpis magna, rutrum quis metus sit amet, hendrerit tempor enim. Vivamus faucibus commodo laoreet. Nulla quis interdum turpis. Praesent sed lorem in augue laoreet eleifend eget vel est. Nullam in tellus lacinia enim blandit malesuada.
+<h3 class='heading'><%= t "page.about.history.title" %></h3>
+<%= raw textilize t("page.about.history.body") %>
+<hr />
 
-Nullam quis ornare lectus. Ut ornare, est congue lacinia condimentum, velit urna mattis nulla, posuere facilisis augue sapien at risus. Nam vel purus quam. Vestibulum urna sapien, elementum egestas libero sit amet, suscipit dapibus quam. Suspendisse viverra justo in elit euismod, tristique tincidunt nibh scelerisque. Donec accumsan ornare pharetra. Aliquam hendrerit libero eu risus fermentum bibendum. Donec mollis purus at lorem sodales, et venenatis nisi luctus
-</p>
+<h3 class='heading'><%= t "page.about.team.title" %></h3>
 <br />
-<br />
-<p>
-Donec eu aliquet augue. Maecenas et nibh euismod, varius lectus et, faucibus sem. Curabitur ut molestie eros, id cursus arcu. Mauris convallis luctus felis, eu mollis lacus pellentesque eget. Curabitur varius pharetra arcu ac bibendum. Curabitur laoreet ligula in risus elementum, eget molestie velit varius. Suspendisse id accumsan felis. Praesent pulvinar fringilla eros non ultricies. Sed sollicitudin quis dolor at egestas. Donec porttitor sem ut convallis euismod. Sed turpis magna, rutrum quis metus sit amet, hendrerit tempor enim. Vivamus faucibus commodo laoreet. Nulla quis interdum turpis. Praesent sed lorem in augue laoreet eleifend eget vel est. Nullam in tellus lacinia enim blandit malesuada.
+<div class="row">
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <%= image_tag "team/placide.png", alt: "Placide" %>
+      <div class="caption">
+        <%= raw textilize t("page.about.team.person1") %>
+      </div>
+    </div>
+  </div>
 
-Nullam quis ornare lectus. Ut ornare, est congue lacinia condimentum, velit urna mattis nulla, posuere facilisis augue sapien at risus. Nam vel purus quam. Vestibulum urna sapien, elementum egestas libero sit amet, suscipit dapibus quam. Suspendisse viverra justo in elit euismod, tristique tincidunt nibh scelerisque. Donec accumsan ornare pharetra. Aliquam hendrerit libero eu risus fermentum bibendum. Donec mollis purus at lorem sodales, et venenatis nisi luctus
-</p>
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <%= image_tag "team/marvin.png", alt: "Marvina & Marvin" %>
+      <div class="caption">
+        <%= raw textilize t("page.about.team.person2") %>
+      </div>
+    </div>
+  </div>
+</div>

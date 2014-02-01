@@ -10,7 +10,8 @@ class PagesController < ApplicationController
   def about
   end
 
-  def contactinfo
+  def contact
+    @contact_form = ContactForm.new
   end
 
   def terms

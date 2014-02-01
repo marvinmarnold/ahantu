@@ -27,23 +27,16 @@ Ahantu::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  host_ip = '146.185.163.82'
-  app_domain = 'ahantu.com'
-  email_username = 'info@ahantu.com'
-  email_password = 'marviN!narcisio'
-
-  # paypal_login = ENV["paypal_login"]
-  # paypal_password = ENV["paypal_password"]
-  # paypal_signature = ENV["paypal_signature"]
-  # domain = ENV["DOMAIN"],
-  # user_name = "#{ENV["EMAIL_USERNAME"]}@#{ENV["DOMAIN"]}",
-  # email_password = ENV["EMAIL_PASSWORD"]
+  host_ip = ENV["HOST_IP"]
+  paypal_login = ENV["PAYPAL_LOGIN"]
+  paypal_password = ENV["PAYPAL_PASSWORD"]
+  paypal_signature = ENV["PAYPAL_SIGNATURE"]
+  app_domain = ENV["DOMAIN"],
+  email_username = "#{ENV["EMAIL_USERNAME"]}@#{ENV["EMAIL_DOMAIN"]}",
+  email_password = ENV["EMAIL_PASSWORD"]
 
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
-    paypal_login = 'marvin-facilitator_api1.ahantu.com'
-    paypal_password = '1376327303'
-    paypal_signature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31AFC3EQLJ5v9zAI.4SXEg8jQMRU49'
     paypal_options = {
       :login => paypal_login,
       :password => paypal_password,

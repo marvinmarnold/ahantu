@@ -1,20 +1,16 @@
 SECRET_TOKEN: 2d135b18ae12a2a9253219b50b4d2377aa416675abd9c58707143dea65f9de83f8dc7ca54bdf35e0f86f85b34deb9622b91d7acc19725ab9168c286b24759855
 DEVISE_SECRET: f5afca393438b4247bc3ab2a6fb2faf1ec728e7d6a8db034a51cbf9e7737f14e2d6f151797b013438bb79e68a3ff443f5daeb683db43fc2c84a68b2fda932228
 development:
-  HOST_IP: "localhost:3000"
-  EMAIL_CONFIRMATION_USERNAME: "info"
-  EMAIL_CONFIRMATION_DOMAIN: "ahantu.com"
-  EMAIL_CONFIRMATION_PASSWORD: "marviN!narcisio"
-  DOMAIN: "ahantu.com"
-  EMAIL_USERNAME: "info"
-  EMAIL_PASSWORD: "marviN!narcisio"
-  KANNEL_USERNAME: ahantu_kannel
-  KANNEL_PASSWORD: "marviN!narcisio"
-  paypal_login: 'marvin-facilitator_api1.ahantu.com'
-  paypal_password: '1376327303'
-  paypal_signature: 'AFcWxV21C7fd0v3bYYYRCpSSRl31AFC3EQLJ5v9zAI.4SXEg8jQMRU49'
+  DOMAIN: "localhost:3000"
+  EMAIL_USERNAME: "something"
+  EMAIL_PASSWORD: "something"
+  EMAIL_DOMAIN: 'something' #assuming google
+  paypal_login: 'something'
+  paypal_password: 'something'
+  paypal_signature: 'something'
   DEFAULT_LANGUAGE_NAME: "English"
   DEFAULT_LANGUAGE_ABBR: "en"
-  AWS_ACCESS_KEY_ID: "AKIAJZFJYFJ35MYWH77A"
-  AWS_SECRET_ACCESS_KEY: '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'
-  AWS_S3_BUCKET: "ahantu"
+  FACEBOOK_APP_ID: 'something'
+  FACEBOOK_SECRET: 'something'
+  GOOGLE_APP_ID: 'something'
+  GOOGLE_SECRET: 'something'

@@ -33,8 +33,7 @@ gem 'RedCloth'
 #bootstrap stuff
 gem "less-rails"
 gem 'will_paginate-bootstrap'
-#gem "twitter-bootstrap-rails"
-#gem 'bootstrap-datepicker-rails'
+gem 'skeuocard-rails'
 
 #general
 gem 'cancan'
@@ -60,22 +59,16 @@ group :test, :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
- #  gem 'faker'
-	# gem "factory_girl_rails"
   gem "capybara"
   gem 'guard-rspec', require: false
   gem "rb-fsevent"
   gem 'rb-readline', '~> 0.4.2' #for guard readline errors https://github.com/pry/pry/issues/921
   gem 'railroady'
+  gem 'faker'
+  gem "factory_girl_rails"
 end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
-#TEMPORARY for seeding
-gem 'faker'
-gem "factory_girl_rails"
-
-# Use unicorn as the app server

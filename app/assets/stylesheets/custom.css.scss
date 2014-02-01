@@ -55,7 +55,7 @@ h6{}
     border-radius:20px;
     background: url(asset-path('down-arrow.png')) no-repeat 113px center #7daf66;
     color:#fff;
-        text-shadow:0 1px 0 #333;
+    text-shadow:0 1px 0 #333;
     border:0;
     outline:0;
     display: inline-block;
@@ -301,11 +301,10 @@ footer ul li a:hover{color:#ccc; text-decoration:none;}
 footer .copy-rights{font-size:12px; color:#fff;}
 footer .footer-logo{float:right;}
 
-.absolute .fields:first-child {
+.absolute .fields {
 float: left;
-margin: 0px;
+margin: 2px;
 }
-.absolute .fields{float:none; margin: 8px 0;}
 /* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .top-menu li.lang select {padding-right:18px}
@@ -407,3 +406,23 @@ h3.heading {
 }
 
 
+html, body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+
+footer {
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
+} 

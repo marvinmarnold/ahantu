@@ -1,14 +1,12 @@
-<% unless current_search.blank? %>
-  <%= simple_form_for(@cart) do |f| %>
-    <%= f.error_notification %>
-		<% @shop.items.each do |i| %>
-			<%= render 'items/show', item: i, f: f %>
-    <% end %>    
-    <% if !can_one_click_checkout?(@cart) %>
-      <div class="actions" style='float:right;'>
-        <%= f.button :submit, "Checkout", class: "btn btn-lg btn-success" %>
-      </div>
-		<% end %>    
-
+<%= simple_form_for(@cart) do |f| %>
+  <%= f.error_notification %>
+	<% @shop.items.each do |i| %>
+		<%= render 'items/show', item: i, f: f %>
   <% end %>
+  <% if !can_one_click_checkout?(@cart) %>
+    <div class="actions" style='float:right;'>
+      <%= f.button :submit, "Checkout", class: "btn btn-lg btn-success" %>
+    </div>
+	<% end %>
+
 <% end %>

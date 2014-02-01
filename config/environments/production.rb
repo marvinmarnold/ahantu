@@ -68,6 +68,7 @@ Ahantu::Application.configure do
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
   config.i18n.fallbacks = true
+  config.i18n.default = :en
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
@@ -78,11 +79,13 @@ Ahantu::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  paypal_login = ENV["PAYPAL_LOGIN"]
+  paypal_password = ENV["PAYPAL_PASSWORD"]
+  paypal_signature = ENV["PAYPAL_SIGNATURE"]
+
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
-    paypal_login = 'marvin-facilitator_api1.ahantu.com'
-    paypal_password = 'AfQB7xBEGHT0Dx5rx8yZPL6B_plt2u8cvzw6e_9cx8Hcm8ftFRKho-_OBzj1'
-    paypal_signature = 'ENhs2hAGOuOykjmqVL00ht9KXaKbc9KpIbTLlKz1pzUhTt2fUOmFRUMTCXfh'
+
     paypal_options = {
       :login => paypal_login,
       :password => paypal_password,
@@ -91,18 +94,12 @@ Ahantu::Application.configure do
     ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end
-  host_ip = '146.185.163.82'
-  app_domain = 'ahantu.com'
-  email_username = 'info@ahantu.com'
-  email_password = 'marviN!narcisio'
-  # paypal_login = ENV["paypal_login"]
-  # paypal_password = ENV["paypal_password"]
-  # paypal_signature = ENV["paypal_signature"]
-  # domain = ENV["DOMAIN"],
-  # user_name = "#{ENV["EMAIL_USERNAME"]}@#{ENV["DOMAIN"]}",
-  # email_password = ENV["EMAIL_PASSWORD"]
 
-  config.action_mailer.default_url_options = { host: host_ip }
+  app_domain = ENV["DOMAIN"]
+  email_username = "#{ENV["EMAIL_USERNAME"]}@#{ENV["EMAIL_DOMAIN"]}",
+  email_password = ENV["EMAIL_PASSWORD"]
+
+  config.action_mailer.default_url_options = { host: app_domain }
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.delivery_method = :smtp

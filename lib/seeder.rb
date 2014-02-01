@@ -42,7 +42,7 @@ module Seeder
     end
 
     def preload_hotels
-      path_to_sample_csvs = "vendor/hotels/sample"
+      path_to_sample_csvs = "vendor/hotels/preload"
       Dir[Rails.root.join("#{path_to_sample_csvs}/*")].each do |samples_path|
         sample_hotel = create_hotel_from_general_info samples_path
         preload_rooms_for_hotel sample_hotel, samples_path
@@ -65,6 +65,7 @@ module Seeder
 
     def create_hotel_from_arr(r, root_path)
       pic_path = "#{root_path}/general/main.jpg"
+      banner_path = "#{root_path}/banner.jpg"
       hotel_params ={
         address1: get_v(r[8]),
         address2: get_v(r[9]),
@@ -73,7 +74,8 @@ module Seeder
         website1: get_v(r[12]),
         website2: get_v(r[13]),
         website3: get_v(r[14]),
-        #logo: File.open(pic_path),
+        logo: File.open(pic_path),
+        banner: File.open(banner_path),
         commission_pct: 0.1,
         user: MemberProfile.where(role: "shop_owner").first.user,
         published: true
