@@ -147,13 +147,7 @@ module Seeder
     def add_photos_to_photoable(photoable, root_path)
       Dir.glob("#{root_path}/photos/*") do |pic_path|
         photo_params = { photoable: photoable }
-        if Rails.env.development?
-          photo_params["photo"] = File.open(pic_path)
-        else
-          s3_url = "http://ahantuhotelsamples.s3.amazonaws.com/"
-          remote_pic_path = s3_url + pic_path.gsub("/home/pili/workspace/ahantu/vendor/hotels/sample/","")
-          photo_params["remote_photo_url"] = remote_pic_path
-        end
+        photo_params["photo"] = File.open(pic_path)
         Photo.create! photo_params
         # puts "Photo uploaded: #{photo_params}"
       end
