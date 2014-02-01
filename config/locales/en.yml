@@ -160,9 +160,12 @@ en:
       history:
         title: "History"
         body: |+
-              Something
+              Rwanda is taking huge steps to become a dominant player in the African and global ICT sector. Ahantu.com is dedicated to being a part of this important movement for the country. After meeting in 2010, Placide and Marvin realized that there was immense room for technical innovation in Rwanda. This website will act as proof that simple technical innovations are just as necessary in Rwanda as anywhere else.
 
-              Something else
+              With a strong team and focus on privacy and security, we hope to quickly grow the services Ahantu provides far  beyond just hotel bookings. Join us on the journey.
+
+              If you have any questions, "contact us":/contact, find us on twitter "@ahantubookings":https://twitter.com/ahantubookings, or check us out on "Facebook":http://www.facebook.com/ahantu.
+
       team:
         title: "Team"
         person1: |+
@@ -174,7 +177,9 @@ en:
         person2: |+
                   h3. Marvin Arnold
 
-                  Marvin and Placide met in 2010 when Marvin was working in Rwanda. Placide's first born baby, Marvina is super cute. That just needs to be said. Marvin, is much less interesting. But just to put you at ease, he graduated from MIT and really wants you to feel safe when booking through the website. Have fun in Rwanda and welcome to the Ahantu family!
+                  Placide's first born baby, Marvina (above), is super cute. That just needs to be said. Marvin, is much less interesting. But just to put you at ease, he graduated from MIT in Electrical Engineering and Computer Science. He is adamant about privacy & security and really wants you to feel safe when booking with Ahantu. Have fun in Rwanda and welcome to the Ahantu family!
+
+                  Hobbies: Waragi, Akabenze, Akabanga, & mayonnaise!
   member_profile:
     new:
       submit: "Create account"

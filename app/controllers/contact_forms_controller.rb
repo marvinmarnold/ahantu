@@ -16,7 +16,7 @@ class ContactFormsController < ApplicationController
 
   # GET /contact_forms/new
   def new
-    @contact_form = ContactForm.new
+    redirect_to contact_path
   end
 
   # GET /contact_forms/1/edit
