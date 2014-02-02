@@ -67,7 +67,7 @@ class Shop < Describable
   end
 
   def locations
-    location.ancestors.reverse
+    location.long
   end
 
   def owner

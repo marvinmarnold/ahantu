@@ -8,6 +8,10 @@ class Location < ActiveRecord::Base
     name
   end
 
+  def long
+    ancestors.reverse
+  end
+
 private
 
   def index_if_changed

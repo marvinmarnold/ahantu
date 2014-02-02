@@ -1,8 +1,13 @@
 module ShopsHelper
   def shop_address(shop)
     [].tap do |a|
-      [shop.address1, shop.address2, shop.locations].each { |i| a << i unless i.blank? }
+      [shop.address1, shop.address2, important_locations(shop.locations)].each { |i| a << i unless i.blank? }
     end.join(", ").upcase
+  end
+
+  def important_locations(locations)
+    locations.pop
+    locations
   end
 
   def shop_published_warning(shop)
