@@ -14,11 +14,11 @@
 
 <div class="container">
 	<div class="col-md-8">
-		<div class="box">
-			<div class="top-section-heading">
-				<h2><%= @shop %></h2>
+    <div class="box">
+      <div class="top-section-heading">
+        <h2><%= @shop %></h2>        
 			</div>
-			<div class="top-section-extra-info">
+			<div class="top-section-extra-info" style="border-bottom: 1px solid #EEE;">
 				<h5><span class="glyphicon glyphicon-map-marker"></span> <%= shop_address @shop %></h5>
 			</div>
 			<div class="top-section-heading">
@@ -38,32 +38,33 @@
 			<div class="top-section-heading">
 				<%= render 'carts/shop_menu' %>
 			</div>
+      <%= link_to t("cart.show.continue_shopping"), root_path , :class=> "btn btn-sm btn-info" %>
 		</div>
 	</div>
 
 	<div class="col-md-4">
 
-			<div class="box">
-				<div class="top-section-heading" style='text-align:center'>
-					<h4 class='title'><%= t 'shop.show.details' %></h4>
-				</div>
-				<div class="top-section-extra-info">
-					<% hotel_tag_categories_show.each do |c| %>
-						<% unless @shop.subclass_tags(c).blank? %>
-							<h4 class="title"><%= label_for_tag_category(c) %></h4>
-							<% @shop.subclass_tags(c).each do |tag| %>
-								  <span><span class="glyphicon glyphicon-ok-sign"></span> <%= tag %></span><br/>
-							<% end %>
-						<% end %>
-					<% end %>
-				</div>
+      <div class="box">
+        <div class="top-section-heading" style='text-align:center'>
+          <h4 class='title'><%= t 'shop.show.details' %></h4>
+        </div>
+        <div class="top-section-extra-info">
+          <% hotel_tag_categories_show.each do |c| %>
+            <% unless @shop.subclass_tags(c).blank? %>
+              <h4 class="title"><%= label_for_tag_category(c) %></h4>
+              <% @shop.subclass_tags(c).each do |tag| %>
+                  <span><span class="glyphicon glyphicon-ok-sign"></span> <%= tag %></span><br/>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
 			</div>
 
 			<div class="box" style='text-align:center;'>
 				<div class="top-section-heading">
 					<h4 class="title"><%= t "shops.show.directions" %></h4>
         </div>
-        <div class="top-section-extra-info" style='text-align:left;color:#696E75;font-size:14px;'>
+        <div class="top-section-extra-info map-block">
           <%= @shop.directions %>
         </div>
       </div>
@@ -76,9 +77,9 @@
 
 
 <script>
-    new GMaps({
-      div: '#map',
-      lat: <%= @shop.latitude %>,
-      lng: <%= @shop.longitude %>
-    });
+    // new GMaps({
+    //   div: '#map',
+    //   lat: <%= @shop.latitude %>,
+    //   lng: <%= @shop.longitude %>
+    // });
 </script>

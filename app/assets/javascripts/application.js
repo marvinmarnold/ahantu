@@ -56,6 +56,7 @@ var ready = function(){
 		var id_selector = $(this).attr("id");
 		var id = id_selector.substr(id_selector.length -1);
 		id = parseInt(id);
+    console.log(id);
 		$('#myCarousel').carousel(id);
 		$('[id^=carousel-selector-]').removeClass('selected');
 		$(this).addClass('selected');

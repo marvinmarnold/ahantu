@@ -1,5 +1,5 @@
-<div class="col-md-10" id="carousalBox" style='padding:10px;width:100%'>
-	<div id="myCarousel" class="carousel slide">
+<div class="col-md-12" id="carousalBox" style='padding:10px;width:100%'>
+	<div id="myCarousel" class="carousel slide thumbnail">
 		<!-- Carousel items -->
 		<div class="carousel-inner">
 			<% shop.photos.each_with_index do |photo, index| %>
@@ -15,13 +15,12 @@
 </div>
 
 <!-- thumb navigation carousel -->
-<div class="col-md-10 hidden-sm hidden-xs" id="slider-thumbs">
+<div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs">
 	<!-- thumb navigation carousel items -->
-	<ul class="list-inline">
-		
+	<ul class="list-inline">		
 		<% shop.photos.each_with_index do |photo, index| %>
 			<li> 
-				<%= content_tag "a", id: "carousel-selector-#{index}"  , class: append_first('', "selected") do %>
+				<%= content_tag "a", id: "carousel-selector-#{index}"  , class: append_first('carousal-thumb', "selected") do %>
 					<%= image_tag photo.photo_url(:thumb) , :class=>"img-responsive" %>
 				<% end %>
 			</li>
