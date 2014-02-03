@@ -26,7 +26,7 @@
 			</div>
 			<div class="top-section-heading">
 				<h4 class="title">Overview</h4>
-				<p><%= @shop.description %></p>
+				<p><%= raw textilize @shop.description %></p>
 			</div>
 			<div id="availability" class="top-section-extra-info">
 				<h3><%= t "shop.show.rooms"%>

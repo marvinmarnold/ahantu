@@ -43,6 +43,7 @@ module Seeder
 
     def preload_hotels
       path_to_sample_csvs = "vendor/hotels/preload"
+
       Dir[Rails.root.join("#{path_to_sample_csvs}/*")].each do |samples_path|
         sample_hotel = create_hotel_from_general_info samples_path
         preload_rooms_for_hotel sample_hotel, samples_path
@@ -59,6 +60,17 @@ module Seeder
       add_descriptions_to_describable_from_arr sample_hotel, r
       add_tags_to_taggable_from_arr sample_hotel, r
       add_photos_to_photoable sample_hotel, "#{hotel_root_path}/general"
+
+      begin
+        f = File.open("#{hotel_root_path}/general/desc.textile", "r")
+        desc = ""
+        f.each_line do |line|
+          desc += line
+        end
+        f.close
+        sample_hotel.descriptions.first.update(description: desc)
+      rescue
+      end
 
       sample_hotel
     end
