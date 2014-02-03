@@ -8,6 +8,10 @@
       <%= f.button :submit, "Checkout", class: "btn btn-lg btn-success pull-right" %>
       <%= link_to t("cart.show.continue_shopping"), root_path , :class=> "btn btn-lg btn-default" %>
     </div>
+  <% else %>
+    <div class="actions">
+      <%= link_to t("cart.show.continue_shopping"), root_path , :class=> "btn btn-lg btn-default pull-right" %>
+    </div>
 	<% end %>
 
 <% end %>
