@@ -23,5 +23,8 @@ module Ahantu
     Date::DATE_FORMATS.merge!(default: '%d/%m/%Y')
 
     config.middleware.insert_before 0, "SearchSuggestions"
+
+    config.assets.paths << Rails.root.join("app", "vendor", "assets", "images")
+
   end
 end
