@@ -278,6 +278,7 @@ en:
       rooms: "Rooms & Availability"
       details: "Hotel details"
       directions: "Directions"
+      update_search: "<< Back to search"
     edit:
       edit_links:
         show: "<< Preview hotel"
