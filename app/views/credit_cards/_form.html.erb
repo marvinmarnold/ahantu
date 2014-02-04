@@ -9,6 +9,19 @@
   <div class="credit-card-input no-js" id="skeuocard">
     <p class="no-support-warning"><%= t "credit_card.new.no_js" %></p>
 
+  <%= label_tag :cc_type , t("credit_card.new.card_type") %>
+    <select name="cc_type">
+      <option value="">...</option>option>
+      <option value="visa">Visa</option>
+      <option value="discover">Discover</option>
+      <option value="mastercard">MasterCard</option>
+      <option value="maestro">Maestro</option>
+      <option value="jcb">JCB</option>
+      <option value="unionpay">China UnionPay</option>
+      <option value="amex">American Express</option>
+      <option value="dinersclubintl">Diners Club</option>
+    </select>
+
     <%= label_tag :cc_number , t("credit_card.new.card_type") %>
     <%= select_tag(:cc_type, options_for_select(credit_card_types)) %>
 
