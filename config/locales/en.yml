@@ -221,6 +221,8 @@ en:
       errors:
         later_checkout: "Checkout must be after checkin"
         future_checkin: "Check in must be sometime in the future"
+      edit_search: Edit search parameters
+      filter: Filter search results
     show:
       result:
         min_price: "average nightly price"

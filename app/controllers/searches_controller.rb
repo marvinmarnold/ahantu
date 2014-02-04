@@ -47,6 +47,7 @@ class SearchesController < ApplicationController
     respond_to do |format|
       if @search.update(search_params)
         format.html { redirect_to @search }
+        format.js
       else
         format.html { render action: 'edit' }
       end
