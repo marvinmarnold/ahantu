@@ -135,7 +135,7 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-figure {
+figure , .nomargin {
   margin: 0;
 }
 
@@ -680,6 +680,9 @@ blockquote {
   padding: 10px 20px;
   margin: 0 0 20px;
   border-left: 5px solid #eeeeee;
+}
+blockquote.search{
+  border-left-color: #94CE7A;
 }
 
 blockquote p {
