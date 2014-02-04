@@ -58,13 +58,24 @@ class CreditCardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_credit_card
-      @credit_card = current_user.credit_cards.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def credit_card_params
-      params.require(:credit_card).permit(:name_on_card, :expiration, :type, :number, :cvv, :brand)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_credit_card
+    @credit_card = current_user.credit_cards.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def credit_card_params
+    # Temporary skeuocard hack
+    params[:credit_card] = {}
+    params[:credit_card][:number] = params[:cc_number]
+    params[:credit_card][:name_on_card] = params[:cc_name]
+    params[:credit_card][:brand] = "master"
+    params[:credit_card][:cvv] = params[:cc_cvc]
+    params[:credit_card]["expiration(1i)"] = params[:cc_exp_year]
+    params[:credit_card]["expiration(2i)"] = params[:cc_exp_month]
+    params[:credit_card]["expiration(3i)"] = "1"
+
+    params.require(:credit_card).permit(:name_on_card, :expiration, :type, :number, :cvv, :brand)
+  end
 end
