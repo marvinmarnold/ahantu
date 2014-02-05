@@ -47,17 +47,3 @@
     <%= f.button :submit, t("credit_card.new.submit"), class: "btn btn-success btn-lg pull-right", :onclick => "return validateform();" %>
   </div>
 <% end %>
-
-
-<script>
-  window.card = new Skeuocard($("#skeuocard"));
-  validateform = function(){
-    var resp = card.isValid();
-    // alert("Its working" +  resp);
-    if(resp) {
-      $('#credit_card_form').submit();
-      return true;
-    }
-    return false;
-  }
-</script>
