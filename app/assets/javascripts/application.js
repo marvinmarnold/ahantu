@@ -53,8 +53,9 @@ var ready = function(){
 
 	// handles the carousel thumbnails
 	$('[id^=carousel-selector-]').click( function(){
+    var size = "carousel-selector-".length;
 		var id_selector = $(this).attr("id");
-		var id = id_selector.substr(id_selector.length -1);
+		var id = id_selector.substr(size);
 		id = parseInt(id);
     console.log(id);
 		$('#myCarousel').carousel(id);

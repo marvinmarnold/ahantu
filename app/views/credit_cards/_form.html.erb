@@ -7,9 +7,10 @@
   <%= render "shared/custom_errors", errors: @credit_card.errors[:credit_card] %>
 
   <div class="credit-card-input no-js" id="skeuocard">
-    <p class="no-support-warning"><%= t "credit_card.new.no_js" %></p>
-
-  <%= label_tag :cc_type , t("credit_card.new.card_type") %>
+    <p class="no-support-warning">
+      Either you have Javascript disabled, or you're using an unsupported browser, amigo! That's why you're seeing this old-school credit card input form instead of a fancy new Skeuocard. On the other hand, at least you know it gracefully degrades...
+    </p>
+    <label for="cc_type">Card Type</label>
     <select name="cc_type">
       <option value="">...</option>option>
       <option value="visa">Visa</option>
@@ -21,29 +22,49 @@
       <option value="amex">American Express</option>
       <option value="dinersclubintl">Diners Club</option>
     </select>
-
-    <%= label_tag :cc_number , t("credit_card.new.card_type") %>
-    <%= select_tag(:cc_type, options_for_select(credit_card_types)) %>
-
-    <%= label_tag :cc_number , t("credit_card.new.number") %>
-    <%= text_field_tag :cc_number, nil, placeholder: "XXXX XXXX XXXX XXXX", maxlength: 19, size: 19 %>
-
-    <%= label_tag :cc_exp_month , t("credit_card.new.month") %>
-    <%= text_field_tag :cc_exp_month, nil, placeholder: "mm" %>
-
-    <%= label_tag :cc_exp_year , t("credit_card.new.year") %>
-    <%= text_field_tag :cc_exp_year, nil, placeholder: "yy" %>
-
-    <%= label_tag :cc_name , t("credit_card.new.name") %>
-    <%= text_field_tag :cc_name, nil, placeholder: "Marvin Arnold" %>
-
-    <%= label_tag :cc_cvc , t("credit_card.new.code") %>
-    <%= text_field_tag :cc_cvc, nil, placeholder: "777", maxlength: 3, size: 3 %>
+    <label for="cc_number">Card Number</label>
+    <input type="text" name="cc_number" id="cc_number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" size="19">
+    <label for="cc_exp_month">Expiration Month</label>
+    <input type="text" name="cc_exp_month" id="cc_exp_month" placeholder="00">
+    <label for="cc_exp_year">Expiration Year</label>
+    <input type="text" name="cc_exp_year" id="cc_exp_year" placeholder="00">
+    <label for="cc_name">Cardholder's Name</label>
+    <input type="text" name="cc_name" id="cc_name" placeholder="John Doe">
+    <label for="cc_cvc">Card Validation Code</label>
+    <input type="text" name="cc_cvc" id="cc_cvc" placeholder="123" maxlength="3" size="3">
   </div>
 
   <hr/>
 
+<!--   <div class="actions hidden">
+    <%= f.input :brand, collection: credit_card_types %>
+    <%= f.input :name_on_card, required: true %>
+    <%= f.input :number %>
+    <%= f.input :cvv %>
+    <%= f.input :expiration, discard_day: true, order: [:month, :year] %>
+  </div> -->
   <div class="actions">
     <%= f.button :submit, t("credit_card.new.submit"), class: "btn btn-success btn-lg pull-right", :onclick => "return validateform();" %>
   </div>
 <% end %>
+
+
+<script>
+  loadSkeo = function(){
+    if(typeof window.card === 'undefined') {
+      window.card = new Skeuocard($("#skeuocard"));
+    }
+  };
+  validateform = function(){
+    var resp = card.isValid();
+    if(resp) {
+      $('#credit_card_form').submit();
+      return true;
+    }
+    // alert("Kindly Correct all Credit Card Details");
+    return false;
+  };
+
+  $(document).on('ready', loadSkeo);
+  $(document).on('page:load', loadSkeo);
+</script>

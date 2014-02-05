@@ -64,21 +64,23 @@ en:
       security: |+
                 h4. Security Information
 
-                You never have to worry when making a booking with Ahantu. Sleep well knowing:
+                p. You never have to worry when making a booking with Ahantu. Sleep well knowing:
 
-                h5. *- your credit card information is never saved*
-
-                h5. *- we leverage state-of-the art security technologies*
+                h5. *- Your credit card information is never saved*
+                
+                h5. *- We leverage state-of-the art security technologies*
                 Protection from XSRF, XSS, SQL Injection, username enumeration, and other dangerous vulnerabilities.
+                
+                h5. *- All orders are screened by algorithm to detect suspicious purchases*
 
-                h5. *- all orders are screened by algorithm to detect suspicious purchases*
-      no_js: Either you have Javascript disabled, or you're using an unsupported browser, inchuti! That's why you're seeing this old-school credit card input form instead of something much cooler.
-      number: Card number
-      month: Expiration month
-      year: Expiration year
-      code: Security code
-      name: Name on card
-      card_type: Card type
+      no_js: > 
+            Either you have Javascript disabled, or you're using an unsupported browser, inchuti! That's why you're seeing this old-school credit card input form instead of something much cooler.
+            number: Card number
+            month: Expiration month
+            year: Expiration year
+            code: Security code
+            name: Name on card
+            card_type: Card type
     create:
       notice: "Credit card added to account."
   description:
