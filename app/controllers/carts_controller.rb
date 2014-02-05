@@ -83,6 +83,7 @@ class CartsController < ApplicationController
         :email,
         :phone,
         :billing_information_id,
+        :terms_accepted,
         :bookings_attributes => [:item_id, :adults, :responsible_name, :id]
       )
     end

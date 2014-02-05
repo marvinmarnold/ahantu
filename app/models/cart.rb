@@ -110,7 +110,7 @@ class Cart < ActiveRecord::Base
 
     # before_transition any => [:authoziring_payment], do: :fill_bookings
     state :authorizing_payment do
-      validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation,
+      validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation, :terms_accepted,
         presence: true
     end
 

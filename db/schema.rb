@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129135750) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20140205214036) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -63,6 +60,7 @@ ActiveRecord::Schema.define(version: 20140129135750) do
     t.datetime "updated_at"
     t.integer  "search_id"
     t.integer  "user_id"
+    t.boolean  "terms_accepted"
   end
 
   add_index "carts", ["billing_information_id"], name: "index_carts_on_billing_information_id", using: :btree

@@ -1,4 +1,4 @@
-<td><%= button %></td>
-<td><%= card.short %></td>
-<td><%= card.name_on_card %></td>
-<td><%= card.expiration %></td>
+<td><%= content_tag "label", for: "cart_billing_information_id_#{card.id}", class: "table-label" do %><%= button %><% end %></td>
+<td><%= content_tag "label", for: "cart_billing_information_id_#{card.id}", class: "table-label" do %><%= card.short %><% end %></td>
+<td><%= content_tag "label", for: "cart_billing_information_id_#{card.id}", class: "table-label" do %><%= card.name_on_card %><% end %></td>
+<td><%= content_tag "label", for: "cart_billing_information_id_#{card.id}", class: "table-label" do %><%= card.expiration %><% end %></td>
