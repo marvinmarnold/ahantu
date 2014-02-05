@@ -6,7 +6,13 @@ class CreditCard < BillingInformation
 
   CREDIT_CARD_TYPES = {
     "Visa" => "visa",
-    "MasterCard" => "master"
+    "MasterCard" => "mastercard",
+    "Discover" => "discover",
+    "Maestro" => "maestro",
+    "JCB" => "jcb",
+    "China UnionPay" => "unionpay",
+    "American Express" => "amex",
+    "Diners Club" => "dinersclubintl"
   }
 
   def to_s
