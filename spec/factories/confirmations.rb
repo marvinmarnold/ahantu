@@ -8,8 +8,8 @@ FactoryGirl.define do
     sent_at "2013-09-20 16:33:32"
 
     factory :email_confirmation, class: "EmailConfirmation" do
-      recipient { create(:email_address) }
-      sender { create(:email_address) }
+      recipient { create(:member) }
+      sender { create(:member) }
     end
   end
 end

@@ -98,7 +98,6 @@ class Cart < ActiveRecord::Base
     shop.responsibles
   end
 
-
   ##############################################################################################################
   ### state machine
   ##############################################################################################################
@@ -110,7 +109,7 @@ class Cart < ActiveRecord::Base
 
     # before_transition any => [:authoziring_payment], do: :fill_bookings
     state :authorizing_payment do
-      validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation,
+      validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation, :terms_accepted,
         presence: true
     end
 
@@ -183,7 +182,8 @@ private
   def submit_payment_authorization
     return false unless billing_information.present?
     response = ::STANDARD_GATEWAY.authorize(paypal_total, credit_card, ip: billing_information.ip_address)
-    response.success?
+
+    response.success? && billing_information.store
   end
 
   def send_cancelation

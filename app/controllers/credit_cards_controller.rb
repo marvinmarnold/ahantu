@@ -39,6 +39,7 @@ class CreditCardsController < ApplicationController
   # PATCH/PUT /credit_cards/1
   # PATCH/PUT /credit_cards/1.json
   def update
+
     respond_to do |format|
       if @credit_card.update(credit_card_params)
         format.html { redirect_to @credit_card, notice: 'Billing information was successfully updated.' }
@@ -70,12 +71,24 @@ class CreditCardsController < ApplicationController
     params[:credit_card] = {}
     params[:credit_card][:number] = params[:cc_number]
     params[:credit_card][:name_on_card] = params[:cc_name]
-    params[:credit_card][:brand] = "master"
+    params[:credit_card][:brand] = skeuocard_to_active_merchant_brand params[:cc_type]
     params[:credit_card][:cvv] = params[:cc_cvc]
     params[:credit_card]["expiration(1i)"] = params[:cc_exp_year]
     params[:credit_card]["expiration(2i)"] = params[:cc_exp_month]
     params[:credit_card]["expiration(3i)"] = "1"
 
     params.require(:credit_card).permit(:name_on_card, :expiration, :type, :number, :cvv, :brand)
+  end
+
+  def skeuocard_to_active_merchant_brand(brand)
+    {
+      "visa" => "visa",
+      "discover" => "discover",
+      "mastercard" => "master",
+      "dinersclubintl" => "diners_club",
+      "amex" => "american_express",
+      "jcb" => "jcb",
+      "maestro" => "maestro",
+    }[brand]
   end
 end

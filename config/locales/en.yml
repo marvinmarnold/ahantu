@@ -36,11 +36,16 @@ en:
       billing_information: "Part 1: Billing information"
       no_billing_information: "No credit cards on file. Please "
       no_billing_information_link: "add one."
+      checkout: "Part 4: Terms and checkout"
+      terms_accepted: I accept the "terms of service":/terms
     form:
       errors:
         not_assigned_to_search: "Cart cannot be assigned to search before checkout"
       add_card: "Add credit card"
       select_cart: "Select a credit card"
+      card: "Credit card"
+      name_on_card: "Name on card"
+      expires: "Expires on"
     index:
       nothing:
         title: "No order history"
@@ -67,13 +72,13 @@ en:
                 p. You never have to worry when making a booking with Ahantu. Sleep well knowing:
 
                 h5. *- Your credit card information is never saved*
-                
+
                 h5. *- We leverage state-of-the art security technologies*
                 Protection from XSRF, XSS, SQL Injection, username enumeration, and other dangerous vulnerabilities.
-                
+
                 h5. *- All orders are screened by algorithm to detect suspicious purchases*
 
-      no_js: > 
+      no_js: >
             Either you have Javascript disabled, or you're using an unsupported browser, inchuti! That's why you're seeing this old-school credit card input form instead of something much cooler.
             number: Card number
             month: Expiration month

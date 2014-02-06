@@ -14,8 +14,15 @@ describe Cart do
 
   end
 
-  it "authorizes payments through paypal" do
-    @cart = create(:cart_ready_to_authorize)
-    expect(@cart.send(:submit_payment_authorization)).to be_true
+  context "about to submit cart" do
+
+    before(:all) do
+      @cart = create(:cart_ready_to_authorize)
+    end
+
+    it "authorizes payments through paypal" do
+      expect(@cart.send(:submit_payment_authorization)).to be_true
+    end
+
   end
 end

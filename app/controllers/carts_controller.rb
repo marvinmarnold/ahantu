@@ -33,7 +33,6 @@ class CartsController < ApplicationController
 
   # GET /carts/1/edit
   def edit
-    # binding.pry
   end
 
   # PATCH/PUT /carts/1
@@ -83,6 +82,7 @@ class CartsController < ApplicationController
         :email,
         :phone,
         :billing_information_id,
+        :terms_accepted,
         :bookings_attributes => [:item_id, :adults, :responsible_name, :id]
       )
     end
