@@ -4,6 +4,8 @@ class CreditCard < BillingInformation
   validates :number, :expiration, :brand, :last_name,
     presence: true
 
+  before_save :capitalize_name
+
   CREDIT_CARD_TYPES = {
     "Visa" => "visa",
     "MasterCard" => "master",
@@ -27,11 +29,14 @@ class CreditCard < BillingInformation
   end
 
   def name_on_card
-    self.last_name
+    self.first_name + " " + self.last_name
   end
 
   def name_on_card=(n)
-    self[:last_name] = n
+    a = n.split(" ")
+    self[:last_name] = a.last
+    n.slice!(a.last)
+    self[:first_name] = n.strip
   end
 
   def store
@@ -76,6 +81,10 @@ class CreditCard < BillingInformation
     end
   end
 
+  ##############################################################################################################
+  ### state machine
+  ##############################################################################################################
+
 private
 
 	def validate_card
@@ -84,6 +93,11 @@ private
         errors["credit_card"] << message
       end
     end
+  end
+
+  def capitalize_name
+    self.first_name = first_name.upcase
+    self.last_name = last_name.upcase
   end
 
 end

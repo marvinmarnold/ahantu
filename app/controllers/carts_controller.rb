@@ -33,7 +33,6 @@ class CartsController < ApplicationController
 
   # GET /carts/1/edit
   def edit
-    # binding.pry
   end
 
   # PATCH/PUT /carts/1
