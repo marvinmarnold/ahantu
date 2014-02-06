@@ -46,6 +46,7 @@ class SearchesController < ApplicationController
   def update
     respond_to do |format|
       if @search.update(search_params)
+        @results = @search.results.paginate(:page => params[:page], :per_page => per_page) if @search.present?
         format.html { redirect_to @search }
         format.js
       else

@@ -2,18 +2,8 @@
   <div class="col-md-3">
     <%= render 'searches/form' %>
   </div>
-  <div class="col-md-9">
-      <% if @search.empty? %>
-        <%= render 'searches/no_results' %>
-      <% else %>
-      <%= render 'searches/search_options' %>
-
-        <% @results.each do |r| %>
-          <%= render 'searches/result', r: r %>
-        <% end %>
-        <%= will_paginate @results, renderer: BootstrapPagination::Rails %>
-      <% end %>
-
+  <div class="col-md-9" id='search_result'>
+          <%= render 'searches/search_result' %>
   </div>
 
 </div>

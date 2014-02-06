@@ -1,5 +1,5 @@
 loadSkeo = function(){
-    if(typeof window.card === 'undefined') {
+    if((typeof window.card === 'undefined' ) && ( typeof Skeuocard != 'undefined')) {
       window.card = new Skeuocard($("#skeuocard"));
     }
   };
