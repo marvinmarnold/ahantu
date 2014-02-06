@@ -23,5 +23,7 @@ pickle-email-*.html
 /public/uploads/
 /public/assets/
 *~*
-/vendor/hotels/*
+/vendor/hotels/preload/*
+/vendor/hotels/structure/*
+/vendor/hotels/test/*
 TODO
