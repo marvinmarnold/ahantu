@@ -183,7 +183,8 @@ private
   def submit_payment_authorization
     return false unless billing_information.present?
     response = ::STANDARD_GATEWAY.authorize(paypal_total, credit_card, ip: billing_information.ip_address)
-    response.success?
+
+    response.success? && billing_information.store
   end
 
   def send_cancelation
