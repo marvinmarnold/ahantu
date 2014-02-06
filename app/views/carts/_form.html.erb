@@ -2,33 +2,33 @@
   <%= f.error_notification %>
   <%= render "shared/custom_errors", errors: @cart.errors[:billing_information_id] %>
 
-  <div class="panel panel-info">
+  <div class="panel panel-info table-responsive">
     <div class="panel-heading">
       <%= link_to t("cart.form.add_card"), new_credit_card_path, class: "pull-right " %>
       <h3 class="heading"><%= t "cart.edit.billing_information" %></h3>
     </div>
-    <div class="panel-body">
       <% if current_user.billing_informations.present? %>
-        <table class="table">
+        <table class="table table-hover">
           <thead>
             <tr>
-              <th></th>
+              <th>#</th>
               <th><%= t "cart.form.card" %></th>
               <th><%= t "cart.form.name_on_card" %></th>
               <th><%= t "cart.form.expires" %></th>
             </tr>
           </thead>
-        <%= f.collection_radio_buttons :billing_information_id, current_user.credit_cards, :id, :id,
-          :label => false , :input_html => {:class => "form-control input-sm"}  do |credit_card| %>
-          <tr>
-            <%= card_radio_select(credit_card) %>
-          </tr>
-        <% end %>
-        </table>
+          <%= f.collection_radio_buttons :billing_information_id, current_user.credit_cards, :id, :id,
+            :label => false , :input_html => {:class => "form-control input-sm"}  do |credit_card| %>
+            <tr>
+              <%= card_radio_select(credit_card) %>
+            </tr>
+          <% end %>
+          </table>         
       <% else %>
-        <p><%= t "cart.edit.no_billing_information" %> <%=  link_to t("cart.edit.no_billing_information_link"), new_credit_card_path %></p>
+       <div class="panel-body">
+         <p><%= t "cart.edit.no_billing_information" %> <%=  link_to t("cart.edit.no_billing_information_link"), new_credit_card_path %></p>
+       </div>
       <% end %>
-    </div>
   </div>
 
   <div class="panel panel-info">
@@ -74,13 +74,13 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
+            <%= f.input_field :terms_accepted, class: 'pull-left' %>&nbsp;&nbsp;
             <%= f.label :terms_accepted, raw(textilize(t("cart.edit.terms_accepted"))) %>
-            <%= f.input_field :terms_accepted, class: 'pull-left' %>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.button :submit, t("cart.edit.submit", price: number_to_currency(@cart.total, locale: :en)), class: "btn btn-success btn-lg pull-right" %>
+            <%= f.button :submit, t("cart.edit.submit", price: number_to_currency(@cart.total, locale: :en)), class: "btn btn-success btn-lg pull-right btn-outline" %>
           </div>
         </div>
       </div>
