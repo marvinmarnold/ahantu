@@ -1,7 +1,3 @@
-<%= javascript_include_tag "skeuocard", "data-turbolinks-track" => true %>
-<%= stylesheet_link_tag "skeuocard.reset", media: "all", "data-turbolinks-track" => true %>
-<%= stylesheet_link_tag "skeuocard", media: "all", "data-turbolinks-track" => true %>
-
 <%= simple_form_for @credit_card, html: {id: "credit_card_form"} do |f| %>
   <%= f.error_notification %>
   <%= render "shared/custom_errors", errors: @credit_card.errors[:credit_card] %>
@@ -49,22 +45,8 @@
 <% end %>
 
 
-<script>
-  loadSkeo = function(){
-    if(typeof window.card === 'undefined') {
-      window.card = new Skeuocard($("#skeuocard"));
-    }
-  };
-  validateform = function(){
-    var resp = card.isValid();
-    if(resp) {
-      $('#credit_card_form').submit();
-      return true;
-    }
-    // alert("Kindly Correct all Credit Card Details");
-    return false;
-  };
+<%= javascript_include_tag "skeuocard", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag "skeuocard.reset", media: "all", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag "skeuocard", media: "all", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag "skeuo_load", media: "all", "data-turbolinks-track" => true %>
 
-  $(document).on('ready', loadSkeo);
-  $(document).on('page:load', loadSkeo);
-</script>
