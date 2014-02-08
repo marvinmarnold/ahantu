@@ -27,7 +27,7 @@ class Ability
         can [:read], Cart
         can [:create, :read], ShopRequest
     elsif user.admin?
-
+        can [:read], ContactForm
     end
 
     # Define abilities for the passed in user here. For example:

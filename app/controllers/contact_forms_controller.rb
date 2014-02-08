@@ -26,15 +26,13 @@ class ContactFormsController < ApplicationController
   # POST /contact_forms
   # POST /contact_forms.json
   def create
-    @contact_form = ContactForm.new(contact_form_params)
+    @contact_form = current_user.contact_forms.build(contact_form_params)
 
     respond_to do |format|
       if @contact_form.save
-        format.html { redirect_to @contact_form, notice: 'Contact form was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @contact_form }
+        format.html { redirect_to root_path, notice: t("contact_form.new.success") }
       else
         format.html { render action: 'new' }
-        format.json { render json: @contact_form.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -45,10 +43,8 @@ class ContactFormsController < ApplicationController
     respond_to do |format|
       if @contact_form.update(contact_form_params)
         format.html { redirect_to @contact_form, notice: 'Contact form was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @contact_form.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,14 +55,13 @@ class ContactFormsController < ApplicationController
     @contact_form.destroy
     respond_to do |format|
       format.html { redirect_to contact_forms_url }
-      format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact_form
-      @contact_form = ContactForm.find(params[:id])
+      @contact_form = current_user.contact_forms.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

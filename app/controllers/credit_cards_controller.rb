@@ -29,7 +29,7 @@ class CreditCardsController < ApplicationController
     @credit_card = current_user.credit_cards.build(credit_card_params.merge({ip_address: request.remote_ip}))
     respond_to do |format|
       if @credit_card.save
-        format.html { redirect_to checkout_path(current_cart), notice: I18n.t("credit_card.create.notice") }
+        format.html { redirect_to checkout_path(current_cart), notice: t("credit_card.create.notice") }
       else
         format.html { render action: 'new' }
       end

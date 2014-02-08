@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :responsible_carts, through: :responsible_shops, source: :carts
   has_many :owned_shops, class_name: "Shop", inverse_of: :user
   has_many :client_carts, through: :owned_shops, source: :carts
+  has_many :contact_forms
 	belongs_to :profile, polymorphic: true
 
 	delegate :guest?, :to_s, :shopper?, :shop_owner?, :salesperson?, :admin?, :shop_requests,

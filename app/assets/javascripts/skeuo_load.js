@@ -9,7 +9,7 @@ validateform = function(){
     $('#credit_card_form').submit();
     return true;
   }
-  alert("Kindly Correct all Credit Card Details");
+  alert("Kindly correct all credit card details");
   return false;
 };
 

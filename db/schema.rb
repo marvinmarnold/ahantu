@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205235040) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20140208192038) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -97,17 +94,10 @@ ActiveRecord::Schema.define(version: 20140205235040) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "contacts", force: true do |t|
-    t.string   "type"
     t.integer  "user_id"
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
-  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+  add_index "contact_forms", ["user_id"], name: "index_contact_forms_on_user_id", using: :btree
 
   create_table "descriptions", force: true do |t|
     t.integer  "language_id"
@@ -323,19 +313,6 @@ ActiveRecord::Schema.define(version: 20140205235040) do
 
   add_index "shops", ["location_id"], name: "index_shops_on_location_id", using: :btree
   add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
-
-  create_table "sms", force: true do |t|
-    t.integer  "cart_id"
-    t.text     "message"
-    t.integer  "phone_id"
-    t.boolean  "incoming"
-    t.datetime "sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sms", ["cart_id"], name: "index_sms_on_cart_id", using: :btree
-  add_index "sms", ["phone_id"], name: "index_sms_on_phone_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
