@@ -26,7 +26,7 @@ FactoryGirl.define do
         end
 
         factory :cart_submitted do
-          state "submitted"
+          state "payment_received"
         end
       end
     end

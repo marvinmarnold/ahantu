@@ -75,9 +75,13 @@ class Cart < ActiveRecord::Base
   end
 
   def self.finalize_current_bookings
-    Cart.waiting.each do |cart|
-      CartProcessingWorker.perform_async(cart.id)
+    Cart.payment_received.each do |cart|
+      CartProcessingWorker.perform_async(cart.id) if cart.current?
     end
+  end
+
+  def current?
+    bookings.sort { |a,b| a.checkout <=> b.checkout }.first.checkout >= Date.today
   end
 
   #
@@ -145,6 +149,10 @@ class Cart < ActiveRecord::Base
     before_transition :on => :cancle_payment, :do => :reset_cart
     event :cancle_payment do
       transition [:authorizing_payment] => :shopping
+    end
+
+    event :finish do
+      transition [:payment_received] => :finished
     end
 
     event :cancle do
