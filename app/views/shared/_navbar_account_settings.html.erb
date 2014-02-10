@@ -12,25 +12,23 @@
       <%= link_to t("navbar.account_settings.update_registration"),
         edit_registration_path(current_user.profile) %>
     </li>
-    <li class="divider"></li>
     <% if can? :create_shop_owner, MemberProfile %>
       <li>
         <%= link_to t("navbar.account_settings.salesperson.register_new_shop"),
           new_member_profile_registration_path %>
       </li>
-      <li class="divider"></li>
     <% end %>
     <% if can? :update, Shop %>
       <li>
         <%= link_to t("navbar.account_settings.shop_owner.manage_shops"),
           shops_path %>
       </li>
-      <li class="divider"></li>
     <% end %>
     <li>
       <%= link_to t("devise.member_profile_sessions.signout"),
       destroy_session_path(current_user.profile),
       method: :delete %>
     </li>
+    <li></li>
   </ul>
 </li>

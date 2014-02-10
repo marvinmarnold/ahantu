@@ -1,7 +1,7 @@
 <ul class="top-menu">
     <% if current_user.guest? && current_cart.blank? %>
         <li>
-          <%= link_to t("member_session.new.sigin"), new_member_profile_session_path %>
+          <%= link_to t("member_session.new.signin"), new_member_profile_session_path %>
         </li>
         <li class="divider">|</li>
         <li>
