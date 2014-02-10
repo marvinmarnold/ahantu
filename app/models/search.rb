@@ -1,6 +1,7 @@
 class Search < ActiveRecord::Base
   belongs_to :user, inverse_of: :searches
   belongs_to :shop
+  belongs_to :item
   has_many :taggings, as: :taggable
   has_many :hotel_tags, through: :taggings, class_name: "Tag::HotelTag", source: :tag
   has_many :room_searches, :dependent => :destroy
@@ -107,7 +108,7 @@ class Search < ActiveRecord::Base
   end
 
   def nights
-    checkin_at..(checkout_at-1.day)
+    (checkin_at.blank? || checkout_at.blank?) ? [] : checkin_at..(checkout_at-1.day)
   end
 
   def empty?
@@ -122,11 +123,12 @@ class Search < ActiveRecord::Base
     checkout_at || suggested_checkin_at(_user) + _user.suggested_stay_length
   end
 
-  def self.build_unfinalized(user, shop)
+  def self.build_unfinalized(user, item)
     new(
       user: user,
-      shop: shop,
-      keyword: shop.name,
+      shop: item.shop,
+      item: item,
+      keyword: item.shop.name,
       checkin_at: user.suggested_checkin_at,
       checkout_at: user.suggested_checkout_at
     ).add_suggested_room_searches

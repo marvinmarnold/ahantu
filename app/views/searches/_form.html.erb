@@ -7,29 +7,29 @@
       </div>
       <div class="panel-body">
         <div class="form-group">
-          <label>Keyword</label>
+          <label><%= t "simple_form.labels.search.keyword" %></label>
           <%= f.input :keyword, hint: false , label: false, :input_html => { class: "form-control" } %>
         </div>
         <div class="form-group">
-          <label>Check-In</label>
-          <%= f.input :checkin_at, as: :string, :placeholder=>"Checkin", :label => false , :input_html => {
+          <label><%= t "simple_form.labels.search.checkin_at" %></label>
+          <%= f.input :checkin_at, as: :string, :placeholder=> t("simple_form.labels.search.checkin_at"), :label => false , :input_html => {
           :data => { behaviour: "datepicker" },
           value: f.object.suggested_checkin_at(current_user),
           class: "datepicker form-control customdate",
           readonly: true,
-          "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Checkin Date",
+          "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=> t("simple_form.labels.search.checkin_at"),
            id:"dp1",
           "data-date-format" => "dd/mm/yyyy"
           } %>
         </div>
         <div class="form-group">
-          <label>Check-Out</label>
-            <%= f.input :checkout_at, as: :string, :placeholder => "Checkout", :label => false , :input_html => {
+          <label><%= t "simple_form.labels.search.checkout_at" %></label>
+            <%= f.input :checkout_at, as: :string, :placeholder => t("simple_form.labels.search.checkout_at"), :label => false , :input_html => {
             :data => { behaviour: "datepicker"},
             value: f.object.suggested_checkout_at(current_user),
             class: "datepicker form-control customdate",
             readonly: true,
-            "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Checkout Date",
+            "data-toggle"=>"tooltip", "data-placement"=>"top", "title" => t("simple_form.labels.search.checkout_at"),
             id:"dp2",
             "data-date-format" => "dd/mm/yyyy",
             } %>
@@ -40,12 +40,16 @@
             <div class="col-md-9 col-xs-12 col-sm-12">
               <div class="form-inline">
                 <%= f.fields_for :room_searches do |b| %>
-                    <label>Adults</label>
+                    <label>t("simple_form.labels.search.adults")</label>
                     <div class="no-of-adults">
                         <%= b.input_field :adults, as: :select, collection: 1..9, include_blank: false, class: "search-rooms form-control" %>
                     </div>
                     <% if b.options[:child_index] != 0 %>
-                      <%= b.link_to_remove "-", class: "btn btn-success remove", "data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Remove Room"%>
+                      <%= b.link_to_remove "-",
+                        class: "btn btn-success remove",
+                          "data-toggle"=>"tooltip",
+                          "data-placement"=>"top",
+                          "title"=>t("simple_form.labels.search.remove_room") %>
                     <% end %>
                     <div class="clearfix"></div>
                     <br />
@@ -53,7 +57,12 @@
               </div>
             </div>
             <div class="col-md-3 col-xs-12 col-sm-12">
-              <%= f.link_to_add "+", :room_searches, class: "btn btn-default add pull-left",:data => { :target => ".form-inline"},"data-toggle"=>"tooltip", "data-placement"=>"top", "title"=>"Add Room"  %>
+              <%= f.link_to_add "+", :room_searches,
+                class: "btn btn-default add pull-left",
+                  :data => { :target => ".form-inline"},
+                  "data-toggle"=>"tooltip",
+                  "data-placement"=>"top",
+                  "title"=> t("simple_form.labels.search.add_room")  %>
             </div>
           </div>
         </div>

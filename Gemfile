@@ -49,6 +49,9 @@ gem "unf"
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 
+#misc
+gem 'whenever', require: false
+
 #Testing and dev
 group :test, :development do
   gem "rspec-rails"

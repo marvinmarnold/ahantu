@@ -19,6 +19,7 @@ en:
       no_billing_information: "No credit cards on file. Please "
       no_billing_information_link: "add one."
       checkout: "Part 4: Terms and checkout"
+      responsible: "Person responsible"
       terms_accepted: I accept the "terms of service":/terms
     form:
       errors:
@@ -197,6 +198,7 @@ en:
     forgot_password:
       send_reminder: "Send password reminder"
   navbar:
+    checkout: "Checkout"
     account_settings:
       title: "Account settings"
       update_registration: "Update registration"
@@ -209,6 +211,9 @@ en:
   search:
     finalize:
       title: "Complete booking information"
+      back_to_shop: "Back to hotel"
+      start_over: "Start new search"
+      continue: "Checkout"
     form:
       errors:
         later_checkout: "Checkout must be after checkin"

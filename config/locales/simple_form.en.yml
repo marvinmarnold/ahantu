@@ -11,6 +11,9 @@ en:
         invalid_role: "Not a valid role"
         cannot_register_as: "You are not allowed to create this type of account."
     labels:
+      cart:
+        phone: "Phone number"
+        email: "Email"
       credit_card:
         cvv: "Security code (CVV)"
       search:
@@ -18,6 +21,10 @@ en:
           submit: "Search"
         checkin_at: "Check-in"
         checkout_at: "Check-out"
+        keyword: "Keyword"
+        rooms: "Rooms"
+        remove_room: "Remove room"
+        add_room: "Add room"
       shop:
         address1: "Address"
         address2: "Address"

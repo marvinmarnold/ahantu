@@ -1,12 +1,12 @@
 <%= simple_form_for(@cart) do |f| %>
   <%= f.error_notification %>
-  <%= render "shared/custom_errors", errors: @cart.errors[:billing_information_id] %>
 
   <div class="panel panel-info table-responsive">
     <div class="panel-heading">
       <%= link_to t("cart.form.add_card"), new_credit_card_path, class: "pull-right " %>
       <h3 class="heading"><%= t "cart.edit.billing_information" %></h3>
     </div>
+      <%= render "shared/custom_errors", errors: @cart.errors[:billing_information_id] %>
       <% if current_user.billing_informations.present? %>
         <table class="table table-hover">
           <thead>
@@ -23,7 +23,7 @@
               <%= card_radio_select(credit_card) %>
             </tr>
           <% end %>
-          </table>         
+          </table>
       <% else %>
        <div class="panel-body">
          <p><%= t "cart.edit.no_billing_information" %> <%=  link_to t("cart.edit.no_billing_information_link"), new_credit_card_path %></p>
@@ -41,7 +41,7 @@
         <%= f.simple_fields_for :bookings, booking do |b| %>
           <h4><%= t "cart.edit.room_details.subtitle", i: i+1, item: b.object %></h4>
           <div class="form-group">
-            <label for="inputUsernameEmail">Responsible Name</label>
+            <label for="inputUsernameEmail"><%= t "cart.edit.responsible" %></label>
             <%= b.input_field :responsible_name, required: true , :class => "form-control input-lg" %>
           </div>
         <% end %>
@@ -56,11 +56,11 @@
     </div>
     <div class="panel-body">
       <div class="form-group">
-            <label for="inputUsernameEmail">Email</label>
+            <label for="inputUsernameEmail"><%= t "simple_form.labels.cart.email" %></label>
             <%= f.input_field :email, :required => true, :label => false , :class => "form-control input-lg" , input_html: { value: current_user.email } %>
       </div>
       <div class="form-group">
-            <label for="inputUsernamePhone">Phone</label>
+            <label for="inputUsernamePhone"><%= t "simple_form.labels.cart.phone" %></label>
             <%= f.input_field :phone, :required => true, :label => false , :class => "form-control input-lg" %>
       </div>
     </div>
@@ -76,6 +76,7 @@
           <div class="form-group">
             <%= f.input_field :terms_accepted, class: 'pull-left' %>&nbsp;&nbsp;
             <%= f.label :terms_accepted, raw(textilize(t("cart.edit.terms_accepted"))) %>
+            <%= render "shared/custom_errors", errors: @cart.errors[:terms_accepted] %>
           </div>
         </div>
         <div class="col-md-6">

@@ -1,6 +1,6 @@
 <div class='row'>
 	<div class='span12'>
-		<% room.photos.each_slice(4 )do |photo_slice| %>
+		<% room.photos.each_slice(4)do |photo_slice| %>
 			<% photo_slice.each do |photo| %>
 				<div style='display:inline-block'>
 					<%= link_to image_tag(photo.photo_url(:thumb) , :class=>'thumbnail'), "#room-photo-#{photo.id}", :data => {toggle: "modal" , target: "#room-photo-#{photo.id}" } %>

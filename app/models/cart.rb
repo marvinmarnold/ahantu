@@ -14,6 +14,8 @@ class Cart < ActiveRecord::Base
 
   scope :submitted, lambda { where.not(state: :shopping) }
   scope :unsubmitted, lambda { where(state: :shopping) }
+  scope :finished, lambda { where(state: :finished) }
+  scope :payment_received, lambda { where(state: :payment_received) }
 
   def total
   	subtotal + taxes
@@ -72,6 +74,12 @@ class Cart < ActiveRecord::Base
     bookings.map { |b| b.shop_cut }.reduce(:+)
   end
 
+  def self.finalize_current_bookings
+    Cart.waiting.each do |cart|
+      CartProcessingWorker.perform_async(cart.id)
+    end
+  end
+
   #
   # Hardcoded return codes
   # :confirmed - Order confirmed
@@ -98,22 +106,23 @@ class Cart < ActiveRecord::Base
     shop.responsibles
   end
 
+  def complete_checkout
+    authorize_payment &&
+    submit_payment_authorization &&
+    pay &&
+    confirm_payment
+  end
+
   ##############################################################################################################
   ### state machine
   ##############################################################################################################
 
   state_machine :state, :initial => :shopping do
-    after_transition any => [:submitted, :processing_payment, :payment_processed, :cancelled], do: :set_timestamp
-    state :shopping do
-    end
+    # after_transition any => [:processing_payment, :payment_processed, :cancelled], do: :set_timestamp
 
-    # before_transition any => [:authoziring_payment], do: :fill_bookings
     state :authorizing_payment do
-      validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation, :terms_accepted,
+      validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation, :terms_accepted, :submitted_at,
         presence: true
-    end
-
-    state :submitted do
     end
 
     state :payment_processed do
@@ -121,20 +130,16 @@ class Cart < ActiveRecord::Base
 
     before_transition :on => :authorize_payment, :do => :prepare_for_checkout
     event :authorize_payment do
-      transition :shopping => :authorizing_payment, :if => lambda {|cart| cart.send :submit_payment_authorization }
-    end
-
-    after_transition :on => :submit, :do => :finalize_submission
-    event :submit do
-      transition [:authorizing_payment] => :submitted
+      transition :shopping => :authorizing_payment
     end
 
     event :pay do
-      transition [:submitted] => :processing_payment
+      transition [:authorizing_payment] => :processing_payment
     end
 
+    after_transition :on => :confirm_payment, :do => :finalize_submission
     event :confirm_payment do
-      transition [:processing_payment] => :payment_received
+      transition [:processing_payment] => :payment_received, :if => lambda { |cart| cart.send :bill }
     end
 
     before_transition :on => :cancle_payment, :do => :reset_cart
@@ -153,6 +158,10 @@ class Cart < ActiveRecord::Base
   ##############################################################################################################
 
 private
+
+  def bill
+    true #TODO
+  end
 
   def set_timestamp
     update_attributes("#{state}_at" => Time.now)
@@ -213,6 +222,7 @@ private
   def prepare_for_checkout
     set_order_confirmation
     set_payment_amount
+    self.submitted_at = Time.now
     save
   end
 

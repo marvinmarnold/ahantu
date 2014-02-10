@@ -30,17 +30,22 @@
 	</div>
 
 	<%= render 'bookings/form', f: f, item: item %>
-	<% if can_one_click_checkout?(@cart) %>
+	<% if can_one_click_checkout?(@cart) || !searched? %>
 		<div class="panel-footer">
 			<h5>
 				<a target='#share'>&nbsp;</a>
 				<span class="pull-right" style='margin-top:-10px;'>
-						<% @cart.bookings.each do |b| %>
-							<%= link_to one_click_checkout_carts_path(item_id: item.id),
-								class: "btn btn-large btn-success" do %>
+					<% if !searched? %>
+						<%= link_to finalize_search_path(Search.create_unfinalized(current_user, item)),
+							class: "btn btn-large btn-success" do %>
 								<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<%= t("cart.new.book_room") %>
-							<% end %>
 						<% end %>
+					<% elsif can_one_click_checkout?(@cart) %>
+						<%= link_to one_click_checkout_carts_path(item_id: item.id),
+							class: "btn btn-large btn-success" do %>
+								<span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<%= t("cart.new.book_room") %>
+						<% end %>
+					<% end %>
 				</span>
 			</h5>
 		</div>

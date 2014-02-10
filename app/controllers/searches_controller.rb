@@ -13,6 +13,7 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
+    return redirect_to one_click_checkout_carts_path(@cart, item_id: @search.item.id) if @search.item.present?
     return redirect_to @search.shop if @search.shop.present?
     @results = @search.results.paginate(:page => params[:page], :per_page => per_page)
   end

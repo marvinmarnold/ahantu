@@ -38,11 +38,8 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
-    return redirect_to @cart unless @cart.shopping?
     respond_to do |format|
-      if @cart.update(cart_params) && @cart.authorize_payment
-        @cart.update_attributes(search: current_search)
-        @cart.submit
+      if @cart.update(cart_params) && @cart.complete_checkout && @cart.update_attributes(search: current_search)
         format.html { redirect_to @cart, notice: I18n.t("cart.update.notice") }
       else
         format.html { render action: 'edit' }

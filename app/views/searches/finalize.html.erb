@@ -1,17 +1,22 @@
-<h1><%= t "search.finalize.title" %></h1>
-
-<%= simple_nested_form_for(@search) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="inputs">
-    <%= render "searches/when", f: f %>
-    <%= render 'searches/rooms', f: f %>
-
+<div class="container">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+    <h3><%= t "search.finalize.title" %></h3>
+    <div class="box">
+      <blockquote>
+        <h4><%= item_name_with_shop @search.item %></h4>
+      </blockquote>
+      <%= render 'searches/finalize/form' %>
+    </div>
+    <%= link_to t("search.finalize.start_over"), root_path, class: "pull-left" %>
+    <%= link_to t("search.finalize.back_to_shop"), @search.shop, class: "pull-right" %>
   </div>
 
-  <hr />
-
-  <div class="actions">
-    <%= f.button :submit, class: "btn btn-block btn-success btn-large" %>
+  <div class="col-md-2">
   </div>
-<% end %>
+
+</div>
+
+
+
