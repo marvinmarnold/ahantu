@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def last_checkout_at
-    last_cart.present? ? last_cart.created_at : Time.at(0)
+    last_cart.present? ? last_cart.created_at : Time.zone.at(0)
   end
 
   def shops

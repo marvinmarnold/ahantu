@@ -174,7 +174,7 @@ private
   end
 
   def set_timestamp
-    update_attributes("#{state}_at" => Time.now)
+    update_attributes("#{state}_at" => Time.zone.now)
   end
 
   def reset_cart

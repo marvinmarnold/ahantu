@@ -28,11 +28,12 @@ class Item < Describable
 
   # t1, t2 inclusive
   def price_over_period(t1, t2)
+    t2 = t2 + 1.day
     daily_prices = (t1..t2).map { |t| price t }
     daily_prices.inject{ |sum, el| sum + el }.to_f / daily_prices.size
   end
 
-  def price(d = Time.now)
+  def price(d = Time.zone.now)
     if p = price_adjustments.find { |p| p.start_at.to_date <= d && p.end_at.to_date >= d}
       p.price
     else
