@@ -19,7 +19,6 @@
       </div>
 
       <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-
         <div class="form-group">
           <label for="inputUsernameEmail"><%= t "simple_form.labels.member_profile.email" %></label>
           <%= f.input_field :email, :required => true, :autofocus => true , :label => false , :class => "form-control input-lg" %>

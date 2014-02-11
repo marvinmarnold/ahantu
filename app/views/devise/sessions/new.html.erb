@@ -19,7 +19,7 @@
       </div>
 
       <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
+        <%= render 'shared/errors' %>
         <div class="form-group">
           <label for="inputUsernameEmail">Email</label>
           <%= f.input_field :email, :required => false, :autofocus => true , :label => false , :class => "form-control input-lg" %>
