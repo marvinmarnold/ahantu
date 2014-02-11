@@ -2,41 +2,42 @@
   <div class="col-md-1">
   </div>
   <div class="col-md-10">
-    <h3><%= t "cart.index.title" %></h3>
+
     <div class="box">
       <% if @carts.present? %>
-          <% @carts.each do |cart| %>
+        <h3><%= t "cart.index.title" %></h3>
+        <% @carts.each do |cart| %>
 
-              <%= content_tag "a", href: url_for(cart), class: "thumbnail" do %>
-                  <div class="row">
-                      <div class="col-xs-2 col-md-2 text-center">
-                        <%= image_tag cart.shop.logo_url(:preview) , :class=>"img-rounded img-responsive" %>
-                      </div>
-                      <div class="col-xs-8 col-md-8 section-box">
-                        <h5>
-                          <small>Ref#<%= cart.order_confirmation %>&nbsp;|&nbsp;Date:&nbsp;<%= cart.submitted_at %></small>
-                        </h5>
-                        <h4>
-                          <%= cart.shop %>
-                        </h4>
-                        <h5>
-                          <small>Paid with&nbsp;</small> <%= cart.billing_information %>
-                        </h5>
-                      </div>
-                      <div class="col-xs-2 col-md-2 text-center">
-                        <h3 class='pull-right'>
-                          <small>Total:</small> <%= number_to_currency cart.total %>
-                        </h3>
-                      </div>
+            <%= content_tag "a", href: url_for(cart), class: "thumbnail" do %>
+                <div class="row">
+                    <div class="col-xs-2 col-md-2 text-center">
+                      <%= image_tag cart.shop.logo_url(:preview) , :class=>"img-rounded img-responsive" %>
+                    </div>
+                    <div class="col-xs-8 col-md-8 section-box">
+                      <h5>
+                        <small>Ref#<%= cart.order_confirmation %>&nbsp;|&nbsp;Date:&nbsp;<%= cart.submitted_at %></small>
+                      </h5>
+                      <h4>
+                        <%= cart.shop %>
+                      </h4>
+                      <h5>
+                        <small>Paid with&nbsp;</small> <%= cart.billing_information %>
+                      </h5>
+                    </div>
+                    <div class="col-xs-2 col-md-2 text-center">
+                      <h3 class='pull-right'>
+                        <small>Total:</small> <%= number_to_currency cart.total %>
+                      </h3>
+                    </div>
 
-                  </div>
-              <% end %>
-          <% end %> 
+                </div>
+            <% end %>
+        <% end %>
       <% else %>
           <h3>
             <%= t "cart.index.nothing.title" %>
             <br/>
-            <small><%= t "cart.index.nothing.text" %></small>
+            <small><%= link_to t("cart.index.nothing.text"), root_path, class: "btn btn-link btn-lg" %></small>
           </h3>
       <% end %>
 

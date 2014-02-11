@@ -32,7 +32,7 @@ en:
     index:
       nothing:
         title: "No order history"
-        text: "Book some rooms to save money."
+        text: "Book with us now to start saving money!"
       title: "Order history"
     new:
       book_room: "Book room"
