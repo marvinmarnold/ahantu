@@ -17,6 +17,8 @@ class Cart < ActiveRecord::Base
   scope :finished, lambda { where(state: :finished) }
   scope :payment_received, lambda { where(state: :payment_received) }
 
+  has_paper_trail
+
   def total
   	subtotal + taxes
   end
@@ -122,10 +124,10 @@ class Cart < ActiveRecord::Base
   ##############################################################################################################
 
   state_machine :state, :initial => :shopping do
-    # after_transition any => [:processing_payment, :payment_processed, :cancelled], do: :set_timestamp
+    after_transition any => any, do: :set_timestamp
 
     state :authorizing_payment do
-      validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation, :terms_accepted, :submitted_at,
+      validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation, :terms_accepted,
         presence: true
     end
 
@@ -230,7 +232,6 @@ private
   def prepare_for_checkout
     set_order_confirmation
     set_payment_amount
-    self.submitted_at = Time.now
     save
   end
 

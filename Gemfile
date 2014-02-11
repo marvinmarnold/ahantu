@@ -51,6 +51,7 @@ gem "omniauth-google-oauth2"
 
 #misc
 gem 'whenever', require: false
+gem 'paper_trail', '~> 3.0.0'
 
 #Testing and dev
 group :test, :development do

@@ -40,6 +40,7 @@ class CreditCard < BillingInformation
   end
 
   def store
+    # TODO
     # response = ::STANDARD_GATEWAY.store(credit_card, verify: true)
     # if response.success?
     #   save_to_gateway

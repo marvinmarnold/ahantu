@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140210120027) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20140211183114) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
@@ -50,9 +47,7 @@ ActiveRecord::Schema.define(version: 20140210120027) do
   add_index "bookings", ["item_id"], name: "index_bookings_on_item_id", using: :btree
 
   create_table "carts", force: true do |t|
-    t.datetime "submitted_at"
     t.datetime "processing_payment_at"
-    t.datetime "payment_processed_at"
     t.datetime "authorizing_payment_at"
     t.datetime "cancelled_at"
     t.float    "payment_amount"
@@ -66,6 +61,9 @@ ActiveRecord::Schema.define(version: 20140210120027) do
     t.integer  "search_id"
     t.integer  "user_id"
     t.boolean  "terms_accepted"
+    t.datetime "shopping_at"
+    t.datetime "payment_received_at"
+    t.datetime "finished_at"
   end
 
   add_index "carts", ["billing_information_id"], name: "index_carts_on_billing_information_id", using: :btree
@@ -101,16 +99,6 @@ ActiveRecord::Schema.define(version: 20140210120027) do
   end
 
   add_index "contact_forms", ["user_id"], name: "index_contact_forms_on_user_id", using: :btree
-
-  create_table "contacts", force: true do |t|
-    t.string   "type"
-    t.integer  "user_id"
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
 
   create_table "descriptions", force: true do |t|
     t.integer  "language_id"
@@ -329,19 +317,6 @@ ActiveRecord::Schema.define(version: 20140210120027) do
   add_index "shops", ["location_id"], name: "index_shops_on_location_id", using: :btree
   add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
 
-  create_table "sms", force: true do |t|
-    t.integer  "cart_id"
-    t.text     "message"
-    t.integer  "phone_id"
-    t.boolean  "incoming"
-    t.datetime "sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sms", ["cart_id"], name: "index_sms_on_cart_id", using: :btree
-  add_index "sms", ["phone_id"], name: "index_sms_on_phone_id", using: :btree
-
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -367,5 +342,16 @@ ActiveRecord::Schema.define(version: 20140210120027) do
   end
 
   add_index "users", ["profile_id", "profile_type"], name: "index_users_on_profile_id_and_profile_type", using: :btree
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
 end
