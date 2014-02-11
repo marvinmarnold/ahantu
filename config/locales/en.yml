@@ -190,6 +190,8 @@ en:
   member_profile:
     new:
       submit: "Create account"
+    edit:
+      title: "Update profile"
   member_session:
     new:
       signin: "Sign in"
