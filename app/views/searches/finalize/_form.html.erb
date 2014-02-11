@@ -36,13 +36,13 @@
             </div>
           </div>
         </div>
-
+        <label><%= t("simple_form.labels.search.rooms") %></label><br/><br/>
         <div class="form-group">
           <div class="row">
             <div class="col-md-4 col-xs-12 col-sm-12">
               <div class="form-inline">
                 <%= f.fields_for :room_searches do |b| %>
-                    <label><%= t("simple_form.labels.search.rooms") %></label>
+                    <label><%= t("simple_form.labels.search.adults") %></label>
                     <div class="no-of-adults">
                         <%= b.input_field :adults, as: :select, collection: 1..9, include_blank: false, class: "search-rooms form-control" %>
                     </div>

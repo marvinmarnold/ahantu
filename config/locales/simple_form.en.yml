@@ -29,6 +29,7 @@ en:
         checkout_at: "Check-out"
         keyword: "Keyword"
         rooms: "Rooms"
+        adults: "Adults"
         remove_room: "Remove room"
         add_room: "Add room"
       shop:
