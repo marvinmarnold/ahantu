@@ -33,10 +33,6 @@
 			<div class="top-section-heading">
 				<%= render 'shops/carousel', shop: @shop %>
 			</div>
-			<div class="top-section-heading">
-				<h4 class="title">Overview</h4>
-				<p><%= raw textilize @shop.description %></p>
-			</div>
 			<div id="availability" class="top-section-extra-info">
 				<h3><%= t "shop.show.rooms"%>
 					<small>
@@ -68,14 +64,27 @@
         </div>
 			</div>
 
-			<div class="box text-center">
-				<div class="top-section-heading">
-					<h4 class="title"><%= t "shops.show.directions" %></h4>
+
+      <div class="box">
+        <div class="top-section-heading">
+          <h4 class="title">Overview</h4>
+          <p><%= raw textilize @shop.description %></p>
+        </div>
+      </div>
+
+
+      <div class="box text-center">
+        <div class="top-section-heading">
+          <h4 class="title"><%= t "shops.show.directions" %></h4>
         </div>
         <div class="top-section-extra-info map-block">
           <%= @shop.directions %>
         </div>
       </div>
+
+      <div id='map'>
+      </div>
+
 			<div id='map'>
 			</div>
 
