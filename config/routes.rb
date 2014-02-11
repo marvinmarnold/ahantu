@@ -65,6 +65,7 @@ Ahantu::Application.routes.draw do
   get "about" => "pages#about", as: :about
   get "terms" => "pages#terms", as: :terms
   get "contact" => "pages#contact", as: :contact
+  get "sitemap" => "pages#sitemap", as: :sitemap
   get "pages/set_language", as: :set_language
 
   # get "sms_entry_point", :to => "sms#start_point"

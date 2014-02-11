@@ -84,6 +84,7 @@ en:
       terms: "Terms of service"
       contact: "Contact us"
       about: "About us"
+      sitemap: "Sitemap"
     copyright: "Copyright ©Ahantu 2013"
   item:
     create:
@@ -129,6 +130,10 @@ en:
         step3: "Step 3: Rooms"
       carousel_text: "Find a hotel in Rwanda"
       subsection: |+
+                  h2. Hotel booking made easy
+
+                  h4. Thanks for visiting Ahantu. We make it easier for you to plan your vacation and book a place to stay. Take a look around and we are sure you won't be disappointed.
+
                   h2. The land of a Thousand Hills
 
                   "The land of a Thousand Hills", Rwanda is a green undulating landscape of hills, gardens and tea plantations. It offers tourists a one of a kind journey - home to one third of the world remaining Mountain Gorillas, one third of Africa's bird species, several species of primates, volcanoes, game reserve, resorts and islands on the expansive lake Kivu, graceful dancers, artistic crafts and friendly people.
@@ -163,7 +168,7 @@ en:
 
                   To learn more about Rwanda, check out the  and the "The Official Website of Rwanda Tourism":http://www.rwandatourism.com and the "Rwanda Development Board":http://www.rdb.rw/
     about:
-      title: "About ahantu"
+      title: "About Ahantu"
       history:
         title: "History"
         body: |+
@@ -173,6 +178,7 @@ en:
 
               If you have any questions, "contact us":/contact, find us on twitter "@ahantubookings":https://twitter.com/ahantubookings, or check us out on "Facebook":http://www.facebook.com/ahantu.
 
+              So what are you doing? Book your guesthouse, lodge, lodging, reservation, hostel, inn, motel, tavern, auberge, hospice, boarding, rooming, resort, or anything else now!
       team:
         title: "Team"
         person1: |+
@@ -187,6 +193,12 @@ en:
                   Placide's first born baby, Marvina (above), is super cute. That just needs to be said. Marvin, is much less interesting. But just to put you at ease, he graduated from MIT in Electrical Engineering and Computer Science. He is adamant about privacy & security and really wants you to feel safe when booking with Ahantu. Have fun in Rwanda and welcome to the Ahantu family!
 
                   Hobbies: Waragi, Akabenze, Akabanga, & mayonnaise!
+    contact:
+      title: "Contact us"
+    sitemap:
+      title: "Sitemap"
+    terms:
+      title: "Terms of service"
   member_profile:
     new:
       submit: "Create account"

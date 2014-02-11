@@ -22,4 +22,8 @@ class PagesController < ApplicationController
     current_user.set_locale Language.find(params[:language_id])
     forward_to
   end
+
+  def sitemap
+  end
+
 end

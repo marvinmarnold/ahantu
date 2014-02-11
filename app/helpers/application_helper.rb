@@ -43,4 +43,8 @@ module ApplicationHelper
     RedCloth.new(s).to_html.html_safe
   end
 
+  def title(page_title)
+    content_for(:title) { page_title.present? ? " - #{page_title}" : "" }
+  end
+
 end
