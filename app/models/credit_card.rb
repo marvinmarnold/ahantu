@@ -47,7 +47,7 @@ class CreditCard < BillingInformation
       update_attributes(
         number: number[-4,4],
         cvv: nil,
-        saved_gateway_id: 1,
+        saved_gateway_id: "1",
         # saved_gateway_id: response.params["billingid"]
       )
     # end
