@@ -19,29 +19,32 @@
       </div>
 
       <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
+
         <div class="form-group">
-          <label for="inputUsernameEmail">Email</label>
+          <label for="inputUsernameEmail"><%= t "simple_form.labels.member_profile.email" %></label>
           <%= f.input_field :email, :required => true, :autofocus => true , :label => false , :class => "form-control input-lg" %>
+          <%= render "shared/custom_errors", errors: resource.errors[:email] %>
         </div>
         <% if f.object.password_required? %>
           <div class="form-group">
             <%= link_to t("member_session.new.forgot_password"), new_password_path(resource_name), class: "pull-right" %>
-            <label for="inputPassword">Password</label>
+            <label for="inputPassword"><%= t "simple_form.labels.member_profile.password" %></label>
             <%= f.input_field :password, :required => true , :label => false , :class => "form-control input-lg"  %>
+            <%= render "shared/custom_errors", errors: resource.errors[:password] %>
           </div>
           <div class="form-group">
-            <label for="inputPassword">Confirm Password</label>
+            <label for="inputPassword"><%= t "simple_form.labels.member_profile.password_confirmation" %></label>
             <%= f.input_field :password_confirmation, :required => true , :label => false ,:class => "form-control input-lg" %>
+            <%= render "shared/custom_errors", errors: resource.errors[:password_confirmation] %>
           </div>
         <% end %>
         <div class="form-group">
-          <label for="inputPassword">Language</label>
+          <label for="inputPassword"><%= t "simple_form.labels.member_profile.language" %></label>
           <%= f.input_field :language, as: :select, collection: Language.all, :required => true , :label => false , :class => "form-control input-lg" , :wrapper => false %>
         </div>
         <% if can? :sign_up, MemberProfile %>
           <div class="form-group">
-            <label for="inputPassword">Role</label>
+            <label for="inputPassword"><%= t "simple_form.labels.member_profile.role" %></label>
             <%= f.input_field :role, as: :select, collection: roles_can_assign , :label => false , :class => "form-control input-lg" %>
           </div>
         <% end %>

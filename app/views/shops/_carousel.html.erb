@@ -21,7 +21,7 @@
 		<% shop.photos.each_with_index do |photo, index| %>
 			<li>
 				<%= content_tag "a", id: "carousel-selector-#{index}"  , class: append_first('carousal-thumb', "selected") do %>
-					<%= image_tag photo.photo_url(:thumb) , :class=>"img-responsive img_wrapper" %>
+					<%= image_tag photo.photo_url(:thumb) , :class=>"img-responsive" %>
 				<% end %>
 			</li>
 		<% end %>

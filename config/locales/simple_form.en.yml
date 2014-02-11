@@ -16,6 +16,12 @@ en:
         email: "Email"
       credit_card:
         cvv: "Security code (CVV)"
+      member_profile:
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        language: "Language"
+        role: "Role"
       search:
         new:
           submit: "Search"
