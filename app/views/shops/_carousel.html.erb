@@ -17,13 +17,13 @@
 <!-- thumb navigation carousel -->
 <div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs">
 	<!-- thumb navigation carousel items -->
-	<ul class="list-inline">		
+	<ul class="list-inline">
 		<% shop.photos.each_with_index do |photo, index| %>
-			<li> 
+			<li>
 				<%= content_tag "a", id: "carousel-selector-#{index}"  , class: append_first('carousal-thumb', "selected") do %>
-					<%= image_tag photo.photo_url(:thumb) , :class=>"img-responsive" %>
+					<%= image_tag photo.photo_url(:thumb) , :class=>"img-responsive img_wrapper" %>
 				<% end %>
 			</li>
 		<% end %>
-	</ul>		
+	</ul>
 </div>
