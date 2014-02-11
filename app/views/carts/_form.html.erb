@@ -1,5 +1,9 @@
 <%= simple_form_for(@cart) do |f| %>
-  <%= f.error_notification %>
+  
+  <div class="alert alert-warning alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= f.error_notification %>    
+  </div>
 
   <div class="panel panel-info table-responsive">
     <div class="panel-heading">
