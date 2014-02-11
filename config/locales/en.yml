@@ -34,6 +34,9 @@ en:
         title: "No order history"
         text: "Book with us now to start saving money!"
       title: "Order history"
+      total: "Total:"
+      confirmation: "Confirmation number"
+      paid_with: "Paid with"
     new:
       book_room: "Book room"
     show:
@@ -235,6 +238,7 @@ en:
       edit_search: Edit search parameters
       filter: Filter search results
     show:
+      title: "Search results %{keyword}"
       result:
         min_price: "average nightly price"
       no_results:

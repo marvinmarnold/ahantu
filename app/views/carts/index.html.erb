@@ -1,3 +1,4 @@
+<% title t("cart.index.title") %>
 <div class="container">
   <div class="col-md-1">
   </div>
@@ -15,18 +16,18 @@
                     </div>
                     <div class="col-xs-8 col-md-8 section-box">
                       <h5>
-                        <small>Ref#<%= cart.order_confirmation %>&nbsp;|&nbsp;Date:&nbsp;<%= cart.submitted_at %></small>
+                        <small><%= t "cart.index.confirmation" %><%= cart.order_confirmation %>&nbsp;|&nbsp;Date:&nbsp;<%= cart.submitted_at %></small>
                       </h5>
                       <h4>
                         <%= cart.shop %>
                       </h4>
                       <h5>
-                        <small>Paid with&nbsp;</small> <%= cart.billing_information %>
+                        <small><%= t "cart.index.paid_with" %>&nbsp;</small> <%= cart.billing_information %>
                       </h5>
                     </div>
                     <div class="col-xs-2 col-md-2 text-center">
                       <h3 class='pull-right'>
-                        <small>Total:</small> <%= number_to_currency cart.total %>
+                        <small><%= t "cart.index.total" %></small> <%= number_to_currency cart.total %>
                       </h3>
                     </div>
 
