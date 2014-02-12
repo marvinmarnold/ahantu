@@ -41,8 +41,10 @@ class CartsController < ApplicationController
     respond_to do |format|
       if @cart.update(cart_params) && @cart.complete_checkout && @cart.update_attributes(search: current_search)
         format.html { redirect_to @cart, notice: I18n.t("cart.update.notice") }
+        format.js
       else
         format.html { render action: 'edit' }
+        format.js
       end
     end
   end
