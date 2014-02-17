@@ -1,8 +1,8 @@
 loadSkeo = function(){
-    if((typeof window.card === 'undefined' ) && ( typeof Skeuocard != 'undefined')) {
-      window.card = new Skeuocard($("#skeuocard"));
+    if(typeof Skeuocard != 'undefined') {
+      new Skeuocard($("#skeuocard"));
     }
-  };
+};
 validateform = function(){
   var resp = card.isValid();
   if(resp) {

@@ -17,6 +17,7 @@
 //= require jquery_nested_form
 //= require bootstrap
 //= require bootstrap-datepicker
+//= require skeuocard
 //= require_tree .
 
 
