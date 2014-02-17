@@ -1,6 +1,6 @@
 loadSkeo = function(){
     if(typeof Skeuocard != 'undefined') {
-      new Skeuocard($("#skeuocard"));
+      window.card = new Skeuocard($("#skeuocard"));
     }
 };
 validateform = function(){
