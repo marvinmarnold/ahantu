@@ -28,7 +28,6 @@ class Item < Describable
 
   # t1, t2 inclusive
   def price_over_period(t1, t2)
-    t2 = t2 + 1.day
     daily_prices = (t1..t2).map { |t| price t }
     daily_prices.inject{ |sum, el| sum + el }.to_f / daily_prices.size
   end
@@ -39,6 +38,10 @@ class Item < Describable
     else
   	 default_price
     end
+  end
+
+  def search_price(search)
+    search.nil? ? default_price : price_over_period(search.checkin_at, search.checkout_at - 1.day)
   end
 
   def to_s

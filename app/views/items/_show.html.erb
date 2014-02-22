@@ -4,7 +4,7 @@
 		<h4 class='title'>
 			<%= item %>
 			<span class="pull-right">
-					<%= number_to_currency item.default_price %> <small><%= t "search.show.result.min_price" %></small>
+					<%= number_to_currency item.search_price(current_search) %> <small><%= t "search.show.result.min_price" %></small>
 					<small>
 						&nbsp;&nbsp;&nbsp;
 						<% if can_and_want_shop_admin? %>

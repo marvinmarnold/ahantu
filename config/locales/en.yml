@@ -302,6 +302,7 @@ en:
       details: "Hotel details"
       directions: "Directions"
       update_search: "<< Back to search"
+      room_photo: "%{item} - %{price}"
     edit:
       edit_links:
         show: "<< Preview hotel"
