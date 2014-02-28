@@ -79,22 +79,6 @@ Ahantu::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  paypal_login = ENV["PAYPAL_LOGIN"]
-  paypal_password = ENV["PAYPAL_PASSWORD"]
-  paypal_signature = ENV["PAYPAL_SIGNATURE"]
-
-  config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test
-
-    paypal_options = {
-      :login => paypal_login,
-      :password => paypal_password,
-      :signature => paypal_signature
-    }
-    ::STANDARD_GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
-    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
-  end
-
   app_domain = ENV["DOMAIN"]
   email_username = "#{ENV["EMAIL_USERNAME"]}@#{ENV["EMAIL_DOMAIN"]}",
   email_password = ENV["EMAIL_PASSWORD"]

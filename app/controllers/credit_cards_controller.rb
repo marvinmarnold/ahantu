@@ -1,52 +1,12 @@
 class CreditCardsController < ApplicationController
-  before_action :set_credit_card, only: [:show, :edit, :update, :destroy]
+  before_action :set_credit_card, only: [:destroy]
   authorize_resource
   layout "rightbar", only: [:new]
 
-  # GET /credit_cards
-  # GET /credit_cards.json
-  def index
-    @credit_cards = BillingInformation.all
-  end
-
-  # GET /credit_cards/1
-  # GET /credit_cards/1.json
-  def show
-  end
 
   # GET /credit_cards/new
   def new
     @credit_card = CreditCard.new
-  end
-
-  # GET /credit_cards/1/edit
-  def edit
-  end
-
-  # POST /credit_cards
-  # POST /credit_cards.json
-  def create
-    @credit_card = current_user.credit_cards.build(credit_card_params.merge({ip_address: request.remote_ip}))
-    respond_to do |format|
-      if @credit_card.save
-        format.html { redirect_to checkout_path(current_cart), notice: t("credit_card.create.notice") }
-      else
-        format.html { render action: 'new' }
-      end
-    end
-  end
-
-  # PATCH/PUT /credit_cards/1
-  # PATCH/PUT /credit_cards/1.json
-  def update
-
-    respond_to do |format|
-      if @credit_card.update(credit_card_params)
-        format.html { redirect_to @credit_card, notice: 'Billing information was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
-    end
   end
 
   # DELETE /credit_cards/1
@@ -58,6 +18,17 @@ class CreditCardsController < ApplicationController
     end
   end
 
+  def added
+    token = params[:token]
+    @credit_card = SPREEDLY_ENVIRONMENT.find_payment_method(token)
+    # binding.pry
+    if @credit_card.valid? && @credit_card = CreditCard.create_from_spreedly_card(@credit_card, token, current_user)
+      redirect_to checkout_path(current_cart), notice: t("credit_card.create.notice")
+    else
+      render action: 'new'
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -65,30 +36,4 @@ class CreditCardsController < ApplicationController
     @credit_card = current_user.credit_cards.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def credit_card_params
-    # Temporary skeuocard hack
-    params[:credit_card] = {}
-    params[:credit_card][:number] = params[:cc_number]
-    params[:credit_card][:name_on_card] = params[:cc_name]
-    params[:credit_card][:brand] = skeuocard_to_active_merchant_brand params[:cc_type]
-    params[:credit_card][:cvv] = params[:cc_cvc]
-    params[:credit_card]["expiration(1i)"] = params[:cc_exp_year]
-    params[:credit_card]["expiration(2i)"] = params[:cc_exp_month]
-    params[:credit_card]["expiration(3i)"] = "1"
-
-    params.require(:credit_card).permit(:name_on_card, :expiration, :type, :number, :cvv, :brand)
-  end
-
-  def skeuocard_to_active_merchant_brand(brand)
-    {
-      "visa" => "visa",
-      "discover" => "discover",
-      "mastercard" => "master",
-      "dinersclubintl" => "diners_club",
-      "amex" => "american_express",
-      "jcb" => "jcb",
-      "maestro" => "maestro",
-    }[brand]
-  end
 end

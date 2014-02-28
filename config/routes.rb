@@ -30,7 +30,11 @@ Ahantu::Application.routes.draw do
     end
   end
 
-  resources :credit_cards
+  resources :credit_cards do
+    collection do
+      get 'added', as: :credit_card_added
+    end
+  end
 
   mount Sidekiq::Web, at: "/sidekiq"
 

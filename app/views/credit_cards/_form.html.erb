@@ -1,41 +1,23 @@
-<%= simple_form_for @credit_card, html: {id: "credit_card_form"} do |f| %>
-  <%= f.error_notification %>
-  <%= render "shared/custom_errors", errors: @credit_card.errors[:credit_card] %>
+ <%= render "shared/custom_errors", errors: @credit_card.errors %>
+<form action="<%= ::SPREEDLY_ENVIRONMENT.transparent_redirect_form_action %>" method="POST">
+  <fieldset>
+    <input name="redirect_url" type="hidden" value="<%= "http://#{request.host}:#{request.port}/credit_cards/added" %>" />
+    <input name="environment_key" type="hidden" value="<%= ::SPREEDLY_ENVIRONMENT.key %>" />
+     <input name="utf8" type="hidden" value="✓">
 
-  <div class="credit-card-input no-js" id="skeuocard">
-    <p class="no-support-warning">
-      Either you have Javascript disabled, or you're using an unsupported browser, amigo! That's why you're seeing this old-school credit card input form instead of a fancy new Skeuocard. On the other hand, at least you know it gracefully degrades...
-    </p>
-    <label for="cc_type">Card Type</label>
-    <select name="cc_type">
-      <option value="">...</option>option>
-      <option value="visa">Visa</option>
-      <option value="discover">Discover</option>
-      <option value="mastercard">MasterCard</option>
-      <option value="maestro">Maestro</option>
-      <option value="jcb">JCB</option>
-      <option value="unionpay">China UnionPay</option>
-      <option value="amex">American Express</option>
-      <option value="dinersclubintl">Diners Club</option>
-    </select>
-    <label for="cc_number">Card Number</label>
-    <input type="text" name="cc_number" id="cc_number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" size="19">
-    <label for="cc_exp_month">Expiration Month</label>
-    <input type="text" name="cc_exp_month" id="cc_exp_month" placeholder="00">
-    <label for="cc_exp_year">Expiration Year</label>
-    <input type="text" name="cc_exp_year" id="cc_exp_year" placeholder="00">
-    <label for="cc_name">Cardholder's Name</label>
-    <input type="text" name="cc_name" id="cc_name" placeholder="John Doe">
-    <label for="cc_cvc">Card Validation Code</label>
-    <input type="text" name="cc_cvc" id="cc_cvc" placeholder="123" maxlength="3" size="3">
-  </div>
+    <label for="credit_card_full_name">Name</label>
+    <input id="credit_card_full_name" name="credit_card[full_name]" type="text" />
 
-  <hr/>
+    <label for="credit_card_number">Card Number</label>
+    <input id="credit_card_number" name="credit_card[number]" type="text" />
 
-  <div class="actions">
-    <%= f.button :submit, t("credit_card.new.submit"), class: "btn btn-success btn-lg pull-right", :onclick => "return validateform();" %>
-  </div>
-<% end %>
+    <label for="credit_card_verification_value">Security Code</label>
+    <input id="credit_card_verification_value" name="credit_card[verification_value]" type="text" />
 
+    <label for="credit_card_month">Expires on</label>
+    <input id="credit_card_month" name="credit_card[month]" type="text" />
+    <input id="credit_card_year" name="credit_card[year]" type="text" />
 
-<%= javascript_include_tag "skeuo_load", "data-turbolinks-track" => true %>
+    <button type='submit'><%= t("credit_card.new.submit") %></button>
+  </fieldset>
+</form>

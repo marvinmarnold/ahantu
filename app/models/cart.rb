@@ -170,7 +170,10 @@ class Cart < ActiveRecord::Base
 private
 
   def bill
-    true #TODO
+    response = ::SPREEDLY_ENVIRONMENT.capture_transaction(auth_transaction_token)
+    update_attributes(capture_transaction_token: response.token)
+
+    response.succeeded
   end
 
   def set_timestamp
@@ -199,10 +202,10 @@ private
   end
 
   def submit_payment_authorization
-    return false unless billing_information.present?
-    response = ::STANDARD_GATEWAY.authorize(paypal_total, credit_card, ip: billing_information.ip_address)
+    response = ::SPREEDLY_ENVIRONMENT.authorize_on_gateway(::PAYMENT_GATEWAY_TOKEN, credit_card.saved_gateway_id, paypal_total)
+    update_attributes(auth_transaction_token: response.token)
 
-    response.success? && billing_information.store
+    response.succeeded
   end
 
   def send_cancelation

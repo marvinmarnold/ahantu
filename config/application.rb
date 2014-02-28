@@ -26,5 +26,7 @@ module Ahantu
 
     config.assets.paths << Rails.root.join("app", "vendor", "assets", "images")
 
+    ::SPREEDLY_ENVIRONMENT = Spreedly::Environment.new(ENV["SPREEDLY_ENVIRONMENT_KEY"], ENV["SPREEDLY_ACCESS_SECRET"])
+    ::PAYMENT_GATEWAY_TOKEN = ENV["SPREEDLY_GATEWAY_TOKEN"]
   end
 end

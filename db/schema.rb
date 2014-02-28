@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211183114) do
+ActiveRecord::Schema.define(version: 20140228192723) do
 
   create_table "billing_informations", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.date     "expiration"
     t.string   "type"
     t.string   "brand"
     t.string   "number"
@@ -27,6 +26,9 @@ ActiveRecord::Schema.define(version: 20140211183114) do
     t.string   "ip_address"
     t.string   "saved_gateway_id"
     t.string   "state"
+    t.integer  "year"
+    t.string   "full_name"
+    t.integer  "month"
   end
 
   add_index "billing_informations", ["user_id"], name: "index_billing_informations_on_user_id", using: :btree
@@ -64,6 +66,8 @@ ActiveRecord::Schema.define(version: 20140211183114) do
     t.datetime "shopping_at"
     t.datetime "payment_received_at"
     t.datetime "finished_at"
+    t.string   "auth_transaction_token"
+    t.string   "capture_transaction_token"
   end
 
   add_index "carts", ["billing_information_id"], name: "index_carts_on_billing_information_id", using: :btree
