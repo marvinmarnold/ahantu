@@ -41,7 +41,7 @@ class Item < Describable
   end
 
   def search_price(search)
-    search.nil? ? default_price : price_over_period(search.checkin_at, search.checkout_at - 1.day)
+    search.persisted? ?  price_over_period(search.checkin_at, search.checkout_at - 1.day) : default_price
   end
 
   def to_s

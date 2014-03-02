@@ -4,7 +4,7 @@
 		<div class="carousel-inner">
 			<% shop.photos.each_with_index do |photo, index| %>
 				<%= content_tag "div", class: append_first("item", "active") , :data => {:slide_number => "#{index}" } do %>
-					<%= image_tag photo.photo_url(:banner) %>
+					<%= image_tag photo.photo_url(:main) %>
 				<% end %>
 			<% end %>
 		</div>

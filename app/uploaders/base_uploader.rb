@@ -1,6 +1,7 @@
 class BaseUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
+  # include CarrierWave::ImageOptimizer
   # include CarrierWaveDirect::Uploader
 
   process :set_content_type

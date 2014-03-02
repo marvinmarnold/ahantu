@@ -6,7 +6,7 @@
 				<h4 class="modal-title" id="myModalLabel"><%= t "shop.show.room_photo", item: room, price: number_to_currency(room.search_price(current_search)) %></h4>
 			</div>
 			<div class="modal-body" style='overflow:hidden;padding:2px;'>
-						<%= image_tag photo.photo_url(:banner), :style=>"width:100%;" %>
+						<%= image_tag photo.photo_url(:main), :style=>"width:100%;" %>
 			</div>
 	 </div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
