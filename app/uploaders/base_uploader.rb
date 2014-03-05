@@ -1,11 +1,8 @@
 class BaseUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
-  # include CarrierWave::ImageOptimizer
-  # include CarrierWaveDirect::Uploader
 
   process :set_content_type
-  process :quality => 75
 
   def extension_white_list
     %w(jpg jpeg gif png)

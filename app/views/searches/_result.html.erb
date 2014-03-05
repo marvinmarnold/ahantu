@@ -1,7 +1,7 @@
 <%= content_tag "a", href: url_for(r), class: "thumbnail" do %>
     <div class="row">
         <div class="col-xs-3 col-md-3 text-center">
-          <%= image_tag r.logo_url(:preview) , :class=>"img-rounded img-responsive" %>
+          <%= image_tag r.logo_url(:logo) , :class=>"img-rounded img-responsive" %>
           <h4>
             <%= number_to_currency r.display_price(current_search) %>
             <br/>

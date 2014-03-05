@@ -202,7 +202,7 @@ private
   end
 
   def submit_payment_authorization
-    response = ::SPREEDLY_ENVIRONMENT.authorize_on_gateway(::PAYMENT_GATEWAY_TOKEN, credit_card.saved_gateway_id, paypal_total)
+    response = ::SPREEDLY_ENVIRONMENT.authorize_on_gateway(::PAYMENT_GATEWAY_TOKEN, billing_information.saved_gateway_id, paypal_total)
     update_attributes(auth_transaction_token: response.token)
 
     response.succeeded
