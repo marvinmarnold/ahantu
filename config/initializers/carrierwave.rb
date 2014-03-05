@@ -1,4 +1,6 @@
 CarrierWave.configure do |config|
+  #Be careful about bucket names
+  #http://stackoverflow.com/questions/18340551/amazon-s3-hostname-does-not-match-the-server-certificate-opensslsslsslerr
   config.fog_directory = ENV["AWS_S3_BUCKET"]
   if Rails.env.test? or Rails.env.development?
     config.storage = :file
