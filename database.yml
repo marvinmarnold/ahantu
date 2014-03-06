@@ -34,3 +34,10 @@ production:
   database: ahantu_production
   pool: 5
   template: template0
+
+staging:
+  adapter: postgresql
+  encoding: unicode
+  database: ahantu_staging
+  pool: 5
+  template: template0
