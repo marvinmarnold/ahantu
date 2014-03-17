@@ -7,6 +7,8 @@ class Cart < ActiveRecord::Base
   validates :user_id, :search_id,
     presence: true
 
+  validate :valid_state
+
   accepts_nested_attributes_for :bookings
 
   delegate :credit_card,
@@ -18,6 +20,20 @@ class Cart < ActiveRecord::Base
   scope :payment_received, lambda { where(state: :payment_received) }
 
   has_paper_trail
+
+  def self.states
+    %w[
+      shopping
+      cancelled
+      authorizing_payment
+      awaiting_order_confirmation
+      awaiting_order_authorization
+      processing_payment
+      awaiting_payment_correction
+      payment_received
+      finished
+    ]
+  end
 
   def total
   	subtotal + taxes
@@ -126,40 +142,123 @@ class Cart < ActiveRecord::Base
   state_machine :state, :initial => :shopping do
     after_transition any => any, do: :set_timestamp
 
+    #
+    # States - 9
+    #
+    # state :authorizing_payment do
+    #   validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation, :terms_accepted,
+    #     presence: true
+    # end
+
+    # state :payment_processed do
+    # end
+    state :shopping do
+    end
+
+    state :cancelled do
+    end
+
     state :authorizing_payment do
-      validates :billing_information_id, :email, :phone, :payment_amount, :order_confirmation, :terms_accepted,
-        presence: true
     end
 
-    state :payment_processed do
+    state :awaiting_order_confirmation do
     end
 
-    before_transition :on => :authorize_payment, :do => :prepare_for_checkout
+    state :processing_payment do
+    end
+
+    state :awaiting_payment_correction do
+    end
+
+    state :payment_received do
+    end
+
+    state :finished do
+    end
+
+    #
+    # Transitions/Events - 13
+    #
+
     event :authorize_payment do
-      transition :shopping => :authorizing_payment
+      transition [:shopping] => [:authorizing_payment]
     end
 
-    event :pay do
-      transition [:authorizing_payment] => :processing_payment
+    event :cancle_cart do
+      transition [:shopping] => [:cancelled]
     end
 
-    after_transition :on => :confirm_payment, :do => :finalize_submission
-    event :confirm_payment do
-      transition [:processing_payment] => :payment_received, :if => lambda { |cart| cart.send :bill }
+    event :reject_payment_authorization do
+      transition [:authorizing_payment] => [:shopping]
     end
 
-    before_transition :on => :cancle_payment, :do => :reset_cart
-    event :cancle_payment do
-      transition [:authorizing_payment] => :shopping
+    event :confirm_order do
+      transition [:authorizing_payment] => [:awaiting_order_confirmation]
     end
 
-    event :finish do
-      transition [:payment_received] => :finished
+    event :authorize_order do
+      transition [:awaiting_order_confirmation] => [:awaiting_order_authorization]
     end
 
-    event :cancle do
-      transition all => :cancelled
+    event :reject_order_confirmation do
+      transition [:awaiting_order_confirmation] => [:cancelled]
     end
+
+    event :reject_order_authorization do
+      transition [:awaiting_order_authorization] => [:cancelled]
+    end
+
+    event :process_payment do
+      transition [:awaiting_order_authorization] => [:processing_payment]
+    end
+
+    event :request_payment_correction do
+      transition [:processing_payment] => [:awaiting_payment_correction]
+    end
+
+    event :retry_process_payment do
+      transition [:awaiting_payment_correction] => [:processing_payment]
+    end
+
+    event :receive_payment do
+      transition [:processing_payment] => [:payment_received]
+    end
+
+    event :reject_payment_processing do
+      transition [:awaiting_payment_correction] => [:cancelled]
+    end
+
+    event :finish_order do
+      transition [:payment_received] => [:finished]
+    end
+
+
+    # before_transition :on => :authorize_payment, :do => :prepare_for_checkout
+    # event :authorize_payment do
+    #   transition :shopping => :authorizing_payment
+    # end
+
+    # event :pay do
+    #   transition [:authorizing_payment] => :processing_payment
+    # end
+
+    # after_transition :on => :confirm_payment, :do => :finalize_submission
+    # event :confirm_payment do
+    #   transition [:processing_payment] => :payment_received, :if => lambda { |cart| cart.send :bill }
+    # end
+
+    # before_transition :on => :cancle_payment, :do => :reset_cart
+    # event :cancle_payment do
+    #   transition [:authorizing_payment] => :shopping
+    # end
+
+    # event :finish do
+    #   transition [:payment_received] => :finished
+    # end
+
+    # event :cancle do
+    #   transition all => :cancelled
+    # end
 
   end
 
@@ -254,4 +353,7 @@ private
     end
   end
 
+  def valid_state
+    errors[:state] << I18n.t('cart.form.errors.valid_state') unless Cart.states.include?(self.state)
+  end
 end

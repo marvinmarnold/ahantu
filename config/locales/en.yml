@@ -24,6 +24,7 @@ en:
     form:
       errors:
         not_assigned_to_search: "Cart cannot be assigned to search before checkout"
+        valid_state: "Cart is not in valid state"
       add_card: "Add credit card"
       select_cart: "Select a credit card"
       card: "Credit card"

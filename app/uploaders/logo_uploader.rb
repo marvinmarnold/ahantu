@@ -10,10 +10,10 @@ class LogoUploader < BaseUploader
     process quality: 50
   end
 
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-    "ahantu_hotel_logo" if original_filename
-  end
+  # # Override the filename of the uploaded files:
+  # # Avoid using model.id or version_name here, see uploader/store.rb for details.
+  # def filename
+  #   "ahantu_hotel_logo" if original_filename
+  # end
 
 end

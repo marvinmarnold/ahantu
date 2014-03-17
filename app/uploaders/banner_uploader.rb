@@ -5,10 +5,10 @@ class BannerUploader < BaseUploader
     process quality: 60
   end
 
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-    "ahantu_hotel_banner" if original_filename
-  end
+  # # Override the filename of the uploaded files:
+  # # Avoid using model.id or version_name here, see uploader/store.rb for details.
+  # def filename
+  #   "ahantu_hotel_banner" if original_filename
+  # end
 
 end
